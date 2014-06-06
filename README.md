@@ -2,5 +2,7 @@
 Auramcraft mod for Minecraft
 
 Developed by:
+
 HaxfracroarX
+
 Mcat12
