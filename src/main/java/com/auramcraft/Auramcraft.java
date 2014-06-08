@@ -70,7 +70,7 @@ public class Auramcraft {
 		
 		// Generation
 		oreGeneration = new OreGeneration();
-		GameRegistry.registerWorldGenerator(oreGeneration, 1);
+		GameRegistry.registerWorldGenerator(oreGeneration, 10);
 		
 		System.out.println("Initialized Auramcraft");
 	}

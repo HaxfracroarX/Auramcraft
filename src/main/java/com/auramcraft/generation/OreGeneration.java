@@ -27,7 +27,8 @@ public class OreGeneration implements IWorldGenerator {
 	}
 	
 	private void generateInOverworld(World world, Random random, int x, int z) {
-		for(int i = 0; i < 25; i++) {
+		// 20 is how many times it will generate a node in a chunk
+		for(int i = 0; i < 20; i++) {
 			int chunkX = x + random.nextInt(16);
 			int chunkY = random.nextInt(50); // 50 is the highest y level to generate
 			int chunkZ = z + random.nextInt(16);
