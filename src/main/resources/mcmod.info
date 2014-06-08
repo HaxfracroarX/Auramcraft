@@ -2,10 +2,10 @@
 {
   "modid": "auramcraft",
   "name": "Auramcraft",
-  "description": "",
-  "version": "$(version)",
+  "description": "Auramcraft is (will be) a complex magic based mod.",
+  "version": "0.0.1",
   "mcversion": "1.7.2",
-  "url": "",
+  "url": "https://github.com/HaxfracroarX/Auramcraft/wiki",
   "updateUrl": "",
   "authorList": ["Mcat12", "HaxfracroarX"],
   "credits": "",
