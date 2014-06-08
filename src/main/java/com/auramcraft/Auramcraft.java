@@ -34,6 +34,7 @@ public class Auramcraft {
 	
 	// Ore
 	public static Block gemstoneOre;
+	public static Item gemstone;
 	
 	// Generation
 	public static OreGeneration oreGeneration;
@@ -63,6 +64,9 @@ public class Auramcraft {
 		gemstoneOre = new GemstoneOre();
 		GameRegistry.registerBlock(gemstoneOre, gemstoneOre.getUnlocalizedName());
 		System.out.println("Initialized: " + gemstoneOre.getUnlocalizedName());
+		gemstone = new Gemstone();
+		GameRegistry.registerItem(gemstone, gemstone.getUnlocalizedName());
+		System.out.println("Initialized: " + gemstone.getUnlocalizedName());
 		
 		// Generation
 		oreGeneration = new OreGeneration();

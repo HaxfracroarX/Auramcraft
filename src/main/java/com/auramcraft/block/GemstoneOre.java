@@ -20,6 +20,6 @@ public class GemstoneOre extends Block {
 	
 	@Override
 	public Item getItemDropped(int metadata, Random rand, int fortune) {
-		return Auramcraft.airShard;
+		return Auramcraft.gemstone;
 	}
 }
