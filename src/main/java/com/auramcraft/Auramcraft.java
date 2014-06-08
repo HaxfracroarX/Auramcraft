@@ -1,9 +1,14 @@
 package com.auramcraft;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import com.auramcraft.creativetab.*;
+import com.auramcraft.generation.*;
 import com.auramcraft.item.*;
+import com.auramcraft.block.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -27,36 +32,41 @@ public class Auramcraft {
 	public static Item airShard;
 	public static Item auramShard;
 	
+	// Ore
+	public static Block gemstoneOre;
+	
+	// Generation
+	public static OreGeneration oreGeneration;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println("Initializing Auramcraft");
 		
 		// Shards
-		fireShard = new FireShard()
-				.setUnlocalizedName("fireShard")
-				.setTextureName(Auramcraft.MODID + ":FireShard");
+		fireShard = new FireShard();
 		GameRegistry.registerItem(fireShard, fireShard.getUnlocalizedName());
 		System.out.println("Initialized: " + fireShard.getUnlocalizedName());
-		earthShard = new EarthShard()
-				.setUnlocalizedName("earthShard")
-				.setTextureName(Auramcraft.MODID + ":EarthShard");
+		earthShard = new EarthShard();
 		GameRegistry.registerItem(earthShard, earthShard.getUnlocalizedName());
 		System.out.println("Initialized: " + earthShard.getUnlocalizedName());
-		waterShard = new WaterShard()
-				.setUnlocalizedName("waterShard")
-				.setTextureName(Auramcraft.MODID + ":WaterShard");
+		waterShard = new WaterShard();
 		GameRegistry.registerItem(waterShard, waterShard.getUnlocalizedName());
 		System.out.println("Initialized: " + waterShard.getUnlocalizedName());
-		airShard = new AirShard()
-				.setUnlocalizedName("airShard")
-				.setTextureName(Auramcraft.MODID + ":AirShard");
+		airShard = new AirShard();
 		GameRegistry.registerItem(airShard, airShard.getUnlocalizedName());
 		System.out.println("Initialized: " + airShard.getUnlocalizedName());
-		auramShard = new AuramShard()
-				.setUnlocalizedName("auramShard")
-				.setTextureName(Auramcraft.MODID + ":AuramShard");
+		auramShard = new AuramShard();
 		GameRegistry.registerItem(auramShard, auramShard.getUnlocalizedName());
 		System.out.println("Initialized: " + auramShard.getUnlocalizedName());
+		
+		// Ore
+		gemstoneOre = new GemstoneOre();
+		GameRegistry.registerBlock(gemstoneOre, gemstoneOre.getUnlocalizedName());
+		System.out.println("Initialized: " + gemstoneOre.getUnlocalizedName());
+		
+		// Generation
+		oreGeneration = new OreGeneration();
+		GameRegistry.registerWorldGenerator(oreGeneration, 1);
 		
 		System.out.println("Initialized Auramcraft");
 	}
