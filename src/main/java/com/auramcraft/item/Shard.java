@@ -3,13 +3,13 @@ package com.auramcraft.item;
 import net.minecraft.item.Item;
 import com.auramcraft.Auramcraft;
 
-public abstract class Aura extends Item{
+public abstract class Shard extends Item{
 	private int storedAura;
 	private int storedMagic;
 	private int storedGem;
 	private Auras type;
 	
-	public Aura(Auras type) {
+	public Shard(Auras type) {
 		setStored(8, 5, 5);
 		this.type = type;
 		this.setCreativeTab(Auramcraft.auramcraftTab);

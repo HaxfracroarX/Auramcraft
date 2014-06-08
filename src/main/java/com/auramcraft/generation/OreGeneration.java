@@ -32,6 +32,7 @@ public class OreGeneration implements IWorldGenerator {
 			int chunkY = random.nextInt(50); // 50 is the highest y level to generate
 			int chunkZ = z + random.nextInt(16);
 			
+			// 10 is the biggest node size
 			(new WorldGenMinable(Auramcraft.gemstoneOre, 10)).generate(world, random, chunkX, chunkY, chunkZ);
 		}
 	}

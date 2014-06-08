@@ -2,7 +2,7 @@ package com.auramcraft.item;
 
 import com.auramcraft.Auramcraft;
 
-public class EarthShard extends Aura {
+public class EarthShard extends Shard {
 	public EarthShard() {
 		super(Auras.EARTH);
 		setUnlocalizedName("earthShard");
