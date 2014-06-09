@@ -7,12 +7,16 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import com.auramcraft.creativetab.*;
 import com.auramcraft.generation.*;
+import com.auramcraft.handler.*;
 import com.auramcraft.item.*;
+import com.auramcraft.tileentity.TileEntityInfusionTable;
 import com.auramcraft.block.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = Auramcraft.MODID, 
@@ -21,6 +25,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Auramcraft {
 	public static final String MODID = "auramcraft";
 	public static final String VERSION = "0.0.1";
+	
+	@Instance(MODID)
+	public static Auramcraft instance;
 	
 	// Creative Tab
 	public static CreativeTabs auramcraftTab = new AuramcraftTab("Auramcraft");
@@ -38,6 +45,8 @@ public class Auramcraft {
 	
 	// Generation
 	public static OreGeneration oreGeneration;
+	
+	public static Block infusionTable;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -72,11 +81,19 @@ public class Auramcraft {
 		oreGeneration = new OreGeneration();
 		GameRegistry.registerWorldGenerator(oreGeneration, 10);
 		
+		// Infusion Table
+		infusionTable = new InfusionTable();
+		GameRegistry.registerBlock(infusionTable, infusionTable.getUnlocalizedName());
+		
 		System.out.println("Initialized Auramcraft");
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		// Register GUI Handler
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		
+		// Initialize tile entities
+		GameRegistry.registerTileEntity(TileEntityInfusionTable.class, "tile.infusionTable");
 	}
 }
