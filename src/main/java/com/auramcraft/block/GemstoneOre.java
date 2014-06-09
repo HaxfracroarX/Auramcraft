@@ -2,8 +2,13 @@ package com.auramcraft.block;
 
 import java.util.Random;
 import com.auramcraft.Auramcraft;
+import com.auramcraft.creativetab.CreativeTab;
+import com.auramcraft.init.AuramcraftItems;
+import com.auramcraft.reference.Names;
+import com.auramcraft.reference.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class GemstoneOre extends Block {
@@ -13,13 +18,13 @@ public class GemstoneOre extends Block {
 		setResistance(5f);
 		setHarvestLevel("pickaxe", 2);
 		setStepSound(Block.soundTypeStone);
-		setBlockName("gemstoneOre");
-		setBlockTextureName(Auramcraft.MODID + ":GemstoneOre");
-		setCreativeTab(Auramcraft.auramcraftTab);
+		setBlockName(Names.Blocks.GEMSTONEORE);
+		setBlockTextureName(Reference.MODID + ":GemstoneOre");
+		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
 	@Override
 	public Item getItemDropped(int metadata, Random rand, int fortune) {
-		return Auramcraft.gemstone;
+		return AuramcraftItems.gemstone;
 	}
 }

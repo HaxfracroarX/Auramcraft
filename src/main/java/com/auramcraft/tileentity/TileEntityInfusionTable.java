@@ -1,6 +1,7 @@
 package com.auramcraft.tileentity;
 
 import com.auramcraft.Auramcraft;
+import com.auramcraft.init.AuramcraftBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -81,13 +82,13 @@ public class TileEntityInfusionTable extends TileEntity implements IInventory {
 	@Override
 	public void openInventory() {
 		numPlayersOpen++;
-		worldObj.addBlockEvent(xCoord, yCoord, zCoord, Auramcraft.infusionTable, 1, numPlayersOpen);
+		worldObj.addBlockEvent(xCoord, yCoord, zCoord, AuramcraftBlocks.infusionTable, 1, numPlayersOpen);
 	}
 	
 	@Override
 	public void closeInventory() {
 		numPlayersOpen--;
-		worldObj.addBlockEvent(xCoord, yCoord, zCoord, Auramcraft.infusionTable, 1, numPlayersOpen);
+		worldObj.addBlockEvent(xCoord, yCoord, zCoord, AuramcraftBlocks.infusionTable, 1, numPlayersOpen);
 	}
 	
 	@Override

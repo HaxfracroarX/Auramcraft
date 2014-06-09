@@ -2,6 +2,7 @@ package com.auramcraft.generation;
 
 import java.util.Random;
 import com.auramcraft.Auramcraft;
+import com.auramcraft.init.AuramcraftBlocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -34,7 +35,7 @@ public class OreGeneration implements IWorldGenerator {
 			int chunkZ = z + random.nextInt(16);
 			
 			// 10 is the biggest node size
-			(new WorldGenMinable(Auramcraft.gemstoneOre, 10)).generate(world, random, chunkX, chunkY, chunkZ);
+			(new WorldGenMinable(AuramcraftBlocks.gemstoneOre, 10)).generate(world, random, chunkX, chunkY, chunkZ);
 		}
 	}
 	

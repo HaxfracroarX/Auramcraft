@@ -8,84 +8,44 @@ import net.minecraftforge.common.MinecraftForge;
 import com.auramcraft.creativetab.*;
 import com.auramcraft.generation.*;
 import com.auramcraft.handler.*;
+import com.auramcraft.init.*;
 import com.auramcraft.item.*;
-import com.auramcraft.tileentity.TileEntityInfusionTable;
+import com.auramcraft.proxy.*;
+import com.auramcraft.reference.Reference;
+import com.auramcraft.tileentity.*;
+import com.auramcraft.util.LogHelper;
 import com.auramcraft.block.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = Auramcraft.MODID, 
-	 name = "Auramcraft", 
-	 version = Auramcraft.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class Auramcraft {
-	public static final String MODID = "auramcraft";
-	public static final String VERSION = "0.0.1";
-	
-	@Instance(MODID)
+	@Instance(Reference.MODID)
 	public static Auramcraft instance;
 	
-	// Creative Tab
-	public static CreativeTabs auramcraftTab = new AuramcraftTab("Auramcraft");
-	
-	// Shards
-	public static Item fireShard;
-	public static Item earthShard;
-	public static Item waterShard;
-	public static Item airShard;
-	public static Item auramShard;
-	
-	// Ore
-	public static Block gemstoneOre;
-	public static Item gemstone;
-	
-	// Generation
-	public static OreGeneration oreGeneration;
-	
-	public static Block infusionTable;
+	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
+	public static IProxy proxy;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		System.out.println("Initializing Auramcraft");
+		LogHelper.info("Initializing Auramcraft");
 		
-		// Shards
-		fireShard = new FireShard();
-		GameRegistry.registerItem(fireShard, fireShard.getUnlocalizedName());
-		System.out.println("Initialized: " + fireShard.getUnlocalizedName());
-		earthShard = new EarthShard();
-		GameRegistry.registerItem(earthShard, earthShard.getUnlocalizedName());
-		System.out.println("Initialized: " + earthShard.getUnlocalizedName());
-		waterShard = new WaterShard();
-		GameRegistry.registerItem(waterShard, waterShard.getUnlocalizedName());
-		System.out.println("Initialized: " + waterShard.getUnlocalizedName());
-		airShard = new AirShard();
-		GameRegistry.registerItem(airShard, airShard.getUnlocalizedName());
-		System.out.println("Initialized: " + airShard.getUnlocalizedName());
-		auramShard = new AuramShard();
-		GameRegistry.registerItem(auramShard, auramShard.getUnlocalizedName());
-		System.out.println("Initialized: " + auramShard.getUnlocalizedName());
+		// Items
+		AuramcraftItems.init();
 		
-		// Ore
-		gemstoneOre = new GemstoneOre();
-		GameRegistry.registerBlock(gemstoneOre, gemstoneOre.getUnlocalizedName());
-		System.out.println("Initialized: " + gemstoneOre.getUnlocalizedName());
-		gemstone = new Gemstone();
-		GameRegistry.registerItem(gemstone, gemstone.getUnlocalizedName());
-		System.out.println("Initialized: " + gemstone.getUnlocalizedName());
+		// Blocks
+		AuramcraftBlocks.init();
 		
 		// Generation
-		oreGeneration = new OreGeneration();
-		GameRegistry.registerWorldGenerator(oreGeneration, 10);
+		AuramcraftGen.init();
 		
-		// Infusion Table
-		infusionTable = new InfusionTable();
-		GameRegistry.registerBlock(infusionTable, infusionTable.getUnlocalizedName());
-		
-		System.out.println("Initialized Auramcraft");
+		LogHelper.info("Initialized Auramcraft");
 	}
 	
 	@EventHandler
@@ -94,6 +54,6 @@ public class Auramcraft {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		
 		// Initialize tile entities
-		GameRegistry.registerTileEntity(TileEntityInfusionTable.class, "tile.infusionTable");
+		proxy.registerTileEntities();
 	}
 }

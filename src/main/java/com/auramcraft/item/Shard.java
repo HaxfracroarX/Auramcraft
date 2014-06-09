@@ -2,6 +2,7 @@ package com.auramcraft.item;
 
 import net.minecraft.item.Item;
 import com.auramcraft.Auramcraft;
+import com.auramcraft.creativetab.CreativeTab;
 
 public abstract class Shard extends Item{
 	private int storedAura;
@@ -12,7 +13,7 @@ public abstract class Shard extends Item{
 	public Shard(Auras type) {
 		setStored(8, 5, 5);
 		this.type = type;
-		this.setCreativeTab(Auramcraft.auramcraftTab);
+		this.setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
 	public void setStored(int storedAura, int storedMagic, int storedGem) {

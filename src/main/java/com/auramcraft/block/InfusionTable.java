@@ -1,6 +1,8 @@
 package com.auramcraft.block;
 
 import com.auramcraft.Auramcraft;
+import com.auramcraft.creativetab.CreativeTab;
+import com.auramcraft.reference.Reference;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,8 +31,8 @@ public class InfusionTable extends Block implements ITileEntityProvider {
 		setHardness(3f);
 		setBlockName("infusionTable");
 		//registerIcons();
-		setBlockTextureName(Auramcraft.MODID + ":GemstoneOre"); // Temporary filler
-		setCreativeTab(Auramcraft.auramcraftTab);
+		setBlockTextureName(Reference.MODID + ":GemstoneOre"); // Temporary filler
+		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
 	@Override
@@ -48,9 +50,9 @@ public class InfusionTable extends Block implements ITileEntityProvider {
 	// Will be used when textures are available
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister) {
-		topIcon = iconRegister.registerIcon(Auramcraft.MODID + ":infusionTop");
-		sideIcon = iconRegister.registerIcon(Auramcraft.MODID + ":infusionSide");
-		frontIcon = iconRegister.registerIcon(Auramcraft.MODID + ":infusionFront");
+		topIcon = iconRegister.registerIcon(Reference.MODID + ":infusionTop");
+		sideIcon = iconRegister.registerIcon(Reference.MODID + ":infusionSide");
+		frontIcon = iconRegister.registerIcon(Reference.MODID + ":infusionFront");
 	}
 	
 	@Override
