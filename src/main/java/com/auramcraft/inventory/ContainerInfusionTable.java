@@ -16,17 +16,16 @@ public class ContainerInfusionTable extends Container {
 		// Add Infusion Table crafting slots
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				addSlotToContainer(new Slot(tileEntityInfusionTable, i + j, i * 18 + 8, j * 18 + 8));
+				addSlotToContainer(new Slot(tileEntityInfusionTable, i + j, i * 18 + 7, j * 18 + 7));
 			}
 		}
 		
 		// Add Output slot
-		addSlotToContainer(new Slot(tileEntityInfusionTable, 9, 100, 20));
+		addSlotToContainer(new Slot(tileEntityInfusionTable, 9, 102, 24));
 		
 		// Add the Player's inventory
 		for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++)
-            {
+            for (int j = 0; j < 9; j++) {
                 this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }

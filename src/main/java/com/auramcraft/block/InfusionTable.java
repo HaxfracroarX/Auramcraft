@@ -18,20 +18,15 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class InfusionTable extends Block implements ITileEntityProvider {
-	// Texures (Will be used once made)
 	@SideOnly(Side.CLIENT)
-	public static IIcon topIcon;
-	@SideOnly(Side.CLIENT)
-	public static IIcon sideIcon;
-	@SideOnly(Side.CLIENT)
-	public static IIcon frontIcon;
+	private static IIcon topIcon;
+	private static IIcon sideIcon;
+	private static IIcon frontIcon;
 	
 	public InfusionTable() {
 		super(Material.iron);
 		setHardness(3f);
 		setBlockName("infusionTable");
-		//registerIcons();
-		setBlockTextureName(Reference.MODID + ":GemstoneOre"); // Temporary filler
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
@@ -48,19 +43,18 @@ public class InfusionTable extends Block implements ITileEntityProvider {
 	}
 	
 	// Will be used when textures are available
+	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister) {
-		topIcon = iconRegister.registerIcon(Reference.MODID + ":infusionTop");
-		sideIcon = iconRegister.registerIcon(Reference.MODID + ":infusionSide");
-		frontIcon = iconRegister.registerIcon(Reference.MODID + ":infusionFront");
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		topIcon = iconRegister.registerIcon(Reference.MODID + ":InfusionTableTop");
+		sideIcon = iconRegister.registerIcon(Reference.MODID + ":InfusionTableSide");
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata) {
 		if(side == 0 || side == 1)
 			return topIcon;
-		else if(side != metadata)
-			return sideIcon;
-		return frontIcon;
+		return sideIcon;
 	}
 }
