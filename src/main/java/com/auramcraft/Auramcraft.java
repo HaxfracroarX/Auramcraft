@@ -1,5 +1,7 @@
 package com.auramcraft;
 
+//Xydium here, making sure Git is behaving. Ignore this comment
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
