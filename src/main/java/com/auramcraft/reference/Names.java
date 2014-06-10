@@ -13,5 +13,7 @@ public class Names {
 		public static final String AIRSHARD = "airShard";
 		public static final String AURAMSHARD = "auramShard";
 		public static final String GEMSTONE = "gemstone";
+		public static final String SACRIFICIALBLADE = "sacrificialBlade";
+		
 	}
 }
