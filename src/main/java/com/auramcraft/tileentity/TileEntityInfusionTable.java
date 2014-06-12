@@ -2,35 +2,24 @@ package com.auramcraft.tileentity;
 
 import com.auramcraft.Auramcraft;
 import com.auramcraft.init.AuramcraftBlocks;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityInfusionTable extends TileEntity implements IInventory {
+public class TileEntityInfusionTable extends TileEntityAuramcraft implements IInventory {
 	private ItemStack[] inventory;
 	private int numPlayersOpen;
-	private ForgeDirection orientation;
 	
 	public TileEntityInfusionTable() {
+		super();
 		inventory = new ItemStack[11];
 		numPlayersOpen = 0;
-		orientation = ForgeDirection.SOUTH;
-	}
-	
-	public ForgeDirection getOrientation() {
-		return orientation;
-	}
-	
-	public void setOrientation(ForgeDirection orientation) {
-		this.orientation = orientation;
-	}
-	
-	public void setOrientation(int orientation) {
-		this.orientation = ForgeDirection.getOrientation(orientation);
 	}
 	
 	@Override
@@ -110,5 +99,39 @@ public class TileEntityInfusionTable extends TileEntity implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		return true;
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound nbtTagCompound) {
+		LogHelper.info("Reading NBT..." + getOrientation());
+		super.readFromNBT(nbtTagCompound);
+		LogHelper.info("New: " + getOrientation());
+		// Read in the ItemStacks in the inventory from NBT
+		NBTTagList tagList = nbtTagCompound.getTagList("Items", 10);
+		inventory = new ItemStack[this.getSizeInventory()];
+		for(int i = 0; i < tagList.tagCount(); ++i) {
+			NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
+			byte slotIndex = tagCompound.getByte("Slot");
+			if(slotIndex >= 0 && slotIndex < inventory.length)
+				inventory[slotIndex] = ItemStack.loadItemStackFromNBT(tagCompound);
+		}
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound nbtTagCompound) {
+		LogHelper.info("Saving NBT...");
+		super.writeToNBT(nbtTagCompound);
+		
+		// Write the ItemStacks in the inventory to NBT
+		NBTTagList tagList = new NBTTagList();
+		for(int currentIndex = 0; currentIndex < inventory.length; ++currentIndex) {
+			if(inventory[currentIndex] != null) {
+				NBTTagCompound tagCompound = new NBTTagCompound();
+				tagCompound.setByte("Slot", (byte) currentIndex);
+				inventory[currentIndex].writeToNBT(tagCompound);
+				tagList.appendTag(tagCompound);
+			}
+		}
+		nbtTagCompound.setTag("Items", tagList);
 	}
 }
