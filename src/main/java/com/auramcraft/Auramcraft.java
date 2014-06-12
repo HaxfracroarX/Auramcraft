@@ -55,5 +55,8 @@ public class Auramcraft {
 		
 		// Initialize tile entities
 		proxy.registerTileEntities();
+		
+		// Initialize renderers
+		proxy.registerRenderers();
 	}
 }

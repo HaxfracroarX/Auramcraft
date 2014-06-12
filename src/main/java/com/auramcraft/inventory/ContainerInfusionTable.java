@@ -5,23 +5,29 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.item.ItemStack;
 
 public class ContainerInfusionTable extends Container {
 	private TileEntityInfusionTable tileEntityInfusionTable;
+	private InventoryPlayer ip;
 	
 	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, TileEntityInfusionTable tileEntityInfusionTable) {
 		this.tileEntityInfusionTable = tileEntityInfusionTable;
+		this.ip = inventoryPlayer;
 		tileEntityInfusionTable.openInventory();
 		
+		// Add Output slot
+		addSlotToContainer(new SlotCrafting(inventoryPlayer.player,tileEntityInfusionTable, tileEntityInfusionTable, 0, 102, 24));
+		
 		// Add Infusion Table crafting slots
+		int rep = 1;
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				addSlotToContainer(new Slot(tileEntityInfusionTable, i + j, i * 18 + 7, j * 18 + 7));
+				addSlotToContainer(new Slot(tileEntityInfusionTable, rep, i * 18 + 7, 7 + j * 18));
+				rep++;
 			}
 		}
-		
-		// Add Output slot
-		addSlotToContainer(new Slot(tileEntityInfusionTable, 9, 102, 24));
 		
 		// Add the Player's inventory
 		for (int i = 0; i < 3; i++) {
@@ -38,6 +44,11 @@ public class ContainerInfusionTable extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer entityPlayer) {
 		return true;
+	}
+	
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
+		return null;
 	}
 	
 	@Override
