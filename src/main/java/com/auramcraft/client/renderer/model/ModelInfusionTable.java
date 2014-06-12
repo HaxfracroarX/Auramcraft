@@ -13,7 +13,7 @@ public class ModelInfusionTable extends ModelBase {
 	ModelRenderer Shape4;
 	
 	public ModelInfusionTable() {
-		textureWidth = 128;
+		textureWidth = 64;
 		textureHeight = 64;
 		
 		Top = new ModelRenderer(this, 0, 0);
@@ -53,9 +53,9 @@ public class ModelInfusionTable extends ModelBase {
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		Top.render(f5);
 		Shape1.render(f5);
-		Shape1.render(f5);
-		Shape1.render(f5);
-		Shape1.render(f5);
+		Shape2.render(f5);
+		Shape3.render(f5);
+		Shape4.render(f5);
 	}
 	
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

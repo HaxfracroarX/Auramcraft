@@ -8,15 +8,29 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityInfusionTable extends TileEntity implements IInventory {
 	private ItemStack[] inventory;
 	private int numPlayersOpen;
+	private ForgeDirection orientation;
 	
 	public TileEntityInfusionTable() {
-		super();
 		inventory = new ItemStack[11];
 		numPlayersOpen = 0;
+		orientation = ForgeDirection.SOUTH;
+	}
+	
+	public ForgeDirection getOrientation() {
+		return orientation;
+	}
+	
+	public void setOrientation(ForgeDirection orientation) {
+		this.orientation = orientation;
+	}
+	
+	public void setOrientation(int orientation) {
+		this.orientation = ForgeDirection.getOrientation(orientation);
 	}
 	
 	@Override
