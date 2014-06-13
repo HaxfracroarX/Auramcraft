@@ -11,6 +11,6 @@ public class SacrificialBlade extends ItemSword {
 		super(ToolMaterials.sacrificialMaterial);
 		setUnlocalizedName(Names.Items.SACRIFICIALBLADE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
-		setTextureName(Reference.MODID + ":SacrificialBlade");
+		setTextureName(Reference.MODID + ":SacrificalDagger");
 	}
 }

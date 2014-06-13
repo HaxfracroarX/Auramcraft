@@ -17,8 +17,8 @@ public class GuiInfusionTable extends GuiContainer {
 	public GuiInfusionTable(InventoryPlayer inventoryPlayer, TileEntityInfusionTable tileEntityInfusionTable) {
 		super(new ContainerInfusionTable(inventoryPlayer, tileEntityInfusionTable));
 		this.tileEntityInfusionTable = tileEntityInfusionTable;
-		xSize = 192;
-		ySize = 96;
+		xSize = 191;
+		ySize = 179;
 	}
 	
 	@Override
