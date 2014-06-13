@@ -6,6 +6,7 @@ item.waterShard.name=Water Shard
 item.airShard.name=Air Shard
 item.auramShard.name=Auram Shard
 item.gemstone.name=Gemstone
+item.sacrificialBlade.name=Sacrificial Blade
 
 tile.gemstoneOre.name=Gemstone Ore
 tile.infusionTable.name=Infusion Table

@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 import com.auramcraft.Auramcraft;
 import com.auramcraft.inventory.ContainerInfusionTable;
 import com.auramcraft.reference.Reference;
+import com.auramcraft.reference.Textures;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -16,18 +17,16 @@ public class GuiInfusionTable extends GuiContainer {
 	public GuiInfusionTable(InventoryPlayer inventoryPlayer, TileEntityInfusionTable tileEntityInfusionTable) {
 		super(new ContainerInfusionTable(inventoryPlayer, tileEntityInfusionTable));
 		this.tileEntityInfusionTable = tileEntityInfusionTable;
-		
-		// Will fix when texture is ready
-		xSize = 100;
-		ySize = 100;
+		xSize = 192;
+		ySize = 96;
 	}
 	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-		GL11.glColor4f(1f, 1f, 1f, 1f);
-		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "/gui/infusion/infusionTable.png"));
-		int xStart = (width - xSize) / 2;
-		int yStart = (height - ySize) /2;
-		drawTexturedModalRect(xStart, yStart, 0, 0, xSize, ySize);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		mc.getTextureManager().bindTexture(Textures.GUI_INFUSION_TABLE);
+		int x = (width - xSize) / 2;
+	    int y = (height - ySize) / 2;
+	    drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	}
 }

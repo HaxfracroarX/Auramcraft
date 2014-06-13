@@ -10,6 +10,7 @@ import com.auramcraft.generation.*;
 import com.auramcraft.handler.*;
 import com.auramcraft.init.*;
 import com.auramcraft.item.*;
+import com.auramcraft.network.PacketHandler;
 import com.auramcraft.proxy.*;
 import com.auramcraft.reference.Reference;
 import com.auramcraft.tileentity.*;
@@ -36,6 +37,9 @@ public class Auramcraft {
 	public void preInit(FMLPreInitializationEvent event) {
 		LogHelper.info("Initializing Auramcraft");
 		
+		// Packets
+		PacketHandler.init();
+		
 		// Items
 		AuramcraftItems.init();
 		
@@ -55,5 +59,8 @@ public class Auramcraft {
 		
 		// Initialize tile entities
 		proxy.registerTileEntities();
+		
+		// Initialize renderers
+		proxy.registerRenderers();
 	}
 }
