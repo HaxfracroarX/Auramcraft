@@ -103,9 +103,8 @@ public class TileEntityInfusionTable extends TileEntityAuramcraft implements IIn
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbtTagCompound) {
-		LogHelper.info("Reading NBT..." + getOrientation());
 		super.readFromNBT(nbtTagCompound);
-		LogHelper.info("New: " + getOrientation());
+		
 		// Read in the ItemStacks in the inventory from NBT
 		NBTTagList tagList = nbtTagCompound.getTagList("Items", 10);
 		inventory = new ItemStack[this.getSizeInventory()];
@@ -119,7 +118,6 @@ public class TileEntityInfusionTable extends TileEntityAuramcraft implements IIn
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbtTagCompound) {
-		LogHelper.info("Saving NBT...");
 		super.writeToNBT(nbtTagCompound);
 		
 		// Write the ItemStacks in the inventory to NBT
