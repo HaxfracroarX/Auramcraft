@@ -3,11 +3,12 @@ package com.auramcraft.item;
 import com.auramcraft.Auramcraft;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Reference;
+import com.auramcraft.reference.Textures;
 
 public class AirShard extends Shard {
 	public AirShard() {
 		super(Auras.AIR);
 		setUnlocalizedName(Names.Items.AIRSHARD);
-		setTextureName(Reference.MODID + ":AirShard");
+		setTextureName(Textures.ITEM_AIR_SHARD);
 	}
 }

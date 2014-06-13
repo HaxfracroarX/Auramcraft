@@ -34,6 +34,7 @@ public class InfusionTable extends BlockContainer {
 		super(Material.iron);
 		setHardness(3f);
 		setBlockName("infusionTable");
+		setBlockTextureName(Textures.BLOCK_INFUSION_TABLE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
@@ -50,12 +51,6 @@ public class InfusionTable extends BlockContainer {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon(Reference.MODID + ":infusionTable");
 	}
 	
 	@Override

@@ -6,6 +6,7 @@ import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Reference;
+import com.auramcraft.reference.Textures;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +20,7 @@ public class GemstoneOre extends Block {
 		setHarvestLevel("pickaxe", 2);
 		setStepSound(Block.soundTypeStone);
 		setBlockName(Names.Blocks.GEMSTONEORE);
-		setBlockTextureName(Reference.MODID + ":gemstoneOre");
+		setBlockTextureName(Textures.BLOCK_GEMSTONE_ORE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
