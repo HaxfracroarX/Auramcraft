@@ -12,6 +12,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class AumWood extends Block {
+	@SideOnly(Side.CLIENT)
+	public static IIcon topIcon;
+	public static IIcon sideIcon;
+	public static IIcon bottomIcon;
+	
 	public AumWood() {
 		super(Material.wood);
 		setHardness(1f);
@@ -22,13 +27,6 @@ public class AumWood extends Block {
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public static IIcon topIcon;
-	@SideOnly(Side.CLIENT)
-	public static IIcon sideIcon;
-	@SideOnly(Side.CLIENT)
-	public static IIcon bottomIcon;
-	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
@@ -36,4 +34,13 @@ public class AumWood extends Block {
 		sideIcon = iconRegister.registerIcon(Textures.BLOCK_AUM_WOOD_SIDE);
 		bottomIcon = iconRegister.registerIcon(Textures.BLOCK_AUM_WOOD_TOP);
 	}
+	
+	@Override
+	public IIcon getIcon(int side, int metadata) {
+		if(side == 0 || side == 1)
+			return topIcon;
+		else if(side != metadata)
+			return sideIcon;
+		return sideIcon;
+	 }
 }
