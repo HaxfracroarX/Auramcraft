@@ -10,5 +10,6 @@ item.sacrificialDagger.name=Sacrificial Dagger
 
 tile.gemstoneOre.name=Gemstone Ore
 tile.infusionTable.name=Infusion Table
-tile.aumWoodPlanks.name=Aum Wood Planks
-tile.aumWoodLeaves.name=Aum Wood Leaves
+tile.aumWoodPlanks.name=Aumwood Planks
+tile.aumWoodLeaves.name=Aumwood Leaves
+tile.aumWood.name=Aumwood

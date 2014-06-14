@@ -11,12 +11,14 @@ public class AuramcraftBlocks {
 	public static final Block infusionTable = new InfusionTable();
 	public static final Block aumWoodPlanks = new AumWoodPlanks();
 	public static final Block aumWoodLeaves = new AumWoodLeaves();
+	public static final Block aumWood = new AumWood();
 	
 	public static void init() {
 		GameRegistry.registerBlock(gemstoneOre, Names.Blocks.GEMSTONEORE);
 		GameRegistry.registerBlock(infusionTable, Names.Blocks.INFUSIONTABLE);
 		GameRegistry.registerBlock(aumWoodPlanks, Names.Blocks.AUMWOODPLANKS);
 		GameRegistry.registerBlock(aumWoodLeaves, Names.Blocks.AUMWOODLEAVES);
+		GameRegistry.registerBlock(aumWood, Names.Blocks.AUMWOOD);
 		
 		LogHelper.info("Initialized Blocks");
 	}
