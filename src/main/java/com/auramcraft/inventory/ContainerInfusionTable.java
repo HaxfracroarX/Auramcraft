@@ -20,11 +20,14 @@ public class ContainerInfusionTable extends Container {
 		// Add Output slot
 		addSlotToContainer(new SlotCrafting(inventoryPlayer.player,tileEntityInfusionTable, tileEntityInfusionTable, 0, 102, 24));
 		
+		// Add the unknown slot
+		addSlotToContainer(new Slot(tileEntityInfusionTable, 1, 156, 24));
+		
 		// Add Infusion Table crafting slots
-		int rep = 1;
+		int rep = 2;
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				addSlotToContainer(new Slot(tileEntityInfusionTable, rep, i * 18 + 7, 7 + j * 18));
+				addSlotToContainer(new Slot(tileEntityInfusionTable, rep, i * 18 + 7, (7 - j) + j * 18));
 				rep++;
 			}
 		}
@@ -32,13 +35,13 @@ public class ContainerInfusionTable extends Container {
 		// Add the Player's inventory
 		for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 11 + j * 19, 96 + i * 19));
             }
         }
 		
 		// Add the action slots
         for (int i = 0; i < 9; i++)
-            this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+            this.addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 19, 158));
 	}
 	
 	@Override
