@@ -4,6 +4,7 @@ public class Names {
 	public static class Blocks {
 		public static final String GEMSTONEORE = "gemstoneOre";
 		public static final String INFUSIONTABLE = "infusionTable";
+		public static final String AUMWOODPLANKS = "aumWoodPlanks";
 	}
 	
 	public static class Items {

@@ -12,6 +12,7 @@ public class Textures {
 	// Blocks
 	public static final String BLOCK_GEMSTONE_ORE = RESOURCE_PREFIX + "GemstoneOre";
 	public static final String BLOCK_INFUSION_TABLE = RESOURCE_PREFIX + "infusionTable";
+	public static final String BLOCK_AUM_WOOD_PLANKS = RESOURCE_PREFIX + "AumWoodPlanks";
 	
 	// Items
 	public static final String ITEM_FIRE_SHARD = RESOURCE_PREFIX + "FireShard";
