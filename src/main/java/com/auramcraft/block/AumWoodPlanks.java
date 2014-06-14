@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 public class AumWoodPlanks extends Block {
-
 	public AumWoodPlanks() {
 		super(Material.wood);
 		setHardness(1f);
@@ -19,7 +18,4 @@ public class AumWoodPlanks extends Block {
 		setBlockTextureName(Textures.BLOCK_AUM_WOOD_PLANKS);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
-	
-	
-
 }
