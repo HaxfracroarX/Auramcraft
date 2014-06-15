@@ -69,10 +69,7 @@ public class AumWoodSapling extends BlockSapling {
     
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
-    	Block soil = world.getBlock(x, y, z);
-    	
-		return (world.getFullBlockLightValue(x, y, z) >= 8 || world.canBlockSeeTheSky(x, y, z)) &&
-				(soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
+    	return isValidPosition(world, x, y, z, -1);
     }
     
     @Override
@@ -98,5 +95,10 @@ public class AumWoodSapling extends BlockSapling {
 			if (!((WorldGenerator)obj).generate(world, random, x, y, z)) 
 				world.setBlock(x, y, z, this, meta, 2);
 		}
+    }
+
+    @Override
+    public void getSubBlocks(Item item, CreativeTabs tabs, List list) {
+        list.add(new ItemStack(item, 1, 0));
     }
 }
