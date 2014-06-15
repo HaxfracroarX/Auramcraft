@@ -18,6 +18,8 @@ public class DevToy extends Item {
 	
 	public DevToy() {
 		setCreativeTab(CreativeTab.AuramcraftTab);
+		setTextureName(Textures.ITEM_DEV_TOY);
+		setUnlocalizedName(Names.Items.DEVTOY);
 	}
 	
 	@Override
