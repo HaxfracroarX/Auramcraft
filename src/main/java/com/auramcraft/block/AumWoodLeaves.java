@@ -76,6 +76,34 @@ public class AumWoodLeaves extends BlockLeavesBase implements IShearable {
 	}
 	
 	@Override
+	public void beginLeavesDecay(World world, int x, int y, int z) {
+		int i2 = world.getBlockMetadata(x, y, z);
+		
+		if((i2 & 8) == 0)
+			world.setBlockMetadataWithNotify(x, y, z, i2 | 8, 4);
+		
+		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | 8, 4);
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int fortune) {
+		byte b0 = 1;
+		int i1 = b0 + 1;
+		
+		if(world.checkChunksExist(x - i1, y - i1, z - i1, x + i1, y + i1, z + i1)) {
+			for(int j1 = -b0; j1 <= b0; ++j1) {
+				for(int k1 = -b0; k1 <= b0; ++k1) {
+					for(int l1 = -b0; l1 <= b0; ++l1) {
+						Block block2 = world.getBlock(x + j1, y + k1, z + l1);
+						if(block2.isLeaves(world, x + j1, y + k1, z + l1))
+							block2.beginLeavesDecay(world, x + j1, y + k1, z + l1);
+					}
+				}
+			}
+		}
+	}
+	
+	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
 		if(!world.isRemote) {
 			int l = world.getBlockMetadata(x, y, z);
