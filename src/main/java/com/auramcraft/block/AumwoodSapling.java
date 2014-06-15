@@ -55,7 +55,7 @@ public class AumWoodSapling extends BlockSapling {
     }
     
     public boolean isValidPosition(World world, int x, int y, int z, int metadata) {
-    	Block block = world.getBlock(x, y, z);
+    	Block block = world.getBlock(x, y - 1, z);
     	return block == Blocks.dirt || 
     			block == Blocks.grass || 
     			block == Blocks.farmland || 
