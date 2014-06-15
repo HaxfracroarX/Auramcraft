@@ -7,7 +7,7 @@ import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Textures;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.block.IGrowable;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,7 +29,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class AumwoodSapling extends BlockBush implements IGrowable
+public class AumwoodSapling extends BlockSapling implements IGrowable
 {
     public static final String[] field_149882_a = new String[] {"lemon"};
     private static final String __OBFID = "CL_00000305";
