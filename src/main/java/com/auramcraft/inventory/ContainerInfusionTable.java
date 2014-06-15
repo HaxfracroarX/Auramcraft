@@ -27,7 +27,7 @@ public class ContainerInfusionTable extends Container {
 		int rep = 2;
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				addSlotToContainer(new Slot(tileEntityInfusionTable, rep, i * 18 + 7, (7 - j) + j * 18));
+				addSlotToContainer(new Slot(tileEntityInfusionTable, rep, i * 19 + 6, (3 - j) + j * 20));
 				rep++;
 			}
 		}
