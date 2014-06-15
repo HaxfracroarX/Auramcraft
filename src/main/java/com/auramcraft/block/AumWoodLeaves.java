@@ -54,11 +54,6 @@ public class AumWoodLeaves extends BlockLeavesBase implements IShearable {
 	}
 	
 	@Override
-	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return Item.getItemFromBlock(AuramcraftBlocks.aumwoodSapling);
-	}
-	
-	@Override
 	public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z) {
 		return true;
 	}
@@ -102,6 +97,19 @@ public class AumWoodLeaves extends BlockLeavesBase implements IShearable {
 			}
 		}
 	}
+	
+	@Override
+    public void dropBlockAsItemWithChance(World p_149690_1_, int p_149690_2_, int p_149690_3_, int p_149690_4_, int p_149690_5_, float p_149690_6_, int p_149690_7_)
+    {
+        super.dropBlockAsItemWithChance(p_149690_1_, p_149690_2_, p_149690_3_, p_149690_4_, p_149690_5_, 1.0f, p_149690_7_);
+    }
+
+    protected void func_150124_c(World p_150124_1_, int p_150124_2_, int p_150124_3_, int p_150124_4_, int p_150124_5_, int p_150124_6_) {}
+
+    protected int func_150123_b(int p_150123_1_)
+    {
+        return 1;
+    }
 	
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
