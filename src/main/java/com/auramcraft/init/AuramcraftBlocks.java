@@ -12,7 +12,7 @@ public class AuramcraftBlocks {
 	public static final Block aumWoodPlanks = new AumWoodPlanks();
 	public static final Block aumWoodLeaves = new AumWoodLeaves();
 	public static final Block aumWood = new AumWood();
-	public static final Block aumwoodSapling = new AumwoodSapling();
+	public static final Block aumwoodSapling = new AumWoodSapling();
 	
 	public static void init() {
 		GameRegistry.registerBlock(gemstoneOre, Names.Blocks.GEMSTONEORE);

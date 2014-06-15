@@ -12,10 +12,10 @@ public class Textures {
 	// Blocks
 	public static final String BLOCK_GEMSTONE_ORE = RESOURCE_PREFIX + "GemstoneOre";
 	public static final String BLOCK_INFUSION_TABLE = RESOURCE_PREFIX + "infusionTable";
-	public static final String BLOCK_AUM_WOOD_PLANKS = RESOURCE_PREFIX + "AumWoodPlanks";
-	public static final String BLOCK_AUM_WOOD_LEAVES = RESOURCE_PREFIX + "AumWoodLeaves";
-	public static final String BLOCK_AUM_WOOD_TOP = RESOURCE_PREFIX + "AumwoodTop";
-	public static final String BLOCK_AUM_WOOD_SIDE = RESOURCE_PREFIX + "AumwoodSide";
+	public static final String BLOCK_AUMWOOD_PLANKS = RESOURCE_PREFIX + "AumWoodPlanks";
+	public static final String BLOCK_AUMWOOD_LEAVES = RESOURCE_PREFIX + "AumWoodLeaves";
+	public static final String BLOCK_AUMWOOD_TOP = RESOURCE_PREFIX + "AumwoodTop";
+	public static final String BLOCK_AUMWOOD_SIDE = RESOURCE_PREFIX + "AumwoodSide";
 	public static final String BLOCK_AUMWOOD_SAPLING = RESOURCE_PREFIX + "AumwoodSapling";
 	
 	// Items

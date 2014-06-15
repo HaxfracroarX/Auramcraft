@@ -30,9 +30,9 @@ public class AumWood extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		topIcon = iconRegister.registerIcon(Textures.BLOCK_AUM_WOOD_TOP);
-		sideIcon = iconRegister.registerIcon(Textures.BLOCK_AUM_WOOD_SIDE);
-		bottomIcon = iconRegister.registerIcon(Textures.BLOCK_AUM_WOOD_TOP);
+		topIcon = iconRegister.registerIcon(Textures.BLOCK_AUMWOOD_TOP);
+		sideIcon = iconRegister.registerIcon(Textures.BLOCK_AUMWOOD_SIDE);
+		bottomIcon = iconRegister.registerIcon(Textures.BLOCK_AUMWOOD_TOP);
 	}
 	
 	@Override

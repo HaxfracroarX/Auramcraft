@@ -14,7 +14,7 @@ public class AumWoodLeaves extends Block {
 		setHarvestLevel("axe", 1);
 		setStepSound(Block.soundTypeGrass);
 		setBlockName(Names.Blocks.AUMWOODLEAVES);
-		setBlockTextureName(Textures.BLOCK_AUM_WOOD_LEAVES);
+		setBlockTextureName(Textures.BLOCK_AUMWOOD_LEAVES);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
