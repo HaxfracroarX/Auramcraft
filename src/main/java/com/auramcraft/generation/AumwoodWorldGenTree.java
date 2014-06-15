@@ -58,7 +58,7 @@ public class AumwoodWorldGenTree extends WorldGenAbstractTree {
 			else {
 				Block block2 = world.getBlock(x, y - 1, z);
 				
-				boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) AuramcraftBlocks.aumwoodSapling);
+				boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) AuramcraftBlocks.aumWoodSapling);
 				if(isSoil && y < 256 - l - 1) {
 					block2.onPlantGrow(world, x, y - 1, z, x, y, z);
 					int k2;

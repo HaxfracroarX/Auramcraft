@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.init.AuramcraftBlocks;
+import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Names.Items;
 import com.auramcraft.reference.Textures;
@@ -99,17 +100,18 @@ public class AumWoodLeaves extends BlockLeavesBase implements IShearable {
 	}
 	
 	@Override
-    public void dropBlockAsItemWithChance(World p_149690_1_, int p_149690_2_, int p_149690_3_, int p_149690_4_, int p_149690_5_, float p_149690_6_, int p_149690_7_)
+    public void dropBlockAsItemWithChance(World world, int x, int y, int z, int metadata, float chance, int fortune)
     {
-        super.dropBlockAsItemWithChance(p_149690_1_, p_149690_2_, p_149690_3_, p_149690_4_, p_149690_5_, 1.0f, p_149690_7_);
+		if (world.rand.nextInt(100) == 0) {
+			Item item = getItemDropped(metadata, world.rand, fortune);
+			dropBlockAsItem(world, x, y, z, new ItemStack(item, 1, 0));
+		}
     }
-
-    protected void func_150124_c(World p_150124_1_, int p_150124_2_, int p_150124_3_, int p_150124_4_, int p_150124_5_, int p_150124_6_) {}
-
-    protected int func_150123_b(int p_150123_1_)
-    {
-        return 1;
-    }
+	
+	@Override
+	public Item getItemDropped(int metadata, Random random, int fortune) {
+		return Item.getItemFromBlock(AuramcraftBlocks.aumWoodSapling);
+	}
 	
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
