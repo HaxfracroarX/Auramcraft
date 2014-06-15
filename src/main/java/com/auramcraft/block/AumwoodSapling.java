@@ -32,6 +32,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class AumWoodSapling extends BlockSapling {
+	@SideOnly(Side.CLIENT)
 	private IIcon texture;
 	
     public AumWoodSapling()
@@ -81,6 +82,9 @@ public class AumWoodSapling extends BlockSapling {
     }
     
     @Override
+    /**
+     * Grows a tree
+     */
     public void func_149878_d(World world, int x, int y, int z, Random random) {
     	int meta = world.getBlockMetadata(x, y, z) & 15;
 		Object obj = null;
