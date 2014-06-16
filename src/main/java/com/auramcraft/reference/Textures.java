@@ -26,6 +26,7 @@ public class Textures {
 	public static final String ITEM_AURAM_SHARD = RESOURCE_PREFIX + "AuramShard";
 	public static final String ITEM_GEMSTONE = RESOURCE_PREFIX + "Gemstone";
 	public static final String ITEM_SACRIFICIAL_DAGGER = RESOURCE_PREFIX + "SacrificialDagger";
+	public static final String ITEM_DEV_TOY = RESOURCE_PREFIX + "SacrificialDagger";
 	
 	// Model textures
 	public static final ResourceLocation MODEL_INFUSION_TABLE = new ResourceLocation(Reference.MODID, MODEL_TEXTURE_LOCATION + "infusionTable.png");

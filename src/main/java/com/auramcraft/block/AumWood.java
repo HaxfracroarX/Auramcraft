@@ -5,6 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
@@ -25,6 +27,11 @@ public class AumWood extends Block {
 		setStepSound(Block.soundTypeWood);
 		setBlockName(Names.Blocks.AUMWOOD);
 		setCreativeTab(CreativeTab.AuramcraftTab);
+	}
+	
+	@Override
+	public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z) {
+		return true;
 	}
 	
 	@Override

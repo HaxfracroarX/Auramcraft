@@ -15,6 +15,7 @@ public class AuramcraftItems {
 	public static final Item auramShard = new AuramShard();
 	public static final Item gemstone = new Gemstone();
 	public static final Item sacrificialDagger = new SacrificialDagger();
+	public static final Item devToy = new DevToy();
 	
 	public static void init() {
 		GameRegistry.registerItem(fireShard, Names.Items.FIRESHARD);
@@ -24,6 +25,7 @@ public class AuramcraftItems {
 		GameRegistry.registerItem(auramShard, Names.Items.AURAMSHARD);
 		GameRegistry.registerItem(gemstone, Names.Items.GEMSTONE);
 		GameRegistry.registerItem(sacrificialDagger, Names.Items.SACRIFICIALDAGGER);
+		GameRegistry.registerItem(devToy, Names.Items.DEVTOY);
 		
 		LogHelper.info("Initialized Items");
 	}

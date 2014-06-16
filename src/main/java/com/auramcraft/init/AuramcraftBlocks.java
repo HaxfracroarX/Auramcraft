@@ -12,7 +12,7 @@ public class AuramcraftBlocks {
 	public static final Block aumWoodPlanks = new AumWoodPlanks();
 	public static final Block aumWoodLeaves = new AumWoodLeaves();
 	public static final Block aumWood = new AumWood();
-	public static final Block aumwoodSapling = new AumWoodSapling();
+	public static final Block aumWoodSapling = new AumWoodSapling();
 	
 	public static void init() {
 		GameRegistry.registerBlock(gemstoneOre, Names.Blocks.GEMSTONEORE);
@@ -20,7 +20,7 @@ public class AuramcraftBlocks {
 		GameRegistry.registerBlock(aumWoodPlanks, Names.Blocks.AUMWOODPLANKS);
 		GameRegistry.registerBlock(aumWoodLeaves, Names.Blocks.AUMWOODLEAVES);
 		GameRegistry.registerBlock(aumWood, Names.Blocks.AUMWOOD);
-		GameRegistry.registerBlock(aumwoodSapling, Names.Blocks.AUMWOODSAPLING);
+		GameRegistry.registerBlock(aumWoodSapling, Names.Blocks.AUMWOODSAPLING);
 		
 		LogHelper.info("Initialized Blocks");
 	}
