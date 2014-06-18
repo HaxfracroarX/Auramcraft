@@ -1,6 +1,5 @@
 package com.auramcraft.block;
 
-import javax.swing.plaf.basic.BasicTabbedPaneUI.TabSelectionHandler;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
