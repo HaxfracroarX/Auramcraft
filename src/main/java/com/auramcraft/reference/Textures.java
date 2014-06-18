@@ -17,6 +17,7 @@ public class Textures {
 	public static final String BLOCK_AUMWOOD_TOP = RESOURCE_PREFIX + "AumwoodTop";
 	public static final String BLOCK_AUMWOOD_SIDE = RESOURCE_PREFIX + "AumwoodSide";
 	public static final String BLOCK_AUMWOOD_SAPLING = RESOURCE_PREFIX + "AumwoodSapling";
+	public static final String BLOCK_AURAM_FLOWER = RESOURCE_PREFIX + "AuramFlower";
 	
 	// Items
 	public static final String ITEM_FIRE_SHARD = RESOURCE_PREFIX + "FireShard";
