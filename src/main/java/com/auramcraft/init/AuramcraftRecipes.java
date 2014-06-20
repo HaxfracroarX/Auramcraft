@@ -7,13 +7,14 @@ import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AuramcraftRecipes {
-	
 	public static void init() {
-		
-		//Example Recipe
-		GameRegistry.addRecipe(new ItemStack(AuramcraftItems.devToy, 1), new Object[] {" X ", " X ", " Y ", 'X', Blocks.bedrock, 'Y', Items.stick});
+		//Example Recipe (Dev Toy)
+		GameRegistry.addRecipe(new ItemStack(AuramcraftItems.devToy, 1), new Object[] {
+			" X ", 
+			" X ", 
+			" Y ", 
+			'X', Blocks.bedrock, 'Y', Items.stick});
 		
 		LogHelper.info("Recipes Initialized");
 	}
-	
 }
