@@ -49,6 +49,9 @@ public class Auramcraft {
 		// Generation
 		AuramcraftGen.init();
 		
+		//Recipes
+		AuramcraftRecipes.init();
+		
 		LogHelper.info("Initialized Auramcraft");
 	}
 	
