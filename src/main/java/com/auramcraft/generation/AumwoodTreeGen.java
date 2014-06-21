@@ -2,19 +2,57 @@ package com.auramcraft.generation;
 
 import java.util.Random;
 import com.auramcraft.init.AuramcraftBlocks;
+import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class AumwoodWorldGenTree extends WorldGenAbstractTree {
+public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenerator {
 	private boolean isFruitTree;
 	
-	public AumwoodWorldGenTree(boolean doBlockNotify, boolean isFruitTree) {
-		super(doBlockNotify);
-		this.isFruitTree = isFruitTree;
+	public AumwoodTreeGen() {
+		super(true);
+		this.isFruitTree = false;
+	}
+	
+	@Override
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+		switch(world.provider.dimensionId) {
+			case -1:
+				generateInNether(world, random, chunkX*16, chunkZ*16);
+				break;
+			case 0:
+				generateInOverworld(world, random, chunkX*16, chunkZ*16);
+				break;
+			case 1:
+				generateInEnd(world, random, chunkX*16, chunkZ*16);
+				break;
+			default:
+				generateInOverworld(world, random, chunkX*16, chunkZ*16);
+				break;
+		}
+	}
+	
+	private void generateInOverworld(World world, Random random, int i, int j) {
+		if(random.nextInt(100) == 0) {
+			int x = i + random.nextInt(16);
+			int z = j + random.nextInt(16);
+			int y = world.getHeightValue(x, z);
+			generate(world, random, x, y, z);
+		}
+	}
+	
+	private void generateInEnd(World world, Random random, int i, int j) {
+		
+	}
+
+	private void generateInNether(World world, Random random, int i, int j) {
+		
 	}
 	
 	public boolean generate(World world, Random random, int x, int y, int z) {
