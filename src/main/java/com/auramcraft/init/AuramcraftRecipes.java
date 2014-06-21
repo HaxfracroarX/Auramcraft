@@ -16,7 +16,7 @@ public class AuramcraftRecipes {
 			'X', Blocks.bedrock, 'Y', Items.stick});
 		
 		//Aum Wood Planks
-		GameRegistry.addShapelessRecipe(output, params);
+		GameRegistry.addShapelessRecipe(new ItemStack(AuramcraftBlocks.aumWoodPlanks, 4), AuramcraftBlocks.aumWood);
 		
 		LogHelper.info("Recipes Initialized");
 	}
