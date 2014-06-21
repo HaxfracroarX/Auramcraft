@@ -3,7 +3,7 @@ package com.auramcraft.block;
 import java.util.List;
 import java.util.Random;
 import com.auramcraft.creativetab.CreativeTab;
-import com.auramcraft.generation.AumwoodWorldGenTree;
+import com.auramcraft.generation.AumwoodTreeGen;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
 import com.auramcraft.util.LogHelper;
@@ -91,7 +91,7 @@ public class AumWoodSapling extends BlockSapling {
 		int rnd = random.nextInt(8);
 
 		if (obj == null)
-			obj = new AumwoodWorldGenTree(true, true);
+			obj = new AumwoodTreeGen();
 		
 		if(obj != null) {
 			world.setBlockToAir(x, y, z);
