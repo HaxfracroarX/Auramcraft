@@ -17,7 +17,6 @@ public class AumWood extends Block {
 	@SideOnly(Side.CLIENT)
 	public static IIcon topIcon;
 	public static IIcon sideIcon;
-	public static IIcon bottomIcon;
 	
 	public AumWood() {
 		super(Material.wood);
@@ -39,15 +38,14 @@ public class AumWood extends Block {
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		topIcon = iconRegister.registerIcon(Textures.BLOCK_AUMWOOD_TOP);
 		sideIcon = iconRegister.registerIcon(Textures.BLOCK_AUMWOOD_SIDE);
-		bottomIcon = iconRegister.registerIcon(Textures.BLOCK_AUMWOOD_TOP);
 	}
 	
 	@Override
 	public IIcon getIcon(int side, int metadata) {
-		if(side == 0 || side == 1)
+		int pos = metadata & 12;
+		
+		if(pos == 0 && (side == 1 || side == 0) || pos == 4 && (side == 5 || side == 4) || pos == 8 && (side == 2 || side == 3))
 			return topIcon;
-		else if(side != metadata)
-			return sideIcon;
 		return sideIcon;
 	 }
 }
