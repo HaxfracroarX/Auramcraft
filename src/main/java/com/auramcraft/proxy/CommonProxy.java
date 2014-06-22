@@ -2,7 +2,7 @@ package com.auramcraft.proxy;
 
 import net.minecraftforge.common.MinecraftForge;
 import com.auramcraft.Auramcraft;
-import com.auramcraft.event.AuramcraftEventHandler;
+import com.auramcraft.handler.AuramcraftEventHandler;
 import com.auramcraft.handler.GuiHandler;
 import com.auramcraft.reference.Names;
 import com.auramcraft.tileentity.TileEntityInfusionTable;

@@ -2,8 +2,8 @@ package com.auramcraft.init;
 
 import net.minecraft.item.Item;
 import com.auramcraft.item.*;
+import com.auramcraft.item.tools.*;
 import com.auramcraft.reference.Names;
-import com.auramcraft.tools.*;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 

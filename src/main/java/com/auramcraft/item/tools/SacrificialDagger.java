@@ -1,4 +1,4 @@
-package com.auramcraft.tools;
+package com.auramcraft.item.tools;
 
 import com.auramcraft.Auramcraft;
 import com.auramcraft.creativetab.CreativeTab;

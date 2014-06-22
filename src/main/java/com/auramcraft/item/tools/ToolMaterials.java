@@ -1,4 +1,4 @@
-package com.auramcraft.tools;
+package com.auramcraft.item.tools;
 
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
