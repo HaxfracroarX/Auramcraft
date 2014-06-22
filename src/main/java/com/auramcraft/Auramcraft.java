@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import com.auramcraft.creativetab.*;
+import com.auramcraft.event.AuramcraftEventHandler;
 import com.auramcraft.generation.*;
 import com.auramcraft.handler.*;
 import com.auramcraft.init.*;
@@ -21,6 +22,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -35,8 +37,6 @@ public class Auramcraft {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		LogHelper.info("Initializing Auramcraft");
-		
 		// Packets
 		PacketHandler.init();
 		
@@ -49,21 +49,25 @@ public class Auramcraft {
 		// Generation
 		AuramcraftGen.init();
 		
-		//Recipes
+		// Recipes
 		AuramcraftRecipes.init();
-		
-		LogHelper.info("Initialized Auramcraft");
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		// Register GUI Handler
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		// Register GUI Handlers
+		proxy.registerGUIHandlers();
 		
 		// Initialize tile entities
 		proxy.registerTileEntities();
 		
 		// Initialize renderers
 		proxy.registerRenderers();
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		// Register Event Handlers
+		proxy.registerEventHandlers();
 	}
 }

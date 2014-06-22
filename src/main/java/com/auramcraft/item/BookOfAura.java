@@ -18,6 +18,7 @@ public class BookOfAura extends Item {
 		setUnlocalizedName(Names.Items.BOOK_OF_AURA);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setTextureName(Textures.Items.ITEM_BOOK_OF_AURA);
+		setMaxStackSize(1);
 	}
 	
 	@Override
