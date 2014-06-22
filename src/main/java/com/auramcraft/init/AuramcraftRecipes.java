@@ -8,16 +8,19 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AuramcraftRecipes {
 	public static void init() {
-		//Example Recipe (Dev Toy)
+	
+	//SHAPED	
+		//Dev Toy
 		GameRegistry.addRecipe(new ItemStack(AuramcraftItems.devToy, 1), new Object[] {
 			" X ", 
 			" X ", 
 			" Y ", 
 			'X', Blocks.bedrock, 'Y', Items.stick});
 		
+	//SHAPELESS
 		//Aum Wood Planks
 		GameRegistry.addShapelessRecipe(new ItemStack(AuramcraftBlocks.aumWoodPlanks, 4), AuramcraftBlocks.aumWood);
 		
-		LogHelper.info("Recipes Initialized");
+	LogHelper.info("Recipes Initialized");
 	}
 }
