@@ -1,7 +1,7 @@
 package com.auramcraft.event;
 
 import com.auramcraft.init.AuramcraftItems;
-import com.auramcraft.stats.AuramcraftPlayerStats;
+import com.auramcraft.player.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;

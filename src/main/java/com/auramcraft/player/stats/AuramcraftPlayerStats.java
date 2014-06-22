@@ -1,4 +1,4 @@
-package com.auramcraft.stats;
+package com.auramcraft.player.stats;
 
 import com.auramcraft.reference.Reference;
 import net.minecraft.entity.Entity;
