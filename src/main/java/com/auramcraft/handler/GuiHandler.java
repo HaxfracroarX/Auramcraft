@@ -1,7 +1,10 @@
 package com.auramcraft.handler;
 
+import com.auramcraft.client.gui.inventory.GuiBookOfAura;
 import com.auramcraft.client.gui.inventory.GuiInfusionTable;
+import com.auramcraft.inventory.ContainerEmpty;
 import com.auramcraft.inventory.ContainerInfusionTable;
+import com.auramcraft.reference.GUIIds;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -10,18 +13,24 @@ import cpw.mods.fml.common.network.IGuiHandler;
 public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if(ID == 0) {
-			TileEntityInfusionTable tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
-			return new ContainerInfusionTable(player.inventory, tileEntityInfusionTable);
+		switch(ID) {
+			case GUIIds.INFUSION_TABLE:
+				TileEntityInfusionTable tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
+				return new ContainerInfusionTable(player.inventory, tileEntityInfusionTable);
+			case GUIIds.BOOK_OF_AURA:
+				return new ContainerEmpty();
 		}
 		return null;
 	}
 	
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if(ID == 0) {
-			TileEntityInfusionTable tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
-			return new GuiInfusionTable(player.inventory, tileEntityInfusionTable);
+		switch(ID) {
+			case GUIIds.INFUSION_TABLE:
+				TileEntityInfusionTable tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
+				return new GuiInfusionTable(player.inventory, tileEntityInfusionTable);
+			case GUIIds.BOOK_OF_AURA:
+				return new GuiBookOfAura();
 		}
 		return null;
 	}

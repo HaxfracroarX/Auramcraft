@@ -20,6 +20,7 @@ public class Names {
 		public static final String GEMSTONE = "gemstone";
 		public static final String SACRIFICIALDAGGER = "sacrificialDagger";
 		public static final String DEVTOY = "devToy";
+		public static final String BOOK_OF_AURA = "bookOfAura";
 	}
 	
 	public static class NBT {

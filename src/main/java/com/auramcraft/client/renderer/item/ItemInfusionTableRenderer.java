@@ -54,7 +54,7 @@ public class ItemInfusionTableRenderer implements IItemRenderer {
         	GL11.glRotatef(180F, -1F, 0F, 1F);
         
         // Bind texture
-        Minecraft.getMinecraft().renderEngine.bindTexture(Textures.MODEL_INFUSION_TABLE);
+        Minecraft.getMinecraft().renderEngine.bindTexture(Textures.Models.MODEL_INFUSION_TABLE);
         
         // Render
         model.render((Entity)null, 0f, 0f, -0.1f, 0f, 0f, 0.0625f);

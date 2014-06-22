@@ -55,7 +55,7 @@ public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer {
 		
 		
 		// Bind Texture
-		bindTexture(Textures.MODEL_INFUSION_TABLE);
+		bindTexture(Textures.Models.MODEL_INFUSION_TABLE);
 		
 		// Render
 		model.render((Entity)null, 0f, 0f, -0.1f, 0f, 0f, 0.0625f);

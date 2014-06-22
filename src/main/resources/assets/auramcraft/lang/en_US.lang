@@ -8,6 +8,7 @@ item.auramShard.name=Auram Shard
 item.gemstone.name=Gemstone
 item.sacrificialDagger.name=Sacrificial Dagger
 item.devToy.name=Dev Toy
+item.bookOfAura.name=Book Of Aura
 
 tile.gemstoneOre.name=Gemstone Ore
 tile.infusionTable.name=Infusion Table

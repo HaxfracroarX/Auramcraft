@@ -3,6 +3,7 @@ package com.auramcraft.block;
 import java.util.Random;
 import com.auramcraft.Auramcraft;
 import com.auramcraft.creativetab.CreativeTab;
+import com.auramcraft.reference.GUIIds;
 import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.RenderIds;
 import com.auramcraft.reference.Textures;
@@ -34,7 +35,7 @@ public class InfusionTable extends BlockContainer {
 		super(Material.iron);
 		setHardness(3f);
 		setBlockName("infusionTable");
-		setBlockTextureName(Textures.BLOCK_INFUSION_TABLE);
+		setBlockTextureName(Textures.Blocks.BLOCK_INFUSION_TABLE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	
@@ -80,7 +81,7 @@ public class InfusionTable extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 		if(!world.isRemote && world.getTileEntity(x, y, z) instanceof TileEntityInfusionTable)
-			player.openGui(Auramcraft.instance, 0, world, x, y, z);
+			player.openGui(Auramcraft.instance, GUIIds.INFUSION_TABLE, world, x, y, z);
 		return true;
 	}
 	
