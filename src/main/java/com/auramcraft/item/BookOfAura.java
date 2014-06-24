@@ -27,6 +27,4 @@ public class BookOfAura extends Item {
 		player.openGui(Auramcraft.instance, GUIIds.BOOK_OF_AURA, world, 0, 0, 0);
 		return stack;
 	}
-	
-	
 }
