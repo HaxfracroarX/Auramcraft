@@ -20,7 +20,7 @@ public class GemstoneOre extends Block {
 		setHarvestLevel("pickaxe", 2);
 		setStepSound(Block.soundTypeStone);
 		setBlockName(Names.Blocks.GEMSTONEORE);
-		setBlockTextureName(Textures.BLOCK_GEMSTONE_ORE);
+		setBlockTextureName(Textures.Blocks.BLOCK_GEMSTONE_ORE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	

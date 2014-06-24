@@ -1,4 +1,4 @@
-package com.auramcraft.tools;
+package com.auramcraft.item.tools;
 
 import com.auramcraft.Auramcraft;
 import com.auramcraft.creativetab.CreativeTab;
@@ -12,6 +12,6 @@ public class SacrificialDagger extends ItemSword {
 		super(ToolMaterials.sacrificialMaterial);
 		setUnlocalizedName(Names.Items.SACRIFICIALDAGGER);
 		setCreativeTab(CreativeTab.AuramcraftTab);
-		setTextureName(Textures.ITEM_SACRIFICIAL_DAGGER);
+		setTextureName(Textures.Items.ITEM_SACRIFICIAL_DAGGER);
 	}
 }

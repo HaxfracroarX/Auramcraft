@@ -10,17 +10,18 @@ import com.auramcraft.generation.*;
 import com.auramcraft.handler.*;
 import com.auramcraft.init.*;
 import com.auramcraft.item.*;
-import com.auramcraft.network.PacketHandler;
+import com.auramcraft.network.*;
 import com.auramcraft.proxy.*;
-import com.auramcraft.reference.Reference;
+import com.auramcraft.reference.*;
 import com.auramcraft.tileentity.*;
-import com.auramcraft.util.LogHelper;
+import com.auramcraft.util.*;
 import com.auramcraft.block.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -35,8 +36,6 @@ public class Auramcraft {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		LogHelper.info("Initializing Auramcraft");
-		
 		// Packets
 		PacketHandler.init();
 		
@@ -49,21 +48,25 @@ public class Auramcraft {
 		// Generation
 		AuramcraftGen.init();
 		
-		//Recipes
+		// Recipes
 		AuramcraftRecipes.init();
-		
-		LogHelper.info("Initialized Auramcraft");
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		// Register GUI Handler
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		// Register GUI Handlers
+		proxy.registerGUIHandlers();
 		
 		// Initialize tile entities
 		proxy.registerTileEntities();
 		
 		// Initialize renderers
 		proxy.registerRenderers();
+	}
+	
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		// Register Event Handlers
+		proxy.registerEventHandlers();
 	}
 }

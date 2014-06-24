@@ -29,7 +29,7 @@ public class AuramFlower extends BlockBush {
 	@Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
-    	texture = register.registerIcon(Textures.BLOCK_AURAM_FLOWER);
+    	texture = register.registerIcon(Textures.Blocks.BLOCK_AURAM_FLOWER);
     }
     
     @Override
