@@ -17,6 +17,7 @@ public enum Auras {
 	DEATH(2, FIRE, AURAM),
 	METAL(2, EARTH, AURAM),
 	CLOUD(2, AURAM, AIR),
+	SILICA(2, EARTH, FIRE),
 	
 	// Tier 3
 	SPIRIT(3, LIFE, DEATH),
