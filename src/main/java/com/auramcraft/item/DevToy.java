@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 public class DevToy extends Item {
 	
 	public DevToy() {
-		setCreativeTab(CreativeTab.AuramcraftTab);
 		setTextureName(Textures.Items.ITEM_DEV_TOY);
 		setUnlocalizedName(Names.Items.DEVTOY);
 	}

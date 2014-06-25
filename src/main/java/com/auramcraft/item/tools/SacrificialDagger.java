@@ -11,7 +11,7 @@ public class SacrificialDagger extends ItemSword {
 	public SacrificialDagger() {
 		super(ToolMaterials.sacrificialMaterial);
 		setUnlocalizedName(Names.Items.SACRIFICIALDAGGER);
-		setCreativeTab(CreativeTab.AuramcraftTab);
 		setTextureName(Textures.Items.ITEM_SACRIFICIAL_DAGGER);
+		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 }
