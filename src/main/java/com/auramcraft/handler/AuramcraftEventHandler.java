@@ -62,8 +62,8 @@ public class AuramcraftEventHandler {
 	public void onPlayerLogin(EntityPlayer player) {
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 		
-		if(!stats.book) {
-			stats.book = true;
+		if(!stats.gotBook()) {
+			stats.setBook(true);
 			ItemStack book = new ItemStack(AuramcraftItems.bookOfAura);
 			
 			// Tries to add item to inventory
