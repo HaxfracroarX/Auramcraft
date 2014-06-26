@@ -1,6 +1,7 @@
 package com.auramcraft.player.stats;
 
 import com.auramcraft.reference.Reference;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -8,10 +9,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class AuramcraftPlayerStats implements IExtendedEntityProperties {
-	public boolean book;
+	private boolean book;
+	private byte[] pages = new byte[7];
 	
 	public AuramcraftPlayerStats() {
 		book = false;
+		for(int i = 0; i < pages.length; i++) {
+			pages[i] = 0;
+		}
 	}
 	
 	public static final void register(EntityPlayer player) {
@@ -25,18 +30,64 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 	@Override
 	public void saveNBTData(NBTTagCompound compound) {
 		NBTTagCompound nbt = new NBTTagCompound();
-		nbt.setBoolean("bookOfAura", book);
+		nbt.setBoolean("bookOfAura", gotBook());
+		nbt.setByteArray("ResearchedPages", pages);
 		compound.setTag(Reference.MODID, nbt);
+		LogHelper.info("Saved Player Stats");
 	}
 	
 	@Override
 	public void loadNBTData(NBTTagCompound compound) {
 		NBTTagCompound nbt = (NBTTagCompound) compound.getTag(Reference.MODID);
-		book = nbt.getBoolean("bookOfAura");
+		setBook(nbt.getBoolean("bookOfAura"));
+		pages = nbt.getByteArray("ResearchedPages");
+		LogHelper.info("Loaded Player Stats, " + pages);
 	}
 	
 	@Override
 	public void init(Entity entity, World world) {
 		
+	}
+	
+	protected boolean[] getBoolFromByte(byte[] bytes) {
+		boolean[] bools = new boolean[bytes.length];
+		for(int i = 0; i < bytes.length; i++)
+			bools[i] = bytes[i] == 1 ? true : false;
+		return bools;
+	}
+	
+	protected byte[] getByteFromBool(boolean[] bools) {
+		byte[] bytes = new byte[bools.length];
+		for(int i = 0; i < bools.length; i++)
+			bytes[i] = (byte) (bools[i] ? 1 : 0);
+		return bytes;
+	}
+	
+	/**
+	 * @return if the player has gotten the Book of Aura
+	 */
+	public boolean gotBook() {
+		return book;
+	}
+	
+	/**
+	 * @param if the player has gotten the Book of Aura
+	 */
+	public void setBook(boolean book) {
+		this.book = book;
+	}
+	
+	/**
+	 * @return the pages researched by the player
+	 */
+	public boolean[] getPages() {
+		return getBoolFromByte(pages);
+	}
+	
+	/**
+	 * @param pages researched by the player
+	 */
+	public void setPages(boolean[] pages) {
+		this.pages = getByteFromBool(pages);
 	}
 }
