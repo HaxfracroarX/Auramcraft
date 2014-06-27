@@ -4,8 +4,8 @@ import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Textures;
 import net.minecraft.util.ResourceLocation;
 
-public class PageShards extends BookPage {
-	public PageShards() {
-		super(Textures.GUI.GUI_BOOK_OF_AURA_SHARDS, PageIds.SHARDS);
+public class PageEmpty extends BookPage {
+	public PageEmpty() {
+		super(Textures.GUI.GUI_BOOK_OF_AURA, PageIds.EMPTY);
 	}
 }

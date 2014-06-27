@@ -1,5 +1,6 @@
 package com.auramcraft.player.stats;
 
+import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Reference;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.Entity;
@@ -10,7 +11,7 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 	private boolean book;
-	private byte[] pages = new byte[7];
+	private byte[] pages = new byte[PageIds.BOOKLENGHT];
 	
 	public AuramcraftPlayerStats() {
 		book = false;
@@ -33,7 +34,6 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 		nbt.setBoolean("bookOfAura", gotBook());
 		nbt.setByteArray("ResearchedPages", pages);
 		compound.setTag(Reference.MODID, nbt);
-		LogHelper.info("Saved Player Stats");
 	}
 	
 	@Override
@@ -41,7 +41,6 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 		NBTTagCompound nbt = (NBTTagCompound) compound.getTag(Reference.MODID);
 		setBook(nbt.getBoolean("bookOfAura"));
 		pages = nbt.getByteArray("ResearchedPages");
-		LogHelper.info("Loaded Player Stats, " + pages);
 	}
 	
 	@Override
