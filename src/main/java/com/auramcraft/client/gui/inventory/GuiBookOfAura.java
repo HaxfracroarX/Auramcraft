@@ -111,8 +111,16 @@ public class GuiBookOfAura extends GuiContainer {
 	
 	@Override
 	public void drawGuiContainerForegroundLayer(int var2, int var3) {
+		int x = (width - xSize) / 2;
+	    int y = (height - ySize) / 2;
+	    
 		String researched = "You have " + researchedPages(pages) + " pages researched";
-		fontRendererObj.drawString(researched, this.xSize - this.fontRendererObj.getStringWidth(researched) / 2, ySize - 170, 4210752);
+		String page = ""+currentPage;
+		
+		GL11.glScalef(0.75f, 0.75f, 1f);
+		
+		fontRendererObj.drawString(researched, (int) (width - fontRendererObj.getStringWidth(researched) * 0.25) / 2, y + 210, 4210752);
+		fontRendererObj.drawString(page, (int) (width - fontRendererObj.getStringWidth(page) * 0.25) - x*2 + 10, y + 35, 4210752);
 	}
 	
 	@Override

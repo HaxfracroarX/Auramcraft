@@ -49,6 +49,7 @@ public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenera
 			return;
 		
 		if(random.nextInt(100) == 0) {
+			LogHelper.info("Generated Tree");
 			int x = i + random.nextInt(16);
 			int z = j + random.nextInt(16);
 			int y = world.getHeightValue(x, z);
