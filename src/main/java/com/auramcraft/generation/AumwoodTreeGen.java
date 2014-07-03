@@ -45,7 +45,7 @@ public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenera
 		BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(i, j);
 		if (biomegenbase.biomeID == BiomeGenBase.sky.biomeID || 
 				biomegenbase.biomeID == BiomeGenBase.hell.biomeID || 
-				world.getWorldInfo().getTerrainType().getWorldTypeID() != WorldType.FLAT.getWorldTypeID())
+				world.getWorldInfo().getTerrainType().getWorldTypeID() == WorldType.FLAT.getWorldTypeID())
 			return;
 		
 		if(random.nextInt(100) == 0) {
