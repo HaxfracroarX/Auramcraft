@@ -25,6 +25,11 @@ public class AuramcraftShapedRecipes implements IRecipe {
 	}
 	
 	@Override
+	public ItemStack getRecipeOutput() {
+		return recipeOutput;
+	}
+	
+	@Override
 	public boolean matches(InventoryCrafting inventoryCrafting, World world) {
 		for(int i = 0; i <= 3 - this.recipeWidth; ++i) {
 			for(int j = 0; j <= 3 - this.recipeHeight; ++j) {
@@ -102,12 +107,7 @@ public class AuramcraftShapedRecipes implements IRecipe {
 	public int getRecipeSize() {
 		return recipeWidth * recipeHeight;
 	}
-	
-	@Override
-	public ItemStack getRecipeOutput() {
-		return recipeOutput;
-	}
-	
+
 	public AuramcraftShapedRecipes func_92100_c() {
 		 this.field_92101_f = true;
 		 return this;
