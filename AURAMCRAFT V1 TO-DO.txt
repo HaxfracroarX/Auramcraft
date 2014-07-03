@@ -1,7 +1,7 @@
 AURAMCRAFT V1
 
 Priority 1-5 *1 being highest
-Crossed out means finished. ex. ~~Shards~~
+Marked means finished. ex. ~Shards
 
 TO-DO
 -------------------------
