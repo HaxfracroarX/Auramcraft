@@ -1,0 +1,94 @@
+AURAMCRAFT V1
+
+Priority 1-5 *1 being highest
+
+TO-DO
+-------------------------
+CODERS
+
+BOOK OF AURA P:1
+	-Functionallity
+
+AURA CRYSTAL P:2
+	-Functionallity
+
+INFUSION P:3
+	-Recipes
+
+WANDS P:3
+	-Functionallity
+
+AURAS P:2
+	-World Gen
+	-Functionallity
+
+ARCANE SEALS P:4
+	-Functionallity
+
+GOLEMS P:4
+	-Movement (AI)
+	-Cores
+	-Functionallity
+
+MAGIKA P:5
+	-Implement Spells
+	-Cooldown
+	-Functionallity
+
+ALCHEMY P:3
+	-Alchemical Cauldron
+		-Functionallity
+		-Recipes
+	-Aura Count
+
+BOSSES P:5
+	-Drops
+	-Movement (AI)
+
+MODELERS
+
+GOLEMS P:3
+	-Models
+
+WANDS P:2
+	-Core
+	-Cap
+	-Cloth
+	-YSNP Staff
+	-WOUE Wand
+
+BOSSES P:4
+	-Models
+
+ARCANE SEALS P:3
+	-Models
+
+AURAS P:2
+	-Model
+
+MAGIKA P:4
+	-Fireball Model
+
+TEXTURERS
+
+GOLEMS P:3
+	-Texture
+	*Once Model is done
+	-GUI
+
+WANDS P:2
+	-Texture
+	*Once Model is done
+
+BOSSES P:5
+	-Texture
+	*Once Model is done
+
+ARCANE SEALS P:3
+	-Texture
+	*Once Model is done
+
+MAGIKA P:4
+	-Lightning 'Particles'
+	-Flight 'Particles'
+
