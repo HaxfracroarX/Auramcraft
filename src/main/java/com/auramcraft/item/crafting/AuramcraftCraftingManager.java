@@ -35,7 +35,10 @@ public class AuramcraftCraftingManager {
 		});
 		
 		/*	SHAPELESS	*/
-		// TODO: Shapeless recipes
+		// Book of Aura - Testing
+		addShapelessRecipe(new ItemStack(AuramcraftItems.bookOfAura), new Object[] {
+			AuramcraftItems.airShard
+		});
 		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
 		
@@ -124,7 +127,7 @@ public class AuramcraftCraftingManager {
 			}
 			else {
 				if(!(object1 instanceof Block)) {
-					throw new RuntimeException("Invalid shapeless recipy!");
+					throw new RuntimeException("Invalid shapeless recipe!");
 				}
 				
 				arraylist.add(new ItemStack((Block) object1));

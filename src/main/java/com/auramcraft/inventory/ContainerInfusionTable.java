@@ -88,7 +88,6 @@ public class ContainerInfusionTable extends Container {
 	
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		LogHelper.info("Checking for new output");
 		craftResult.setInventorySlotContents(0, AuramcraftCraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
 	}
 	
