@@ -15,8 +15,7 @@ public class GuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
 			case GUIIds.INFUSION_TABLE:
-				TileEntityInfusionTable tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
-				return new ContainerInfusionTable(player.inventory, tileEntityInfusionTable);
+				return new ContainerInfusionTable(player.inventory, world, x, y, z);
 			case GUIIds.BOOK_OF_AURA:
 				return new ContainerEmpty();
 		}
@@ -27,8 +26,7 @@ public class GuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
 			case GUIIds.INFUSION_TABLE:
-				TileEntityInfusionTable tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
-				return new GuiInfusionTable(player.inventory, tileEntityInfusionTable);
+				return new GuiInfusionTable(player.inventory, world, x, y, z);
 			case GUIIds.BOOK_OF_AURA:
 				return new GuiBookOfAura();
 		}

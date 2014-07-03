@@ -14,7 +14,8 @@ public class AuramcraftRecipes {
 			" X ", 
 			" X ", 
 			" Y ", 
-			'X', Blocks.bedrock, 'Y', Items.stick});
+			'X', Blocks.bedrock,
+			'Y', Items.stick});
 		
 		/*	SHAPELESS	*/
 		//Aum Wood Planks

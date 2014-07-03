@@ -6,11 +6,9 @@ import com.auramcraft.reference.Textures;
 import net.minecraft.item.Item;
 
 public class AuraCrystal extends Item {
-	
 	public AuraCrystal() {
 		setTextureName(Textures.Items.ITEM_AURA_CRYSTAL);
 		setUnlocalizedName(Names.Items.AURACRYSTAL);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
-	
 }

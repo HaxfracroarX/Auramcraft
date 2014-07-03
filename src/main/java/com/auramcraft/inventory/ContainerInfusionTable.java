@@ -1,33 +1,45 @@
 package com.auramcraft.inventory;
 
+import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ContainerInfusionTable extends Container {
+	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+    public IInventory craftResult = new InventoryCraftResult();
+	private World worldObj;
+	private int x, y, z;
 	private TileEntityInfusionTable tileEntityInfusionTable;
-	private InventoryPlayer ip;
 	
-	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, TileEntityInfusionTable tileEntityInfusionTable) {
-		this.tileEntityInfusionTable = tileEntityInfusionTable;
-		this.ip = inventoryPlayer;
+	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
+		this.tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
+		this.worldObj = world;
+		this.x = x;
+		this.y = y;
+		this.z = z;
 		tileEntityInfusionTable.openInventory();
 		
 		// Add Output slot
-		addSlotToContainer(new SlotCrafting(inventoryPlayer.player,tileEntityInfusionTable, tileEntityInfusionTable, 0, 102, 24));
+		addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, 0, 102, 24));
 		
-		// Add the unknown slot
+		// Add the aura slot
 		addSlotToContainer(new Slot(tileEntityInfusionTable, 1, 156, 24));
 		
 		// Add Infusion Table crafting slots
 		int rep = 2;
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				addSlotToContainer(new Slot(tileEntityInfusionTable, rep, i * 19 + 6, (3 - j) + j * 20));
+				addSlotToContainer(new Slot(craftMatrix, rep, i * 19 + 6, (3 - j) + j * 20));
 				rep++;
 			}
 		}
@@ -42,6 +54,13 @@ public class ContainerInfusionTable extends Container {
 		// Add the action slots
         for (int i = 0; i < 9; i++)
             this.addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 19, 158));
+        
+        onCraftMatrixChanged(craftMatrix);
+	}
+	
+	@Override
+	public void onCraftMatrixChanged(IInventory inventory) {
+		craftResult.setInventorySlotContents(0, AuramcraftCraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
 	}
 	
 	@Override

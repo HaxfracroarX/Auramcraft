@@ -10,13 +10,14 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 public class GuiInfusionTable extends GuiContainer {
 	private TileEntityInfusionTable tileEntityInfusionTable;
 	
-	public GuiInfusionTable(InventoryPlayer inventoryPlayer, TileEntityInfusionTable tileEntityInfusionTable) {
-		super(new ContainerInfusionTable(inventoryPlayer, tileEntityInfusionTable));
-		this.tileEntityInfusionTable = tileEntityInfusionTable;
+	public GuiInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
+		super(new ContainerInfusionTable(inventoryPlayer, world, x, y, z));
+		this.tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
 		xSize = 191;
 		ySize = 179;
 	}
