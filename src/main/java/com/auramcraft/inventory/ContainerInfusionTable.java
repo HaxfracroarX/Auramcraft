@@ -1,5 +1,6 @@
 package com.auramcraft.inventory;
 
+import com.auramcraft.item.IAuraContainer;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
 import com.auramcraft.util.LogHelper;
@@ -15,8 +16,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ContainerInfusionTable extends Container {
-	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
-    public IInventory craftResult = new InventoryCraftResult();
+	public InventoryCrafting craftMatrix;
+    public IInventory craftResult;
 	private World worldObj;
 	private int x, y, z;
 	private TileEntityInfusionTable tileEntityInfusionTable;
@@ -27,22 +28,49 @@ public class ContainerInfusionTable extends Container {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+		craftMatrix = new InventoryCrafting(this, 3, 3) {
+			@Override
+			public void openInventory() {
+				for(int i = 0; i < 9; i++)
+					setInventorySlotContents(i, tileEntityInfusionTable.getStackInSlot(i));
+			}
+			
+			@Override
+		    public void closeInventory() {
+				for(int i = 0; i < 9; i++)
+					tileEntityInfusionTable.setInventorySlotContents(i, getStackInSlot(i));
+			}
+		};
+		craftResult = new InventoryCraftResult() {
+			@Override
+			public void openInventory() {
+				setInventorySlotContents(0, tileEntityInfusionTable.getStackInSlot(10));
+			}
+			
+			@Override
+		    public void closeInventory() {
+				tileEntityInfusionTable.setInventorySlotContents(10, getStackInSlot(0));
+			}
+		};
 		tileEntityInfusionTable.openInventory();
+		craftMatrix.openInventory();
 		
 		// Add Output slot
 		addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, 0, 102, 24));
 		
-		// Add the aura slot
-		addSlotToContainer(new Slot(tileEntityInfusionTable, 1, 156, 24));
-		
 		// Add Infusion Table crafting slots
-		int rep = 2;
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
-				addSlotToContainer(new Slot(craftMatrix, rep, i * 19 + 6, (3 - j) + j * 20));
-				rep++;
+				addSlotToContainer(new Slot(craftMatrix, j + i * 3, i * 19 + 6, (3 - j) + j * 20));
 			}
 		}
+		
+		// Add the IAuraContainer slot
+		addSlotToContainer(new Slot(tileEntityInfusionTable, 9, 156, 24) {
+			public boolean isItemValid(ItemStack itemStack) {
+		        return itemStack.getItem() instanceof IAuraContainer;
+		    }
+		});
 		
 		// Add the Player's inventory
 		for (int i = 0; i < 3; i++) {
@@ -60,6 +88,7 @@ public class ContainerInfusionTable extends Container {
 	
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
+		LogHelper.info("Checking for new output");
 		craftResult.setInventorySlotContents(0, AuramcraftCraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
 	}
 	
@@ -75,7 +104,7 @@ public class ContainerInfusionTable extends Container {
 	
 	@Override
 	public void onContainerClosed(EntityPlayer entityPlayer) {
-		super.onContainerClosed(entityPlayer);
+		craftMatrix.closeInventory();
 		tileEntityInfusionTable.closeInventory();
 	}
 }
