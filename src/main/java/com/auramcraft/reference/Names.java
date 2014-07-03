@@ -21,6 +21,7 @@ public class Names {
 		public static final String SACRIFICIALDAGGER = "sacrificialDagger";
 		public static final String DEVTOY = "devToy";
 		public static final String BOOK_OF_AURA = "bookOfAura";
+		public static final String AURACRYSTAL = "auraCrystal";
 	}
 	
 	public static class NBT {
