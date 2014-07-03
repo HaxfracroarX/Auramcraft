@@ -1,6 +1,7 @@
 AURAMCRAFT V1
 
 Priority 1-5 *1 being highest
+Crossed out means finished. ex. ~~Shards~~
 
 TO-DO
 -------------------------
@@ -12,15 +13,21 @@ BOOK OF AURA P:1
 AURA CRYSTAL P:2
 	-Functionallity
 
+AURAS P:2
+	-World Gen
+	-Functionallity
+
 INFUSION P:3
 	-Recipes
 
 WANDS P:3
 	-Functionallity
 
-AURAS P:2
-	-World Gen
+ALCHEMY P:3
+	-Alchemical Cauldron
 	-Functionallity
+	-Recipes
+	-Aura Count
 
 ARCANE SEALS P:4
 	-Functionallity
@@ -35,20 +42,14 @@ MAGIKA P:5
 	-Cooldown
 	-Functionallity
 
-ALCHEMY P:3
-	-Alchemical Cauldron
-		-Functionallity
-		-Recipes
-	-Aura Count
-
 BOSSES P:5
 	-Drops
 	-Movement (AI)
 
 MODELERS
 
-GOLEMS P:3
-	-Models
+AURAS P:2
+	-Model
 
 WANDS P:2
 	-Core
@@ -57,32 +58,32 @@ WANDS P:2
 	-YSNP Staff
 	-WOUE Wand
 
-BOSSES P:4
+GOLEMS P:3
 	-Models
 
 ARCANE SEALS P:3
 	-Models
 
-AURAS P:2
-	-Model
+BOSSES P:4
+	-Models
 
 MAGIKA P:4
 	-Fireball Model
 
 TEXTURERS
 
-GOLEMS P:3
-	-Texture
-	*Once Model is done
+AURA CRYSTAL P:2
 	-GUI
 
 WANDS P:2
 	-Texture
 	*Once Model is done
+	-GUI
 
-BOSSES P:5
+GOLEMS P:3
 	-Texture
 	*Once Model is done
+	-GUI
 
 ARCANE SEALS P:3
 	-Texture
@@ -92,3 +93,6 @@ MAGIKA P:4
 	-Lightning 'Particles'
 	-Flight 'Particles'
 
+BOSSES P:5
+	-Texture
+	*Once Model is done
