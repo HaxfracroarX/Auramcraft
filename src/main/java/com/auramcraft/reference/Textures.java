@@ -47,6 +47,7 @@ public class Textures {
 		public static final String ITEM_SACRIFICIAL_DAGGER = RESOURCE_PREFIX + "SacrificialDagger";
 		public static final String ITEM_DEV_TOY = RESOURCE_PREFIX + "SacrificialDagger";
 		public static final String ITEM_BOOK_OF_AURA = RESOURCE_PREFIX + "BookOfAura";
+		public static final String ITEM_AURA_CRYSTAL = RESOURCE_PREFIX + "AuraCrystal";
 	}
 	
 	/**
