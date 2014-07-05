@@ -31,6 +31,7 @@ public class ShadowLantern extends Block {
 		setStepSound(Block.soundTypeWood);
 		setBlockName(Names.Blocks.SHADOWLANTERN);
 		setCreativeTab(CreativeTab.AuramcraftTab);
+		setLightLevel(0.6F);
 			
 	}
 	
