@@ -29,6 +29,15 @@ public class Textures {
 		
 		// Ores
 		public static final String BLOCK_GEMSTONE_ORE = RESOURCE_PREFIX + "GemstoneOre";
+		
+		//Shadow Lantern
+		public static final String BLOCK_SHADOW_LANTERN_TOP = RESOURCE_PREFIX + "ShadowLanternTop";
+		public static final String BLOCK_SHADOW_LANTERN_SIDE = RESOURCE_PREFIX + "ShadowLanternSide";
+		public static final String BLOCK_SHADOW_LANTERN_FRONT = RESOURCE_PREFIX + "ShadowLanternFront";
+		
+		//Other
+		public static final String BLOCK_BLUE_LIGHTSTONE = RESOURCE_PREFIX + "BlueLightstone";
+		public static final String BLOCK_AURORA_BLOCK = RESOURCE_PREFIX + "AuroraBlock";
 	}
 	
 	/**

@@ -9,6 +9,9 @@ public class Names {
 		public static final String AUMWOOD = "aumWood";
 		public static final String AUMWOODSAPLING = "aumWoodSapling";
 		public static final String AURAMFLOWER = "auramFlower";
+		public static final String BLUELIGHTSTONE = "blueLightstone";
+		public static final String AURORABLOCK = "auroraBlock";
+		public static final String SHADOWLANTERN = "shadowLantern";
 	}
 	
 	public static class Items {
