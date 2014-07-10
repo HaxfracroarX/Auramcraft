@@ -16,6 +16,14 @@ public class AuramcraftRecipes {
 			" Y ", 
 			'X', Blocks.bedrock,
 			'Y', Items.stick});
+		// Holy Lamp
+		GameRegistry.addRecipe(new ItemStack(AuramcraftBlocks.holyLamp, 1), new Object[] {
+			" X ", 
+			"XZX", 
+			"YYY", 
+			'X', Blocks.glass,
+			'Y', AuramcraftItems.gemstone,
+			'Z', AuramcraftItems.fireShard});
 		
 		/*	SHAPELESS	*/
 		// Aum Wood Planks

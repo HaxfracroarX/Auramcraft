@@ -12,6 +12,7 @@ public class Names {
 		public static final String BLUELIGHTSTONE = "blueLightstone";
 		public static final String AURORABLOCK = "auroraBlock";
 		public static final String SHADOWLANTERN = "shadowLantern";
+		public static final String HOLYLAMP = "holyLamp";
 	}
 	
 	public static class Items {
