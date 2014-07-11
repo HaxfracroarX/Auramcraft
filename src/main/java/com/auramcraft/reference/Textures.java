@@ -35,9 +35,14 @@ public class Textures {
 		public static final String BLOCK_SHADOW_LANTERN_SIDE = RESOURCE_PREFIX + "ShadowLanternSide";
 		public static final String BLOCK_SHADOW_LANTERN_FRONT = RESOURCE_PREFIX + "ShadowLanternFront";
 		
+		//Holy Lamp
+		public static final String BLOCK_HOLY_LAMP_SIDE = RESOURCE_PREFIX + "HolyLampSide";
+		public static final String BLOCK_HOLY_LAMP_BOTTOM = RESOURCE_PREFIX + "HolyLampTopBottom";
+		
 		//Other
 		public static final String BLOCK_BLUE_LIGHTSTONE = RESOURCE_PREFIX + "BlueLightstone";
 		public static final String BLOCK_AURORA_BLOCK = RESOURCE_PREFIX + "AuroraBlock";
+		
 	}
 	
 	/**

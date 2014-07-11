@@ -17,6 +17,7 @@ public class AuramcraftBlocks {
 	public static final Block blueLightstone = new BlueLightstone();
 	public static final Block auroraBlock = new AuroraBlock();
 	public static final Block shadowLantern = new ShadowLantern();
+	public static final Block holyLamp = new HolyLamp();
 	
 	public static void init() {
 		GameRegistry.registerBlock(gemstoneOre, Names.Blocks.GEMSTONEORE);
@@ -29,6 +30,7 @@ public class AuramcraftBlocks {
 		GameRegistry.registerBlock(blueLightstone, Names.Blocks.BLUELIGHTSTONE);
 		GameRegistry.registerBlock(auroraBlock, Names.Blocks.AURORABLOCK);
 		GameRegistry.registerBlock(shadowLantern, Names.Blocks.SHADOWLANTERN);
+		GameRegistry.registerBlock(holyLamp, Names.Blocks.HOLYLAMP);
 		
 		LogHelper.info("Initialized Blocks");
 	}
