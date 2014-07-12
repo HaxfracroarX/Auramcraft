@@ -3,6 +3,7 @@ package com.auramcraft.item.crafting;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import com.auramcraft.item.IAuraContainer;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -22,6 +23,9 @@ public class AuramcraftShapelessRecipes implements IRecipe {
 	
 	@Override
 	public boolean matches(InventoryCrafting inventoryCrafting, World world) {
+		if(!interfacesIAuraContainer(inventoryCrafting))
+			return false;
+		
 		ArrayList arraylist = new ArrayList(this.recipeItems);
 		
 		for(int i = 0; i < 3; ++i) {
@@ -50,6 +54,17 @@ public class AuramcraftShapelessRecipes implements IRecipe {
 		}
 		
 		return arraylist.isEmpty();
+	}
+	
+	public boolean interfacesIAuraContainer(Object object) {
+		Class[] classes = object.getClass().getInterfaces();
+		
+		for(int i = 0; i < classes.length; i++) {
+			if(classes[i].isAssignableFrom(IAuraContainer.class))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	@Override

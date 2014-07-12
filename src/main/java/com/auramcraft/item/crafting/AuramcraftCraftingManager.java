@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import com.auramcraft.init.AuramcraftItems;
+import com.auramcraft.item.Auras;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
@@ -21,23 +22,14 @@ public class AuramcraftCraftingManager {
 	private List recipes = new ArrayList();
 	
 	private AuramcraftCraftingManager() {
-		/*	SHAPED	*/
-		// Book of Aura - Testing
-		addRecipe(new ItemStack(AuramcraftItems.bookOfAura), new Object[] {
-			" 1 ",
-			"234",
-			" 5 ",
-			'1', AuramcraftItems.airShard,
-			'2', AuramcraftItems.fireShard,
-			'3', AuramcraftItems.earthShard,
-			'4', AuramcraftItems.waterShard,
-			'5', AuramcraftItems.auramShard
-		});
+		/* SHAPED */
 		
-		/*	SHAPELESS	*/
-		// Book of Aura - Testing
-		addShapelessRecipe(new ItemStack(AuramcraftItems.bookOfAura), new Object[] {
-			AuramcraftItems.airShard
+		/* SHAPELESS */
+		// Fire Shard
+		addShapelessRecipe(new ItemStack(AuramcraftItems.fireShard), new Object[] {
+			AuramcraftItems.gemstone
+		}, new Object[] {
+			10, Auras.FIRE
 		});
 		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
@@ -49,7 +41,7 @@ public class AuramcraftCraftingManager {
 		return instance;
 	}
 	
-	public ShapedRecipes addRecipe(ItemStack itemStack, Object... objects) {
+	public AuramcraftShapedRecipes addRecipe(ItemStack itemStack, Object... objects) {
 		String s = "";
 		int i = 0;
 		int j = 0;
@@ -106,18 +98,17 @@ public class AuramcraftCraftingManager {
 			}
 		}
 		
-		ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, itemStack);
+		AuramcraftShapedRecipes shapedrecipes = new AuramcraftShapedRecipes(j, k, aitemstack, itemStack);
 		this.recipes.add(shapedrecipes);
 		return shapedrecipes;
 	}
 	
-	public void addShapelessRecipe(ItemStack itemStack, Object... objects) {
+	public void addShapelessRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
 		ArrayList arraylist = new ArrayList();
-		Object[] aobject = objects;
-		int i = objects.length;
+		Object[] aitems = items;
 		
-		for(int j = 0; j < i; ++j) {
-			Object object1 = aobject[j];
+		for(int j = 0; j < items.length; ++j) {
+			Object object1 = aitems[j];
 			
 			if(object1 instanceof ItemStack) {
 				arraylist.add(((ItemStack) object1).copy());
