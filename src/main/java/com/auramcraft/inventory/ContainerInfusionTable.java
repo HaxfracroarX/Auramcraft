@@ -1,6 +1,8 @@
 package com.auramcraft.inventory;
 
-import com.auramcraft.item.IAuraContainer;
+import com.auramcraft.api.AuraContainer;
+import com.auramcraft.api.IAuraContainer;
+import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
 import com.auramcraft.util.LogHelper;
@@ -16,8 +18,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ContainerInfusionTable extends Container {
-	public InventoryCrafting craftMatrix;
+	public InfusionCrafting craftMatrix;
     public IInventory craftResult;
+    private SyncedInventory auraItem;
 	private World worldObj;
 	private int x, y, z;
 	private TileEntityInfusionTable tileEntityInfusionTable;
@@ -28,7 +31,9 @@ public class ContainerInfusionTable extends Container {
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		craftMatrix = new InventoryCrafting(this, 3, 3) {
+		
+		// Crafting grid save/load
+		craftMatrix = new InfusionCrafting(this, 3, 3, 25, 1) {
 			@Override
 			public void openInventory() {
 				for(int i = 0; i < 9; i++)
@@ -41,6 +46,8 @@ public class ContainerInfusionTable extends Container {
 					tileEntityInfusionTable.setInventorySlotContents(i, getStackInSlot(i));
 			}
 		};
+		
+		// Result save/load
 		craftResult = new InventoryCraftResult() {
 			@Override
 			public void openInventory() {
@@ -52,6 +59,10 @@ public class ContainerInfusionTable extends Container {
 				tileEntityInfusionTable.setInventorySlotContents(10, getStackInSlot(0));
 			}
 		};
+		
+		// Aura Item
+		auraItem = new SyncedInventory(tileEntityInfusionTable);
+		
 		tileEntityInfusionTable.openInventory();
 		craftMatrix.openInventory();
 		
@@ -65,10 +76,19 @@ public class ContainerInfusionTable extends Container {
 			}
 		}
 		
-		// Add the IAuraContainer slot
-		addSlotToContainer(new Slot(tileEntityInfusionTable, 9, 156, 24) {
+		// Add the AuraItem
+		addSlotToContainer(new Slot(auraItem, 9, 156, 24) {
 			public boolean isItemValid(ItemStack itemStack) {
-		        return itemStack.getItem() instanceof IAuraContainer;
+		        return itemStack.getItem() instanceof AuraItem;
+		    }
+			
+			public void onSlotChanged() {
+				AuraItem item = (AuraItem) getStack().getItem();
+				if(item != null)
+					craftMatrix.setAuraContainer(item.getAuraContainer());
+				else
+					craftMatrix.setAuraContainer(new AuraContainer(25, 1));
+				onCraftMatrixChanged(craftMatrix);
 		    }
 		});
 		
@@ -105,5 +125,16 @@ public class ContainerInfusionTable extends Container {
 	public void onContainerClosed(EntityPlayer entityPlayer) {
 		craftMatrix.closeInventory();
 		tileEntityInfusionTable.closeInventory();
+	}
+	
+	public boolean interfacesIAuraContainer(Object object) {
+		Class[] classes = object.getClass().getInterfaces();
+		
+		for(int i = 0; i < classes.length; i++) {
+			if(classes[i].isAssignableFrom(IAuraContainer.class))
+				return true;
+		}
+		
+		return false;
 	}
 }

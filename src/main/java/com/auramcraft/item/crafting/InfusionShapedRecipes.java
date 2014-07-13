@@ -6,7 +6,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class AuramcraftShapedRecipes implements IRecipe {
+public class InfusionShapedRecipes implements IRecipe {
 	/** How many horizontal slots this recipe is wide. */
 	public final int recipeWidth;
 	/** How many vertical slots this recipe uses. */
@@ -17,7 +17,7 @@ public class AuramcraftShapedRecipes implements IRecipe {
 	private ItemStack recipeOutput;
 	private boolean field_92101_f = false;
 	
-	public AuramcraftShapedRecipes(int recipeWidth, int recipeHeight, ItemStack[] recipeItems, ItemStack recipeOutput) {
+	public InfusionShapedRecipes(int recipeWidth, int recipeHeight, ItemStack[] recipeItems, ItemStack recipeOutput) {
 		this.recipeWidth = recipeWidth;
 		this.recipeHeight = recipeHeight;
 		this.recipeItems = recipeItems;
@@ -108,7 +108,7 @@ public class AuramcraftShapedRecipes implements IRecipe {
 		return recipeWidth * recipeHeight;
 	}
 
-	public AuramcraftShapedRecipes func_92100_c() {
+	public InfusionShapedRecipes func_92100_c() {
 		 this.field_92101_f = true;
 		 return this;
 	}

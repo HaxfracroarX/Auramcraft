@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import com.auramcraft.init.AuramcraftItems;
+import com.auramcraft.inventory.InfusionCrafting;
 import com.auramcraft.item.Auras;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
@@ -29,7 +30,7 @@ public class AuramcraftCraftingManager {
 		addShapelessRecipe(new ItemStack(AuramcraftItems.fireShard), new Object[] {
 			AuramcraftItems.gemstone
 		}, new Object[] {
-			10, Auras.FIRE
+			Auras.FIRE, 10
 		});
 		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
@@ -41,7 +42,7 @@ public class AuramcraftCraftingManager {
 		return instance;
 	}
 	
-	public AuramcraftShapedRecipes addRecipe(ItemStack itemStack, Object... objects) {
+	public InfusionShapedRecipes addRecipe(ItemStack itemStack, Object... objects) {
 		String s = "";
 		int i = 0;
 		int j = 0;
@@ -98,44 +99,44 @@ public class AuramcraftCraftingManager {
 			}
 		}
 		
-		AuramcraftShapedRecipes shapedrecipes = new AuramcraftShapedRecipes(j, k, aitemstack, itemStack);
+		InfusionShapedRecipes shapedrecipes = new InfusionShapedRecipes(j, k, aitemstack, itemStack);
 		this.recipes.add(shapedrecipes);
 		return shapedrecipes;
 	}
 	
 	public void addShapelessRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
-		ArrayList arraylist = new ArrayList();
-		Object[] aitems = items;
+		ArrayList itemList = new ArrayList();
+		ArrayList auraList = new ArrayList();
 		
-		for(int j = 0; j < items.length; ++j) {
-			Object object1 = aitems[j];
+		for(int i = 0; i < items.length; ++i) {
+			Object item = items[i];
 			
-			if(object1 instanceof ItemStack) {
-				arraylist.add(((ItemStack) object1).copy());
-			}
-			else if(object1 instanceof Item) {
-				arraylist.add(new ItemStack((Item) object1));
-			}
+			if(item instanceof ItemStack)
+				itemList.add(((ItemStack) item).copy());
+			else if(item instanceof Item)
+				itemList.add(new ItemStack((Item) item));
 			else {
-				if(!(object1 instanceof Block)) {
+				if(!(item instanceof Block))
 					throw new RuntimeException("Invalid shapeless recipe!");
-				}
 				
-				arraylist.add(new ItemStack((Block) object1));
+				itemList.add(new ItemStack((Block) item));
 			}
 		}
 		
-		this.recipes.add(new ShapelessRecipes(itemStack, arraylist));
+		for(Object aura : auras)
+			auraList.add(aura);
+		
+		this.recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
 	}
 	
-	public ItemStack findMatchingRecipe(InventoryCrafting inventoryCrafting, World world) {
+	public ItemStack findMatchingRecipe(InfusionCrafting crafting, World world) {
 		int i = 0;
 		ItemStack itemstack = null;
 		ItemStack itemstack1 = null;
 		int j;
 		
-		for(j = 0; j < inventoryCrafting.getSizeInventory(); ++j) {
-			ItemStack itemstack2 = inventoryCrafting.getStackInSlot(j);
+		for(j = 0; j < crafting.getSizeInventory(); ++j) {
+			ItemStack itemstack2 = crafting.getStackInSlot(j);
 			
 			if(itemstack2 != null) {
 				if(i == 0) {
@@ -167,8 +168,8 @@ public class AuramcraftCraftingManager {
 			for(j = 0; j < this.recipes.size(); ++j) {
 				IRecipe irecipe = (IRecipe) this.recipes.get(j);
 				
-				if(irecipe.matches(inventoryCrafting, world)) {
-					return irecipe.getCraftingResult(inventoryCrafting);
+				if(irecipe.matches(crafting, world)) {
+					return irecipe.getCraftingResult(crafting);
 				}
 			}
 			

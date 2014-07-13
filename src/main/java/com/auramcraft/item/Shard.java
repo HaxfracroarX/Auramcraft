@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 import com.auramcraft.Auramcraft;
 import com.auramcraft.creativetab.CreativeTab;
 
-public class Shard extends IAuraContainer {
+public class Shard extends AuraItem {
 	private static int maxAura = 8;
 	private Auras type;
 	

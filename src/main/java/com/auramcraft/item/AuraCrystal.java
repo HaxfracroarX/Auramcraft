@@ -5,7 +5,7 @@ import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
 import net.minecraft.item.Item;
 
-public class AuraCrystal extends IAuraContainer {
+public class AuraCrystal extends AuraItem {
 	private static final int maxAura = 25;
 	
 	public AuraCrystal() {

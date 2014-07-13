@@ -12,7 +12,7 @@ public class AuramcraftRecipeSorter implements Comparator {
 	
 	public int compareRecipes(IRecipe recipe1, IRecipe recipe2)
 	{
-		 return recipe1 instanceof AuramcraftShapelessRecipes && recipe2 instanceof AuramcraftShapedRecipes ? 1 : (recipe2 instanceof AuramcraftShapelessRecipes && recipe1 instanceof AuramcraftShapedRecipes ? -1 : (recipe2.getRecipeSize() < recipe1.getRecipeSize() ? -1 : (recipe2.getRecipeSize() > recipe1.getRecipeSize() ? 1 : 0)));
+		 return recipe1 instanceof InfusionShapelessRecipes && recipe2 instanceof InfusionShapedRecipes ? 1 : (recipe2 instanceof InfusionShapelessRecipes && recipe1 instanceof InfusionShapedRecipes ? -1 : (recipe2.getRecipeSize() < recipe1.getRecipeSize() ? -1 : (recipe2.getRecipeSize() > recipe1.getRecipeSize() ? 1 : 0)));
 	}
 	
 	@Override

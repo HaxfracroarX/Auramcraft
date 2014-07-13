@@ -3,45 +3,54 @@ package com.auramcraft.item.crafting;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import com.auramcraft.item.IAuraContainer;
+import com.auramcraft.api.IAuraContainer;
+import com.auramcraft.inventory.InfusionCrafting;
+import com.auramcraft.item.Auras;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class AuramcraftShapelessRecipes implements IRecipe {
+public class InfusionShapelessRecipes implements IRecipe {
 	/** The ItemStack that you get when craft the recipe. */
 	private final ItemStack recipeOutput;
 	
 	/** List of ItemStack that composes the recipe. */
 	public final List recipeItems;
 	
-	public AuramcraftShapelessRecipes(ItemStack recipeOutput, List recipeItems) {
+	/** List of Auras that compose the recipe */
+	public final List recipeAuras;
+	
+	public InfusionShapelessRecipes(ItemStack recipeOutput, List recipeItems, List recipeAuras) {
 		this.recipeOutput = recipeOutput;
 		this.recipeItems = recipeItems;
+		this.recipeAuras = recipeAuras;
 	}
 	
 	@Override
 	public boolean matches(InventoryCrafting inventoryCrafting, World world) {
-		if(!interfacesIAuraContainer(inventoryCrafting))
+		if(!(inventoryCrafting instanceof InfusionCrafting))
 			return false;
 		
-		ArrayList arraylist = new ArrayList(this.recipeItems);
+		InfusionCrafting crafting = (InfusionCrafting) inventoryCrafting;
+		ArrayList items = new ArrayList(recipeItems);
+		ArrayList auras = new ArrayList(recipeAuras);
 		
+		// Checks 3x3 grid
 		for(int i = 0; i < 3; ++i) {
 			for(int j = 0; j < 3; ++j) {
-				ItemStack itemstack = inventoryCrafting.getStackInRowAndColumn(j, i);
+				ItemStack itemstack = crafting.getStackInRowAndColumn(j, i);
 				
 				if(itemstack != null) {
 					boolean flag = false;
-					Iterator iterator = arraylist.iterator();
+					Iterator iterator = items.iterator();
 					
 					while(iterator.hasNext()) {
 						ItemStack itemstack1 = (ItemStack) iterator.next();
 						
 						if(itemstack.getItem() == itemstack1.getItem() && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage())) {
 							flag = true;
-							arraylist.remove(itemstack1);
+							items.remove(itemstack1);
 							break;
 						}
 					}
@@ -53,18 +62,16 @@ public class AuramcraftShapelessRecipes implements IRecipe {
 			}
 		}
 		
-		return arraylist.isEmpty();
-	}
-	
-	public boolean interfacesIAuraContainer(Object object) {
-		Class[] classes = object.getClass().getInterfaces();
-		
-		for(int i = 0; i < classes.length; i++) {
-			if(classes[i].isAssignableFrom(IAuraContainer.class))
-				return true;
+		// Checks auras
+		for(int i = 0; i < auras.size(); i = i + 2) {
+			Auras aura = (Auras) auras.get(i);
+			int amount = (Integer) auras.get(i+1);
+			
+			if(!(crafting.getStoredAura(aura) >= amount))
+				return false;
 		}
 		
-		return false;
+		return items.isEmpty();
 	}
 	
 	@Override
