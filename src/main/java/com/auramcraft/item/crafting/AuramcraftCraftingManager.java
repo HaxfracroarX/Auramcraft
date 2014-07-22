@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import com.auramcraft.init.AuramcraftItems;
-import com.auramcraft.inventory.InfusionCrafting;
+import com.auramcraft.inventory.SyncedInfusionCrafting;
 import com.auramcraft.item.Auras;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
@@ -129,7 +129,7 @@ public class AuramcraftCraftingManager {
 		this.recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
 	}
 	
-	public ItemStack findMatchingRecipe(InfusionCrafting crafting, World world) {
+	public ItemStack findMatchingRecipe(SyncedInfusionCrafting crafting, World world) {
 		int i = 0;
 		ItemStack itemstack = null;
 		ItemStack itemstack1 = null;

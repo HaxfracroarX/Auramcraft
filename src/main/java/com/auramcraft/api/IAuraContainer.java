@@ -5,8 +5,17 @@ import com.auramcraft.item.Auras;
 public interface IAuraContainer {
 	/**
 	 * Tries to store the specified amount of the specified aura
+	 * 
+	 * @return If storage was successful
 	 */
-	public void store(Auras aura, int amount);
+	public boolean store(Auras aura, int amount);
+	
+	/**
+	 * Tries to take out the specified amount of the specified aura
+	 * 
+	 * @return If removal was successful
+	 */
+	public boolean remove(Auras aura, int amount);
 	
 	/**
 	 * @return How much aura can be contained
@@ -52,6 +61,11 @@ public interface IAuraContainer {
 	 * @return Open space for new aura
 	 */
 	public int getOpenSlots();
+	
+	/**
+	 * @return Top tier that can be stored
+	 */
+	public int getTier();
 	
 	/**
 	 * @return The object's Aura Container

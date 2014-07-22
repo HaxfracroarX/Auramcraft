@@ -45,14 +45,7 @@ public class SyncedInventory implements IInventory {
 	}
 	
 	public ItemStack decrStackSize(int par1, int par2) {
-		if(this.stackResult[0] != null) {
-			ItemStack itemstack = this.stackResult[0];
-			this.stackResult[0] = null;
-			return itemstack;
-		}
-		else {
-			return null;
-		}
+		return getStackInSlotOnClosing(par1);
 	}
 	
 	public ItemStack getStackInSlotOnClosing(int par1) {

@@ -3,20 +3,42 @@ package com.auramcraft.inventory;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.item.Auras;
+import com.auramcraft.tileentity.TileEntityAuramcraft;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 
-public class InfusionCrafting extends InventoryCrafting implements IAuraContainer {
-	AuraContainer auraContainer;
+public class SyncedInfusionCrafting extends InventoryCrafting implements IAuraContainer {
+	private AuraContainer auraContainer;
+	private TileEntityAuramcraft entity;
+	private int start;
 	
-	public InfusionCrafting(Container container, int width, int height, int maxAura, int tier) {
+	public SyncedInfusionCrafting(Container container, int width, int height, int maxAura, int tier, TileEntityAuramcraft entity, int start) {
 		super(container, width, height);
 		auraContainer = new AuraContainer(maxAura, tier);
+		this.entity = entity;
+		this.start = start;
 	}
 	
 	@Override
-	public void store(Auras aura, int amount) {
-		auraContainer.store(aura, amount);
+	public void openInventory() {
+		for(int i = start; i < 9 + start; i++)
+			setInventorySlotContents(i, entity.getStackInSlot(i));
+	}
+	
+	@Override
+    public void closeInventory() {
+		for(int i = start; i < 9 + start; i++)
+			entity.setInventorySlotContents(i, getStackInSlot(i));
+	}
+	
+	@Override
+	public boolean store(Auras aura, int amount) {
+		return auraContainer.store(aura, amount);
+	}
+	
+	@Override
+	public boolean remove(Auras aura, int amount) {
+		return auraContainer.remove(aura, amount);
 	}
 	
 	@Override
@@ -62,6 +84,11 @@ public class InfusionCrafting extends InventoryCrafting implements IAuraContaine
 	@Override
 	public int getOpenSlots() {
 		return auraContainer.getOpenSlots();
+	}
+	
+	@Override
+	public int getTier() {
+		return auraContainer.getTier();
 	}
 	
 	@Override

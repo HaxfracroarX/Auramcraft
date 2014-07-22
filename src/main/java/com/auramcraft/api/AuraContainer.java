@@ -24,16 +24,28 @@ public class AuraContainer implements IAuraContainer {
 			auras.add(new ArrayList<Integer>());
 			
 			for(int j = 0; j < Tiers.getTotalAuras(i); j++)
-				auras.get(0).add(0);
+				auras.get(i).add(0);
 		}
 	}
 	
 	@Override
-	public void store(Auras aura, int amount) {
+	public boolean store(Auras aura, int amount) {
 		if(!canStoreAura(aura, amount))
-			return;
+			return false;
 		
 		auras.get(aura.getTier()-1).set(aura.getId(), auras.get(aura.getTier()-1).get(aura.getId()) + amount);
+		
+		return true;
+	}
+	
+	@Override
+	public boolean remove(Auras aura, int amount) {
+		if(getStoredAura(aura) < amount)
+			return false;
+		
+		auras.get(aura.getTier()-1).set(aura.getId(), auras.get(aura.getTier()-1).get(aura.getId()) - amount);
+		
+		return true;
 	}
 	
 	@Override
@@ -88,6 +100,11 @@ public class AuraContainer implements IAuraContainer {
 	@Override
 	public int getOpenSlots() {
 		return maxAura - getTotalStoredAura();
+	}
+	
+	@Override
+	public int getTier() {
+		return tier;
 	}
 	
 	@Override

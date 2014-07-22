@@ -1,12 +1,13 @@
 package com.auramcraft.item.crafting;
 
+import java.util.List;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class InfusionShapedRecipes implements IRecipe {
+public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
 	/** How many horizontal slots this recipe is wide. */
 	public final int recipeWidth;
 	/** How many vertical slots this recipe uses. */
@@ -111,5 +112,10 @@ public class InfusionShapedRecipes implements IRecipe {
 	public InfusionShapedRecipes func_92100_c() {
 		 this.field_92101_f = true;
 		 return this;
+	}
+
+	@Override
+	public List getRecipeAuras() {
+		return null;
 	}
 }

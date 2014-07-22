@@ -5,7 +5,6 @@ import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
-import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -18,7 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ContainerInfusionTable extends Container {
-	public InfusionCrafting craftMatrix;
+	public SyncedInfusionCrafting craftMatrix;
     public IInventory craftResult;
     private SyncedInventory auraItem;
 	private World worldObj;
@@ -32,57 +31,30 @@ public class ContainerInfusionTable extends Container {
 		this.y = y;
 		this.z = z;
 		
-		// Crafting grid save/load
-		craftMatrix = new InfusionCrafting(this, 3, 3, 25, 1) {
-			@Override
-			public void openInventory() {
-				for(int i = 0; i < 9; i++)
-					setInventorySlotContents(i, tileEntityInfusionTable.getStackInSlot(i));
-			}
-			
-			@Override
-		    public void closeInventory() {
-				for(int i = 0; i < 9; i++)
-					tileEntityInfusionTable.setInventorySlotContents(i, getStackInSlot(i));
-			}
-		};
-		
-		// Result save/load
-		craftResult = new InventoryCraftResult() {
-			@Override
-			public void openInventory() {
-				setInventorySlotContents(0, tileEntityInfusionTable.getStackInSlot(9));
-			}
-			
-			@Override
-		    public void closeInventory() {
-				tileEntityInfusionTable.setInventorySlotContents(9, getStackInSlot(0));
-			}
-		};
-		
-		// Aura Item
+		// Initializing synced inventories
+		craftMatrix = new SyncedInfusionCrafting(this, 3, 3, 25, 1, tileEntityInfusionTable, 0);
+		craftResult = new SyncedInventoryCraftResult(tileEntityInfusionTable, 9);
 		auraItem = new SyncedInventory(tileEntityInfusionTable, 10);
 		
-		// Open Inventories
+		// Opening inventories
 		tileEntityInfusionTable.openInventory();
 		craftMatrix.openInventory();
 		craftResult.openInventory();
 		auraItem.openInventory();
 		
-		// Add Output slot
-		addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, 0, 102, 24));
+		// Adding output slot
+		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, auraItem, craftResult, 0, 102, 24));
 		
-		// Add Infusion Table crafting slots
+		// Adding Infusion Table crafting slots
 		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 3; j++) {
+			for(int j = 0; j < 3; j++)
 				addSlotToContainer(new Slot(craftMatrix, j + i * 3, i * 19 + 6, (3 - j) + j * 20));
-			}
 		}
 		
-		// Add the AuraItem
+		// Adding the AuraItem
 		addSlotToContainer(new Slot(auraItem, 9, 156, 24) {
 			public boolean isItemValid(ItemStack itemStack) {
-		        return itemStack.getItem() instanceof AuraItem;
+		        return itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1;
 		    }
 			
 			public void onSlotChanged() {
@@ -94,17 +66,17 @@ public class ContainerInfusionTable extends Container {
 		    }
 		});
 		
-		// Add the Player's inventory
+		// Adding the player's inventory
 		for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 11 + j * 19, 96 + i * 19));
-            }
-        }
+			for (int j = 0; j < 9; j++)
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 11 + j * 19, 96 + i * 19));
+		}
 		
-		// Add the action slots
+		// Adding the player's hotbar
         for (int i = 0; i < 9; i++)
             this.addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 19, 158));
         
+        // Checking for matching recipies
         onCraftMatrixChanged(craftMatrix);
 	}
 	

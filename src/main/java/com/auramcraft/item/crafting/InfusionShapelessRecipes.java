@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import com.auramcraft.api.IAuraContainer;
-import com.auramcraft.inventory.InfusionCrafting;
+import com.auramcraft.inventory.SyncedInfusionCrafting;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.Auras;
 import com.auramcraft.util.LogHelper;
@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class InfusionShapelessRecipes implements IRecipe {
+public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
 	/** The ItemStack that you get when craft the recipe. */
 	private final ItemStack recipeOutput;
 	
@@ -31,10 +31,10 @@ public class InfusionShapelessRecipes implements IRecipe {
 	
 	@Override
 	public boolean matches(InventoryCrafting inventoryCrafting, World world) {
-		if(!(inventoryCrafting instanceof InfusionCrafting))
+		if(!(inventoryCrafting instanceof SyncedInfusionCrafting))
 			return false;
 		
-		InfusionCrafting crafting = (InfusionCrafting) inventoryCrafting;
+		SyncedInfusionCrafting crafting = (SyncedInfusionCrafting) inventoryCrafting;
 		ArrayList items = new ArrayList(recipeItems);
 		ArrayList auras = new ArrayList(recipeAuras);
 		
@@ -89,5 +89,9 @@ public class InfusionShapelessRecipes implements IRecipe {
 	@Override
 	public ItemStack getRecipeOutput() {
 		return recipeOutput;
+	}
+	
+	public List getRecipeAuras() {
+		return recipeAuras;
 	}
 }
