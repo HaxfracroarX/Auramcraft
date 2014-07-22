@@ -30,7 +30,7 @@ public class AuramcraftCraftingManager {
 		addShapelessRecipe(new ItemStack(AuramcraftItems.fireShard), new Object[] {
 			AuramcraftItems.gemstone
 		}, new Object[] {
-			Auras.FIRE, 10
+			Auras.FIRE, 5
 		});
 		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));

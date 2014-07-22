@@ -65,11 +65,6 @@ public class InfusionCrafting extends InventoryCrafting implements IAuraContaine
 	}
 	
 	@Override
-	public int getOpenSlots(Auras aura) {
-		return auraContainer.getOpenSlots(aura);
-	}
-
-	@Override
 	public AuraContainer getAuraContainer() {
 		return auraContainer;
 	}

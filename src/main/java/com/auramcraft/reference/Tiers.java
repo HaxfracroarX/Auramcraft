@@ -8,4 +8,8 @@ public class Tiers {
 	public static int getTotalAuras(int tier) {
 		return tiers[tier];
 	}
+	
+	public static int getTotalTiers() {
+		return tiers.length;
+	}
 }

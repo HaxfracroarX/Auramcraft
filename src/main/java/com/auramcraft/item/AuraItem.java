@@ -60,11 +60,6 @@ public class AuraItem extends Item implements IAuraContainer {
 	public int getOpenSlots() {
 		return container.getOpenSlots();
 	}
-	
-	@Override
-	public int getOpenSlots(Auras aura) {
-		return container.getOpenSlots(aura);
-	}
 
 	@Override
 	public AuraContainer getAuraContainer() {

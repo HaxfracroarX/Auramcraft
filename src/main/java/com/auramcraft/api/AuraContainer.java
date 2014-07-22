@@ -7,6 +7,7 @@ import scala.util.control.Exception;
 import net.minecraft.block.material.Material;
 import com.auramcraft.item.Auras;
 import com.auramcraft.reference.Tiers;
+import com.auramcraft.util.LogHelper;
 
 public class AuraContainer implements IAuraContainer {
 	private int maxAura, tier;
@@ -19,8 +20,11 @@ public class AuraContainer implements IAuraContainer {
 		auras = new ArrayList<ArrayList<Integer>>();
 		allowedAuras = new ArrayList<Auras>();
 		
-		for(int i = 0; i < auras.size(); i++) {
-			auras.set(i, new ArrayList<Integer>(Tiers.getTotalAuras(i)));
+		for(int i = 0; i < Tiers.getTotalTiers(); i++) {
+			auras.add(new ArrayList<Integer>());
+			
+			for(int j = 0; j < Tiers.getTotalAuras(i); j++)
+				auras.get(0).add(0);
 		}
 	}
 	
@@ -29,7 +33,7 @@ public class AuraContainer implements IAuraContainer {
 		if(!canStoreAura(aura, amount))
 			return;
 		
-		auras.get(aura.getTier()).set(aura.getId(), auras.get(aura.getTier()).get(aura.getId()) + amount);
+		auras.get(aura.getTier()-1).set(aura.getId(), auras.get(aura.getTier()-1).get(aura.getId()) + amount);
 	}
 	
 	@Override
@@ -44,9 +48,7 @@ public class AuraContainer implements IAuraContainer {
 	
 	@Override
 	public boolean canStoreAura(Auras aura) {
-		if(allowedAuras.isEmpty() || Collections.binarySearch(allowedAuras, aura) > 0)
-			return true;
-		return false;
+		return allowedAuras.isEmpty() || Collections.binarySearch(allowedAuras, aura) > 0;
 	}
 	
 	@Override
@@ -54,7 +56,7 @@ public class AuraContainer implements IAuraContainer {
 		if(!canStoreAura(aura))
 			return false;
 		
-		return canStoreMore() && getOpenSlots(aura) >= amount;
+		return canStoreMore() && getOpenSlots() >= amount;
 	}
 	
 	@Override
@@ -86,11 +88,6 @@ public class AuraContainer implements IAuraContainer {
 	@Override
 	public int getOpenSlots() {
 		return maxAura - getTotalStoredAura();
-	}
-	
-	@Override
-	public int getOpenSlots(Auras aura) {
-		return maxAura - auras.get(aura.getTier()-1).get(aura.getId());
 	}
 	
 	@Override

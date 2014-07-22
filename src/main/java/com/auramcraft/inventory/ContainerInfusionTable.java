@@ -51,20 +51,23 @@ public class ContainerInfusionTable extends Container {
 		craftResult = new InventoryCraftResult() {
 			@Override
 			public void openInventory() {
-				setInventorySlotContents(0, tileEntityInfusionTable.getStackInSlot(10));
+				setInventorySlotContents(0, tileEntityInfusionTable.getStackInSlot(9));
 			}
 			
 			@Override
 		    public void closeInventory() {
-				tileEntityInfusionTable.setInventorySlotContents(10, getStackInSlot(0));
+				tileEntityInfusionTable.setInventorySlotContents(9, getStackInSlot(0));
 			}
 		};
 		
 		// Aura Item
-		auraItem = new SyncedInventory(tileEntityInfusionTable);
+		auraItem = new SyncedInventory(tileEntityInfusionTable, 10);
 		
+		// Open Inventories
 		tileEntityInfusionTable.openInventory();
 		craftMatrix.openInventory();
+		craftResult.openInventory();
+		auraItem.openInventory();
 		
 		// Add Output slot
 		addSlotToContainer(new SlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, 0, 102, 24));
@@ -83,11 +86,10 @@ public class ContainerInfusionTable extends Container {
 		    }
 			
 			public void onSlotChanged() {
-				AuraItem item = (AuraItem) getStack().getItem();
-				if(item != null)
-					craftMatrix.setAuraContainer(item.getAuraContainer());
+				if(getStack() != null)
+					craftMatrix.setAuraContainer(((AuraItem) getStack().getItem()).getAuraContainer());
 				else
-					craftMatrix.setAuraContainer(new AuraContainer(25, 1));
+					craftMatrix.setAuraContainer(new AuraContainer(0, 0));
 				onCraftMatrixChanged(craftMatrix);
 		    }
 		});
@@ -125,16 +127,7 @@ public class ContainerInfusionTable extends Container {
 	public void onContainerClosed(EntityPlayer entityPlayer) {
 		craftMatrix.closeInventory();
 		tileEntityInfusionTable.closeInventory();
-	}
-	
-	public boolean interfacesIAuraContainer(Object object) {
-		Class[] classes = object.getClass().getInterfaces();
-		
-		for(int i = 0; i < classes.length; i++) {
-			if(classes[i].isAssignableFrom(IAuraContainer.class))
-				return true;
-		}
-		
-		return false;
+		craftResult.closeInventory();
+		auraItem.closeInventory();
 	}
 }
