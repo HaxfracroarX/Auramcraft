@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class ContainerInfusionTable extends Container {
 	public SyncedInfusionCrafting craftMatrix;
-    public IInventory craftResult;
+    public SyncedInventoryCraftResult craftResult;
     private SyncedInventory auraItem;
 	private World worldObj;
 	private int x, y, z;
@@ -43,7 +43,7 @@ public class ContainerInfusionTable extends Container {
 		auraItem.openInventory();
 		
 		// Adding output slot
-		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, auraItem, craftResult, 0, 102, 24));
+		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, auraItem, 0, 102, 24));
 		
 		// Adding Infusion Table crafting slots
 		for(int i = 0; i < 3; i++) {
@@ -52,19 +52,7 @@ public class ContainerInfusionTable extends Container {
 		}
 		
 		// Adding the AuraItem
-		addSlotToContainer(new Slot(auraItem, 9, 156, 24) {
-			public boolean isItemValid(ItemStack itemStack) {
-		        return itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1;
-		    }
-			
-			public void onSlotChanged() {
-				if(getStack() != null)
-					craftMatrix.setAuraContainer(((AuraItem) getStack().getItem()).getAuraContainer());
-				else
-					craftMatrix.setAuraContainer(new AuraContainer(0, 0));
-				onCraftMatrixChanged(craftMatrix);
-		    }
-		});
+		addSlotToContainer(new AuraSlot(auraItem, craftMatrix, craftResult, worldObj, 9, 156, 24));
 		
 		// Adding the player's inventory
 		for (int i = 0; i < 3; i++) {

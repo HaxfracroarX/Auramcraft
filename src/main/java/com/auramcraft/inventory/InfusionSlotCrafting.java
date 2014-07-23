@@ -8,6 +8,7 @@ import com.auramcraft.item.Auras;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.item.crafting.IInfusionRecipe;
 import com.auramcraft.util.LogHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.SlotCrafting;
@@ -15,23 +16,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 
 public class InfusionSlotCrafting extends SlotCrafting {
-	private IInventory auraSlot;
+	private SyncedInventory auraItem;
 	
-	public InfusionSlotCrafting(EntityPlayer entityPlayer, IInventory matrix, IInventory result, IInventory auraItem, int id, int x, int y) {
+	public InfusionSlotCrafting(EntityPlayer entityPlayer, IInventory matrix, IInventory result, SyncedInventory auraItem, int id, int x, int y) {
 		super(entityPlayer, matrix, result, id, x, y);
-		this.auraSlot = auraItem;
+		this.auraItem = auraItem;
 	}
 	
 	@Override
 	public void onPickupFromSlot(EntityPlayer entityPlayer, ItemStack itemStack) {
-		LogHelper.info("Saving Item");
-		
-		AuraItem item;
-		
-		if(auraSlot.getStackInSlot(0) != null)
-			item = (AuraItem) auraSlot.getStackInSlot(0).getItem();
-		else
-			return;
+		if(Minecraft.getMinecraft().theWorld.isRemote)
+			LogHelper.info("Serverside");
 		
 		LogHelper.info("onPickupFromSlot Legacy");
 		
@@ -39,11 +34,20 @@ public class InfusionSlotCrafting extends SlotCrafting {
 		
 		LogHelper.info("onPickupFromSlot Aura");
 		
+		AuraItem item;
+		
+		if(auraItem.getStackInSlot(0) != null)
+			item = (AuraItem) auraItem.getStackInSlot(0).getItem();
+		else {
+			LogHelper.info("There's no item here");
+			return;
+		}
+		
 		ArrayList<IInfusionRecipe> recipes = new ArrayList<IInfusionRecipe>((Collection<? extends IInfusionRecipe>) AuramcraftCraftingManager.getInstance().getRecipeList());
 		
 		for(int i = 0; i < recipes.size(); i++) {
 			if(recipes.get(i).getRecipeOutput().getItem().equals(itemStack.getItem())) {
-				// Checks auras
+				// Removes auras
 				ArrayList auras = new ArrayList(recipes.get(i).getRecipeAuras());
 				
 				for(int j = 0; j < auras.size(); j = j + 2) {
@@ -53,7 +57,7 @@ public class InfusionSlotCrafting extends SlotCrafting {
 					item.remove(aura, amount);
 				}
 				
-				auraSlot.setInventorySlotContents(0, new ItemStack(item));
+				auraItem.setInventorySlotContents(0, new ItemStack(item));
 				
 				LogHelper.info("onPickupFromSlot Aura Done");
 				
