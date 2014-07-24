@@ -2,6 +2,7 @@ package com.auramcraft.inventory;
 
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.tileentity.TileEntityAuramcraft;
+import com.auramcraft.tileentity.TileEntityAuramcraftInventory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -9,11 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
 public class SyncedInventory implements IInventory {
-	private TileEntityAuramcraft entity;
+	private TileEntityAuramcraftInventory entity;
 	private ItemStack[] stackResult = new ItemStack[1];
 	private int slot;
 	
-	public SyncedInventory(TileEntityAuramcraft entity, int slot) {
+	public SyncedInventory(TileEntityAuramcraftInventory entity, int slot) {
 		this.entity = entity;
 		this.slot = slot;
 	}

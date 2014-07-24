@@ -1,13 +1,14 @@
 package com.auramcraft.inventory;
 
 import com.auramcraft.tileentity.TileEntityAuramcraft;
+import com.auramcraft.tileentity.TileEntityAuramcraftInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 
 public class SyncedInventoryCraftResult extends InventoryCraftResult {
-	private TileEntityAuramcraft entity;
+	private TileEntityAuramcraftInventory entity;
 	private int slot;
 	
-	public SyncedInventoryCraftResult(TileEntityAuramcraft entity, int slot) {
+	public SyncedInventoryCraftResult(TileEntityAuramcraftInventory entity, int slot) {
 		this.entity = entity;
 		this.slot = slot;
 	}

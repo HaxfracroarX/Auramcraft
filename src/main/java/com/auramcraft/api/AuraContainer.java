@@ -51,6 +51,12 @@ public class AuraContainer implements IAuraContainer {
 	}
 	
 	@Override
+	public void store(Object... auraList) {
+		for(int i = 0; i < auraList.length; i = i + 2)
+			store((Auras) auraList[i], (Integer) auraList[i+1]);
+	}
+	
+	@Override
 	public boolean remove(Auras aura, int amount) {
 		if(getStoredAura(aura) < amount)
 			return false;

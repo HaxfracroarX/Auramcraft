@@ -45,32 +45,6 @@ public class AuraItem extends Item implements IAuraUser {
 		}
 	}
 	
-	@Override
-	public void onCreated(ItemStack itemStack, World world, EntityPlayer enityPlayer) {
-		/*// Give it a new tag
-		itemStack.stackTagCompound = new NBTTagCompound();
-		
-		// List of all Auras
-		Auras[] auras = Auras.values();
-		
-		// Add Aura info
-		for(int i = 0; i < auras.length; i++) {
-			// How much aura there is
-			itemStack.stackTagCompound.setInteger(auras[i].toString(), 0);
-			// If we are allowed to store the aura
-			itemStack.stackTagCompound.setBoolean(auras[i].toString()+" isAllowed", true);
-		}
-		
-		// Max Aura
-		itemStack.stackTagCompound.setInteger("Max Aura", 0);
-		// Tier
-		itemStack.stackTagCompound.setInteger("Tier", 0);
-		// isDrainable
-		itemStack.stackTagCompound.setBoolean("isDrainable", true);
-		// isFillable
-		itemStack.stackTagCompound.setBoolean("isFillable", true);*/
-	}
-	
 	public static void updateNBT(ItemStack itemStack, AuraContainer container) {
 		// Give it a new tag
 		itemStack.stackTagCompound = new NBTTagCompound();

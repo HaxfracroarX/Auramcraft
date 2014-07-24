@@ -11,6 +11,11 @@ public interface IAuraContainer {
 	public boolean store(Auras aura, int amount);
 	
 	/**
+	 * Tries to store the auras in the amounts specified
+	 */
+	public void store(Object... auras);
+	
+	/**
 	 * Tries to take out the specified amount of the specified aura
 	 * 
 	 * @return If removal was successful

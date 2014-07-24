@@ -6,9 +6,7 @@ import com.auramcraft.reference.Textures;
 import net.minecraft.item.Item;
 
 public class AuraCrystal extends AuraItem {
-	private static final int maxAura = 25;
-	
-	public AuraCrystal() {
+	public AuraCrystal(int maxAura) {
 		super(maxAura, 1);
 		setTextureName(Textures.Items.ITEM_AURA_CRYSTAL);
 		setUnlocalizedName(Names.Items.AURACRYSTAL);

@@ -33,6 +33,34 @@ public class AuramcraftCraftingManager {
 			Auras.FIRE, 8
 		});
 		
+		// Earth Shard
+		addShapelessRecipe(new ItemStack(AuramcraftItems.earthShard), new Object[] {
+			AuramcraftItems.gemstone
+		}, new Object[] {
+			Auras.EARTH, 8
+		});
+		
+		// Water Shard
+		addShapelessRecipe(new ItemStack(AuramcraftItems.waterShard), new Object[] {
+			AuramcraftItems.gemstone
+		}, new Object[] {
+			Auras.WATER, 8
+		});
+		
+		// Air Shard
+		addShapelessRecipe(new ItemStack(AuramcraftItems.airShard), new Object[] {
+			AuramcraftItems.gemstone
+		}, new Object[] {
+			Auras.AIR, 8
+		});
+		
+		// Auram Shard
+		addShapelessRecipe(new ItemStack(AuramcraftItems.auramShard), new Object[] {
+			AuramcraftItems.gemstone
+		}, new Object[] {
+			Auras.AURAM, 8
+		});
+		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
 		
 		LogHelper.info("Infusion Recipes Initialized");

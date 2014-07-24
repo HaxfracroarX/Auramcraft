@@ -11,20 +11,32 @@ public class AuramcraftRecipes {
 	public static void init() {
 		/*	SHAPED	*/
 		// Dev Toy
-		GameRegistry.addRecipe(new ItemStack(AuramcraftItems.devToy, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(AuramcraftItems.devToy), new Object[] {
 			" X ", 
 			" X ", 
 			" Y ", 
 			'X', Blocks.bedrock,
-			'Y', Items.stick});
+			'Y', Items.stick
+		});
+		
 		// Holy Lamp
-		GameRegistry.addRecipe(new ItemStack(AuramcraftBlocks.holyLamp, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(AuramcraftBlocks.holyLamp), new Object[] {
 			" X ", 
 			"XZX", 
 			"YYY", 
 			'X', Blocks.glass,
 			'Y', AuramcraftItems.gemstone,
-			'Z', AuramcraftItems.fireShard});
+			'Z', AuramcraftItems.fireShard
+		});
+		
+		// Book of Aura
+		GameRegistry.addRecipe(new ItemStack(AuramcraftItems.bookOfAura), new Object[] {
+			" X ",
+			"XYX",
+			" X ",
+			'X', AuramcraftItems.gemstone,
+			'Y', Items.book
+		});
 		
 		/*	SHAPELESS	*/
 		// Aum Wood Planks
@@ -33,6 +45,6 @@ public class AuramcraftRecipes {
 		// Sticks
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.stick, 4), AuramcraftBlocks.aumWoodPlanks);
 		
-		LogHelper.info("Recipes Initialized");
+		LogHelper.info("Initialized Recipes");
 	}
 }

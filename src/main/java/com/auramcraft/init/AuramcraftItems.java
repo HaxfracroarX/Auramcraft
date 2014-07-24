@@ -17,12 +17,18 @@ public class AuramcraftItems {
 	public static final Item sacrificialDagger = new SacrificialDagger();
 	public static final Item devToy = new DevToy();
 	public static final Item bookOfAura = new BookOfAura();
-	public static final Item auraCrystal = new AuraCrystal();
-	public static Item auraCrystal1 = new AuraCrystal();
+	public static final Item auraCrystal = new AuraCrystal(25);
+	public static Item auraCrystal1 = new AuraCrystal(500);
 	
 	public static void init() {
 		// Temp
-		((AuraItem) auraCrystal1).getAuraContainer().store(Auras.FIRE, 10);
+		((AuraCrystal) auraCrystal1).getAuraContainer().store(new Object[] {
+				Auras.FIRE, 100,
+				Auras.EARTH, 100,
+				Auras.WATER, 100,
+				Auras.AIR, 100,
+				Auras.AURAM, 100
+		});
 		
 		GameRegistry.registerItem(fireShard, Names.Items.FIRESHARD);
 		GameRegistry.registerItem(earthShard, Names.Items.EARTHSHARD);
