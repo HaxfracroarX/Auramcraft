@@ -69,7 +69,7 @@ public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
 			Auras aura = (Auras) auras.get(i);
 			int amount = (Integer) auras.get(i+1);
 			
-			if(!(crafting.getStoredAura(aura) >= amount))
+			if(!(crafting.getAuraContainer().getStoredAura(aura) >= amount))
 				return false;
 		}
 		

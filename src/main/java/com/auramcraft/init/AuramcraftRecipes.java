@@ -1,5 +1,6 @@
 package com.auramcraft.init;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -28,6 +29,9 @@ public class AuramcraftRecipes {
 		/*	SHAPELESS	*/
 		// Aum Wood Planks
 		GameRegistry.addShapelessRecipe(new ItemStack(AuramcraftBlocks.aumWoodPlanks, 4), AuramcraftBlocks.aumWood);
+		
+		// Sticks
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.stick, 4), AuramcraftBlocks.aumWoodPlanks);
 		
 		LogHelper.info("Recipes Initialized");
 	}

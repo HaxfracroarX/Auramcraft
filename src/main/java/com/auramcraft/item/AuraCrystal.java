@@ -13,10 +13,6 @@ public class AuraCrystal extends AuraItem {
 		setTextureName(Textures.Items.ITEM_AURA_CRYSTAL);
 		setUnlocalizedName(Names.Items.AURACRYSTAL);
 		setCreativeTab(CreativeTab.AuramcraftTab);
-	}
-	
-	@Override
-	public boolean canStoreAura(Auras aura) {
-		return canStoreTier(aura.getTier());
+		setMaxStackSize(1);
 	}
 }

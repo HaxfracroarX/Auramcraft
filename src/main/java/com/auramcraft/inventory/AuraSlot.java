@@ -21,12 +21,12 @@ public class AuraSlot extends Slot {
 	}
 	
 	public boolean isItemValid(ItemStack itemStack) {
-        return itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1;
+        return itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1 && AuraItem.getAuraContainer(itemStack).isDrainable();
     }
 	
 	public void onSlotChanged() {
 		if(getStack() != null)
-			craftMatrix.setAuraContainer(((AuraItem) getStack().getItem()).getAuraContainer());
+			craftMatrix.setAuraContainer(AuraItem.getAuraContainer(getStack()));
 		else
 			craftMatrix.setAuraContainer(new AuraContainer(0, 0));
 		craftResult.setInventorySlotContents(0, AuramcraftCraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));

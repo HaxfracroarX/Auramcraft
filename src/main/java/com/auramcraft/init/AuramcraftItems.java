@@ -18,8 +18,12 @@ public class AuramcraftItems {
 	public static final Item devToy = new DevToy();
 	public static final Item bookOfAura = new BookOfAura();
 	public static final Item auraCrystal = new AuraCrystal();
+	public static Item auraCrystal1 = new AuraCrystal();
 	
 	public static void init() {
+		// Temp
+		((AuraItem) auraCrystal1).getAuraContainer().store(Auras.FIRE, 10);
+		
 		GameRegistry.registerItem(fireShard, Names.Items.FIRESHARD);
 		GameRegistry.registerItem(earthShard, Names.Items.EARTHSHARD);
 		GameRegistry.registerItem(waterShard, Names.Items.WATERSHARD);
@@ -30,6 +34,7 @@ public class AuramcraftItems {
 		GameRegistry.registerItem(devToy, Names.Items.DEVTOY);
 		GameRegistry.registerItem(bookOfAura, Names.Items.BOOK_OF_AURA);
 		GameRegistry.registerItem(auraCrystal, Names.Items.AURACRYSTAL);
+		GameRegistry.registerItem(auraCrystal1, Names.Items.AURACRYSTAL + "1");
 		
 		LogHelper.info("Initialized Items");
 	}

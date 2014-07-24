@@ -18,6 +18,31 @@ public interface IAuraContainer {
 	public boolean remove(Auras aura, int amount);
 	
 	/**
+	 * @return If the container is drainable
+	 */
+	public boolean isDrainable();
+	
+	/**
+	 * @return If the container is fillable
+	 */
+	public boolean isFillable();
+	
+	/**
+	 * @return If the container is editable (isDrainable || isFillable)
+	 */
+	public boolean isEditable();
+	
+	/**
+	 * Sets if the container is drainable
+	 */
+	public void setDrainable(boolean isDrainable);
+	
+	/**
+	 * Sets if the container is fillable
+	 */
+	public void setFillable(boolean isFillable);
+	
+	/**
 	 * @return How much aura can be contained
 	 */
 	public int getMaxAura();
@@ -43,6 +68,31 @@ public interface IAuraContainer {
 	public boolean canStoreMore();
 	
 	/**
+	 * Adds the specified aura to the whitelist
+	 */
+	public void addAllowed(Auras aura);
+	
+	/**
+	 * Removes the specified aura from the whitelist
+	 */
+	public void removeAllowed(Auras aura);
+	
+	/**
+	 * Clears the whitelist
+	 */
+	public void clearAllowed();
+	
+	/**
+	 * @return Allowed Auras
+	 */
+	public Auras[] getAllowed();
+	
+	/**
+	 * @return If the specified Aura is allowed
+	 */
+	public boolean isAllowed(Auras aura);
+	
+	/**
 	 * @return If the specified aura is contained
 	 */
 	public boolean containsAura(Auras aura);
@@ -66,14 +116,4 @@ public interface IAuraContainer {
 	 * @return Top tier that can be stored
 	 */
 	public int getTier();
-	
-	/**
-	 * @return The object's Aura Container
-	 */
-	public AuraContainer getAuraContainer();
-	
-	/**
-	 * Sets the object's Aura Container
-	 */
-	public void setAuraContainer(AuraContainer container);
 }

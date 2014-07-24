@@ -6,21 +6,13 @@ import com.auramcraft.creativetab.CreativeTab;
 
 public class Shard extends AuraItem {
 	private static int maxAura = 8;
-	private Auras type;
 	
 	public Shard(Auras type) {
 		super(maxAura, 1);
-		store(type, maxAura);
-		this.type = type;
+		getAuraContainer().store(type, maxAura);
+		getAuraContainer().addAllowed(type);
+		getAuraContainer().setDrainable(false);
+		getAuraContainer().setFillable(false);
 		this.setCreativeTab(CreativeTab.AuramcraftTab);
-	}
-	
-	@Override
-	public boolean canStoreAura(Auras aura) {
-		return aura.equals(type);
-	}
-	
-	public Auras getType() {
-		return type;
 	}
 }

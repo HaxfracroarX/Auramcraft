@@ -13,12 +13,15 @@ public class AuraContainer implements IAuraContainer {
 	private int maxAura, tier;
 	private ArrayList<ArrayList<Integer>> auras;
 	private ArrayList<Auras> allowedAuras;
+	private boolean isDrainable, isFillable;
 	
 	public AuraContainer(int maxAura, int tier) {
 		this.maxAura = maxAura;
 		this.tier = tier;
 		auras = new ArrayList<ArrayList<Integer>>();
 		allowedAuras = new ArrayList<Auras>();
+		isDrainable = true;
+		isFillable = true;
 		
 		for(int i = 0; i < Tiers.getTotalTiers(); i++) {
 			auras.add(new ArrayList<Integer>());
@@ -26,6 +29,15 @@ public class AuraContainer implements IAuraContainer {
 			for(int j = 0; j < Tiers.getTotalAuras(i); j++)
 				auras.get(i).add(0);
 		}
+	}
+	
+	public AuraContainer(int maxAura, int tier, ArrayList<ArrayList<Integer>> auras, ArrayList<Auras> allowedAuras, boolean isDrainable, boolean isFillable) {
+		this.maxAura = maxAura;
+		this.tier = tier;
+		this.auras = auras;
+		this.allowedAuras = allowedAuras;
+		this.isDrainable = isDrainable;
+		this.isFillable = isFillable;
 	}
 	
 	@Override
@@ -46,6 +58,31 @@ public class AuraContainer implements IAuraContainer {
 		auras.get(aura.getTier()-1).set(aura.getId(), auras.get(aura.getTier()-1).get(aura.getId()) - amount);
 		
 		return true;
+	}
+	
+	@Override
+	public boolean isDrainable() {
+		return isDrainable;
+	}
+	
+	@Override
+	public boolean isFillable() {
+		return isFillable;
+	}
+	
+	@Override
+	public boolean isEditable() {
+		return isDrainable() || isFillable();
+	}
+	
+	@Override
+	public void setDrainable(boolean isDrainable) {
+		this.isDrainable = isDrainable;
+	}
+	
+	@Override
+	public void setFillable(boolean isFillable) {
+		this.isFillable = isFillable;
 	}
 	
 	@Override
@@ -74,6 +111,34 @@ public class AuraContainer implements IAuraContainer {
 	@Override
 	public boolean canStoreMore() {
 		return maxAura > getTotalStoredAura();
+	}
+	
+	@Override
+	public void addAllowed(Auras aura) {
+		if(allowedAuras.contains(aura))
+			return;
+		
+		allowedAuras.add(aura);
+	}
+	
+	@Override
+	public void removeAllowed(Auras aura) {
+		allowedAuras.remove(aura);
+	}
+	
+	@Override
+	public void clearAllowed() {
+		allowedAuras.clear();
+	}
+	
+	@Override
+	public Auras[] getAllowed() {
+		return (Auras[]) allowedAuras.toArray();
+	}
+	
+	@Override
+	public boolean isAllowed(Auras aura) {
+		return allowedAuras.contains(aura) || allowedAuras.isEmpty();
 	}
 	
 	@Override
@@ -106,12 +171,4 @@ public class AuraContainer implements IAuraContainer {
 	public int getTier() {
 		return tier;
 	}
-	
-	@Override
-	public AuraContainer getAuraContainer() {
-		return this;
-	}
-	
-	@Override
-	public void setAuraContainer(AuraContainer container) {}
 }

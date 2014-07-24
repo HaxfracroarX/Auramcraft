@@ -3,6 +3,7 @@ package com.auramcraft.inventory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import com.auramcraft.api.AuraContainer;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.Auras;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
@@ -25,42 +26,32 @@ public class InfusionSlotCrafting extends SlotCrafting {
 	
 	@Override
 	public void onPickupFromSlot(EntityPlayer entityPlayer, ItemStack itemStack) {
-		if(Minecraft.getMinecraft().theWorld.isRemote)
-			LogHelper.info("Serverside");
-		
-		LogHelper.info("onPickupFromSlot Legacy");
-		
 		super.onPickupFromSlot(entityPlayer, itemStack);
 		
-		LogHelper.info("onPickupFromSlot Aura");
+		// Get container from itemstack
+		AuraContainer container = AuraItem.getAuraContainer(auraItem.getStackInSlot(0));
 		
-		AuraItem item;
-		
-		if(auraItem.getStackInSlot(0) != null)
-			item = (AuraItem) auraItem.getStackInSlot(0).getItem();
-		else {
-			LogHelper.info("There's no item here");
-			return;
-		}
-		
+		// Get infusion recipes
 		ArrayList<IInfusionRecipe> recipes = new ArrayList<IInfusionRecipe>((Collection<? extends IInfusionRecipe>) AuramcraftCraftingManager.getInstance().getRecipeList());
 		
 		for(int i = 0; i < recipes.size(); i++) {
+			// if the recipe matches
 			if(recipes.get(i).getRecipeOutput().getItem().equals(itemStack.getItem())) {
-				// Removes auras
+				// Get the aura needed by the recipe
 				ArrayList auras = new ArrayList(recipes.get(i).getRecipeAuras());
 				
+				// Subtract aura cost from container
 				for(int j = 0; j < auras.size(); j = j + 2) {
 					Auras aura = (Auras) auras.get(j);
 					int amount = (Integer) auras.get(j+1);
 					
-					item.remove(aura, amount);
+					container.remove(aura, amount);
 				}
 				
-				auraItem.setInventorySlotContents(0, new ItemStack(item));
+				// Update container
+				AuraItem.updateNBT(auraItem.getStackInSlot(0), container);
 				
-				LogHelper.info("onPickupFromSlot Aura Done");
-				
+				// No more looping necessary
 				return;
 			}
 		}
