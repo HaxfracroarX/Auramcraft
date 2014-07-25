@@ -3,6 +3,7 @@ package com.auramcraft.item;
 import java.util.ArrayList;
 import java.util.List;
 import com.auramcraft.api.AuraContainer;
+import com.auramcraft.api.Auras;
 import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.api.IAuraUser;
 import com.auramcraft.reference.Tiers;
@@ -72,7 +73,7 @@ public class AuraItem extends Item implements IAuraUser {
 	
 	public static AuraContainer getAuraContainer(ItemStack itemStack) {
 		// If NBT hasn't been initilized yet
-		if(!(itemStack.stackTagCompound != null))
+		if((itemStack.stackTagCompound == null))
 			updateNBT(itemStack, ((AuraItem) itemStack.getItem()).getAuraContainer());
 		
 		// Get values

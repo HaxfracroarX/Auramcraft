@@ -77,25 +77,20 @@ public class Textures {
 	public static class GUI {
 		// Book of Aura
 		public static final ResourceLocation GUI_BOOK_OF_AURA = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookGUI.png");
-		
-		// Book of Aura - Items
 		public static final ResourceLocation GUI_BOOK_OF_AURA_CRYSTAL = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookAuraCrystal.png");
 		public static final ResourceLocation GUI_BOOK_OF_AURA_SHARDS = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookElementalShards.png");
-		
-		// Book of Aura - Wands
 		public static final ResourceLocation GUI_BOOK_OF_AURA_WAND_CAP_IRON = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookIronWandCaps.png");
-		
-		// Book of Aura - Alchemy
 		public static final ResourceLocation GUI_BOOK_OF_AURA_ALCHEMY = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookAlchemy.png");
-		
-		// Book of Aura - Magika
 		public static final ResourceLocation GUI_BOOK_OF_AURA_MAGIKA = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookMagika.png");
-		
-		// Book of Aura - Infusion
 		public static final ResourceLocation GUI_BOOK_OF_AURA_INFUSION = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookInfusion.png");
 		public static final ResourceLocation GUI_BOOK_OF_AURA_INFUSION_TIER_1 = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookTier1Infusion.png");
 		
-		// Functional
+		// Block
 		public static final ResourceLocation GUI_INFUSION_TABLE = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "infusionTable.png");
+		public static final ResourceLocation GUI_AURA_FIRE = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "Fire.png");
+		public static final ResourceLocation GUI_AURA_EARTH = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "Earth.png");
+		public static final ResourceLocation GUI_AURA_WATER = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "Water.png");
+		public static final ResourceLocation GUI_AURA_AIR = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "Air.png");
+		public static final ResourceLocation GUI_AURA_AURAM = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "Auram.png");
 	}
 }

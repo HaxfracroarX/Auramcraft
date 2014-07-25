@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import scala.util.control.Exception;
 import net.minecraft.block.material.Material;
-import com.auramcraft.item.Auras;
 import com.auramcraft.reference.Tiers;
 import com.auramcraft.util.LogHelper;
 

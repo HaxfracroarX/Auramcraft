@@ -1,4 +1,4 @@
-package com.auramcraft.item;
+package com.auramcraft.api;
 
 import java.util.ArrayList;
 

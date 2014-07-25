@@ -1,6 +1,5 @@
 package com.auramcraft.api;
 
-import com.auramcraft.item.Auras;
 
 public interface IAuraContainer {
 	/**

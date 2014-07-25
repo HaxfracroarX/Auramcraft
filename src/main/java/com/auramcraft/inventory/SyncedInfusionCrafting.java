@@ -1,9 +1,9 @@
 package com.auramcraft.inventory;
 
 import com.auramcraft.api.AuraContainer;
+import com.auramcraft.api.Auras;
 import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.api.IAuraUser;
-import com.auramcraft.item.Auras;
 import com.auramcraft.tileentity.TileEntityAuramcraft;
 import com.auramcraft.tileentity.TileEntityAuramcraftInventory;
 import net.minecraft.inventory.Container;

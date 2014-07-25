@@ -1,6 +1,7 @@
 package com.auramcraft.init;
 
 import net.minecraft.item.Item;
+import com.auramcraft.api.Auras;
 import com.auramcraft.item.*;
 import com.auramcraft.item.tools.*;
 import com.auramcraft.reference.Names;

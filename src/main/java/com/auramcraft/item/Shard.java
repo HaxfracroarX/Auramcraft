@@ -2,6 +2,7 @@ package com.auramcraft.item;
 
 import net.minecraft.item.Item;
 import com.auramcraft.Auramcraft;
+import com.auramcraft.api.Auras;
 import com.auramcraft.creativetab.CreativeTab;
 
 public class Shard extends AuraItem {
