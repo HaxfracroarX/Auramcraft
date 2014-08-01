@@ -7,7 +7,6 @@ import com.auramcraft.item.pages.*;
 import com.auramcraft.player.stats.AuramcraftPlayerStats;
 import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Textures;
-import com.sun.prism.paint.Color;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
