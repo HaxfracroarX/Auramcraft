@@ -46,11 +46,8 @@ public class GuiInfusionTable extends GuiContainer {
 	    drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	    
 	    for(int ii = 0; ii < 5; ii++) {
-	    	System.out.print(ii);
 	    	if(tileEntityInfusionTable.getStackInSlot(10) != null) {
-	    		LogHelper.info("Item found");
 	    		if(AuraItem.getAuraContainer(tileEntityInfusionTable.getStackInSlot(10)).containsAura(auras[ii])) {
-		    		LogHelper.info("Drawing...");
 		    		mc.getTextureManager().bindTexture(auraTex[ii]);
 		    		drawTexturedModalRect(x+slotX[ii], y+slotY, 0, 0, 32, 32);
 	    		}
