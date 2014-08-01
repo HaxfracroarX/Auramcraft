@@ -10,30 +10,25 @@ import com.auramcraft.reference.Textures;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class GuiInfusionTable extends GuiContainer {
 	private TileEntityInfusionTable tileEntityInfusionTable;
 	private int[] slotX = new int[] {
-			15, 49, 82, 115, 148
+			17, 51, 85, 117, 150
 	};
-	private int slotY = 59;
+	private int slotY = 60;
 	private Auras[] auras = Auras.values();
-	private ResourceLocation[] auraTex = new ResourceLocation[] {
-		Textures.GUI.GUI_AURA_FIRE,
-		Textures.GUI.GUI_AURA_EARTH,
-		Textures.GUI.GUI_AURA_WATER,
-		Textures.GUI.GUI_AURA_AIR,
-		Textures.GUI.GUI_AURA_AURAM
-	};
 	
 	public GuiInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
 		super(new ContainerInfusionTable(inventoryPlayer, world, x, y, z));
 		this.tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
-		xSize = 191;
+		xSize = 190;
 		ySize = 179;
 	}
 	
@@ -45,12 +40,11 @@ public class GuiInfusionTable extends GuiContainer {
 	    int y = (height - ySize) / 2;
 	    drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 	    
-	    for(int ii = 0; ii < 5; ii++) {
+	    mc.getTextureManager().bindTexture(Textures.GUI.GUI_INFUSION_TABLE_AURAS);
+	    for(int i = 0; i < 5; i++) {
 	    	if(tileEntityInfusionTable.getStackInSlot(10) != null) {
-	    		if(AuraItem.getAuraContainer(tileEntityInfusionTable.getStackInSlot(10)).containsAura(auras[ii])) {
-		    		mc.getTextureManager().bindTexture(auraTex[ii]);
-		    		drawTexturedModalRect(x+slotX[ii], y+slotY, 0, 0, 32, 32);
-	    		}
+	    		if(AuraItem.getAuraContainer(tileEntityInfusionTable.getStackInSlot(10)).containsAura(auras[i]))
+		    		drawTexturedModalRect(x+slotX[i], y+slotY, ((auras[i].getTier()-1)*32)+1, (auras[i].getId()*32)+1, 30, 30);
 	    	}
 	    }
 	}
