@@ -13,7 +13,7 @@ public class AuraSlot extends Slot {
 	private SyncedInventoryCraftResult craftResult;
 	private World worldObj;
 	
-	public AuraSlot(IInventory inventory, SyncedInfusionCrafting craftMatrix, SyncedInventoryCraftResult craftResult, World worldObj, int id, int x, int y) {
+	public AuraSlot(SyncedInventory inventory, SyncedInfusionCrafting craftMatrix, SyncedInventoryCraftResult craftResult, World worldObj, int id, int x, int y) {
 		super(inventory, id, x, y);
 		this.craftMatrix = craftMatrix;
 		this.craftResult = craftResult;
@@ -29,6 +29,7 @@ public class AuraSlot extends Slot {
 			craftMatrix.setAuraContainer(AuraItem.getAuraContainer(getStack()));
 		else
 			craftMatrix.setAuraContainer(new AuraContainer(0, 0));
+		inventory.closeInventory();
 		craftResult.setInventorySlotContents(0, AuramcraftCraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
     }
 }
