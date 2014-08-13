@@ -8,6 +8,7 @@ import com.auramcraft.player.stats.AuramcraftPlayerStats;
 import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Textures;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 
@@ -41,8 +42,31 @@ public class GuiBookOfAura extends GuiContainer {
 	    pages = stats.getPages();
 	    book = new ArrayList<BookPage>();
 		makeBook(book, pages);
-		book.add(new PageInfusion()); // Testing
 		page = book.get(currentPage);
+	}
+	
+	@Override
+	public void drawGuiContainerForegroundLayer(int var2, int var3) {
+		int x = (width - xSize) / 2;
+	    int y = (height - ySize) / 2;
+	    
+		String researched = researchedPages(pages) + " Entries";
+		String page = "p. "+(currentPage+1);
+		
+		GL11.glScalef(0.75f, 0.75f, 1f);
+		
+		fontRendererObj.drawString(researched, x + (xSize - fontRendererObj.getStringWidth(researched)), y*2 + ySize + fontRendererObj.FONT_HEIGHT, 4210752);
+		fontRendererObj.drawString(page, (int) (x + (xSize - fontRendererObj.getStringWidth(page)) + xSize/2.25), (int) (y*1.5 + fontRendererObj.FONT_HEIGHT), 4210752);
+	}
+	
+	@Override
+	public void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		mc.getTextureManager().bindTexture(page.getTexture());
+		
+		int x = (width - xSize) / 2;
+	    int y = (height - ySize) / 2;
+	    drawTexturedModalRect(x, y, 20, 1, xSize, ySize);
 	}
 	
 	private int researchedPages(boolean[] pages) {
@@ -106,29 +130,5 @@ public class GuiBookOfAura extends GuiContainer {
 				flipRight();
 				break;
 		}
-	}
-	
-	@Override
-	public void drawGuiContainerForegroundLayer(int var2, int var3) {
-		int x = (width - xSize) / 2;
-	    int y = (height - ySize) / 2;
-	    
-		String researched = "You have " + researchedPages(pages) + " pages researched";
-		String page = ""+currentPage;
-		
-		GL11.glScalef(0.75f, 0.75f, 1f);
-		
-		fontRendererObj.drawString(researched, (int) (width - fontRendererObj.getStringWidth(researched) * 0.25) / 2, y + 210, 4210752);
-		fontRendererObj.drawString(page, (int) (width - fontRendererObj.getStringWidth(page) * 0.25) - x*2 + 10, y + 35, 4210752);
-	}
-	
-	@Override
-	public void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(page.getTexture());
-		
-		int x = (width - xSize) / 2;
-	    int y = (height - ySize) / 2;
-	    drawTexturedModalRect(x, y, 20, 1, xSize, ySize);
 	}
 }
