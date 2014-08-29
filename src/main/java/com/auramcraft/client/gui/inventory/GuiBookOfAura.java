@@ -55,8 +55,8 @@ public class GuiBookOfAura extends GuiContainer {
 		
 		GL11.glScalef(0.75f, 0.75f, 1f);
 		
-		fontRendererObj.drawString(researched, x + (xSize - fontRendererObj.getStringWidth(researched)), y*2 + ySize + fontRendererObj.FONT_HEIGHT, 4210752);
-		fontRendererObj.drawString(page, (int) (x + (xSize - fontRendererObj.getStringWidth(page)) + xSize/2.25), (int) (y*1.5 + fontRendererObj.FONT_HEIGHT), 4210752);
+		fontRendererObj.drawString(researched, ((xSize - fontRendererObj.getStringWidth(researched))) + x, y*2 + ySize + fontRendererObj.FONT_HEIGHT, 4210752);
+		fontRendererObj.drawString(page, (int) ((xSize - fontRendererObj.getStringWidth(page)) + xSize/2.25) + x, (int) (y*1.5 + fontRendererObj.FONT_HEIGHT), 4210752);
 	}
 	
 	@Override
