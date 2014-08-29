@@ -1,7 +1,7 @@
 package com.auramcraft.reference;
 
 public class PageIds {
-	public static final int BOOKLENGHT = 7;
+	public static final int BOOKLENGTH = 7;
 	
 	public static final int EMPTY = -1;
 	public static final int SHARDS = 0;

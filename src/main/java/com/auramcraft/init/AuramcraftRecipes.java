@@ -45,6 +45,10 @@ public class AuramcraftRecipes {
 		// Sticks
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.stick, 4), AuramcraftBlocks.aumWoodPlanks);
 		
+		/*	SMELTING	*/
+		// Aura Crystal
+		GameRegistry.addSmelting(AuramcraftItems.gemstone, new ItemStack(AuramcraftItems.auraCrystal), 0f);
+		
 		LogHelper.info("Initialized Recipes");
 	}
 }
