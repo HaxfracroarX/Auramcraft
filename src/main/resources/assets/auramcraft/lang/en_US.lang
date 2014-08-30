@@ -24,3 +24,6 @@ tile.blueLightstone.name=Blue Lightstone
 tile.auroraBlock.name=Aurora Block
 tile.shadowLantern.name=Shadow Lantern
 tile.holyLamp.name=Holy Lamp
+
+achievement.makeAuraCrystal=Aura Crystal
+achievement.makeAuraCrystal.desc=Make an Aura Crystal

@@ -1,4 +1,4 @@
-package com.auramcraft.player.stats;
+package com.auramcraft.stats;
 
 import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Reference;

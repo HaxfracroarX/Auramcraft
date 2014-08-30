@@ -50,6 +50,9 @@ public class Auramcraft {
 		
 		// Recipes
 		AuramcraftRecipes.init();
+		
+		// Achievements
+		AuramcraftAchievements.init();
 	}
 	
 	@EventHandler

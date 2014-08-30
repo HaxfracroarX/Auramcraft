@@ -1,13 +1,15 @@
 package com.auramcraft.handler;
 
 import com.auramcraft.block.AumwoodSapling;
+import com.auramcraft.init.AuramcraftAchievements;
 import com.auramcraft.init.AuramcraftItems;
-import com.auramcraft.player.stats.AuramcraftPlayerStats;
 import com.auramcraft.reference.PageIds;
+import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,6 +43,13 @@ public class AuramcraftEventHandler {
 					((AumwoodSapling)block).func_149878_d(world, x, y, z, event.world.rand);
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void onItemCrafted(ItemCraftedEvent event) {
+		// Make Aura Crystal
+		if(event.crafting.getItem() == AuramcraftItems.auraCrystal)
+			Minecraft.getMinecraft().thePlayer.addStat(AuramcraftAchievements.makeAuraCrystal, 1);
 	}
 	
 	@SubscribeEvent
