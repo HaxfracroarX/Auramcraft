@@ -31,11 +31,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class AumWoodSapling extends BlockSapling {
+public class AumwoodSapling extends BlockSapling {
 	@SideOnly(Side.CLIENT)
 	private IIcon texture;
 	
-    public AumWoodSapling()
+    public AumwoodSapling()
     {
     	setHardness(1f);
     	setStepSound(soundTypeGrass);

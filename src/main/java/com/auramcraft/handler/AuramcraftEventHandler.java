@@ -1,6 +1,6 @@
 package com.auramcraft.handler;
 
-import com.auramcraft.block.AumWoodSapling;
+import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.player.stats.AuramcraftPlayerStats;
 import com.auramcraft.reference.PageIds;
@@ -31,14 +31,14 @@ public class AuramcraftEventHandler {
 		Block block = event.block;
 		int meta = world.getBlockMetadata(x, y, z);
 		
-		if(block instanceof AumWoodSapling) {
+		if(block instanceof AumwoodSapling) {
 			event.setResult(Result.ALLOW);
 			
 			if(!world.isRemote) {
 				double chance = 0.15d;
 				
 				if(world.rand.nextFloat() < chance)
-					((AumWoodSapling)block).func_149878_d(world, x, y, z, event.world.rand);
+					((AumwoodSapling)block).func_149878_d(world, x, y, z, event.world.rand);
 			}
 		}
 	}

@@ -18,8 +18,8 @@ public class Textures {
 		public static final String BLOCK_AUMWOOD_SAPLING = RESOURCE_PREFIX + "AumwoodSapling";
 		public static final String BLOCK_AUMWOOD_TOP = RESOURCE_PREFIX + "AumwoodTop";
 		public static final String BLOCK_AUMWOOD_SIDE = RESOURCE_PREFIX + "AumwoodSide";
-		public static final String BLOCK_AUMWOOD_PLANKS = RESOURCE_PREFIX + "AumWoodPlanks";
-		public static final String BLOCK_AUMWOOD_LEAVES = RESOURCE_PREFIX + "AumWoodLeaves";
+		public static final String BLOCK_AUMWOOD_PLANKS = RESOURCE_PREFIX + "AumwoodPlanks";
+		public static final String BLOCK_AUMWOOD_LEAVES = RESOURCE_PREFIX + "AumwoodLeaves";
 		
 		// Flora
 		public static final String BLOCK_AURAM_FLOWER = RESOURCE_PREFIX + "AuramFlower";
