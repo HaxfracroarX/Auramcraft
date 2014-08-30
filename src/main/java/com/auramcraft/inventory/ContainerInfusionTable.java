@@ -43,9 +43,6 @@ public class ContainerInfusionTable extends Container {
 		craftResult.openInventory();
 		auraItem.openInventory();
 		
-		// Adding output slot
-		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, auraItem, 0, 102, 24));
-		
 		// Adding Infusion Table crafting slots
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++)
@@ -53,7 +50,11 @@ public class ContainerInfusionTable extends Container {
 		}
 		
 		// Adding the AuraItem
-		addSlotToContainer(new AuraSlot(auraItem, craftMatrix, craftResult, worldObj, 9, 156, 24));
+		AuraSlot auraSlot = new AuraSlot(auraItem, craftMatrix, craftResult, worldObj, 9, 156, 24);
+		addSlotToContainer(auraSlot);
+		
+		// Adding output slot
+		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, auraItem, auraSlot, 0, 102, 24));
 		
 		// Adding the player's inventory
 		for (int i = 0; i < 3; i++) {
