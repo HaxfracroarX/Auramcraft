@@ -4,10 +4,10 @@ public class Names {
 	public static class Blocks {
 		public static final String GEMSTONEORE = "gemstoneOre";
 		public static final String INFUSIONTABLE = "infusionTable";
-		public static final String AUMWOODPLANKS = "aumWoodPlanks";
-		public static final String AUMWOODLEAVES = "aumWoodLeaves";
-		public static final String AUMWOOD = "aumWood";
-		public static final String AUMWOODSAPLING = "aumWoodSapling";
+		public static final String AUMWOODPLANKS = "aumwoodPlanks";
+		public static final String AUMWOODLEAVES = "aumwoodLeaves";
+		public static final String AUMWOOD = "aumwood";
+		public static final String AUMWOODSAPLING = "aumwoodSapling";
 		public static final String AURAMFLOWER = "auramFlower";
 		public static final String BLUELIGHTSTONE = "blueLightstone";
 		public static final String AURORABLOCK = "auroraBlock";

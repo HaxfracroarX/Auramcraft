@@ -15,10 +15,10 @@ item.charmOfAllseeing.name=Charm of Allseeing
 
 tile.gemstoneOre.name=Gemstone Ore
 tile.infusionTable.name=Infusion Table
-tile.aumWoodPlanks.name=Aumwood Planks
-tile.aumWoodLeaves.name=Aumwood Leaves
-tile.aumWood.name=Aumwood
-tile.aumWoodSapling.name=Aumwood Sapling
+tile.aumwoodPlanks.name=Aumwood Planks
+tile.aumwoodLeaves.name=Aumwood Leaves
+tile.aumwood.name=Aumwood
+tile.aumwoodSapling.name=Aumwood Sapling
 tile.auramFlower.name=Auram Flower
 tile.blueLightstone.name=Blue Lightstone
 tile.auroraBlock.name=Aurora Block
