@@ -22,7 +22,7 @@ group= "com.auramcraft" // http://maven.apache.org/guides/mini/guide-naming-conv
 archivesBaseName = "auramcraft"
 
 minecraft {
-    version = "1.7.2-10.12.1.1120"
+    version = "1.7.2-10.12.2.1121"
     assetDir = "eclipse/assets"
 }
 
