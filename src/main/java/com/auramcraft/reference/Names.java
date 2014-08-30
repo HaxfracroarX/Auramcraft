@@ -26,6 +26,8 @@ public class Names {
 		public static final String DEVTOY = "devToy";
 		public static final String BOOK_OF_AURA = "bookOfAura";
 		public static final String AURACRYSTAL = "auraCrystal";
+		public static final String ALLSEEING_STONE = "allseeingStone";
+		public static final String CHARM_OF_ALLSEEING = "charmOfAllseeing";
 	}
 	
 	public static class NBT {

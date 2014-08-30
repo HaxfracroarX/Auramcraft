@@ -10,6 +10,8 @@ item.sacrificialDagger.name=Sacrificial Dagger
 item.devToy.name=Dev Toy
 item.bookOfAura.name=Book Of Aura
 item.auraCrystal.name=Aura Crystal
+item.allseeingStone.name=Allseeing Stone
+item.charmOfAllseeing.name=Charm of Allseeing
 
 tile.gemstoneOre.name=Gemstone Ore
 tile.infusionTable.name=Infusion Table

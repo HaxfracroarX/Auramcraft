@@ -5,6 +5,7 @@ import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

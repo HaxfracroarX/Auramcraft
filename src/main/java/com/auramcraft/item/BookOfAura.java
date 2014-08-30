@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 public class BookOfAura extends Item {
 	public BookOfAura() {
-		super();
 		setUnlocalizedName(Names.Items.BOOK_OF_AURA);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setTextureName(Textures.Items.ITEM_BOOK_OF_AURA);

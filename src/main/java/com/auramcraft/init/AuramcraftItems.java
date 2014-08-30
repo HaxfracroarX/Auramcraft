@@ -19,10 +19,12 @@ public class AuramcraftItems {
 	public static final Item devToy = new DevToy();
 	public static final Item bookOfAura = new BookOfAura();
 	public static final Item auraCrystal = new AuraCrystal(25);
+	public static final Item allseeingStone = new AllseeingStone();
+	public static final Item charmOfAllseeing = new CharmOfAllseeing();
 	public static Item auraCrystal1 = new AuraCrystal(500);
 	
 	public static void init() {
-		// Temp
+		// Creative use only
 		((AuraCrystal) auraCrystal1).getAuraContainer().store(new Object[] {
 				Auras.FIRE, 100,
 				Auras.EARTH, 100,
@@ -41,6 +43,10 @@ public class AuramcraftItems {
 		GameRegistry.registerItem(devToy, Names.Items.DEVTOY);
 		GameRegistry.registerItem(bookOfAura, Names.Items.BOOK_OF_AURA);
 		GameRegistry.registerItem(auraCrystal, Names.Items.AURACRYSTAL);
+		GameRegistry.registerItem(allseeingStone, Names.Items.ALLSEEING_STONE);
+		GameRegistry.registerItem(charmOfAllseeing, Names.Items.CHARM_OF_ALLSEEING);
+		
+		// Creative only
 		GameRegistry.registerItem(auraCrystal1, Names.Items.AURACRYSTAL + "1");
 		
 		LogHelper.info("Initialized Items");
