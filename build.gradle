@@ -23,7 +23,7 @@ archivesBaseName = "auramcraft"
 
 minecraft {
     version = "1.7.2-10.12.2.1121"
-    assetDir = "eclipse/assets"
+    runDir = "eclipse/assets"
 }
 
 processResources
