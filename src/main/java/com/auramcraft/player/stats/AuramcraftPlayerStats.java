@@ -11,7 +11,7 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 	private boolean book;
-	private byte[] pages = new byte[PageIds.BOOKLENGHT];
+	private byte[] pages = new byte[PageIds.BOOKLENGTH];
 	
 	public AuramcraftPlayerStats() {
 		book = false;

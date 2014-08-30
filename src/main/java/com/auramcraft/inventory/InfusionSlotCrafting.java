@@ -14,20 +14,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 
 public class InfusionSlotCrafting extends SlotCrafting {
 	private SyncedInventory auraItem;
+	private AuraSlot auraSlot;
 	
-	public InfusionSlotCrafting(EntityPlayer entityPlayer, IInventory matrix, IInventory result, SyncedInventory auraItem, int id, int x, int y) {
+	public InfusionSlotCrafting(EntityPlayer entityPlayer, IInventory matrix, IInventory result, SyncedInventory auraItem, AuraSlot auraSlot, int id, int x, int y) {
 		super(entityPlayer, matrix, result, id, x, y);
 		this.auraItem = auraItem;
+		this.auraSlot = auraSlot;
 	}
 	
 	@Override
 	public void onPickupFromSlot(EntityPlayer entityPlayer, ItemStack itemStack) {
-		super.onPickupFromSlot(entityPlayer, itemStack);
-		
 		// Get container from itemstack
 		AuraContainer container = AuraItem.getAuraContainer(auraItem.getStackInSlot(0));
 		
@@ -37,6 +38,7 @@ public class InfusionSlotCrafting extends SlotCrafting {
 		for(int i = 0; i < recipes.size(); i++) {
 			// if the recipe matches
 			if(recipes.get(i).getRecipeOutput().getItem().equals(itemStack.getItem())) {
+				
 				// Get the aura needed by the recipe
 				ArrayList auras = new ArrayList(recipes.get(i).getRecipeAuras());
 				
@@ -45,15 +47,21 @@ public class InfusionSlotCrafting extends SlotCrafting {
 					Auras aura = (Auras) auras.get(j);
 					int amount = (Integer) auras.get(j+1);
 					
-					container.remove(aura, amount);
+					// If it can't remove the aura needed
+					if(!container.remove(aura, amount))
+						return;
 				}
 				
 				// Update container
 				AuraItem.updateNBT(auraItem.getStackInSlot(0), container);
 				
 				// No more looping necessary
-				return;
+				break;
 			}
 		}
+		
+		super.onPickupFromSlot(entityPlayer, itemStack);
+		
+		auraSlot.onSlotChanged();
 	}
 }

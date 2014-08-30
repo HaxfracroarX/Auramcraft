@@ -10,6 +10,8 @@ import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.inventory.SyncedInfusionCrafting;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,6 +26,18 @@ public class AuramcraftCraftingManager {
 	
 	private AuramcraftCraftingManager() {
 		/* SHAPED */
+		// Charm of Allseeing
+		addRecipe(new ItemStack(AuramcraftItems.charmOfAllseeing), new Object[] {
+			"GGG",
+			"GAG",
+			"GGG",
+			'G', Items.gold_ingot,
+			'A', AuramcraftItems.allseeingStone
+		}, new Object[] {
+			Auras.FIRE, 75,
+			Auras.WATER, 75,
+			Auras.AURAM, 100
+		});
 		
 		/* SHAPELESS */
 		// Fire Shard
@@ -61,6 +75,14 @@ public class AuramcraftCraftingManager {
 			Auras.AURAM, 8
 		});
 		
+		// Allseeing Stone
+		addShapelessRecipe(new ItemStack(AuramcraftItems.allseeingStone), new Object[] {
+			Blocks.stone
+		}, new Object[] {
+			Auras.WATER, 50,
+			Auras.AURAM, 25
+		});
+		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
 		
 		LogHelper.info("Infusion Recipes Initialized");
@@ -70,14 +92,17 @@ public class AuramcraftCraftingManager {
 		return instance;
 	}
 	
-	public InfusionShapedRecipes addRecipe(ItemStack itemStack, Object... objects) {
+	public InfusionShapedRecipes addRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
+		ArrayList itemList = new ArrayList();
+		ArrayList auraList = new ArrayList();
+		
 		String s = "";
 		int i = 0;
 		int j = 0;
 		int k = 0;
 		
-		if(objects[i] instanceof String[]) {
-			String[] astring = (String[]) ((String[]) objects[i++]);
+		if(items[i] instanceof String[]) {
+			String[] astring = (String[]) ((String[]) items[i++]);
 			
 			for(int l = 0; l < astring.length; ++l) {
 				String s1 = astring[l];
@@ -87,8 +112,8 @@ public class AuramcraftCraftingManager {
 			}
 		}
 		else {
-			while(objects[i] instanceof String) {
-				String s2 = (String) objects[i++];
+			while(items[i] instanceof String) {
+				String s2 = (String) items[i++];
 				++k;
 				j = s2.length();
 				s = s + s2;
@@ -97,18 +122,18 @@ public class AuramcraftCraftingManager {
 		
 		HashMap hashmap;
 		
-		for(hashmap = new HashMap(); i < objects.length; i += 2) {
-			Character character = (Character) objects[i];
+		for(hashmap = new HashMap(); i < items.length; i += 2) {
+			Character character = (Character) items[i];
 			ItemStack itemstack1 = null;
 			
-			if(objects[i + 1] instanceof Item) {
-				itemstack1 = new ItemStack((Item) objects[i + 1]);
+			if(items[i + 1] instanceof Item) {
+				itemstack1 = new ItemStack((Item) items[i + 1]);
 			}
-			else if(objects[i + 1] instanceof Block) {
-				itemstack1 = new ItemStack((Block) objects[i + 1], 1, 32767);
+			else if(items[i + 1] instanceof Block) {
+				itemstack1 = new ItemStack((Block) items[i + 1], 1, 32767);
 			}
-			else if(objects[i + 1] instanceof ItemStack) {
-				itemstack1 = (ItemStack) objects[i + 1];
+			else if(items[i + 1] instanceof ItemStack) {
+				itemstack1 = (ItemStack) items[i + 1];
 			}
 			
 			hashmap.put(character, itemstack1);
@@ -127,7 +152,13 @@ public class AuramcraftCraftingManager {
 			}
 		}
 		
-		InfusionShapedRecipes shapedrecipes = new InfusionShapedRecipes(j, k, aitemstack, itemStack);
+		for(Object item : aitemstack)
+			itemList.add(item);
+		
+		for(Object aura : auras)
+			auraList.add(aura);
+		
+		InfusionShapedRecipes shapedrecipes = new InfusionShapedRecipes(j, k, itemList, itemStack, auraList);
 		this.recipes.add(shapedrecipes);
 		return shapedrecipes;
 	}

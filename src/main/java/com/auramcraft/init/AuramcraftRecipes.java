@@ -38,12 +38,25 @@ public class AuramcraftRecipes {
 			'Y', Items.book
 		});
 		
+		// Aura Crystal
+		GameRegistry.addRecipe(new ItemStack(AuramcraftItems.auraCrystal), new Object[] {
+			"XGX",
+			"GDG",
+			"XGX",
+			'X', Blocks.glass,
+			'G', Items.gold_ingot,
+			'D', Items.diamond
+		});
+		
 		/*	SHAPELESS	*/
 		// Aum Wood Planks
 		GameRegistry.addShapelessRecipe(new ItemStack(AuramcraftBlocks.aumWoodPlanks, 4), AuramcraftBlocks.aumWood);
 		
 		// Sticks
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.stick, 4), AuramcraftBlocks.aumWoodPlanks);
+		
+		/*	SMELTING	*/
+		// None
 		
 		LogHelper.info("Initialized Recipes");
 	}

@@ -1,6 +1,10 @@
 package com.auramcraft.item.crafting;
 
+import java.util.ArrayList;
 import java.util.List;
+import com.auramcraft.api.Auras;
+import com.auramcraft.inventory.SyncedInfusionCrafting;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -10,19 +14,26 @@ import net.minecraft.world.World;
 public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
 	/** How many horizontal slots this recipe is wide. */
 	public final int recipeWidth;
+	
 	/** How many vertical slots this recipe uses. */
 	public final int recipeHeight;
-	/** array of ItemStack that composes the recipe. */
-	public final ItemStack[] recipeItems;
+	
+	/** List of ItemStack that composes the recipe. */
+	public final List recipeItems;
+	
+	/** List of Auras that compose the recipe */
+	public final List recipeAuras;
+	
 	/** The ItemStack that you get when craft the recipe. */
 	private ItemStack recipeOutput;
 	private boolean field_92101_f = false;
 	
-	public InfusionShapedRecipes(int recipeWidth, int recipeHeight, ItemStack[] recipeItems, ItemStack recipeOutput) {
+	public InfusionShapedRecipes(int recipeWidth, int recipeHeight, List recipeItems, ItemStack recipeOutput, List recipeAuras) {
 		this.recipeWidth = recipeWidth;
 		this.recipeHeight = recipeHeight;
 		this.recipeItems = recipeItems;
 		this.recipeOutput = recipeOutput;
+		this.recipeAuras = recipeAuras;
 	}
 	
 	@Override
@@ -32,15 +43,29 @@ public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
 	
 	@Override
 	public boolean matches(InventoryCrafting inventoryCrafting, World world) {
+		if(!(inventoryCrafting instanceof SyncedInfusionCrafting))
+			return false;
+		
+		SyncedInfusionCrafting crafting = (SyncedInfusionCrafting) inventoryCrafting;
+		ArrayList items = new ArrayList(recipeItems);
+		ArrayList auras = new ArrayList(recipeAuras);
+		
+		// Check auras
+		for(int i = 0; i < auras.size(); i = i + 2) {
+			Auras aura = (Auras) auras.get(i);
+			int amount = (Integer) auras.get(i+1);
+			
+			if(!(crafting.getAuraContainer().getStoredAura(aura) >= amount))
+				return false;
+		}
+		// Check 3x3 grid
 		for(int i = 0; i <= 3 - this.recipeWidth; ++i) {
 			for(int j = 0; j <= 3 - this.recipeHeight; ++j) {
-				if(this.checkMatch(inventoryCrafting, i, j, true)) {
+				if(this.checkMatch(crafting, i, j, true))
 					return true;
-				}
 				
-				if(this.checkMatch(inventoryCrafting, i, j, false)) {
+				if(this.checkMatch(crafting, i, j, false))
 					return true;
-				}
 			}
 		}
 		
@@ -56,10 +81,10 @@ public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
 				
 				if(i1 >= 0 && j1 >= 0 && i1 < this.recipeWidth && j1 < this.recipeHeight) {
 					if(par4) {
-						itemstack = this.recipeItems[this.recipeWidth - i1 - 1 + j1 * this.recipeWidth];
+						itemstack = (ItemStack) this.recipeItems.get(this.recipeWidth - i1 - 1 + j1 * this.recipeWidth);
 					}
 					else {
-						itemstack = this.recipeItems[i1 + j1 * this.recipeWidth];
+						itemstack = (ItemStack) this.recipeItems.get(i1 + j1 * this.recipeWidth);
 					}
 				}
 				
@@ -109,13 +134,8 @@ public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
 		return recipeWidth * recipeHeight;
 	}
 
-	public InfusionShapedRecipes func_92100_c() {
-		 this.field_92101_f = true;
-		 return this;
-	}
-
 	@Override
 	public List getRecipeAuras() {
-		return null;
+		return recipeAuras;
 	}
 }

@@ -38,7 +38,7 @@ public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
 		ArrayList items = new ArrayList(recipeItems);
 		ArrayList auras = new ArrayList(recipeAuras);
 		
-		// Checks 3x3 grid
+		// Check 3x3 grid
 		for(int i = 0; i < 3; ++i) {
 			for(int j = 0; j < 3; ++j) {
 				ItemStack itemstack = crafting.getStackInRowAndColumn(j, i);
@@ -64,7 +64,7 @@ public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
 			}
 		}
 		
-		// Checks auras
+		// Check auras
 		for(int i = 0; i < auras.size(); i = i + 2) {
 			Auras aura = (Auras) auras.get(i);
 			int amount = (Integer) auras.get(i+1);

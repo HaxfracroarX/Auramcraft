@@ -56,6 +56,10 @@ public class Textures {
 		public static final String ITEM_AIR_SHARD = RESOURCE_PREFIX + "AirShard";
 		public static final String ITEM_AURAM_SHARD = RESOURCE_PREFIX + "AuramShard";
 		
+		// Allseeing
+		public static final String ITEM_ALLSEEING_STONE = RESOURCE_PREFIX + "AllseeingStone";
+		public static final String ITEM_CHARM_OF_ALLSEEING = RESOURCE_PREFIX + "AllseeingCharm";
+		
 		// Misc
 		public static final String ITEM_GEMSTONE = RESOURCE_PREFIX + "Gemstone";
 		public static final String ITEM_SACRIFICIAL_DAGGER = RESOURCE_PREFIX + "SacrificialDagger";
