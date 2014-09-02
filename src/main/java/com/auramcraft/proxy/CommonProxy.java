@@ -10,7 +10,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public abstract class CommonProxy implements IProxy {
+public class CommonProxy implements IProxy {
 	@Override
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityInfusionTable.class, "tile." + Names.Blocks.INFUSIONTABLE);
@@ -25,5 +25,10 @@ public abstract class CommonProxy implements IProxy {
 	@Override
 	public void registerGUIHandlers() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Auramcraft.instance, new GuiHandler());
+	}
+
+	@Override
+	public void registerRenderers() {
+		// Do nothing
 	}
 }
