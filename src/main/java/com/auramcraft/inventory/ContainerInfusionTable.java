@@ -54,17 +54,17 @@ public class ContainerInfusionTable extends Container {
 		addSlotToContainer(auraSlot);
 		
 		// Adding output slot
-		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, auraItem, auraSlot, 0, 102, 24));
+		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, auraItem, auraSlot, 10, 102, 24));
 		
 		// Adding the player's inventory
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++)
-				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 11 + j * 19, 96 + i * 19));
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 11, 11 + j * 19, 96 + i * 19));
 		}
 		
 		// Adding the player's hotbar
         for (int i = 0; i < 9; i++)
-            this.addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 19, 158));
+            this.addSlotToContainer(new Slot(inventoryPlayer, i + 39, 11 + i * 19, 158));
         
         // Checking for matching recipies
         onCraftMatrixChanged(craftMatrix);

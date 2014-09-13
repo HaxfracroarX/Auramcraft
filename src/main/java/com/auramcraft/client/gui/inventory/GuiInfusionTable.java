@@ -9,6 +9,7 @@ import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.Textures;
 import com.auramcraft.tileentity.TileEntityInfusionTable;
 import com.auramcraft.util.LogHelper;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -33,6 +34,15 @@ public class GuiInfusionTable extends GuiContainer {
 	}
 	
 	@Override
+	public void initGui() {
+		int x = (width - xSize) / 2;
+	    int y = (height - ySize) / 2;
+		
+		for(int i = 0; i < 5; i++)
+			buttonList.add(new AuraButton(i, x+slotX[i], y+slotY, auras[i]));
+	}
+	
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(Textures.GUI.GUI_INFUSION_TABLE);
@@ -44,8 +54,22 @@ public class GuiInfusionTable extends GuiContainer {
 	    for(int i = 0; i < 5; i++) {
 	    	if(tileEntityInfusionTable.getStackInSlot(10) != null) {
 	    		if(AuraItem.getAuraContainer(tileEntityInfusionTable.getStackInSlot(10)).containsAura(auras[i]))
-		    		drawTexturedModalRect(x+slotX[i], y+slotY, ((auras[i].getTier()-1)*32)+1, (auras[i].getId()*32)+1, 30, 30);
+		    		((GuiButton) buttonList.get(i)).visible = true;
+	    		else
+	    			((GuiButton) buttonList.get(i)).visible = false;
 	    	}
 	    }
+	}
+	
+	@Override
+	protected void actionPerformed(GuiButton button) {
+		switch(button.id) {
+			case 0:
+				
+				break;
+			case 1:
+				
+				break;
+		}
 	}
 }

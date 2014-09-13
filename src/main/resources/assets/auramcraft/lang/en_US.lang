@@ -25,5 +25,7 @@ tile.auroraBlock.name=Aurora Block
 tile.shadowLantern.name=Shadow Lantern
 tile.holyLamp.name=Holy Lamp
 
-achievement.makeAuraCrystal=Aura Crystal
-achievement.makeAuraCrystal.desc=Make an Aura Crystal
+achievement.auraCrystal=Aura Crystal
+achievement.auraCrystal.desc=Make an Aura Crystal
+achievement.elementalShards=Elemental Shards
+achievement.elementalShards.desc=Right-Click a Gemstone Ore with an Aura Crystal

@@ -47,9 +47,9 @@ public class AuramcraftEventHandler {
 	
 	@SubscribeEvent
 	public void onItemCrafted(ItemCraftedEvent event) {
-		// Make Aura Crystal
+		// Aura Crystal Achievement
 		if(event.crafting.getItem() == AuramcraftItems.auraCrystal)
-			Minecraft.getMinecraft().thePlayer.addStat(AuramcraftAchievements.makeAuraCrystal, 1);
+			event.player.addStat(AuramcraftAchievements.auraCrystal, 1);
 	}
 	
 	@SubscribeEvent
