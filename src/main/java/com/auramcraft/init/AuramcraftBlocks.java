@@ -1,17 +1,19 @@
 package com.auramcraft.init;
 
 import net.minecraft.block.Block;
+
 import com.auramcraft.block.*;
 import com.auramcraft.reference.Names;
 import com.auramcraft.util.LogHelper;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AuramcraftBlocks {
 	public static final Block gemstoneOre = new GemstoneOre();
 	public static final Block infusionTable = new InfusionTable();
-	public static final Block aumWoodPlanks = new AumwoodPlanks();
-	public static final Block aumWoodLeaves = new AumwoodLeaves();
-	public static final Block aumWood = new Aumwood();
+	public static final Block aumWoodPlanks = new AumWoodPlanks();
+	public static final Block aumWoodLeaves = new AumWoodLeaves();
+	public static final Block aumWood = new AumWood();
 	public static final Block aumWoodSapling = new AumwoodSapling();
 	public static final Block auramFlower = new AuramFlower();
 	public static final Block blueLightstone = new BlueLightstone();

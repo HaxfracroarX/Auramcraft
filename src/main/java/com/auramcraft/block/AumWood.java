@@ -13,12 +13,12 @@ import com.auramcraft.reference.Textures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Aumwood extends Block {
+public class AumWood extends Block {
 	@SideOnly(Side.CLIENT)
 	public static IIcon topIcon;
 	public static IIcon sideIcon;
 	
-	public Aumwood() {
+	public AumWood() {
 		super(Material.wood);
 		setHardness(1f);
 		setResistance(1f);

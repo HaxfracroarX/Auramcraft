@@ -25,13 +25,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
-public class AumwoodLeaves extends BlockLeavesBase implements IShearable {
+public class AumWoodLeaves extends BlockLeavesBase implements IShearable {
 	@SideOnly(Side.CLIENT)
 	private IIcon texture;
 	
 	int[] tree;
 	
-	public AumwoodLeaves() {
+	public AumWoodLeaves() {
 		super(Material.leaves, true);
 		setHardness(1f);
 		setResistance(1f);

@@ -7,8 +7,8 @@ import com.auramcraft.reference.Textures;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public class AumwoodPlanks extends Block {
-	public AumwoodPlanks() {
+public class AumWoodPlanks extends Block {
+	public AumWoodPlanks() {
 		super(Material.wood);
 		setHardness(1f);
 		setResistance(1f);
