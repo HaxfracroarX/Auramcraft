@@ -50,10 +50,10 @@ public class AuramcraftRecipes {
 		
 		/*	SHAPELESS	*/
 		// Aum Wood Planks
-		GameRegistry.addShapelessRecipe(new ItemStack(AuramcraftBlocks.aumWoodPlanks, 4), AuramcraftBlocks.aumWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(AuramcraftBlocks.aumwoodPlanks, 4), AuramcraftBlocks.aumwood);
 		
 		// Sticks
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.stick, 4), AuramcraftBlocks.aumWoodPlanks);
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.stick, 4), AuramcraftBlocks.aumwoodPlanks);
 		
 		/*	SMELTING	*/
 		// None

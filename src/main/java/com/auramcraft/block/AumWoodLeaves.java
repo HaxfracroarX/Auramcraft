@@ -25,13 +25,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
-public class AumWoodLeaves extends BlockLeavesBase implements IShearable {
+public class AumwoodLeaves extends BlockLeavesBase implements IShearable {
 	@SideOnly(Side.CLIENT)
 	private IIcon texture;
 	
 	int[] tree;
 	
-	public AumWoodLeaves() {
+	public AumwoodLeaves() {
 		super(Material.leaves, true);
 		setHardness(1f);
 		setResistance(1f);
@@ -110,7 +110,7 @@ public class AumWoodLeaves extends BlockLeavesBase implements IShearable {
 	
 	@Override
 	public Item getItemDropped(int metadata, Random random, int fortune) {
-		return Item.getItemFromBlock(AuramcraftBlocks.aumWoodSapling);
+		return Item.getItemFromBlock(AuramcraftBlocks.aumwoodSapling);
 	}
 	
 	@Override

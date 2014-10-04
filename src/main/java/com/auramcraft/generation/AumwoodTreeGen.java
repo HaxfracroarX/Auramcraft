@@ -105,7 +105,7 @@ public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenera
 			else {
 				Block block2 = world.getBlock(x, y - 1, z);
 				
-				boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) AuramcraftBlocks.aumWoodSapling);
+				boolean isSoil = block2.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, (BlockSapling) AuramcraftBlocks.aumwoodSapling);
 				if(isSoil && y < 256 - l - 1) {
 					block2.onPlantGrow(world, x, y - 1, z, x, y, z);
 					int k2;
@@ -124,7 +124,7 @@ public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenera
 									Block block1 = world.getBlock(l2, k2, i2);
 									
 									if(block1.isAir(world, l2, k2, i2) || block1.isLeaves(world, l2, k2, i2)) {
-										this.setBlockAndNotifyAdequately(world, l2, k2, i2, AuramcraftBlocks.aumWoodLeaves, 2);
+										this.setBlockAndNotifyAdequately(world, l2, k2, i2, AuramcraftBlocks.aumwoodLeaves, 2);
 									}
 								}
 							}
@@ -135,7 +135,7 @@ public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenera
 						Block block3 = world.getBlock(x, y + k2, z);
 						
 						if(block3.isAir(world, x, y + k2, z) || block3.isLeaves(world, x, y + k2, z)) {
-							this.setBlockAndNotifyAdequately(world, x, y + k2, z, AuramcraftBlocks.aumWood, 2);
+							this.setBlockAndNotifyAdequately(world, x, y + k2, z, AuramcraftBlocks.aumwood, 2);
 						}
 					}
 					
