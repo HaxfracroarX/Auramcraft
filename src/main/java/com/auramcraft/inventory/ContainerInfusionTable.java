@@ -64,7 +64,7 @@ public class ContainerInfusionTable extends Container {
 		
 		// Adding the player's hotbar
         for (int i = 0; i < 9; i++)
-            this.addSlotToContainer(new Slot(inventoryPlayer, i + 39, 11 + i * 19, 158));
+            this.addSlotToContainer(new Slot(inventoryPlayer, i + 38, 11 + i * 19, 158));
         
         // Checking for matching recipies
         onCraftMatrixChanged(craftMatrix);
@@ -77,7 +77,7 @@ public class ContainerInfusionTable extends Container {
 	
 	@Override
 	public boolean canInteractWith(EntityPlayer entityPlayer) {
-		return true;
+		return tileEntityInfusionTable.isUseableByPlayer(entityPlayer);
 	}
 	
 	@Override

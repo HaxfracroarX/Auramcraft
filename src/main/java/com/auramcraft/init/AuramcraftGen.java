@@ -1,7 +1,6 @@
 package com.auramcraft.init;
 
 import net.minecraft.launchwrapper.LogWrapper;
-import sun.util.logging.resources.logging;
 import com.auramcraft.generation.*;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
