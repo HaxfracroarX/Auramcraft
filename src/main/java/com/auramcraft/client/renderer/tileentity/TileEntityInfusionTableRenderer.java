@@ -53,7 +53,6 @@ public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer {
 		GL11.glRotatef(180F, -1F, 0F, 0F);
 		GL11.glRotatef(angle, 0.0F, 1.0F, 0.0F);
 		
-		
 		// Bind Texture
 		bindTexture(Textures.Models.MODEL_INFUSION_TABLE);
 		

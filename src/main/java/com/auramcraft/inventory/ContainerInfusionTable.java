@@ -43,28 +43,28 @@ public class ContainerInfusionTable extends Container {
 		craftResult.openInventory();
 		auraItem.openInventory();
 		
-		// Adding Infusion Table crafting slots
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(craftMatrix, j + i * 3, i * 19 + 6, (3 - j) + j * 20));
-		}
-		
-		// Adding the AuraItem
-		AuraSlot auraSlot = new AuraSlot(auraItem, craftMatrix, craftResult, worldObj, 9, 156, 24);
-		addSlotToContainer(auraSlot);
-		
-		// Adding output slot
-		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, auraItem, auraSlot, 10, 102, 24));
-		
+		// Adding the player's hotbar
+        for (int i = 0; i < 9; i++)
+            this.addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 19, 158));
+        
 		// Adding the player's inventory
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++)
-				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 11, 11 + j * 19, 96 + i * 19));
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 11 + j * 19, 96 + i * 19));
 		}
 		
-		// Adding the player's hotbar
-        for (int i = 0; i < 9; i++)
-            this.addSlotToContainer(new Slot(inventoryPlayer, i + 38, 11 + i * 19, 158));
+		// Adding Infusion Table crafting slots
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 3; j++)
+				addSlotToContainer(new Slot(craftMatrix, j + i * 3 + 37, 6 + i * 19, 3 + j * 19));
+		}
+		
+		// Adding the AuraItem
+		AuraSlot auraSlot = new AuraSlot(auraItem, craftMatrix, craftResult, worldObj, 46, 156, 24);
+		addSlotToContainer(auraSlot);
+		
+		// Adding output slot
+		addSlotToContainer(new InfusionSlotCrafting(inventoryPlayer.player, craftMatrix, craftResult, auraItem, auraSlot, 47, 102, 24));
         
         // Checking for matching recipies
         onCraftMatrixChanged(craftMatrix);
