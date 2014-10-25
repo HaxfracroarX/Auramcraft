@@ -12,6 +12,7 @@ import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -188,7 +189,7 @@ public class AuramcraftCraftingManager {
 		this.recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
 	}
 	
-	public ItemStack findMatchingRecipe(SyncedInfusionCrafting crafting, World world) {
+	public ItemStack findMatchingRecipe(InventoryCrafting crafting, World world) {
 		int i = 0;
 		ItemStack itemstack = null;
 		ItemStack itemstack1 = null;

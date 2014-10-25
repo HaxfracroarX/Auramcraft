@@ -8,29 +8,29 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.item.crafting.IInfusionRecipe;
+import com.auramcraft.tileentity.TileEntityInfusionTable;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 
-public class InfusionSlotCrafting extends SlotCrafting {
-	private SyncedInventory auraItem;
-	private AuraSlot auraSlot;
+public class InfusionSlotCrafting extends Slot {
+	private TileEntityInfusionTable tileEntity;
 	
-	public InfusionSlotCrafting(EntityPlayer entityPlayer, IInventory matrix, IInventory result, SyncedInventory auraItem, AuraSlot auraSlot, int id, int x, int y) {
-		super(entityPlayer, matrix, result, id, x, y);
-		this.auraItem = auraItem;
-		this.auraSlot = auraSlot;
+	public InfusionSlotCrafting(TileEntityInfusionTable tileEntity, int id, int x, int y) {
+		super(tileEntity, id, x, y);
+		this.tileEntity = tileEntity;
 	}
 	
 	@Override
 	public void onPickupFromSlot(EntityPlayer entityPlayer, ItemStack itemStack) {
 		// Get container from itemstack
-		AuraContainer container = AuraItem.getAuraContainer(auraItem.getStackInSlot(0));
+		AuraContainer container = AuraItem.getAuraContainer(tileEntity.getStackInSlot(9));
 		
 		// Get infusion recipes
 		ArrayList<IInfusionRecipe> recipes = new ArrayList<IInfusionRecipe>((Collection<? extends IInfusionRecipe>) AuramcraftCraftingManager.getInstance().getRecipeList());
@@ -53,7 +53,7 @@ public class InfusionSlotCrafting extends SlotCrafting {
 				}
 				
 				// Update container
-				AuraItem.updateNBT(auraItem.getStackInSlot(0), container);
+				AuraItem.updateNBT(tileEntity.getStackInSlot(9), container);
 				
 				// No more looping necessary
 				break;
@@ -61,7 +61,5 @@ public class InfusionSlotCrafting extends SlotCrafting {
 		}
 		
 		super.onPickupFromSlot(entityPlayer, itemStack);
-		
-		auraSlot.onSlotChanged();
 	}
 }
