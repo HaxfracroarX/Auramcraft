@@ -1,7 +1,7 @@
 package com.auramcraft.network.message;
 
 import net.minecraft.tileentity.TileEntity;
-import com.auramcraft.tileentity.TileEntityAuramcraft;
+import com.auramcraft.tileentity.TileAuramcraft;
 import io.netty.buffer.ByteBuf;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -14,7 +14,7 @@ public class MessageTileEntityAuramcraft implements IMessage, IMessageHandler<Me
 	
 	public MessageTileEntityAuramcraft() {}
 	
-	public MessageTileEntityAuramcraft(TileEntityAuramcraft tileEntity) {
+	public MessageTileEntityAuramcraft(TileAuramcraft tileEntity) {
 		this.x = tileEntity.xCoord;
 		this.y = tileEntity.yCoord;
 		this.z = tileEntity.zCoord;
@@ -41,8 +41,8 @@ public class MessageTileEntityAuramcraft implements IMessage, IMessageHandler<Me
 	public IMessage onMessage(MessageTileEntityAuramcraft message, MessageContext ctx) {
 		TileEntity tileEntity = FMLClientHandler.instance().getClient().theWorld.getTileEntity(message.x, message.y, message.z);
 		
-		if(tileEntity instanceof TileEntityAuramcraft) {
-			((TileEntityAuramcraft) tileEntity).setOrientation(message.orientation);
+		if(tileEntity instanceof TileAuramcraft) {
+			((TileAuramcraft) tileEntity).setOrientation(message.orientation);
 		}
 		return null;
 	}

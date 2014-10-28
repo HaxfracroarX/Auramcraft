@@ -5,7 +5,7 @@ import org.lwjgl.opengl.GL12;
 import com.auramcraft.client.renderer.model.ModelInfusionTable;
 import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.Textures;
-import com.auramcraft.tileentity.TileEntityInfusionTable;
+import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.block.Block;
@@ -16,16 +16,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityInfusionTableRenderer extends TileEntitySpecialRenderer {
+public class TileInfusionTableRenderer extends TileEntitySpecialRenderer {
 	public ModelInfusionTable model = new ModelInfusionTable();
 	
 	@Override
 	public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float partialTime) {
-		TileEntityInfusionTable tileEntityInfusionTable = (TileEntityInfusionTable) tileEntity;
+		TileInfusionTable tileEntityInfusionTable = (TileInfusionTable) tileEntity;
 		render(tileEntityInfusionTable, x, y, z);
 	}
 	
-	public void render(TileEntityInfusionTable tileEntity, double x, double y, double z) {
+	public void render(TileInfusionTable tileEntity, double x, double y, double z) {
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_LIGHTING);
 		

@@ -7,10 +7,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-public class TileEntityAuramcraftInventory extends TileEntityAuramcraft implements IInventory {
+public class TileAuramcraftInventory extends TileAuramcraft implements IInventory {
 	protected ItemStack[] inventory;
 	
-	public TileEntityAuramcraftInventory(String name, Block block, int slots) {
+	public TileAuramcraftInventory(String name, Block block, int slots) {
 		super(name, block);
 		inventory = new ItemStack[slots];
 	}

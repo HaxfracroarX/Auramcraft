@@ -4,7 +4,6 @@ import javax.swing.Icon;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
-import com.auramcraft.tileentity.TileEntityInfusionTable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

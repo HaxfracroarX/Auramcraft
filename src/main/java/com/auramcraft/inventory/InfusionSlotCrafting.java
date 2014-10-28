@@ -8,7 +8,7 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.item.crafting.IInfusionRecipe;
-import com.auramcraft.tileentity.TileEntityInfusionTable;
+import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,9 +20,9 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 
 public class InfusionSlotCrafting extends Slot {
-	private TileEntityInfusionTable tileEntity;
+	private TileInfusionTable tileEntity;
 	
-	public InfusionSlotCrafting(TileEntityInfusionTable tileEntity, int id, int x, int y) {
+	public InfusionSlotCrafting(TileInfusionTable tileEntity, int id, int x, int y) {
 		super(tileEntity, id, x, y);
 		this.tileEntity = tileEntity;
 	}

@@ -7,7 +7,7 @@ import com.auramcraft.reference.GUIIds;
 import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.RenderIds;
 import com.auramcraft.reference.Textures;
-import com.auramcraft.tileentity.TileEntityInfusionTable;
+import com.auramcraft.tileentity.TileInfusionTable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -56,12 +56,12 @@ public class InfusionTable extends BlockContainer {
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
-		return new TileEntityInfusionTable();
+		return new TileInfusionTable();
 	}
 	
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLiving, ItemStack itemStack) {
-		if(world.getTileEntity(x, y, z) instanceof TileEntityInfusionTable) {
+		if(world.getTileEntity(x, y, z) instanceof TileInfusionTable) {
 			int direction = 0;
 			int facing = MathHelper.floor_double(entityLiving.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 			
@@ -74,13 +74,13 @@ public class InfusionTable extends BlockContainer {
 			else if(facing == 3)
 				direction = ForgeDirection.WEST.ordinal();
 			
-			((TileEntityInfusionTable) world.getTileEntity(x, y, z)).setOrientation(direction);
+			((TileInfusionTable) world.getTileEntity(x, y, z)).setOrientation(direction);
 		}
 	}
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		if(world.isRemote && world.getTileEntity(x, y, z) instanceof TileEntityInfusionTable)
+		if(world.isRemote && world.getTileEntity(x, y, z) instanceof TileInfusionTable)
 			player.openGui(Auramcraft.instance, GUIIds.INFUSION_TABLE, world, x, y, z);
 		return true;
 	}

@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import com.auramcraft.api.Auras;
 import com.auramcraft.init.AuramcraftItems;
-import com.auramcraft.inventory.SyncedInfusionCrafting;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;

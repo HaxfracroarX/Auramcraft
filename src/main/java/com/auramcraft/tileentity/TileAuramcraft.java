@@ -14,13 +14,13 @@ import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityAuramcraft extends TileEntity {
+public class TileAuramcraft extends TileEntity {
 	protected ForgeDirection orientation;
 	protected int numPlayersOpen;
 	protected String name;
 	protected Block block;
 	
-	public TileEntityAuramcraft(String name, Block block) {
+	public TileAuramcraft(String name, Block block) {
 		orientation = ForgeDirection.SOUTH;
 		this.name = name;
 		this.block = block;

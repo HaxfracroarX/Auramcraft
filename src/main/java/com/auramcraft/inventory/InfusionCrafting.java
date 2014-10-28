@@ -4,17 +4,17 @@ import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.api.IAuraUser;
-import com.auramcraft.tileentity.TileEntityAuramcraft;
-import com.auramcraft.tileentity.TileEntityAuramcraftInventory;
+import com.auramcraft.tileentity.TileAuramcraft;
+import com.auramcraft.tileentity.TileAuramcraftInventory;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 
-public class SyncedInfusionCrafting extends InventoryCrafting implements IAuraUser {
+public class InfusionCrafting extends InventoryCrafting implements IAuraUser {
 	private AuraContainer auraContainer;
-	private TileEntityAuramcraftInventory entity;
+	private TileAuramcraftInventory entity;
 	private int start;
 	
-	public SyncedInfusionCrafting(Container container, int width, int height, int maxAura, int tier, TileEntityAuramcraftInventory entity, int start) {
+	public InfusionCrafting(Container container, int width, int height, int maxAura, int tier, TileAuramcraftInventory entity, int start) {
 		super(container, width, height);
 		auraContainer = new AuraContainer(maxAura, tier);
 		this.entity = entity;

@@ -3,7 +3,7 @@ package com.auramcraft.item.crafting;
 import java.util.ArrayList;
 import java.util.List;
 import com.auramcraft.api.Auras;
-import com.auramcraft.inventory.SyncedInfusionCrafting;
+import com.auramcraft.inventory.InfusionCrafting;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -43,10 +43,10 @@ public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
 	
 	@Override
 	public boolean matches(InventoryCrafting inventoryCrafting, World world) {
-		if(!(inventoryCrafting instanceof SyncedInfusionCrafting))
+		if(!(inventoryCrafting instanceof InfusionCrafting))
 			return false;
 		
-		SyncedInfusionCrafting crafting = (SyncedInfusionCrafting) inventoryCrafting;
+		InfusionCrafting crafting = (InfusionCrafting) inventoryCrafting;
 		ArrayList items = new ArrayList(recipeItems);
 		ArrayList auras = new ArrayList(recipeAuras);
 		

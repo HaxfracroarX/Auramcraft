@@ -7,7 +7,7 @@ import com.auramcraft.inventory.ContainerInfusionTable;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.Textures;
-import com.auramcraft.tileentity.TileEntityInfusionTable;
+import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -19,7 +19,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class GuiInfusionTable extends GuiContainer {
-	private TileEntityInfusionTable tileEntityInfusionTable;
+	private TileInfusionTable tileInfusionTable;
 	private int[] slotX = new int[] {
 			17, 51, 85, 117, 150
 	};
@@ -28,7 +28,7 @@ public class GuiInfusionTable extends GuiContainer {
 	
 	public GuiInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
 		super(new ContainerInfusionTable(inventoryPlayer, world, x, y, z));
-		this.tileEntityInfusionTable = (TileEntityInfusionTable) world.getTileEntity(x, y, z);
+		this.tileInfusionTable = (TileInfusionTable) world.getTileEntity(x, y, z);
 		xSize = 190;
 		ySize = 179;
 	}
@@ -52,8 +52,8 @@ public class GuiInfusionTable extends GuiContainer {
 	    
 	    mc.getTextureManager().bindTexture(Textures.GUI.GUI_INFUSION_TABLE_AURAS);
 	    for(int i = 0; i < 5; i++) {
-	    	if(tileEntityInfusionTable.getStackInSlot(10) != null) {
-	    		if(AuraItem.getAuraContainer(tileEntityInfusionTable.getStackInSlot(10)).containsAura(auras[i]))
+	    	if(tileInfusionTable.getStackInSlot(10) != null) {
+	    		if(AuraItem.getAuraContainer(tileInfusionTable.getStackInSlot(10)).containsAura(auras[i]))
 		    		((GuiButton) buttonList.get(i)).visible = true;
 	    		else
 	    			((GuiButton) buttonList.get(i)).visible = false;

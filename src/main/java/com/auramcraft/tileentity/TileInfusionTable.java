@@ -14,8 +14,8 @@ import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityInfusionTable extends TileEntityAuramcraftInventory {
-	public TileEntityInfusionTable() {
+public class TileInfusionTable extends TileAuramcraftInventory {
+	public TileInfusionTable() {
 		super("Infusion Table", AuramcraftBlocks.infusionTable, 11);
 	}
 	
