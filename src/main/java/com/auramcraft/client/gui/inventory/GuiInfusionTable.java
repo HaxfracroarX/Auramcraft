@@ -65,10 +65,19 @@ public class GuiInfusionTable extends GuiContainer {
 	protected void actionPerformed(GuiButton button) {
 		switch(button.id) {
 			case 0:
-				
+				LogHelper.info("Button 1");
 				break;
 			case 1:
-				
+				LogHelper.info("Button 2");
+				break;
+			case 2:
+				LogHelper.info("Button 3");
+				break;
+			case 3:
+				LogHelper.info("Button 4");
+				break;
+			case 4:
+				LogHelper.info("Button 5");
 				break;
 		}
 	}

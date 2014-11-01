@@ -28,6 +28,11 @@ public class InfusionSlotCrafting extends Slot {
 	}
 	
 	@Override
+	public boolean isItemValid(ItemStack itemStack) {
+		return false;
+	}
+	
+	@Override
 	public void onPickupFromSlot(EntityPlayer entityPlayer, ItemStack itemStack) {
 		// Get container from itemstack
 		AuraContainer container = AuraItem.getAuraContainer(tileEntity.getStackInSlot(9));

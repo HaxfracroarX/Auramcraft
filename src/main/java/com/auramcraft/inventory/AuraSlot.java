@@ -13,6 +13,7 @@ public class AuraSlot extends Slot {
 		super(inventory, id, x, y);
 	}
 	
+	@Override
 	public boolean isItemValid(ItemStack itemStack) {
         return itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1 && AuraItem.getAuraContainer(itemStack).isDrainable();
     }

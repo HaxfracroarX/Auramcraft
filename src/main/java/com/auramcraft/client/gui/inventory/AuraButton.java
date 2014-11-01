@@ -12,7 +12,7 @@ public class AuraButton extends GuiButton {
 	private Auras aura;
 	
 	public AuraButton(int id, int x, int y, Auras aura) {
-		super(id, x, y, 30, 30, "");
+		super(id, x, y, 31, 31, "");
 		this.texture = Textures.GUI.GUI_INFUSION_TABLE_AURAS;
 		this.aura = aura;
 	}
