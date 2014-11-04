@@ -23,7 +23,7 @@ public class BookOfAura extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		player.openGui(Auramcraft.instance, GUIIds.BOOK_OF_AURA, world, 0, 0, 0);
+		player.openGui(Auramcraft.instance, GUIIds.BOOK_OF_AURA, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		return stack;
 	}
 }

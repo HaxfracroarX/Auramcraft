@@ -35,6 +35,7 @@ public class GuiInfusionTable extends GuiContainer {
 	
 	@Override
 	public void initGui() {
+		super.initGui();
 		int x = (width - xSize) / 2;
 	    int y = (height - ySize) / 2;
 		

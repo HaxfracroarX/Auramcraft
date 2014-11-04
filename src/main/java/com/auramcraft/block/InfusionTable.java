@@ -80,7 +80,7 @@ public class InfusionTable extends BlockContainer {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		if(world.isRemote && world.getTileEntity(x, y, z) instanceof TileInfusionTable)
+		if(world.isRemote)
 			player.openGui(Auramcraft.instance, GUIIds.INFUSION_TABLE, world, x, y, z);
 		return true;
 	}

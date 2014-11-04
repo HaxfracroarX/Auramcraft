@@ -25,6 +25,8 @@ public class ContainerInfusionTable extends Container {
 		this.tileInfusionTable = (TileInfusionTable) world.getTileEntity(x, y, z);
 		this.worldObj = world;
 		
+		tileInfusionTable.openInventory();
+		
 		// Add Infusion Table crafting slots
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++)
@@ -48,12 +50,12 @@ public class ContainerInfusionTable extends Container {
 		// Add Player Inventory
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 9; j++)
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 11 + j * 19, 96 + i * 19));
 		}
 		
 		// Add Player Hotbar
 		for(int i = 0; i < 9; i++)
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+			addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 19, 158));
 	}
 
 	@Override
@@ -96,5 +98,10 @@ public class ContainerInfusionTable extends Container {
             slotObject.onPickupFromSlot(player, stackInSlot);
         }
         return stack;
+	}
+	
+	@Override
+	public void onContainerClosed(EntityPlayer player) {
+		tileInfusionTable.closeInventory();
 	}
 }
