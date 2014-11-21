@@ -15,6 +15,7 @@ public class AuraButton extends GuiButton {
 		super(id, x, y, 31, 31, "");
 		this.texture = Textures.GUI.GUI_INFUSION_TABLE_AURAS;
 		this.aura = aura;
+		visible = false;
 	}
 	
 	@Override

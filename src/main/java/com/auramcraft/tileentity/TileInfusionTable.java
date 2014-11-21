@@ -20,7 +20,12 @@ public class TileInfusionTable extends TileAuramcraftInventory {
 	}
 	
 	public InventoryCrafting getCraftingMatrix(Container container) {
-		InventoryCrafting matrix = new InventoryCrafting(container, 3, 3);
+		InventoryCrafting matrix = new InventoryCrafting(container, 3, 3) {
+			@Override
+			public ItemStack getStackInSlotOnClosing(int slot) {
+				return null;
+			}
+		};
 		
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++)

@@ -33,14 +33,14 @@ public class ContainerInfusionTable extends Container {
 				addSlotToContainer(new Slot(tileInfusionTable, j + i * 3, 6 + i * 19, 3 + j * 19));
 		}
 		
-		// Add Player inventory
-		bindPlayerInventory(inventoryPlayer);
-		
 		// Add the AuraItem
 		addSlotToContainer(new AuraSlot(tileInfusionTable, 9, 156, 24));
 		
 		// Add output slot
 		addSlotToContainer(new InfusionSlotCrafting(tileInfusionTable, 10, 102, 24));
+		
+		// Add Player inventory
+		bindPlayerInventory(inventoryPlayer);
 		
         // Check for matching recipies
         onCraftMatrixChanged(tileInfusionTable.getCraftingMatrix(this));
