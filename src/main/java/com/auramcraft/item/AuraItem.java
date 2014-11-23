@@ -73,7 +73,7 @@ public class AuraItem extends Item implements IAuraUser {
 	
 	public static AuraContainer getAuraContainer(ItemStack itemStack) {
 		// If NBT hasn't been initilized yet
-		if((itemStack.stackTagCompound == null))
+		if(itemStack.stackTagCompound == null)
 			updateNBT(itemStack, ((AuraItem) itemStack.getItem()).getAuraContainer());
 		
 		// Get values

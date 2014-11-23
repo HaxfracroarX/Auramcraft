@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
+public class InfusionShapelessRecipes implements IInfusionRecipe {
 	/** The ItemStack that you get when craft the recipe. */
 	private final ItemStack recipeOutput;
 	
@@ -57,9 +57,8 @@ public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
 						}
 					}
 					
-					if(!flag) {
+					if(!flag)
 						return false;
-					}
 				}
 			}
 		}
@@ -68,6 +67,8 @@ public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
 		for(int i = 0; i < auras.size(); i = i + 2) {
 			Auras aura = (Auras) auras.get(i);
 			int amount = (Integer) auras.get(i+1);
+			
+			LogHelper.info(aura + " " + amount);
 			
 			if(!(crafting.getAuraContainer().getStoredAura(aura) >= amount))
 				return false;
@@ -91,6 +92,7 @@ public class InfusionShapelessRecipes implements IRecipe, IInfusionRecipe {
 		return recipeOutput;
 	}
 	
+	@Override
 	public List getRecipeAuras() {
 		return recipeAuras;
 	}

@@ -11,7 +11,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
+public class InfusionShapedRecipes implements IInfusionRecipe {
 	/** How many horizontal slots this recipe is wide. */
 	public final int recipeWidth;
 	
@@ -58,6 +58,7 @@ public class InfusionShapedRecipes implements IRecipe, IInfusionRecipe {
 			if(!(crafting.getAuraContainer().getStoredAura(aura) >= amount))
 				return false;
 		}
+		
 		// Check 3x3 grid
 		for(int i = 0; i <= 3 - this.recipeWidth; ++i) {
 			for(int j = 0; j <= 3 - this.recipeHeight; ++j) {

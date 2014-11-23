@@ -6,6 +6,7 @@ import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.util.LogHelper;
+import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -20,6 +21,7 @@ import net.minecraft.world.World;
 public class ContainerInfusionTable extends Container {
 	private TileInfusionTable tileInfusionTable;
 	private World worldObj;
+	private InfusionCrafting matrix;
 	
 	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
 		this.tileInfusionTable = (TileInfusionTable) world.getTileEntity(x, y, z);
@@ -37,13 +39,24 @@ public class ContainerInfusionTable extends Container {
 		addSlotToContainer(new AuraSlot(tileInfusionTable, 9, 156, 24));
 		
 		// Add output slot
-		addSlotToContainer(new InfusionSlotCrafting(tileInfusionTable, 10, 102, 24));
+		addSlotToContainer(new InfusionSlotCrafting(tileInfusionTable, 10, 102, 24, matrix));
 		
 		// Add Player inventory
 		bindPlayerInventory(inventoryPlayer);
 		
-        // Check for matching recipies
-        onCraftMatrixChanged(tileInfusionTable.getCraftingMatrix(this));
+        // Setup matrix and check for matching recipies
+		if(getSlot(9).getStack() != null) {
+			AuraContainer auraContainer = AuraItem.getAuraContainer(tileInfusionTable.getStackInSlot(9));
+			matrix = new InfusionCrafting(this, 3, 3, auraContainer.getMaxAura(), auraContainer.getTier());
+			matrix.setAuraContainer(auraContainer);
+			
+			for(int i = 0; i < 3; i++) {
+				for(int j = 0; j < 3; j++)
+					matrix.setInventorySlotContents(j + i * 3, tileInfusionTable.getStackInSlot(j + i * 3));
+			}
+			
+			onCraftMatrixChanged(matrix);
+		}
 	}
 	
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -60,7 +73,7 @@ public class ContainerInfusionTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		tileInfusionTable.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe((InventoryCrafting) inventory, worldObj));
+		tileInfusionTable.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe((InfusionCrafting) inventory, worldObj));
 	}
 	
 	@Override

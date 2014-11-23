@@ -126,15 +126,12 @@ public class AuramcraftCraftingManager {
 			Character character = (Character) items[i];
 			ItemStack itemstack1 = null;
 			
-			if(items[i + 1] instanceof Item) {
+			if(items[i + 1] instanceof Item)
 				itemstack1 = new ItemStack((Item) items[i + 1]);
-			}
-			else if(items[i + 1] instanceof Block) {
+			else if(items[i + 1] instanceof Block)
 				itemstack1 = new ItemStack((Block) items[i + 1], 1, 32767);
-			}
-			else if(items[i + 1] instanceof ItemStack) {
+			else if(items[i + 1] instanceof ItemStack)
 				itemstack1 = (ItemStack) items[i + 1];
-			}
 			
 			hashmap.put(character, itemstack1);
 		}
@@ -144,12 +141,10 @@ public class AuramcraftCraftingManager {
 		for(int i1 = 0; i1 < j * k; ++i1) {
 			char c0 = s.charAt(i1);
 			
-			if(hashmap.containsKey(Character.valueOf(c0))) {
+			if(hashmap.containsKey(Character.valueOf(c0)))
 				aitemstack[i1] = ((ItemStack) hashmap.get(Character.valueOf(c0))).copy();
-			}
-			else {
+			else
 				aitemstack[i1] = null;
-			}
 		}
 		
 		for(Object item : aitemstack)
@@ -198,13 +193,11 @@ public class AuramcraftCraftingManager {
 			ItemStack itemstack2 = crafting.getStackInSlot(j);
 			
 			if(itemstack2 != null) {
-				if(i == 0) {
+				if(i == 0)
 					itemstack = itemstack2;
-				}
 				
-				if(i == 1) {
+				if(i == 1)
 					itemstack1 = itemstack2;
-				}
 				
 				++i;
 			}
@@ -227,9 +220,8 @@ public class AuramcraftCraftingManager {
 			for(j = 0; j < this.recipes.size(); ++j) {
 				IRecipe irecipe = (IRecipe) this.recipes.get(j);
 				
-				if(irecipe.matches(crafting, world)) {
+				if(irecipe.matches(crafting, world))
 					return irecipe.getCraftingResult(crafting);
-				}
 			}
 			
 			return null;

@@ -21,10 +21,12 @@ import net.minecraft.item.crafting.IRecipe;
 
 public class InfusionSlotCrafting extends Slot {
 	private TileInfusionTable tileEntity;
+	private InfusionCrafting matrix;
 	
-	public InfusionSlotCrafting(TileInfusionTable tileEntity, int id, int x, int y) {
+	public InfusionSlotCrafting(TileInfusionTable tileEntity, int id, int x, int y, InfusionCrafting matrix) {
 		super(tileEntity, id, x, y);
 		this.tileEntity = tileEntity;
+		this.matrix = matrix;
 	}
 	
 	@Override
@@ -43,7 +45,6 @@ public class InfusionSlotCrafting extends Slot {
 		for(int i = 0; i < recipes.size(); i++) {
 			// if the recipe matches
 			if(recipes.get(i).getRecipeOutput().getItem().equals(itemStack.getItem())) {
-				
 				// Get the aura needed by the recipe
 				ArrayList auras = new ArrayList(recipes.get(i).getRecipeAuras());
 				
@@ -64,6 +65,13 @@ public class InfusionSlotCrafting extends Slot {
 				break;
 			}
 		}
+		
+		// Deletes the items used in the recipe
+		for(int i = 0; i < 9; i++)
+			tileEntity.decrStackSize(i, 1);
+		
+		// Check for changes
+		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe(matrix, entityPlayer.worldObj));
 		
 		super.onPickupFromSlot(entityPlayer, itemStack);
 	}

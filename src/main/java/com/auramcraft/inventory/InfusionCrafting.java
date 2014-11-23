@@ -8,29 +8,19 @@ import com.auramcraft.tileentity.TileAuramcraft;
 import com.auramcraft.tileentity.TileAuramcraftInventory;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.ItemStack;
 
 public class InfusionCrafting extends InventoryCrafting implements IAuraUser {
 	private AuraContainer auraContainer;
-	private TileAuramcraftInventory entity;
-	private int start;
 	
-	public InfusionCrafting(Container container, int width, int height, int maxAura, int tier, TileAuramcraftInventory entity, int start) {
+	public InfusionCrafting(Container container, int width, int height, int maxAura, int tier) {
 		super(container, width, height);
 		auraContainer = new AuraContainer(maxAura, tier);
-		this.entity = entity;
-		this.start = start;
 	}
 	
 	@Override
-	public void openInventory() {
-		for(int i = start; i < 9 + start; i++)
-			setInventorySlotContents(i, entity.getStackInSlot(i));
-	}
-	
-	@Override
-    public void closeInventory() {
-		for(int i = start; i < 9 + start; i++)
-			entity.setInventorySlotContents(i, getStackInSlot(i));
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		return null;
 	}
 	
 	@Override
@@ -38,6 +28,7 @@ public class InfusionCrafting extends InventoryCrafting implements IAuraUser {
 		return auraContainer;
 	}
 	
+	@Override
 	public void setAuraContainer(AuraContainer auraContainer) {
 		this.auraContainer = auraContainer;
 	}

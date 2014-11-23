@@ -53,10 +53,14 @@ public class GuiInfusionTable extends GuiContainer {
 	    
 	    mc.getTextureManager().bindTexture(Textures.GUI.GUI_INFUSION_TABLE_AURAS);
 	    for(int i = 0; i < 5; i++) {
-	    	if(tileInfusionTable.getStackInSlot(10) != null) {
-	    		if(AuraItem.getAuraContainer(tileInfusionTable.getStackInSlot(10)).containsAura(auras[i]))
-		    		((GuiButton) buttonList.get(i)).visible = true;
+	    	if(tileInfusionTable.getStackInSlot(9) != null) {
+	    		if(AuraItem.getAuraContainer(tileInfusionTable.getStackInSlot(9)).containsAura(auras[i]))
+	    			((GuiButton) buttonList.get(i)).visible = true;
 	    		else
+	    			((GuiButton) buttonList.get(i)).visible = false;
+	    	}
+	    	else {
+	    		if(((GuiButton) buttonList.get(i)).visible)
 	    			((GuiButton) buttonList.get(i)).visible = false;
 	    	}
 	    }
