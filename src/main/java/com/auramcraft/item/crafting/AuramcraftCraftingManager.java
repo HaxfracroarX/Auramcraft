@@ -220,9 +220,13 @@ public class AuramcraftCraftingManager {
 			for(j = 0; j < this.recipes.size(); ++j) {
 				IRecipe irecipe = (IRecipe) this.recipes.get(j);
 				
+				LogHelper.info("Checking " + irecipe.getRecipeOutput().getDisplayName());
+				
 				if(irecipe.matches(crafting, world))
 					return irecipe.getCraftingResult(crafting);
 			}
+			
+			LogHelper.info("Didn't match");
 			
 			return null;
 		}

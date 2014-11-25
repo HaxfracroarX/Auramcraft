@@ -8,6 +8,7 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.item.crafting.IInfusionRecipe;
+import com.auramcraft.tileentity.TileAuramcraftInventory;
 import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.client.Minecraft;
@@ -20,24 +21,17 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 
 public class InfusionSlotCrafting extends Slot {
-	private TileInfusionTable tileEntity;
 	private InfusionCrafting matrix;
 	
 	public InfusionSlotCrafting(TileInfusionTable tileEntity, int id, int x, int y, InfusionCrafting matrix) {
 		super(tileEntity, id, x, y);
-		this.tileEntity = tileEntity;
 		this.matrix = matrix;
-	}
-	
-	@Override
-	public boolean isItemValid(ItemStack itemStack) {
-		return false;
 	}
 	
 	@Override
 	public void onPickupFromSlot(EntityPlayer entityPlayer, ItemStack itemStack) {
 		// Get container from itemstack
-		AuraContainer container = AuraItem.getAuraContainer(tileEntity.getStackInSlot(9));
+		AuraContainer container = AuraItem.getAuraContainer(matrix.getStackInSlot(9));
 		
 		// Get infusion recipes
 		ArrayList<IInfusionRecipe> recipes = new ArrayList<IInfusionRecipe>((Collection<? extends IInfusionRecipe>) AuramcraftCraftingManager.getInstance().getRecipeList());
@@ -59,7 +53,7 @@ public class InfusionSlotCrafting extends Slot {
 				}
 				
 				// Update container
-				AuraItem.updateNBT(tileEntity.getStackInSlot(9), container);
+				AuraItem.updateNBT(matrix.getStackInSlot(9), container);
 				
 				// No more looping necessary
 				break;
@@ -68,11 +62,13 @@ public class InfusionSlotCrafting extends Slot {
 		
 		// Deletes the items used in the recipe
 		for(int i = 0; i < 9; i++)
-			tileEntity.decrStackSize(i, 1);
-		
-		// Check for changes
-		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe(matrix, entityPlayer.worldObj));
+			matrix.decrStackSize(i, 1);
 		
 		super.onPickupFromSlot(entityPlayer, itemStack);
+	}
+	
+	@Override
+	public boolean isItemValid(ItemStack itemStack) {
+		return false;
 	}
 }

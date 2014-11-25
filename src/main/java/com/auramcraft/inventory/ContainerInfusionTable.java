@@ -1,5 +1,6 @@
 package com.auramcraft.inventory;
 
+import com.auramcraft.Auramcraft;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.item.AuraItem;
@@ -19,44 +20,46 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ContainerInfusionTable extends Container {
-	private TileInfusionTable tileInfusionTable;
+	private TileInfusionTable tileEntity;
 	private World worldObj;
 	private InfusionCrafting matrix;
 	
 	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
-		this.tileInfusionTable = (TileInfusionTable) world.getTileEntity(x, y, z);
+		this.tileEntity = (TileInfusionTable) world.getTileEntity(x, y, z);
 		this.worldObj = world;
 		
-		tileInfusionTable.openInventory();
+		tileEntity.openInventory();
+		
+		// Setup matrix
+		AuraContainer auraContainer;
+		AuraSlot auraSlot = new AuraSlot(tileEntity, 9, 156, 24);
+		
+		if(tileEntity.getStackInSlot(9) != null)
+			auraContainer = AuraItem.getAuraContainer(tileEntity.getStackInSlot(9));
+		else
+			auraContainer = new AuraContainer(0, 0);
+		
+		matrix = new InfusionCrafting(this, 3, 3, auraContainer.getMaxAura(), auraContainer.getTier(), tileEntity, auraSlot);
+		matrix.setAuraContainer(auraContainer);
+		
+		// Add the AuraItem
+		addSlotToContainer(auraSlot);
 		
 		// Add Infusion Table crafting slots
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(tileInfusionTable, j + i * 3, 6 + i * 19, 3 + j * 19));
+				addSlotToContainer(new Slot(matrix, j + i * 3, 6 + i * 19, 3 + j * 19));
 		}
 		
-		// Add the AuraItem
-		addSlotToContainer(new AuraSlot(tileInfusionTable, 9, 156, 24));
-		
 		// Add output slot
-		addSlotToContainer(new InfusionSlotCrafting(tileInfusionTable, 10, 102, 24, matrix));
+		addSlotToContainer(new InfusionSlotCrafting(tileEntity, 10, 102, 24, matrix));
 		
 		// Add Player inventory
 		bindPlayerInventory(inventoryPlayer);
 		
-        // Setup matrix and check for matching recipies
-		if(getSlot(9).getStack() != null) {
-			AuraContainer auraContainer = AuraItem.getAuraContainer(tileInfusionTable.getStackInSlot(9));
-			matrix = new InfusionCrafting(this, 3, 3, auraContainer.getMaxAura(), auraContainer.getTier());
-			matrix.setAuraContainer(auraContainer);
-			
-			for(int i = 0; i < 3; i++) {
-				for(int j = 0; j < 3; j++)
-					matrix.setInventorySlotContents(j + i * 3, tileInfusionTable.getStackInSlot(j + i * 3));
-			}
-			
+		// Check for matching recipies
+		if(tileEntity.getStackInSlot(9) != null)
 			onCraftMatrixChanged(matrix);
-		}
 	}
 	
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -73,12 +76,12 @@ public class ContainerInfusionTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		tileInfusionTable.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe((InfusionCrafting) inventory, worldObj));
+		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe((InfusionCrafting) inventory, worldObj));
 	}
 	
 	@Override
 	public boolean canInteractWith(EntityPlayer entityPlayer) {
-		return tileInfusionTable.isUseableByPlayer(entityPlayer);
+		return tileEntity.isUseableByPlayer(entityPlayer);
 	}
 	
 	@Override
@@ -115,6 +118,6 @@ public class ContainerInfusionTable extends Container {
 	
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
-		tileInfusionTable.closeInventory();
+		tileEntity.closeInventory();
 	}
 }

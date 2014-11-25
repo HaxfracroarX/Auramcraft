@@ -50,6 +50,10 @@ public class InfusionShapedRecipes implements IInfusionRecipe {
 		ArrayList items = new ArrayList(recipeItems);
 		ArrayList auras = new ArrayList(recipeAuras);
 		
+		// Check for auraItem
+		if(crafting.getAuraSlot().getStack() == null)
+			return false;
+		
 		// Check auras
 		for(int i = 0; i < auras.size(); i = i + 2) {
 			Auras aura = (Auras) auras.get(i);

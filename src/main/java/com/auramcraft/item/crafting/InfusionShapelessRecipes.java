@@ -38,6 +38,10 @@ public class InfusionShapelessRecipes implements IInfusionRecipe {
 		ArrayList items = new ArrayList(recipeItems);
 		ArrayList auras = new ArrayList(recipeAuras);
 		
+		// Check for AuraItem
+		if(crafting.getAuraSlot().getStack() == null)
+			return false;
+		
 		// Check 3x3 grid
 		for(int i = 0; i < 3; ++i) {
 			for(int j = 0; j < 3; ++j) {
@@ -67,8 +71,6 @@ public class InfusionShapelessRecipes implements IInfusionRecipe {
 		for(int i = 0; i < auras.size(); i = i + 2) {
 			Auras aura = (Auras) auras.get(i);
 			int amount = (Integer) auras.get(i+1);
-			
-			LogHelper.info(aura + " " + amount);
 			
 			if(!(crafting.getAuraContainer().getStoredAura(aura) >= amount))
 				return false;
