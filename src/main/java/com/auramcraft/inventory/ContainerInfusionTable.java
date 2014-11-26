@@ -32,7 +32,7 @@ public class ContainerInfusionTable extends Container {
 		
 		// Setup matrix
 		AuraContainer auraContainer;
-		AuraSlot auraSlot = new AuraSlot(tileEntity, 9, 156, 24);
+		AuraSlot auraSlot = new AuraSlot(tileEntity, 9, 156, 24, this);
 		
 		if(tileEntity.getStackInSlot(9) != null)
 			auraContainer = AuraItem.getAuraContainer(tileEntity.getStackInSlot(9));
@@ -57,7 +57,7 @@ public class ContainerInfusionTable extends Container {
 		// Add Player inventory
 		bindPlayerInventory(inventoryPlayer);
 		
-		// Check for matching recipies
+		// Check for matching recipes
 		if(tileEntity.getStackInSlot(9) != null)
 			onCraftMatrixChanged(matrix);
 	}
@@ -76,7 +76,11 @@ public class ContainerInfusionTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe((InfusionCrafting) inventory, worldObj));
+		LogHelper.info("Checking for changes");
+		if(inventory != null)
+			tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe((InfusionCrafting) inventory, worldObj));
+		else
+			tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe(matrix, worldObj));
 	}
 	
 	@Override

@@ -55,7 +55,7 @@ public class InfusionShapedRecipes implements IInfusionRecipe {
 			return false;
 		
 		// Check auras
-		for(int i = 0; i < auras.size(); i = i + 2) {
+		for(int i = 0; i < auras.size(); i += 2) {
 			Auras aura = (Auras) auras.get(i);
 			int amount = (Integer) auras.get(i+1);
 			

@@ -32,7 +32,7 @@ public class InfusionCrafting extends InventoryCrafting implements IAuraUser {
 	
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		return slot >= this.getSizeInventory() ? null : tileEntity.getStackInSlot(slot);
+		return tileEntity.getStackInSlot(slot);
 	}
 	
 	@Override

@@ -8,6 +8,7 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.item.crafting.IInfusionRecipe;
+import com.auramcraft.item.crafting.InfusionShapedRecipes;
 import com.auramcraft.tileentity.TileAuramcraftInventory;
 import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.util.LogHelper;
@@ -37,19 +38,18 @@ public class InfusionSlotCrafting extends Slot {
 		ArrayList<IInfusionRecipe> recipes = new ArrayList<IInfusionRecipe>((Collection<? extends IInfusionRecipe>) AuramcraftCraftingManager.getInstance().getRecipeList());
 		
 		for(int i = 0; i < recipes.size(); i++) {
-			// if the recipe matches
-			if(recipes.get(i).getRecipeOutput().getItem().equals(itemStack.getItem())) {
-				// Get the aura needed by the recipe
-				ArrayList auras = new ArrayList(recipes.get(i).getRecipeAuras());
-				
+			// Get the aura needed by the recipe
+			ArrayList auras = new ArrayList(recipes.get(i).getRecipeAuras());
+			
+			// If the recipe matches
+			if(recipes.get(i).getRecipeOutput().getItem().equals(itemStack.getItem()) && container.containsAmount(auras)) {
 				// Subtract aura cost from container
-				for(int j = 0; j < auras.size(); j = j + 2) {
+				for(int j = 0; j < auras.size(); j += 2) {
 					Auras aura = (Auras) auras.get(j);
 					int amount = (Integer) auras.get(j+1);
 					
-					// If it can't remove the aura needed
-					if(!container.remove(aura, amount))
-						return;
+					// Remove auras used in recipe
+					container.remove(aura, amount);
 				}
 				
 				// Update container
@@ -65,6 +65,12 @@ public class InfusionSlotCrafting extends Slot {
 			matrix.decrStackSize(i, 1);
 		
 		super.onPickupFromSlot(entityPlayer, itemStack);
+	}
+	
+	@Override
+	public void onSlotChanged() {
+		LogHelper.info("Output changed: " + (getStack() == null ? "null" : getStack().getDisplayName()));
+		super.onSlotChanged();
 	}
 	
 	@Override

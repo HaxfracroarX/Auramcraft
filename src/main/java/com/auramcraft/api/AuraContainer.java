@@ -3,6 +3,7 @@ package com.auramcraft.api;
 import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import scala.util.control.Exception;
 import net.minecraft.block.material.Material;
 import com.auramcraft.reference.Tiers;
@@ -149,6 +150,43 @@ public class AuraContainer implements IAuraContainer {
 	@Override
 	public boolean containsAura(Auras aura) {
 		return getStoredAura(aura) > 0 ? true : false;
+	}
+	
+	@Override
+	public boolean containsAura(List auras) {
+		int numContained = 0;
+		
+		for(int i = 0; i < auras.size(); i++)
+			numContained += containsAura((Auras) auras.get(i)) ? 1 : 0;
+		
+		return numContained == auras.size();
+	}
+	
+	@Override
+	public boolean containsAmount(Auras aura, int amount) {
+		return containsAura(aura) && getStoredAura(aura) >= amount;
+	}
+	
+	@Override
+	public boolean containsAmount(List auras, List amount) {
+		int numContained = 0;
+		
+		for(int i = 0; i < auras.size(); i++)
+			numContained += containsAmount((Auras) auras.get(i), (Integer) amount.get(i)) ? 1 : 0;
+		
+		return numContained == auras.size();
+	}
+	
+	@Override
+	public boolean containsAmount(List combined) {
+		int numContained = 0;
+		
+		LogHelper.info(combined);
+		
+		for(int i = 0; i < auras.size(); i += 2)
+			numContained += containsAmount((Auras) combined.get(i), (Integer) combined.get(i+1)) ? 1 : 0;
+		
+		return numContained == auras.size()/2;
 	}
 	
 	@Override

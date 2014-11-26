@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import com.auramcraft.api.Auras;
 import com.auramcraft.init.AuramcraftItems;
+import com.auramcraft.inventory.InfusionCrafting;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -183,7 +184,7 @@ public class AuramcraftCraftingManager {
 		this.recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
 	}
 	
-	public ItemStack findMatchingRecipe(InventoryCrafting crafting, World world) {
+	public ItemStack findMatchingRecipe(InfusionCrafting crafting, World world) {
 		int i = 0;
 		ItemStack itemstack = null;
 		ItemStack itemstack1 = null;
@@ -220,13 +221,9 @@ public class AuramcraftCraftingManager {
 			for(j = 0; j < this.recipes.size(); ++j) {
 				IRecipe irecipe = (IRecipe) this.recipes.get(j);
 				
-				LogHelper.info("Checking " + irecipe.getRecipeOutput().getDisplayName());
-				
 				if(irecipe.matches(crafting, world))
 					return irecipe.getCraftingResult(crafting);
 			}
-			
-			LogHelper.info("Didn't match");
 			
 			return null;
 		}

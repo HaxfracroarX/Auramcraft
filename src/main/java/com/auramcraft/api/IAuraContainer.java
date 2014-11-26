@@ -1,5 +1,7 @@
 package com.auramcraft.api;
 
+import java.util.List;
+
 
 public interface IAuraContainer {
 	/**
@@ -100,6 +102,27 @@ public interface IAuraContainer {
 	 * @return If the specified aura is contained
 	 */
 	public boolean containsAura(Auras aura);
+	
+	/**
+	 * @return If the specified auras are contained
+	 */
+	public boolean containsAura(List auras);
+	
+	/**
+	 * @return If the specified aura is contained in the specified amount or greater
+	 */
+	public boolean containsAmount(Auras aura, int amount);
+	
+	/**
+	 * @return If the specified auras are contained in the specified amounts or greater
+	 */
+	public boolean containsAmount(List auras, List amount);
+	
+	/**
+	 * @param combined - List of alternating Auras and Integer objects starting with Auras
+	 * @return If the specified auras are contained in the specified amounts or greater
+	 */
+	public boolean containsAmount(List combined);
 	
 	/**
 	 * @return The amount stored of the specified aura
