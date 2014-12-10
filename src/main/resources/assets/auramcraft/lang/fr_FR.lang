@@ -1,0 +1,31 @@
+itemGroup.auramcraft=Auramcraft
+
+item.fireShard.name=Eclat de feu
+item.earthShard.name=Eclat de terre
+item.waterShard.name=Eclat d'eau
+item.airShard.name=Eclat d'air
+item.auramShard.name=Eclat d'auram
+item.gemstone.name=Pierre précieuse
+item.sacrificialDagger.name=Dague sacrificielle
+item.devToy.name=Joujou dev.
+item.bookOfAura.name=Livre d'aura
+item.auraCrystal.name=Cristal d'aura
+item.allseeingStone.name=Pierre omnividère
+item.charmOfAllseeing.name=Charme d'omnividère
+
+tile.gemstoneOre.name=Minerai de pierre précieuse
+tile.infusionTable.name=Table d'infusion
+tile.aumwoodPlanks.name=Planches d'aumwood
+tile.aumwoodLeaves.name=Feuille d'aumwood
+tile.aumwood.name=Aumwood
+tile.aumwoodSapling.name=Pousse d'aumwood
+tile.auramFlower.name=Fleur d'auram
+tile.blueLightstone.name=Pierre lumineuse bleue
+tile.auroraBlock.name=Bloc d'aurore
+tile.shadowLantern.name=Lanterne fantôme
+tile.holyLamp.name=Lampe sacrée
+
+achievement.auraCrystal=Cristal d'aura
+achievement.auraCrystal.desc=Créer un cristal d'aura
+achievement.elementalShards=Eclats élémentaires
+achievement.elementalShards.desc=Right-Cliquez sur un minerai de pierre précieuse avec un cristal d'aura
