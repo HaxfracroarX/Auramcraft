@@ -10,8 +10,8 @@ item.sacrificialDagger.name=Dague sacrificielle
 item.devToy.name=Joujou dev.
 item.bookOfAura.name=Livre d'aura
 item.auraCrystal.name=Cristal d'aura
-item.allseeingStone.name=Pierre omnividère
-item.charmOfAllseeing.name=Charme d'omnividère
+item.allseeingStone.name=Pierre omnividente
+item.charmOfAllseeing.name=Charme d'omnividence
 
 tile.gemstoneOre.name=Minerai de pierre précieuse
 tile.infusionTable.name=Table d'infusion
