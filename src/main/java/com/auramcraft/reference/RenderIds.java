@@ -1,5 +1,8 @@
 package com.auramcraft.reference;
 
 public class RenderIds {
-	public static int infusionTable;
+	public static int 
+		infusionTable,
+		storageJar,
+		alcemicalRouter;
 }

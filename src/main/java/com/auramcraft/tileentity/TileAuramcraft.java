@@ -2,7 +2,7 @@ package com.auramcraft.tileentity;
 
 import com.auramcraft.init.AuramcraftBlocks;
 import com.auramcraft.network.PacketHandler;
-import com.auramcraft.network.message.MessageTileEntityAuramcraft;
+import com.auramcraft.network.message.MessageTileAuramcraft;
 import com.auramcraft.reference.Names;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -58,6 +58,6 @@ public class TileAuramcraft extends TileEntity {
 	
 	@Override
 	public Packet getDescriptionPacket() {
-		return PacketHandler.INSTANCE.getPacketFrom(new MessageTileEntityAuramcraft(this));
+		return PacketHandler.INSTANCE.getPacketFrom(new MessageTileAuramcraft(this));
 	}
 }

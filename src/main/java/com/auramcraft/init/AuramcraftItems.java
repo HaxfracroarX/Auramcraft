@@ -9,22 +9,25 @@ import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class AuramcraftItems {
-	public static final Item fireShard = new FireShard();
-	public static final Item earthShard = new EarthShard();
-	public static final Item waterShard = new WaterShard();
-	public static final Item airShard = new AirShard();
-	public static final Item auramShard = new AuramShard();
-	public static final Item gemstone = new Gemstone();
-	public static final Item sacrificialDagger = new SacrificialDagger();
-	public static final Item devToy = new DevToy();
-	public static final Item bookOfAura = new BookOfAura();
-	public static final Item auraCrystal = new AuraCrystal(25);
-	public static final Item allseeingStone = new AllseeingStone();
-	public static final Item charmOfAllseeing = new CharmOfAllseeing();
+	public static final Item 
+		fireShard = new FireShard(),
+		earthShard = new EarthShard(),
+		waterShard = new WaterShard(),
+		airShard = new AirShard(),
+		auramShard = new AuramShard(),
+		gemstone = new Gemstone(),
+		sacrificialDagger = new SacrificialDagger(),
+		devToy = new DevToy(),
+		bookOfAura = new BookOfAura(),
+		auraCrystal = new AuraCrystal(25),
+		allseeingStone = new AllseeingStone(),
+		charmOfAllseeing = new CharmOfAllseeing();
+	
+	// Creative only
 	public static Item auraCrystal1 = new AuraCrystal(500);
 	
 	public static void init() {
-		// Creative use only
+		// Creative only
 		((AuraCrystal) auraCrystal1).getAuraContainer().store(new Object[] {
 				Auras.FIRE, 100,
 				Auras.EARTH, 100,

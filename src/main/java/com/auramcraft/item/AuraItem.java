@@ -97,9 +97,9 @@ public class AuraItem extends Item implements IAuraUser {
 				auras.get(i).add(itemStack.stackTagCompound.getInteger(auraList[rep].toString()));
 				allowedAuras.add(auraList[rep]);
 				
-				// Remove unapproved auras
-				if(!itemStack.stackTagCompound.getBoolean(auraList[rep].toString()+" isAllowed"))
-					allowedAuras.remove(auraList[rep]);
+				// Add allowed
+				if(itemStack.stackTagCompound.getBoolean(auraList[rep].toString()+" isAllowed"))
+					allowedAuras.add(auraList[rep]);
 			}
 		}
 		

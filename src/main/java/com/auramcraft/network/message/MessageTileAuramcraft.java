@@ -8,13 +8,13 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageTileEntityAuramcraft implements IMessage, IMessageHandler<MessageTileEntityAuramcraft, IMessage> {
+public class MessageTileAuramcraft implements IMessage, IMessageHandler<MessageTileAuramcraft, IMessage> {
 	public int x, y, z;
 	public byte orientation;
 	
-	public MessageTileEntityAuramcraft() {}
+	public MessageTileAuramcraft() {}
 	
-	public MessageTileEntityAuramcraft(TileAuramcraft tileEntity) {
+	public MessageTileAuramcraft(TileAuramcraft tileEntity) {
 		this.x = tileEntity.xCoord;
 		this.y = tileEntity.yCoord;
 		this.z = tileEntity.zCoord;
@@ -38,7 +38,7 @@ public class MessageTileEntityAuramcraft implements IMessage, IMessageHandler<Me
 	}
 	
 	@Override
-	public IMessage onMessage(MessageTileEntityAuramcraft message, MessageContext ctx) {
+	public IMessage onMessage(MessageTileAuramcraft message, MessageContext ctx) {
 		TileEntity tileEntity = FMLClientHandler.instance().getClient().theWorld.getTileEntity(message.x, message.y, message.z);
 		
 		if(tileEntity instanceof TileAuramcraft) {

@@ -9,8 +9,9 @@ import net.minecraftforge.common.AchievementPage;
 public class AuramcraftAchievements {
 	public static AchievementPage page;
 	
-	public static Achievement auraCrystal = new Achievement("achievement.auraCrystal", "auraCrystal", 0, 0, AuramcraftItems.auraCrystal, AchievementList.diamonds);
-	public static Achievement elementalShards = new Achievement("achievement.elementalShards", "elementalShards", 2, 0, AuramcraftItems.earthShard, auraCrystal);
+	public static Achievement 
+		auraCrystal = new Achievement("achievement.auraCrystal", "auraCrystal", 0, 0, AuramcraftItems.auraCrystal, AchievementList.diamonds),
+		elementalShards = new Achievement("achievement.elementalShards", "elementalShards", 2, 0, AuramcraftItems.earthShard, auraCrystal);
 	
 	public static void init() {
 		// List of achievements

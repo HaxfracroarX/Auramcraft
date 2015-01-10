@@ -4,6 +4,7 @@ import java.util.Random;
 import com.auramcraft.Auramcraft;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.GUIIds;
+import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.RenderIds;
 import com.auramcraft.reference.Textures;
@@ -30,11 +31,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class InfusionTable extends BlockContainer {
+public class InfusionTable extends TEBlock {
 	public InfusionTable() {
 		super(Material.iron);
 		setHardness(3f);
-		setBlockName("infusionTable");
+		setBlockName(Names.Blocks.INFUSIONTABLE);
 		setBlockTextureName(Textures.Blocks.BLOCK_INFUSION_TABLE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
@@ -42,16 +43,6 @@ public class InfusionTable extends BlockContainer {
 	@Override
 	public int getRenderType() {
 		return RenderIds.infusionTable;
-	}
-	
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
-	}
-	
-	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
 	}
 	
 	@Override
@@ -83,44 +74,5 @@ public class InfusionTable extends BlockContainer {
 		if(!world.isRemote)
 			player.openGui(Auramcraft.instance, GUIIds.INFUSION_TABLE, world, x, y, z);
 		return true;
-	}
-	
-	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
-		dropInventory(world, x, y, z);
-		super.breakBlock(world, x, y, z, block, meta);
-	}
-	
-	protected void dropInventory(World world, int x, int y, int z) {
-		TileEntity tileEntity = world.getTileEntity(x, y, z);
-		
-		if(!(tileEntity instanceof IInventory))
-			return;
-		
-		IInventory inventory = (IInventory) tileEntity;
-		
-		for(int i = 0; i < inventory.getSizeInventory(); i++) {
-			ItemStack itemStack = inventory.getStackInSlot(i);
-			
-			if(itemStack != null && itemStack.stackSize > 0) {
-				Random rand = new Random();
-				
-				float dX = rand.nextFloat() * 0.8F + 0.1F;
-				float dY = rand.nextFloat() * 0.8F + 0.1F;
-				float dZ = rand.nextFloat() * 0.8F + 0.1F;
-				
-				EntityItem entityItem = new EntityItem(world, x + dX, y + dY, z + dZ, itemStack.copy());
-				
-				if(itemStack.hasTagCompound())
-					entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
-				
-				float factor = 0.05F;
-				entityItem.motionX = rand.nextGaussian() * factor;
-				entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
-				entityItem.motionZ = rand.nextGaussian() * factor;
-				world.spawnEntityInWorld(entityItem);
-				itemStack.stackSize = 0;
-			}
-		}
 	}
 }

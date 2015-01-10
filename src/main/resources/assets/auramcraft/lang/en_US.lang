@@ -24,6 +24,8 @@ tile.blueLightstone.name=Blue Lightstone
 tile.auroraBlock.name=Aurora Block
 tile.shadowLantern.name=Shadow Lantern
 tile.holyLamp.name=Holy Lamp
+tile.storageJar.name=Storage Jar
+tile.alchemicalRouter.name=Alchemical Router
 
 achievement.auraCrystal=Aura Crystal
 achievement.auraCrystal.desc=Make an Aura Crystal
