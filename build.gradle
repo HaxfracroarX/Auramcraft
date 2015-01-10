@@ -17,12 +17,22 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-0.0.1"
+// Properties file
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+	// Load config
+	def prop = new Properties()
+	prop.load(it)
+	project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = config.minecraft_version + "-" + config.mod_version
 group= "com.auramcraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Auramcraft"
 
 minecraft {
-    version = "1.7.10-10.13.2.1230"
+    version = config.minecraft_version + "-" + config.forge_version
     runDir = "eclipse/assets"
 }
 
