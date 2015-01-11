@@ -1,52 +1,55 @@
 AURAMCRAFT V1
 
 Priority 1-5 *1 being highest
-Marked means finished. ex. ~Shards
+Crossed out means finished. ex. ~~Shards~~
 
 TO-DO
--------------------------
-CODERS
+
+----CODERS----
 
 BOOK OF AURA P:1
-	-Functionallity
+	-Functionality
 
 AURA CRYSTAL P:2
-	-Functionallity
+	-Functionality
 
 AURAS P:2
 	-World Gen
-	-Functionallity
+	-Functionality
 
 INFUSION P:3
 	-Recipes
 
 WANDS P:3
-	-Functionallity
+	-Functionality
 
 ALCHEMY P:3
 	-Alchemical Cauldron
-	-Functionallity
+	-Alchemical Router
+	-Storage Jar
+	-Aura Bank
+	-Functionality
 	-Recipes
 	-Aura Count
 
 ARCANE SEALS P:4
-	-Functionallity
+	-Functionality
 
 GOLEMS P:4
 	-Movement (AI)
 	-Cores
-	-Functionallity
+	-Functionality
 
 MAGIKA P:5
 	-Implement Spells
 	-Cooldown
-	-Functionallity
+	-Functionality
 
 BOSSES P:5
 	-Drops
 	-Movement (AI)
 
-MODELERS
+----MODELERS----
 
 AURAS P:2
 	-Model
@@ -70,7 +73,7 @@ BOSSES P:4
 MAGIKA P:4
 	-Fireball Model
 
-TEXTURERS
+----TEXTURERS----
 
 AURA CRYSTAL P:2
 	-GUI
