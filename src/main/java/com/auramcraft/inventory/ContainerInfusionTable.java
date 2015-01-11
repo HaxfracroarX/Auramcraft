@@ -76,7 +76,6 @@ public class ContainerInfusionTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		LogHelper.info("Checking for changes");
 		if(inventory != null)
 			tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe((InfusionCrafting) inventory, worldObj));
 		else

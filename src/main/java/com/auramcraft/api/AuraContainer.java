@@ -181,9 +181,7 @@ public class AuraContainer implements IAuraContainer {
 	public boolean containsAmount(List combined) {
 		int numContained = 0;
 		
-		LogHelper.info(combined);
-		
-		for(int i = 0; i < auras.size(); i += 2)
+		for(int i = 0; i < combined.size(); i += 2)
 			numContained += containsAmount((Auras) combined.get(i), (Integer) combined.get(i+1)) ? 1 : 0;
 		
 		return numContained == auras.size()/2;

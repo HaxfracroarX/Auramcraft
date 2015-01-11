@@ -69,7 +69,6 @@ public class InfusionSlotCrafting extends Slot {
 	
 	@Override
 	public void onSlotChanged() {
-		LogHelper.info("Output changed: " + (getStack() == null ? "null" : getStack().getDisplayName()));
 		super.onSlotChanged();
 	}
 	
