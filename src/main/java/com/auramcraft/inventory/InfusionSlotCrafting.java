@@ -3,6 +3,7 @@ package com.auramcraft.inventory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.item.AuraItem;
@@ -12,8 +13,10 @@ import com.auramcraft.item.crafting.InfusionShapedRecipes;
 import com.auramcraft.tileentity.TileAuramcraftInventory;
 import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.util.LogHelper;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
@@ -23,10 +26,12 @@ import net.minecraft.item.crafting.IRecipe;
 
 public class InfusionSlotCrafting extends Slot {
 	private InfusionCrafting matrix;
+	private Container eventhandler;
 	
-	public InfusionSlotCrafting(TileInfusionTable tileEntity, int id, int x, int y, InfusionCrafting matrix) {
+	public InfusionSlotCrafting(TileInfusionTable tileEntity, int id, int x, int y, InfusionCrafting matrix, Container eventhandler) {
 		super(tileEntity, id, x, y);
 		this.matrix = matrix;
+		this.eventhandler = eventhandler;
 	}
 	
 	@Override
@@ -63,6 +68,9 @@ public class InfusionSlotCrafting extends Slot {
 		// Deletes the items used in the recipe
 		for(int i = 0; i < 9; i++)
 			matrix.decrStackSize(i, 1);
+		
+		// Refresh output slot
+		eventhandler.onCraftMatrixChanged(matrix);
 		
 		super.onPickupFromSlot(entityPlayer, itemStack);
 	}

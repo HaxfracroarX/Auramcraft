@@ -52,7 +52,7 @@ public class ContainerInfusionTable extends Container {
 		}
 		
 		// Add output slot
-		addSlotToContainer(new InfusionSlotCrafting(tileEntity, 10, 102, 24, matrix));
+		addSlotToContainer(new InfusionSlotCrafting(tileEntity, 10, 102, 24, matrix, this));
 		
 		// Add Player inventory
 		bindPlayerInventory(inventoryPlayer);
