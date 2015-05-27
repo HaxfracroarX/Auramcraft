@@ -4,13 +4,13 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelInfusionTable extends ModelBase {
+@SuppressWarnings("SameParameterValue") public class ModelInfusionTable extends ModelBase {
 	// fields
-	ModelRenderer Top;
-	ModelRenderer Leg1;
-	ModelRenderer Leg2;
-	ModelRenderer Leg3;
-	ModelRenderer Leg4;
+	private final ModelRenderer Top;
+	private final ModelRenderer Leg1;
+	private final ModelRenderer Leg2;
+	private final ModelRenderer Leg3;
+	private final ModelRenderer Leg4;
 	
 	public ModelInfusionTable() {
 		textureWidth = 64;
@@ -62,9 +62,5 @@ public class ModelInfusionTable extends ModelBase {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
-	}
-	
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

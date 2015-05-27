@@ -4,17 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
-import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.api.IAuraUser;
 import com.auramcraft.reference.Tiers;
-import com.auramcraft.util.LogHelper;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 
+@SuppressWarnings({"unchecked", "SameParameterValue", "WeakerAccess"})
 public class AuraItem extends Item implements IAuraUser {
 	private AuraContainer container;
 	
@@ -54,11 +51,11 @@ public class AuraItem extends Item implements IAuraUser {
 		Auras[] auras = Auras.values();
 		
 		// Add Aura info
-		for(int i = 0; i < auras.length; i++) {
+		for(Auras aura : auras) {
 			// How much aura there is
-			itemStack.stackTagCompound.setInteger(auras[i].toString(), container.getStoredAura(auras[i]));
+			itemStack.stackTagCompound.setInteger(aura.toString(), container.getStoredAura(aura));
 			// If we are allowed to store the aura
-			itemStack.stackTagCompound.setBoolean(auras[i].toString()+" isAllowed", container.isAllowed(auras[i]));
+			itemStack.stackTagCompound.setBoolean(aura.toString() + " isAllowed", container.isAllowed(aura));
 		}
 		
 		// Max Aura

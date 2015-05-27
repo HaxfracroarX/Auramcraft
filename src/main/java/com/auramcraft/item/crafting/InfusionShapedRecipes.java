@@ -4,29 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 import com.auramcraft.api.Auras;
 import com.auramcraft.inventory.InfusionCrafting;
-import com.auramcraft.util.LogHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+@SuppressWarnings({"FieldCanBeLocal", "unchecked"})
 public class InfusionShapedRecipes implements IInfusionRecipe {
 	/** How many horizontal slots this recipe is wide. */
-	public final int recipeWidth;
+	private final int recipeWidth;
 	
 	/** How many vertical slots this recipe uses. */
-	public final int recipeHeight;
+	private final int recipeHeight;
 	
 	/** List of ItemStack that composes the recipe. */
-	public final List recipeItems;
+	private final List recipeItems;
 	
 	/** List of Auras that compose the recipe */
-	public final List recipeAuras;
+	private final List recipeAuras;
 	
 	/** The ItemStack that you get when craft the recipe. */
-	private ItemStack recipeOutput;
-	private boolean field_92101_f = false;
+	private final ItemStack recipeOutput;
+	private final boolean field_92101_f = false;
 	
 	public InfusionShapedRecipes(int recipeWidth, int recipeHeight, List recipeItems, ItemStack recipeOutput, List recipeAuras) {
 		this.recipeWidth = recipeWidth;

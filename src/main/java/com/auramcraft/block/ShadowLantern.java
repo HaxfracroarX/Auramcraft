@@ -1,6 +1,5 @@
 package com.auramcraft.block;
 
-import javax.swing.Icon;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
@@ -18,9 +17,9 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class ShadowLantern extends Block {
 	@SideOnly(Side.CLIENT)
-	public static IIcon topIcon;
-	public static IIcon sideIcon;
-	public static IIcon frontIcon;
+	private static IIcon topIcon;
+	private static IIcon sideIcon;
+	private static IIcon frontIcon;
 	
 	public ShadowLantern() {
 		super(Material.wood);

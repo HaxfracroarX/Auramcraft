@@ -4,15 +4,15 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelStorageJar extends ModelBase {
+@SuppressWarnings("SameParameterValue") public class ModelStorageJar extends ModelBase {
 	// fields
-	ModelRenderer Lid;
-	ModelRenderer Base;
-	ModelRenderer Wall1;
-	ModelRenderer Wall2;
-	ModelRenderer Wall3;
-	ModelRenderer Wall4;
-	ModelRenderer Cap;
+	private final ModelRenderer Lid;
+	private final ModelRenderer Base;
+	private final ModelRenderer Wall1;
+	private final ModelRenderer Wall2;
+	private final ModelRenderer Wall3;
+	private final ModelRenderer Wall4;
+	private final ModelRenderer Cap;
 	
 	public ModelStorageJar() {
 		textureWidth = 64;
@@ -78,9 +78,5 @@ public class ModelStorageJar extends ModelBase {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
-	}
-	
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
-		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 }

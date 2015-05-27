@@ -1,6 +1,5 @@
 package com.auramcraft.tileentity;
 
-import net.minecraft.block.Block;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.init.AuramcraftBlocks;
 import com.auramcraft.reference.Names;

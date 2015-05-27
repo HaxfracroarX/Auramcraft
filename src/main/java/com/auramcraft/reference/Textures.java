@@ -4,7 +4,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class Textures {
 	// Base file paths
-	public static final String 
+	private static final String
 		RESOURCE_PREFIX = Reference.MODID + ":",
 		MODEL_TEXTURE_LOCATION = "textures/models/",
 		GUI_SHEET_LOCATION = "textures/gui/",

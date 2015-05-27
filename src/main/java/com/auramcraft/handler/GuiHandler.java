@@ -5,7 +5,6 @@ import com.auramcraft.client.gui.inventory.GuiInfusionTable;
 import com.auramcraft.inventory.ContainerEmpty;
 import com.auramcraft.inventory.ContainerInfusionTable;
 import com.auramcraft.reference.GUIIds;
-import com.auramcraft.tileentity.TileInfusionTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;

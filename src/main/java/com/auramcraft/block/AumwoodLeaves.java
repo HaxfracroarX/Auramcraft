@@ -4,23 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.init.AuramcraftBlocks;
-import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.reference.Names;
-import com.auramcraft.reference.Names.Items;
 import com.auramcraft.reference.Textures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
@@ -29,7 +23,7 @@ public class AumwoodLeaves extends BlockLeavesBase implements IShearable {
 	@SideOnly(Side.CLIENT)
 	private IIcon texture;
 	
-	int[] tree;
+	private int[] tree;
 	
 	public AumwoodLeaves() {
 		super(Material.leaves, true);

@@ -2,7 +2,6 @@ package com.auramcraft.item.pages;
 
 import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Textures;
-import net.minecraft.util.ResourceLocation;
 
 public class PageInfusionTier1 extends BookPage {
 	public PageInfusionTier1() {

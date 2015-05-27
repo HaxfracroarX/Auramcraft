@@ -3,144 +3,145 @@ package com.auramcraft.api;
 import java.util.List;
 
 
+@SuppressWarnings({"SameParameterValue", "WeakerAccess"})
 public interface IAuraContainer {
 	/**
 	 * Tries to store the specified amount of the specified aura
 	 * 
 	 * @return If storage was successful
 	 */
-	public boolean store(Auras aura, int amount);
+	boolean store(Auras aura, int amount);
 	
 	/**
 	 * Tries to store the auras in the amounts specified
 	 */
-	public void store(Object... auras);
+	void store(Object... auras);
 	
 	/**
 	 * Tries to take out the specified amount of the specified aura
 	 * 
 	 * @return If removal was successful
 	 */
-	public boolean remove(Auras aura, int amount);
+	boolean remove(Auras aura, int amount);
 	
 	/**
 	 * @return If the container is drainable
 	 */
-	public boolean isDrainable();
+	boolean isDrainable();
 	
 	/**
 	 * @return If the container is fillable
 	 */
-	public boolean isFillable();
+	boolean isFillable();
 	
 	/**
 	 * @return If the container is editable (isDrainable || isFillable)
 	 */
-	public boolean isEditable();
+	boolean isEditable();
 	
 	/**
 	 * Sets if the container is drainable
 	 */
-	public void setDrainable(boolean isDrainable);
+	void setDrainable(boolean isDrainable);
 	
 	/**
 	 * Sets if the container is fillable
 	 */
-	public void setFillable(boolean isFillable);
+	void setFillable(boolean isFillable);
 	
 	/**
 	 * @return How much aura can be contained
 	 */
-	public int getMaxAura();
+	int getMaxAura();
 	
 	/**
 	 * @return If the specified tier can be stored
 	 */
-	public boolean canStoreTier(int tier);
+	boolean canStoreTier(int tier);
 	
 	/**
 	 * @return If the specified aura can be stored
 	 */
-	public boolean canStoreAura(Auras aura);
+	boolean canStoreAura(Auras aura);
 	
 	/**
 	 * @return If the specified aura and amount can be stored
 	 */
-	public boolean canStoreAura(Auras aura, int amount);
+	boolean canStoreAura(Auras aura, int amount);
 	
 	/**
 	 * @return If there is space for more aura
 	 */
-	public boolean canStoreMore();
+	boolean canStoreMore();
 	
 	/**
 	 * Adds the specified aura to the whitelist
 	 */
-	public void addAllowed(Auras aura);
+	void addAllowed(Auras aura);
 	
 	/**
 	 * Removes the specified aura from the whitelist
 	 */
-	public void removeAllowed(Auras aura);
+	void removeAllowed(Auras aura);
 	
 	/**
 	 * Clears the whitelist
 	 */
-	public void clearAllowed();
+	void clearAllowed();
 	
 	/**
 	 * @return Allowed Auras
 	 */
-	public Auras[] getAllowed();
+	Auras[] getAllowed();
 	
 	/**
 	 * @return If the specified Aura is allowed
 	 */
-	public boolean isAllowed(Auras aura);
+	boolean isAllowed(Auras aura);
 	
 	/**
 	 * @return If the specified aura is contained
 	 */
-	public boolean containsAura(Auras aura);
+	boolean containsAura(Auras aura);
 	
 	/**
 	 * @return If the specified auras are contained
 	 */
-	public boolean containsAura(List auras);
+	boolean containsAura(List auras);
 	
 	/**
 	 * @return If the specified aura is contained in the specified amount or greater
 	 */
-	public boolean containsAmount(Auras aura, int amount);
+	boolean containsAmount(Auras aura, int amount);
 	
 	/**
 	 * @return If the specified auras are contained in the specified amounts or greater
 	 */
-	public boolean containsAmount(List auras, List amount);
+	boolean containsAmount(List auras, List amount);
 	
 	/**
 	 * @param combined - List of alternating Auras and Integer objects starting with Auras
 	 * @return If the specified auras are contained in the specified amounts or greater
 	 */
-	public boolean containsAmount(List combined);
+	boolean containsAmount(List combined);
 	
 	/**
 	 * @return The amount stored of the specified aura
 	 */
-	public int getStoredAura(Auras aura);
+	int getStoredAura(Auras aura);
 	
 	/**
 	 * @return The total stored aura
 	 */
-	public int getTotalStoredAura();
+	int getTotalStoredAura();
 	
 	/**
 	 * @return Open space for new aura
 	 */
-	public int getOpenSlots();
+	int getOpenSlots();
 	
 	/**
 	 * @return Top tier that can be stored
 	 */
-	public int getTier();
+	int getTier();
 }

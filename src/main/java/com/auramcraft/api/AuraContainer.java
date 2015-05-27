@@ -1,14 +1,12 @@
 package com.auramcraft.api;
 
-import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import scala.util.control.Exception;
-import net.minecraft.block.material.Material;
-import com.auramcraft.reference.Tiers;
-import com.auramcraft.util.LogHelper;
 
+import com.auramcraft.reference.Tiers;
+
+@SuppressWarnings("CanBeFinal")
 public class AuraContainer implements IAuraContainer {
 	private int maxAura, tier;
 	private ArrayList<ArrayList<Integer>> auras;
@@ -108,10 +106,8 @@ public class AuraContainer implements IAuraContainer {
 	
 	@Override
 	public boolean canStoreAura(Auras aura, int amount) {
-		if(!canStoreAura(aura))
-			return false;
-		
-		return canStoreMore() && getOpenSlots() >= amount;
+		return canStoreAura(aura) && canStoreMore() && getOpenSlots() >= amount;
+
 	}
 	
 	@Override
@@ -149,15 +145,15 @@ public class AuraContainer implements IAuraContainer {
 	
 	@Override
 	public boolean containsAura(Auras aura) {
-		return getStoredAura(aura) > 0 ? true : false;
+		return getStoredAura(aura) > 0;
 	}
 	
 	@Override
 	public boolean containsAura(List auras) {
 		int numContained = 0;
-		
-		for(int i = 0; i < auras.size(); i++)
-			numContained += containsAura((Auras) auras.get(i)) ? 1 : 0;
+
+		for(Object aura : auras)
+			numContained += containsAura((Auras) aura) ? 1 : 0;
 		
 		return numContained == auras.size();
 	}
@@ -195,9 +191,9 @@ public class AuraContainer implements IAuraContainer {
 	@Override
 	public int getTotalStoredAura() {
 		int total = 0;
-		for(int i = 0; i < auras.size(); i++) {
-			for(int j = 0; j < auras.get(i).size(); j++) {
-				total += auras.get(i).get(j);
+		for(ArrayList<Integer> aura : auras) {
+			for(Integer anAura : aura) {
+				total += anAura;
 			}
 		}
 		return total;

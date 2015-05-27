@@ -2,21 +2,19 @@ package com.auramcraft.generation;
 
 import java.util.Random;
 import com.auramcraft.init.AuramcraftBlocks;
-import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraftforge.common.util.ForgeDirection;
 
+@SuppressWarnings("EmptyMethod")
 public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenerator {
-	private boolean isFruitTree;
+	private final boolean isFruitTree;
 	
 	public AumwoodTreeGen() {
 		super(true);

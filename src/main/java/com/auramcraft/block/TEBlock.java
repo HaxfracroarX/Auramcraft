@@ -1,20 +1,18 @@
 package com.auramcraft.block;
 
 import java.util.Random;
-import com.auramcraft.Auramcraft;
-import com.auramcraft.reference.GUIIds;
-import com.auramcraft.reference.RenderIds;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+@SuppressWarnings({"SameParameterValue", "WeakerAccess"})
 public abstract class TEBlock extends BlockContainer {
 	
 	public TEBlock(Material material) {
@@ -43,7 +41,7 @@ public abstract class TEBlock extends BlockContainer {
 		super.breakBlock(world, x, y, z, block, meta);
 	}
 	
-	protected void dropInventory(World world, int x, int y, int z) {
+	private void dropInventory(World world, int x, int y, int z) {
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		
 		if(!(tileEntity instanceof IInventory))

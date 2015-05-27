@@ -9,14 +9,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public class AuramFlower extends BlockBush {
-	
+	@SideOnly(Side.CLIENT)
 	private IIcon texture;
 
 	public AuramFlower() {
@@ -38,7 +37,7 @@ public class AuramFlower extends BlockBush {
     	return texture;
     }
     
-    public boolean isValidPosition(World world, int x, int y, int z, int metadata) {
+    private boolean isValidPosition(World world, int x, int y, int z, int metadata) {
     	Block block = world.getBlock(x, y - 1, z);
     	return block == Blocks.dirt || 
     			block == Blocks.grass || 

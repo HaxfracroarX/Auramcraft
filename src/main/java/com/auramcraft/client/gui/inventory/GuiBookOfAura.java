@@ -5,18 +5,16 @@ import org.lwjgl.opengl.GL11;
 import com.auramcraft.inventory.ContainerEmpty;
 import com.auramcraft.item.pages.*;
 import com.auramcraft.reference.PageIds;
-import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.inventory.Container;
 
+@SuppressWarnings("unchecked")
 public class GuiBookOfAura extends GuiContainer {
-	BookPage page;
-	boolean[] pages;
-	ArrayList<BookPage> book;
-	int currentPage = 0;
+	private BookPage page;
+	private boolean[] pages;
+	private ArrayList<BookPage> book;
+	private int currentPage = 0;
 	
 	public GuiBookOfAura() {
 		super(new ContainerEmpty());
@@ -72,8 +70,8 @@ public class GuiBookOfAura extends GuiContainer {
 	
 	private int researchedPages(boolean[] pages) {
 		int researched = 0;
-		for(int i = 0; i < pages.length; i++) {
-			researched += pages[i] ? 1 : 0;
+		for(boolean page1 : pages) {
+			researched += page1 ? 1 : 0;
 		}
 		return researched;
 	}

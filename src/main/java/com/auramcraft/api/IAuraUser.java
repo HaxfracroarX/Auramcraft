@@ -4,10 +4,10 @@ public interface IAuraUser {
 	/**
 	 * @return The object's Aura Container
 	 */
-	public AuraContainer getAuraContainer();
+	AuraContainer getAuraContainer();
 	
 	/**
 	 * Sets the object's Aura Container
 	 */
-	public void setAuraContainer(AuraContainer container);
+	void setAuraContainer(AuraContainer container);
 }

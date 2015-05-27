@@ -6,9 +6,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
 
+@SuppressWarnings("WeakerAccess")
 public class ButtonTurnPage extends GuiButton {
 	private final boolean isRight;
-	private ResourceLocation texture;
+	private final ResourceLocation texture;
 	
 	public ButtonTurnPage(int id, int x, int y, boolean isRight) {
 		super(id, x, y, 18, 10, "");

@@ -3,24 +3,21 @@ package com.auramcraft.handler;
 import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftAchievements;
 import com.auramcraft.init.AuramcraftItems;
-import com.auramcraft.reference.PageIds;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.*;
 
+@SuppressWarnings("WeakerAccess")
 public class AuramcraftEventHandler {
 	@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event) {
@@ -31,7 +28,6 @@ public class AuramcraftEventHandler {
 		int z = event.z;
 		
 		Block block = event.block;
-		int meta = world.getBlockMetadata(x, y, z);
 		
 		if(block instanceof AumwoodSapling) {
 			event.setResult(Result.ALLOW);

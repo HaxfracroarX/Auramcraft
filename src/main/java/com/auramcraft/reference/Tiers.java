@@ -1,7 +1,7 @@
 package com.auramcraft.reference;
 
 public class Tiers {
-	public static final int[] tierSize = new int[] {
+	private static final int[] tierSize = new int[] {
 		5, 7, 6, 3, 2, 3, 3
 	};
 	

@@ -2,7 +2,6 @@ package com.auramcraft.item.crafting;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import com.auramcraft.api.Auras;
@@ -12,15 +11,12 @@ import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
 
+@SuppressWarnings({"unchecked", "WeakerAccess", "CanBeFinal", "UnusedReturnValue"})
 public class AuramcraftCraftingManager {
 	private static final AuramcraftCraftingManager instance = new AuramcraftCraftingManager();
 	private List recipes = new ArrayList();
@@ -89,7 +85,7 @@ public class AuramcraftCraftingManager {
 		LogHelper.info("Infusion Recipes Initialized");
 	}
 	
-	public static final AuramcraftCraftingManager getInstance() {
+	public static AuramcraftCraftingManager getInstance() {
 		return instance;
 	}
 	
@@ -104,9 +100,8 @@ public class AuramcraftCraftingManager {
 		
 		if(items[i] instanceof String[]) {
 			String[] astring = (String[]) ((String[]) items[i++]);
-			
-			for(int l = 0; l < astring.length; ++l) {
-				String s1 = astring[l];
+
+			for(String s1 : astring) {
 				++k;
 				j = s1.length();
 				s = s + s1;
@@ -147,12 +142,10 @@ public class AuramcraftCraftingManager {
 			else
 				aitemstack[i1] = null;
 		}
-		
-		for(Object item : aitemstack)
-			itemList.add(item);
-		
-		for(Object aura : auras)
-			auraList.add(aura);
+
+		Collections.addAll(itemList, aitemstack);
+
+		Collections.addAll(auraList, auras);
 		
 		InfusionShapedRecipes shapedrecipes = new InfusionShapedRecipes(j, k, itemList, itemStack, auraList);
 		this.recipes.add(shapedrecipes);
@@ -162,10 +155,8 @@ public class AuramcraftCraftingManager {
 	public void addShapelessRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
 		ArrayList itemList = new ArrayList();
 		ArrayList auraList = new ArrayList();
-		
-		for(int i = 0; i < items.length; ++i) {
-			Object item = items[i];
-			
+
+		for(Object item : items) {
 			if(item instanceof ItemStack)
 				itemList.add(((ItemStack) item).copy());
 			else if(item instanceof Item)
@@ -173,13 +164,12 @@ public class AuramcraftCraftingManager {
 			else {
 				if(!(item instanceof Block))
 					throw new RuntimeException("Invalid shapeless recipe!");
-				
+
 				itemList.add(new ItemStack((Block) item));
 			}
 		}
-		
-		for(Object aura : auras)
-			auraList.add(aura);
+
+		Collections.addAll(auraList, auras);
 		
 		this.recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
 	}

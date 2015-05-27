@@ -1,21 +1,17 @@
 package com.auramcraft.inventory;
 
 import com.auramcraft.api.AuraContainer;
-import com.auramcraft.api.Auras;
-import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.api.IAuraUser;
-import com.auramcraft.tileentity.TileAuramcraft;
-import com.auramcraft.tileentity.TileAuramcraftInventory;
 import com.auramcraft.tileentity.TileInfusionTable;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 
-public class InfusionCrafting extends InventoryCrafting implements IAuraUser {
-	private Container eventHandler;
+@SuppressWarnings("SameParameterValue") public class InfusionCrafting extends InventoryCrafting implements IAuraUser {
+	private final Container eventHandler;
 	private AuraContainer auraContainer;
-	private TileInfusionTable tileEntity;
-	private AuraSlot auraSlot;
+	private final TileInfusionTable tileEntity;
+	private final AuraSlot auraSlot;
 	
 	public InfusionCrafting(Container container, int width, int height, int maxAura, int tier, TileInfusionTable tileEntity, AuraSlot auraSlot) {
 		super(container, width, height);

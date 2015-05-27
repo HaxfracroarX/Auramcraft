@@ -1,28 +1,21 @@
 package com.auramcraft.inventory;
 
-import com.auramcraft.Auramcraft;
 import com.auramcraft.api.AuraContainer;
-import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileInfusionTable;
-import com.auramcraft.util.LogHelper;
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryCraftResult;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ContainerInfusionTable extends Container {
-	private TileInfusionTable tileEntity;
-	private World worldObj;
-	private InfusionCrafting matrix;
+	private final TileInfusionTable tileEntity;
+	private final World worldObj;
+	private final InfusionCrafting matrix;
 	
 	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
 		this.tileEntity = (TileInfusionTable) world.getTileEntity(x, y, z);
@@ -62,7 +55,7 @@ public class ContainerInfusionTable extends Container {
 			onCraftMatrixChanged(matrix);
 	}
 	
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	private void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		// Add Player Inventory
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 9; j++)

@@ -7,9 +7,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
 
+@SuppressWarnings("WeakerAccess")
 public class AuraButton extends GuiButton {
-	private ResourceLocation texture;
-	private Auras aura;
+	private final ResourceLocation texture;
+	private final Auras aura;
 	
 	public AuraButton(int id, int x, int y, Auras aura) {
 		super(id, x, y, 31, 31, "");

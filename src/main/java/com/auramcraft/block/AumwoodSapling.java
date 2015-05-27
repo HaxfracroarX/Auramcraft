@@ -6,31 +6,21 @@ import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.generation.AumwoodTreeGen;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
-import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
-import net.minecraft.block.IGrowable;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
-import net.minecraft.world.gen.feature.WorldGenCanopyTree;
-import net.minecraft.world.gen.feature.WorldGenForest;
-import net.minecraft.world.gen.feature.WorldGenMegaJungle;
-import net.minecraft.world.gen.feature.WorldGenMegaPineTree;
-import net.minecraft.world.gen.feature.WorldGenSavannaTree;
-import net.minecraft.world.gen.feature.WorldGenTaiga2;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+@SuppressWarnings("unchecked")
 public class AumwoodSapling extends BlockSapling {
 	@SideOnly(Side.CLIENT)
 	private IIcon texture;
@@ -55,7 +45,7 @@ public class AumwoodSapling extends BlockSapling {
     	return texture;
     }
     
-    public boolean isValidPosition(World world, int x, int y, int z, int metadata) {
+    private boolean isValidPosition(World world, int x, int y, int z, int metadata) {
     	Block block = world.getBlock(x, y - 1, z);
     	return block == Blocks.dirt || 
     			block == Blocks.grass || 

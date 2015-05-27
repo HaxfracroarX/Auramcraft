@@ -5,10 +5,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.api.IAuraUser;
-import com.auramcraft.init.AuramcraftBlocks;
-import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Tiers;
 
+@SuppressWarnings("WeakerAccess")
 public class TileAuramcraftAuraUser extends TileAuramcraft implements IAuraUser {
 	private AuraContainer container;
 	
@@ -44,12 +43,12 @@ public class TileAuramcraftAuraUser extends TileAuramcraft implements IAuraUser 
 		Auras[] auras = Auras.values();
 		
 		// Add Aura info
-		for(int i = 0; i < auras.length; i++) {
+		for(Auras aura : auras) {
 			// How much aura there is
-			nbtTagCompound.setInteger(auras[i].toString(), container.getStoredAura(auras[i]));
-			
+			nbtTagCompound.setInteger(aura.toString(), container.getStoredAura(aura));
+
 			// If we are allowed to store the aura
-			nbtTagCompound.setBoolean(auras[i].toString()+" isAllowed", container.isAllowed(auras[i]));
+			nbtTagCompound.setBoolean(aura.toString() + " isAllowed", container.isAllowed(aura));
 		}
 	}
 	

@@ -10,13 +10,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import net.minecraftforge.common.util.ForgeDirection;
 
 public class HolyLamp extends Block {
 	
-	@SideOnly(Side.CLIENT)
-	public static IIcon sideIcon;
-	public static IIcon bottomIcon;
+	@SideOnly(Side.CLIENT) private static IIcon sideIcon;
+	private static IIcon bottomIcon;
 	
 	public HolyLamp() {
 		super(Material.glass);

@@ -1,15 +1,13 @@
 package com.auramcraft.block;
 
 import java.util.Random;
-import com.auramcraft.Auramcraft;
+
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.reference.Names;
-import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.Textures;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class GemstoneOre extends Block {

@@ -1,20 +1,18 @@
 package com.auramcraft.client.renderer.item;
 
 import org.lwjgl.opengl.GL11;
-import com.auramcraft.client.renderer.model.ModelInfusionTable;
-import com.auramcraft.reference.Textures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.IItemRenderer.ItemRenderType;
 import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
 
+@SuppressWarnings("WeakerAccess")
 public class ItemAuramcraftRenderer implements IItemRenderer {
-	private ModelBase model;
-	private ResourceLocation texture;
+	private final ModelBase model;
+	private final ResourceLocation texture;
 	
 	public ItemAuramcraftRenderer(ModelBase model, ResourceLocation texture) {
 		this.model = model;
@@ -66,7 +64,7 @@ public class ItemAuramcraftRenderer implements IItemRenderer {
         Minecraft.getMinecraft().renderEngine.bindTexture(texture);
         
         // Render
-        model.render((Entity)null, 0f, 0f, -0.1f, 0f, 0f, 0.0625f);
+        model.render(null, 0f, 0f, -0.1f, 0f, 0f, 0.0625f);
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glPopMatrix();
 	}

@@ -1,6 +1,5 @@
 package com.auramcraft.client.renderer.item;
 
-import com.auramcraft.client.renderer.model.ModelInfusionTable;
 import com.auramcraft.reference.Models;
 import com.auramcraft.reference.Textures;
 

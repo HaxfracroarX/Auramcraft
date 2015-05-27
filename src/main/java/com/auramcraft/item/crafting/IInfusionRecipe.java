@@ -4,5 +4,5 @@ import java.util.List;
 import net.minecraft.item.crafting.IRecipe;
 
 public interface IInfusionRecipe extends IRecipe {
-	public List getRecipeAuras();
+	List getRecipeAuras();
 }

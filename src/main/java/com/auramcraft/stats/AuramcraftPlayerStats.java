@@ -2,7 +2,6 @@ package com.auramcraft.stats;
 
 import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Reference;
-import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,18 +12,18 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 	private boolean book;
 	private byte[] pages = new byte[PageIds.BOOKLENGTH];
 	
-	public AuramcraftPlayerStats() {
+	private AuramcraftPlayerStats() {
 		book = false;
 		for(int i = 0; i < pages.length; i++) {
 			pages[i] = 0;
 		}
 	}
 	
-	public static final void register(EntityPlayer player) {
+	public static void register(EntityPlayer player) {
 		player.registerExtendedProperties(Reference.MODID, new AuramcraftPlayerStats());
 	}
 	
-	public static final AuramcraftPlayerStats get(EntityPlayer player) {
+	public static AuramcraftPlayerStats get(EntityPlayer player) {
 		return (AuramcraftPlayerStats) player.getExtendedProperties(Reference.MODID);
 	}
 	
@@ -48,14 +47,14 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 		
 	}
 	
-	protected boolean[] getBoolFromByte(byte[] bytes) {
+	private boolean[] getBoolFromByte(byte[] bytes) {
 		boolean[] bools = new boolean[bytes.length];
 		for(int i = 0; i < bytes.length; i++)
-			bools[i] = bytes[i] == 1 ? true : false;
+			bools[i] = bytes[i] == 1;
 		return bools;
 	}
 	
-	protected byte[] getByteFromBool(boolean[] bools) {
+	private byte[] getByteFromBool(boolean[] bools) {
 		byte[] bytes = new byte[bools.length];
 		for(int i = 0; i < bools.length; i++)
 			bytes[i] = (byte) (bools[i] ? 1 : 0);
@@ -70,7 +69,7 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 	}
 	
 	/**
-	 * @param if the player has gotten the Book of Aura
+	 * @param book if the player has gotten the Book of Aura
 	 */
 	public void setBook(boolean book) {
 		this.book = book;

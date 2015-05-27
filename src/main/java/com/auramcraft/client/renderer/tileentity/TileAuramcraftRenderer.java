@@ -1,20 +1,17 @@
 package com.auramcraft.client.renderer.tileentity;
 
 import org.lwjgl.opengl.GL11;
-import com.auramcraft.client.renderer.model.ModelInfusionTable;
-import com.auramcraft.reference.Textures;
 import com.auramcraft.tileentity.TileAuramcraft;
-import com.auramcraft.tileentity.TileInfusionTable;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.ForgeDirection;
 
+@SuppressWarnings("WeakerAccess")
 public class TileAuramcraftRenderer extends TileEntitySpecialRenderer {
-	private ModelBase model;
-	private ResourceLocation texture;
+	private final ModelBase model;
+	private final ResourceLocation texture;
 	
 	public TileAuramcraftRenderer(ModelBase model, ResourceLocation texture) {
 		this.model = model;
@@ -58,7 +55,7 @@ public class TileAuramcraftRenderer extends TileEntitySpecialRenderer {
 		bindTexture(texture);
 		
 		// Render
-		model.render((Entity)null, 0f, 0f, -0.1f, 0f, 0f, 0.0625f);
+		model.render(null, 0f, 0f, -0.1f, 0f, 0f, 0.0625f);
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();
 	}

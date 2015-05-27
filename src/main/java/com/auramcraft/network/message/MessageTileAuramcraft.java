@@ -9,8 +9,8 @@ import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageTileAuramcraft implements IMessage, IMessageHandler<MessageTileAuramcraft, IMessage> {
-	public int x, y, z;
-	public byte orientation;
+	private int x, y, z;
+	private byte orientation;
 	
 	public MessageTileAuramcraft() {}
 	

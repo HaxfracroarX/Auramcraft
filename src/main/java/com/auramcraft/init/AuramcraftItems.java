@@ -8,6 +8,7 @@ import com.auramcraft.reference.Names;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+@SuppressWarnings("WeakerAccess")
 public class AuramcraftItems {
 	public static final Item 
 		fireShard = new FireShard(),
@@ -24,17 +25,11 @@ public class AuramcraftItems {
 		charmOfAllseeing = new CharmOfAllseeing();
 	
 	// Creative only
-	public static Item auraCrystal1 = new AuraCrystal(500);
+	public static final Item auraCrystal1 = new AuraCrystal(500);
 	
 	public static void init() {
 		// Creative only
-		((AuraCrystal) auraCrystal1).getAuraContainer().store(new Object[] {
-				Auras.FIRE, 100,
-				Auras.EARTH, 100,
-				Auras.WATER, 100,
-				Auras.AIR, 100,
-				Auras.AURAM, 100
-		});
+		((AuraCrystal) auraCrystal1).getAuraContainer().store(Auras.FIRE, 100, Auras.EARTH, 100, Auras.WATER, 100, Auras.AIR, 100, Auras.AURAM, 100);
 		
 		GameRegistry.registerItem(fireShard, Names.Items.FIRESHARD);
 		GameRegistry.registerItem(earthShard, Names.Items.EARTHSHARD);

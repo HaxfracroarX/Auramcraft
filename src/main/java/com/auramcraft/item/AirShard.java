@@ -1,9 +1,7 @@
 package com.auramcraft.item;
 
-import com.auramcraft.Auramcraft;
 import com.auramcraft.api.Auras;
 import com.auramcraft.reference.Names;
-import com.auramcraft.reference.Reference;
 import com.auramcraft.reference.Textures;
 
 public class AirShard extends Shard {

@@ -1,24 +1,20 @@
 package com.auramcraft.tileentity;
 
-import com.auramcraft.init.AuramcraftBlocks;
 import com.auramcraft.network.PacketHandler;
 import com.auramcraft.network.message.MessageTileAuramcraft;
 import com.auramcraft.reference.Names;
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
+@SuppressWarnings("WeakerAccess")
 public class TileAuramcraft extends TileEntity {
 	protected ForgeDirection orientation;
 	protected int numPlayersOpen;
-	protected String name;
-	protected Block block;
+	protected final String name;
+	protected final Block block;
 	
 	public TileAuramcraft(String name, Block block) {
 		orientation = ForgeDirection.SOUTH;

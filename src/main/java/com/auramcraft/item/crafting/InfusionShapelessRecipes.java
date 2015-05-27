@@ -1,27 +1,23 @@
 package com.auramcraft.item.crafting;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import com.auramcraft.api.Auras;
-import com.auramcraft.api.IAuraContainer;
 import com.auramcraft.inventory.InfusionCrafting;
-import com.auramcraft.item.AuraItem;
-import com.auramcraft.util.LogHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
+@SuppressWarnings("unchecked")
 public class InfusionShapelessRecipes implements IInfusionRecipe {
 	/** The ItemStack that you get when craft the recipe. */
 	private final ItemStack recipeOutput;
 	
 	/** List of ItemStack that composes the recipe. */
-	public final List recipeItems;
+	private final List recipeItems;
 	
 	/** List of Auras that compose the recipe */
-	public final List recipeAuras;
+	private final List recipeAuras;
 	
 	public InfusionShapelessRecipes(ItemStack recipeOutput, List recipeItems, List recipeAuras) {
 		this.recipeOutput = recipeOutput;
@@ -49,11 +45,10 @@ public class InfusionShapelessRecipes implements IInfusionRecipe {
 				
 				if(itemstack != null) {
 					boolean flag = false;
-					Iterator iterator = items.iterator();
-					
-					while(iterator.hasNext()) {
-						ItemStack itemstack1 = (ItemStack) iterator.next();
-						
+
+					for(Object item : items) {
+						ItemStack itemstack1 = (ItemStack) item;
+
 						if(itemstack.getItem() == itemstack1.getItem() && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage())) {
 							flag = true;
 							items.remove(itemstack1);

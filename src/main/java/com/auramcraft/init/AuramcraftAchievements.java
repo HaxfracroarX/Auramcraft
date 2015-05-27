@@ -6,6 +6,7 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
 
+@SuppressWarnings({"WeakerAccess", "CanBeFinal"})
 public class AuramcraftAchievements {
 	public static AchievementPage page;
 	

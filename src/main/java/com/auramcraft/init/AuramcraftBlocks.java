@@ -6,6 +6,7 @@ import com.auramcraft.reference.Names;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+@SuppressWarnings("WeakerAccess")
 public class AuramcraftBlocks {
 	public static final Block 
 		gemstoneOre = new GemstoneOre(),

@@ -1,11 +1,11 @@
 package com.auramcraft.proxy;
 
 public interface IProxy {
-	public abstract void registerTileEntities();
+	void registerTileEntities();
 	
-	public abstract void registerRenderers();
+	void registerRenderers();
 	
-	public abstract void registerEventHandlers();
+	void registerEventHandlers();
 	
-	public abstract void registerGUIHandlers();
+	void registerGUIHandlers();
 }

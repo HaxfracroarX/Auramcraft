@@ -1,11 +1,11 @@
 package com.auramcraft.item.pages;
 
-import com.auramcraft.reference.Textures;
 import net.minecraft.util.ResourceLocation;
 
+@SuppressWarnings("WeakerAccess")
 public class BookPage {
-	private ResourceLocation texture;
-	private int id;
+	private final ResourceLocation texture;
+	private final int id;
 	
 	public BookPage(ResourceLocation texture, int id) {
 		this.texture = texture;

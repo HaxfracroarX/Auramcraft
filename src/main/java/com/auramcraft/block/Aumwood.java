@@ -1,12 +1,10 @@
 package com.auramcraft.block;
 
-import javax.swing.Icon;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
@@ -15,8 +13,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class Aumwood extends Block {
 	@SideOnly(Side.CLIENT)
-	public static IIcon topIcon;
-	public static IIcon sideIcon;
+	private static IIcon topIcon;
+	private static IIcon sideIcon;
 	
 	public Aumwood() {
 		super(Material.wood);
