@@ -3,7 +3,9 @@ package com.auramcraft.item.crafting;
 import java.util.ArrayList;
 import java.util.List;
 import com.auramcraft.api.Auras;
+import com.auramcraft.api.IAuraUser;
 import com.auramcraft.inventory.InfusionCrafting;
+import com.auramcraft.item.AuraItem;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -58,7 +60,7 @@ public class InfusionShapedRecipes implements IInfusionRecipe {
 			Auras aura = (Auras) auras.get(i);
 			int amount = (Integer) auras.get(i+1);
 			
-			if(!(crafting.getAuraContainer().getStoredAura(aura) >= amount))
+			if(!(crafting.getAuraSlot().getItemAuraContainer().getStoredAura(aura) >= amount))
 				return false;
 		}
 		

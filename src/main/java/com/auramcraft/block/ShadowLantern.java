@@ -30,7 +30,6 @@ public class ShadowLantern extends Block {
 		setBlockName(Names.Blocks.SHADOWLANTERN);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setLightLevel(0.6F);
-			
 	}
 	
 	@Override

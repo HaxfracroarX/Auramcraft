@@ -34,12 +34,15 @@ public class InfusionSlotCrafting extends Slot {
 		// Get infusion recipes
 		ArrayList<IInfusionRecipe> recipes = new ArrayList<IInfusionRecipe>((Collection<? extends IInfusionRecipe>) AuramcraftCraftingManager.getInstance().getRecipeList());
 
+		// Flag for recipes
+		boolean foundRecipe = false;
+
 		for(IInfusionRecipe recipe : recipes) {
 			// Get the aura needed by the recipe
 			ArrayList auras = new ArrayList(recipe.getRecipeAuras());
 
 			// If the recipe matches
-			if(recipe.getRecipeOutput().getItem().equals(itemStack.getItem()) && container.containsAmount(auras)) {
+			if(recipe.getRecipeOutput().getItem().equals(itemStack.getItem()) && container.containsAmount(auras)) { // TODO: Check if it found a recipe or not
 				// Subtract aura cost from container
 				for(int j = 0; j < auras.size(); j += 2) {
 					Auras aura = (Auras) auras.get(j);
@@ -52,19 +55,29 @@ public class InfusionSlotCrafting extends Slot {
 				// Update container
 				AuraItem.updateNBT(matrix.getStackInSlot(9), container);
 
+				// Check off flag
+				foundRecipe = true;
+
 				// No more looping necessary
 				break;
 			}
 		}
+
+		// Check if the input matched any recipes.
+		if(!foundRecipe)
+			return;
 		
 		// Deletes the items used in the recipe
 		for(int i = 0; i < 9; i++)
 			matrix.decrStackSize(i, 1);
 		
 		// Refresh output slot
-		eventhandler.onCraftMatrixChanged(matrix);
+		eventhandler.onCraftMatrixChanged(null);
 		
 		super.onPickupFromSlot(entityPlayer, itemStack);
+
+		// Refresh output slot
+		eventhandler.onCraftMatrixChanged(null);
 	}
 	
 	@Override

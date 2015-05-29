@@ -7,25 +7,26 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 
-@SuppressWarnings("SameParameterValue") public class InfusionCrafting extends InventoryCrafting implements IAuraUser {
+@SuppressWarnings("SameParameterValue")
+public class InfusionCrafting extends InventoryCrafting {
 	private final Container eventHandler;
-	private AuraContainer auraContainer;
 	private final TileInfusionTable tileEntity;
 	private final AuraSlot auraSlot;
 	
-	public InfusionCrafting(Container container, int width, int height, int maxAura, int tier, TileInfusionTable tileEntity, AuraSlot auraSlot) {
+	public InfusionCrafting(Container container, int width, int height, TileInfusionTable tileEntity, AuraSlot auraSlot) {
 		super(container, width, height);
 		this.eventHandler = container;
 		this.tileEntity = tileEntity;
 		this.auraSlot = auraSlot;
-		auraContainer = new AuraContainer(maxAura, tier);
-		
+	}
+
+	public void init() {
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++)
-				setInventorySlotContents(j + i * 3, tileEntity.getStackInSlot(j + i * 3));
+				super.setInventorySlotContents(j + i * 3, tileEntity.getStackInSlot(j + i * 3));
 		}
 	}
-	
+
 	@Override
 	public ItemStack getStackInSlot(int slot) {
 		return tileEntity.getStackInSlot(slot);
@@ -39,7 +40,7 @@ import net.minecraft.item.ItemStack;
             if (tileEntity.getStackInSlot(p_70298_1_).stackSize <= p_70298_2_) {
                 itemstack = tileEntity.getStackInSlot(p_70298_1_);
                 tileEntity.setInventorySlotContents(p_70298_1_, null);
-                eventHandler.onCraftMatrixChanged(this);
+                eventHandler.onCraftMatrixChanged(null);
                 return itemstack;
             }
             else {
@@ -48,7 +49,7 @@ import net.minecraft.item.ItemStack;
                 if (tileEntity.getStackInSlot(p_70298_1_).stackSize == 0)
                     tileEntity.setInventorySlotContents(p_70298_1_, null);
 
-                eventHandler.onCraftMatrixChanged(this);
+                eventHandler.onCraftMatrixChanged(null);
                 return itemstack;
             }
         }
@@ -59,7 +60,7 @@ import net.minecraft.item.ItemStack;
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack itemStack) {
 		tileEntity.setInventorySlotContents(slot, itemStack);
-		eventHandler.onCraftMatrixChanged(this);
+		eventHandler.onCraftMatrixChanged(null);
 	}
 	
 	@Override
@@ -67,17 +68,7 @@ import net.minecraft.item.ItemStack;
 		return null;
 	}
 	
-	@Override
-	public AuraContainer getAuraContainer() {
-		return auraContainer;
-	}
-	
 	public AuraSlot getAuraSlot() {
 		return auraSlot;
-	}
-	
-	@Override
-	public void setAuraContainer(AuraContainer auraContainer) {
-		this.auraContainer = auraContainer;
 	}
 }

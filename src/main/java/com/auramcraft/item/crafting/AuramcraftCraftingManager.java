@@ -174,7 +174,7 @@ public class AuramcraftCraftingManager {
 		this.recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
 	}
 	
-	public ItemStack findMatchingRecipe(InfusionCrafting crafting, World world) { // TODO Add check for sufficient Aura
+	public ItemStack findMatchingRecipe(InfusionCrafting crafting, World world) {
 		int i = 0;
 		ItemStack itemstack = null;
 		ItemStack itemstack1 = null;
