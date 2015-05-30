@@ -45,10 +45,10 @@ public class InfusionShapelessRecipes implements IInfusionRecipe {
 				
 				if(itemstack != null) {
 					boolean flag = false;
-
+					
 					for(Object item : items) {
 						ItemStack itemstack1 = (ItemStack) item;
-
+						
 						if(itemstack.getItem() == itemstack1.getItem() && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage())) {
 							flag = true;
 							items.remove(itemstack1);

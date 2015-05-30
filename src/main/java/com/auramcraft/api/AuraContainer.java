@@ -180,7 +180,7 @@ public class AuraContainer implements IAuraContainer {
 		for(int i = 0; i < combined.size(); i += 2)
 			numContained += containsAmount((Auras) combined.get(i), (Integer) combined.get(i+1)) ? 1 : 0;
 		
-		return numContained == auras.size()/2;
+		return numContained == combined.size()/2;
 	}
 	
 	@Override

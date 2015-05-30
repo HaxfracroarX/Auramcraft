@@ -33,22 +33,22 @@ public class InfusionCrafting extends InventoryCrafting {
 	}
 	
 	@Override
-	public ItemStack decrStackSize(int p_70298_1_, int p_70298_2_) {
-		if (tileEntity.getStackInSlot(p_70298_1_) != null) {
+	public ItemStack decrStackSize(int slot, int amount) {
+		if (tileEntity.getStackInSlot(slot) != null) {
             ItemStack itemstack;
-
-            if (tileEntity.getStackInSlot(p_70298_1_).stackSize <= p_70298_2_) {
-                itemstack = tileEntity.getStackInSlot(p_70298_1_);
-                tileEntity.setInventorySlotContents(p_70298_1_, null);
+			
+            if (tileEntity.getStackInSlot(slot).stackSize <= amount) {
+                itemstack = tileEntity.getStackInSlot(slot);
+                tileEntity.setInventorySlotContents(slot, null);
                 eventHandler.onCraftMatrixChanged(null);
                 return itemstack;
             }
             else {
-                itemstack = tileEntity.getStackInSlot(p_70298_1_).splitStack(p_70298_2_);
-                
-                if (tileEntity.getStackInSlot(p_70298_1_).stackSize == 0)
-                    tileEntity.setInventorySlotContents(p_70298_1_, null);
-
+                itemstack = tileEntity.getStackInSlot(slot).splitStack(amount);
+				
+                if (tileEntity.getStackInSlot(slot).stackSize == 0)
+                    tileEntity.setInventorySlotContents(slot, null);
+				
                 eventHandler.onCraftMatrixChanged(null);
                 return itemstack;
             }
