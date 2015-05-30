@@ -47,7 +47,8 @@ public class ShadowLantern extends Block {
 			else if(facing == 3)
 				direction = ForgeDirection.WEST.ordinal();
 			
-			world.setBlockMetadataWithNotify(x, y, z, direction, 2);
+			// Add 1 to direction to avoid setting meta to 0, for reasons explained in getIcon.
+			world.setBlockMetadataWithNotify(x, y, z, direction+1, 2);
 		}
 	}
 	
@@ -65,25 +66,31 @@ public class ShadowLantern extends Block {
 		if (side == 1 || side == 0)
 			return topIcon;
 		
-		switch(ForgeDirection.getOrientation(meta)) {
-			case NORTH:
-				if(side == 2)
-					return frontIcon;
-				break;
-			case EAST:
-				if(side == 5)
-					return frontIcon;
-				break;
-			case SOUTH:
-				if(side == 3)
-					return frontIcon;
-				break;
-			case WEST:
-				if(side == 4)
-					return frontIcon;
-				break;
-			default:
-				return sideIcon;
+		// If meta = 0, then the block hasn't been placed nor gotten a direction.
+		// Therefore, set side 3 to frontIcon to make it look good while waiting to be placed.
+		if(meta == 0 & side == 3)
+			return frontIcon;
+		else {
+			switch(ForgeDirection.getOrientation(meta - 1)) {
+				case NORTH:
+					if(side == 2)
+						return frontIcon;
+					break;
+				case EAST:
+					if(side == 5)
+						return frontIcon;
+					break;
+				case SOUTH:
+					if(side == 3)
+						return frontIcon;
+					break;
+				case WEST:
+					if(side == 4)
+						return frontIcon;
+					break;
+				default:
+					return sideIcon;
+			}
 		}
 		
 		return sideIcon;
