@@ -1,7 +1,5 @@
 package com.auramcraft.inventory;
 
-import com.auramcraft.api.AuraContainer;
-import com.auramcraft.api.IAuraUser;
 import com.auramcraft.tileentity.TileInfusionTable;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
@@ -19,14 +17,14 @@ public class InfusionCrafting extends InventoryCrafting {
 		this.tileEntity = tileEntity;
 		this.auraSlot = auraSlot;
 	}
-
+	
 	public void init() {
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++)
 				super.setInventorySlotContents(j + i * 3, tileEntity.getStackInSlot(j + i * 3));
 		}
 	}
-
+	
 	@Override
 	public ItemStack getStackInSlot(int slot) {
 		return tileEntity.getStackInSlot(slot);

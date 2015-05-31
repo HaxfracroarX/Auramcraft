@@ -1,15 +1,14 @@
 package com.auramcraft.item.crafting;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.auramcraft.api.Auras;
-import com.auramcraft.api.IAuraUser;
 import com.auramcraft.inventory.InfusionCrafting;
-import com.auramcraft.item.AuraItem;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings({"FieldCanBeLocal", "unchecked"})
 public class InfusionShapedRecipes implements IInfusionRecipe {
