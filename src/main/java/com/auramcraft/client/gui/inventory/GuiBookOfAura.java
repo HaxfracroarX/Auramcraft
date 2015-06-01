@@ -1,13 +1,14 @@
 package com.auramcraft.client.gui.inventory;
 
-import java.util.ArrayList;
-import org.lwjgl.opengl.GL11;
 import com.auramcraft.inventory.ContainerEmpty;
 import com.auramcraft.item.pages.*;
 import com.auramcraft.reference.PageIds;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import org.lwjgl.opengl.GL11;
+
+import java.util.ArrayList;
 
 @SuppressWarnings("unchecked")
 public class GuiBookOfAura extends GuiContainer {
@@ -44,28 +45,32 @@ public class GuiBookOfAura extends GuiContainer {
 		page = book.get(currentPage);
 	}
 	
+	/**
+	 * @param mx Mouse x
+	 * @param my Mouse y
+	 */
 	@Override
-	public void drawGuiContainerForegroundLayer(int var2, int var3) {
-		int x = (width - xSize) / 2;
-	    int y = (height - ySize) / 2;
-	    
+	public void drawGuiContainerForegroundLayer(int mx, int my) {
 		String researched = researchedPages(pages) + " Entries";
 		String page = "p. "+(currentPage+1);
 		
 		GL11.glScalef(0.75f, 0.75f, 1f);
 		
-		fontRendererObj.drawString(researched, ((xSize - fontRendererObj.getStringWidth(researched))) + x, y*2 + ySize + fontRendererObj.FONT_HEIGHT, 4210752);
-		fontRendererObj.drawString(page, (int) ((xSize - fontRendererObj.getStringWidth(page)) + xSize/2.25) + x, (int) (y*1.5 + fontRendererObj.FONT_HEIGHT), 4210752);
+		fontRendererObj.drawString(page, 20, 15, 4210752);
+		fontRendererObj.drawString(researched, xSize-20, 15, 4210752);
 	}
-	
+
+	/**
+	 * @param renderPartialTicks Partial ticks from last render
+	 * @param mx Mouse x
+	 * @param my Mouse y
+	 */
 	@Override
-	public void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
+	public void drawGuiContainerBackgroundLayer(float renderPartialTicks, int mx, int my) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(page.getTexture());
 		
-		int x = (width - xSize) / 2;
-	    int y = (height - ySize) / 2;
-	    drawTexturedModalRect(x, y, 20, 1, xSize, ySize);
+	    drawTexturedModalRect(guiLeft, guiTop, 20, 1, xSize, ySize);
 	}
 	
 	private int researchedPages(boolean[] pages) {
