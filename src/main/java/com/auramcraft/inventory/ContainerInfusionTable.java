@@ -1,5 +1,6 @@
 package com.auramcraft.inventory;
 
+import com.auramcraft.item.AuraItem;
 import com.auramcraft.item.crafting.AuramcraftCraftingManager;
 import com.auramcraft.tileentity.TileInfusionTable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -77,6 +78,10 @@ public class ContainerInfusionTable extends Container {
         // Checks if null and if the item can be stacked (maxStackSize > 1)
         if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
+			
+			if(stackInSlot.getItem() instanceof AuraItem)
+				AuraItem.initNBT(stackInSlot);
+			
 			stack = stackInSlot.copy();
 			
 			// Checks if the slot is in the tileEntity
@@ -124,6 +129,7 @@ public class ContainerInfusionTable extends Container {
 		Slot slot;
 		ItemStack itemStackInSlot;
 		
+		// Check for an existing stack of the item of itemStack in order to add itself to it
 		if (itemStack.isStackable()) {
 			while (itemStack.stackSize > 0 && (!backwards && current < end || backwards && current >= start)) {
 				slot = (Slot)this.inventorySlots.get(current);
@@ -156,6 +162,7 @@ public class ContainerInfusionTable extends Container {
 			}
 		}
 		
+		// Check for an empty slot to fill with the remaining items in itemStack
 		if (itemStack.stackSize > 0) {
 			if (backwards)
 				current = end - 1;

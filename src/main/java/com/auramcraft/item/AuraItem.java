@@ -1,7 +1,5 @@
 package com.auramcraft.item;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.api.IAuraUser;
@@ -10,6 +8,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings({"unchecked", "SameParameterValue", "WeakerAccess"})
 public class AuraItem extends Item implements IAuraUser {
@@ -70,8 +71,7 @@ public class AuraItem extends Item implements IAuraUser {
 	
 	public static AuraContainer getAuraContainer(ItemStack itemStack) {
 		// If NBT hasn't been initilized yet
-		if(itemStack.stackTagCompound == null)
-			updateNBT(itemStack, ((AuraItem) itemStack.getItem()).getAuraContainer());
+		initNBT(itemStack);
 		
 		// Get values
 		int maxAura = itemStack.stackTagCompound.getInteger("Max Aura");
@@ -104,6 +104,11 @@ public class AuraItem extends Item implements IAuraUser {
 			allowedAuras.clear();
 		
 		return new AuraContainer(maxAura, tier, auras, allowedAuras, isDrainable, isFillable);
+	}
+	
+	public static void initNBT(ItemStack itemStack) {
+		if(itemStack.stackTagCompound == null)
+			updateNBT(itemStack, ((AuraItem) itemStack.getItem()).getAuraContainer());
 	}
 	
 	@Override
