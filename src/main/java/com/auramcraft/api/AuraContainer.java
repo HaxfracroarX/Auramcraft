@@ -1,10 +1,10 @@
 package com.auramcraft.api;
 
+import com.auramcraft.reference.Tiers;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import com.auramcraft.reference.Tiers;
 
 @SuppressWarnings("CanBeFinal")
 public class AuraContainer implements IAuraContainer {
@@ -135,7 +135,7 @@ public class AuraContainer implements IAuraContainer {
 	
 	@Override
 	public Auras[] getAllowed() {
-		return (Auras[]) allowedAuras.toArray();
+		return allowedAuras.toArray(new Auras[allowedAuras.size()]);
 	}
 	
 	@Override

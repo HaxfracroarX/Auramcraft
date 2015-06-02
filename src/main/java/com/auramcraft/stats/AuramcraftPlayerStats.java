@@ -1,7 +1,10 @@
 package com.auramcraft.stats;
 
+import com.auramcraft.api.AuraContainer;
+import com.auramcraft.api.Auras;
 import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Reference;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,6 +14,7 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 	private boolean book;
 	private byte[] pages = new byte[PageIds.BOOKLENGTH];
+	private AuraContainer container;
 	
 	private AuramcraftPlayerStats() {
 		book = false;
@@ -32,14 +36,24 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setBoolean("bookOfAura", gotBook());
 		nbt.setByteArray("ResearchedPages", pages);
+		nbt.setByte("playerAffinity", (byte) container.getAllowed()[0].getId());
+		nbt.setByte("playerMaxAura", (byte) container.getMaxAura());
+		nbt.setByte("playerAuraAmount", (byte) container.getStoredAura(container.getAllowed()[0]));
 		compound.setTag(Reference.MODID, nbt);
 	}
 	
 	@Override
 	public void loadNBTData(NBTTagCompound compound) {
 		NBTTagCompound nbt = (NBTTagCompound) compound.getTag(Reference.MODID);
+		
 		setBook(nbt.getBoolean("bookOfAura"));
 		pages = nbt.getByteArray("ResearchedPages");
+		
+		container = new AuraContainer(nbt.getByte("playerMaxAura"), 1);
+		Auras allowedAura = Auras.values()[nbt.getByte("playerAffinity")];
+		container.addAllowed(allowedAura);
+		container.store(allowedAura, nbt.getByte("playerAuraAmount"));
+		LogHelper.info(allowedAura);
 	}
 	
 	@Override
@@ -87,5 +101,16 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties {
 	 */
 	public void setPages(boolean[] pages) {
 		this.pages = getByteFromBool(pages);
+	}
+	
+	/**
+	 * @return the AuraContainer of the player
+	 */
+	public AuraContainer getAuraContainer() {
+		return container;
+	}
+	
+	public void setAuraContainer(AuraContainer container) {
+		this.container = container;
 	}
 }

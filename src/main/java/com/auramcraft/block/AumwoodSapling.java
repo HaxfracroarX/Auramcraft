@@ -1,11 +1,11 @@
 package com.auramcraft.block;
 
-import java.util.List;
-import java.util.Random;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.generation.AumwoodTreeGen;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,8 +17,9 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.util.ForgeDirection;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("unchecked")
 public class AumwoodSapling extends BlockSapling {
@@ -70,11 +71,10 @@ public class AumwoodSapling extends BlockSapling {
     			func_149878_d(world, x, y, z, random); // Grows the tree
     	}
     }
-    
-    @Override
     /**
      * Grows a tree
      */
+    @Override
     public void func_149878_d(World world, int x, int y, int z, Random random) {
     	int meta = world.getBlockMetadata(x, y, z) & 15;
 		Object obj = null;

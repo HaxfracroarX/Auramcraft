@@ -1,21 +1,28 @@
 package com.auramcraft.handler;
 
+import com.auramcraft.api.AuraContainer;
+import com.auramcraft.api.Auras;
 import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftAchievements;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.*;
+
+import java.util.Random;
 
 @SuppressWarnings("WeakerAccess")
 public class AuramcraftEventHandler {
@@ -81,6 +88,27 @@ public class AuramcraftEventHandler {
 					entityitem.onCollideWithPlayer(player);
 			}
 			LogHelper.info("Gave Book of Aura to " + player.getDisplayName());
+		}
+		
+		if(stats.getAuraContainer() == null) {
+			// Setup variables for new AuraContainer
+			Random random = new Random();
+			int maxAura = random.nextInt(11) + 5;
+			Auras allowedAura = Auras.values()[random.nextInt(5)];
+			
+			// Setup container and fill it up
+			AuraContainer container = new AuraContainer(maxAura, 1);
+			container.addAllowed(allowedAura);
+			container.store(allowedAura, maxAura);
+			
+			// Give the player the container
+			stats.setAuraContainer(container);
+			
+			// Announce affinity
+			String announcement = player.getDisplayName() + " has been blessed with an affinity for " + allowedAura;
+			
+			LogHelper.info(announcement);
+			player.addChatMessage(new ChatComponentText(announcement));
 		}
 	}
 }
