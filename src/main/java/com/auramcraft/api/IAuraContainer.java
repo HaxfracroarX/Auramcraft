@@ -15,7 +15,7 @@ public interface IAuraContainer {
 	/**
 	 * Tries to store the auras in the amounts specified
 	 */
-	void store(Object... auras);
+	void store(Object... auraList);
 	
 	/**
 	 * Tries to take out the specified amount of the specified aura
@@ -23,6 +23,20 @@ public interface IAuraContainer {
 	 * @return If removal was successful
 	 */
 	boolean remove(Auras aura, int amount);
+	
+	/**
+	 * Tries to remove the auras in the amounts specified
+	 */
+	void remove(Object... auraList);
+	
+	/**
+	 * Transfer specified aura and amount from specified container into this container
+	 * 
+	 * @param container Container to transfer from
+	 * @param aura Aura to transfer
+	 * @param amount Amount to transfer
+	 */
+	void transfer(AuraContainer container, Auras aura, int amount);
 	
 	/**
 	 * @return If the container is drainable

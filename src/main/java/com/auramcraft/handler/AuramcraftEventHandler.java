@@ -12,12 +12,10 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
-import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
@@ -28,22 +26,14 @@ import java.util.Random;
 public class AuramcraftEventHandler {
 	@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event) {
-		World world = event.world;
-		
-		int x = event.x;
-		int y = event.y;
-		int z = event.z;
-		
-		Block block = event.block;
-		
-		if(block instanceof AumwoodSapling) {
+		if(event.block instanceof AumwoodSapling) {
 			event.setResult(Result.ALLOW);
 			
-			if(!world.isRemote) {
+			if(!event.world.isRemote) {
 				double chance = 0.15d;
 				
-				if(world.rand.nextFloat() < chance)
-					((AumwoodSapling)block).func_149878_d(world, x, y, z, event.world.rand);
+				if(event.world.rand.nextFloat() < chance)
+					((AumwoodSapling) event.block).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
 			}
 		}
 	}
@@ -87,6 +77,8 @@ public class AuramcraftEventHandler {
 				if (!(player instanceof FakePlayer))
 					entityitem.onCollideWithPlayer(player);
 			}
+			
+			// Log your generosity
 			LogHelper.info("Gave Book of Aura to " + player.getDisplayName());
 		}
 		
@@ -99,16 +91,17 @@ public class AuramcraftEventHandler {
 			// Setup container and fill it up
 			AuraContainer container = new AuraContainer(maxAura, 1);
 			container.addAllowed(allowedAura);
-			container.store(allowedAura, maxAura);
 			
 			// Give the player the container
 			stats.setAuraContainer(container);
 			
 			// Announce affinity
 			String announcement = player.getDisplayName() + " has been blessed with an affinity for " + allowedAura;
-			
 			LogHelper.info(announcement);
 			player.addChatMessage(new ChatComponentText(announcement));
 		}
+		
+		// Send Client a packet
+		stats.sendPacket(player);
 	}
 }

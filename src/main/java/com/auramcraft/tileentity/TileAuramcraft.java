@@ -3,6 +3,9 @@ package com.auramcraft.tileentity;
 import com.auramcraft.network.PacketHandler;
 import com.auramcraft.network.message.MessageTileAuramcraft;
 import com.auramcraft.reference.Names;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
@@ -10,11 +13,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
 @SuppressWarnings("WeakerAccess")
-public class TileAuramcraft extends TileEntity {
+public class TileAuramcraft extends TileEntity implements IMessageHandler<MessageTileAuramcraft, IMessage> {
 	protected ForgeDirection orientation;
 	protected int numPlayersOpen;
-	protected final String name;
-	protected final Block block;
+	protected String name;
+	protected Block block;
+	
+	public TileAuramcraft() {}
 	
 	public TileAuramcraft(String name, Block block) {
 		orientation = ForgeDirection.SOUTH;
@@ -54,6 +59,12 @@ public class TileAuramcraft extends TileEntity {
 	
 	@Override
 	public Packet getDescriptionPacket() {
-		return PacketHandler.INSTANCE.getPacketFrom(new MessageTileAuramcraft(this));
+		return PacketHandler.wrapper.getPacketFrom(new MessageTileAuramcraft(this));
+	}
+	
+	@Override
+	public IMessage onMessage(MessageTileAuramcraft message, MessageContext ctx) {
+		setOrientation(message.orientation);
+		return null;
 	}
 }

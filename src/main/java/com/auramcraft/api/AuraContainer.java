@@ -3,7 +3,6 @@ package com.auramcraft.api;
 import com.auramcraft.reference.Tiers;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("CanBeFinal")
@@ -65,6 +64,18 @@ public class AuraContainer implements IAuraContainer {
 	}
 	
 	@Override
+	public void remove(Object... auraList) {
+		for(int i = 0; i < auraList.length; i = i + 2)
+			remove((Auras) auraList[i], (Integer) auraList[i +1]);
+	}
+	
+	@Override
+	public void transfer(AuraContainer container, Auras aura, int amount) {
+		store(aura, amount);
+		container.remove(aura, amount);
+	}
+	
+	@Override
 	public boolean isDrainable() {
 		return isDrainable;
 	}
@@ -101,7 +112,7 @@ public class AuraContainer implements IAuraContainer {
 	
 	@Override
 	public boolean canStoreAura(Auras aura) {
-		return allowedAuras.isEmpty() || Collections.binarySearch(allowedAuras, aura) > 0;
+		return allowedAuras.isEmpty() || allowedAuras.contains(aura);
 	}
 	
 	@Override
