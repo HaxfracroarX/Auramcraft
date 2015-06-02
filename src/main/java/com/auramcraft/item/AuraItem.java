@@ -33,13 +33,27 @@ public class AuraItem extends Item implements IAuraUser {
 		
 		// Loop through every tier we can store
 		for(int i = 0; i < container.getTier(); i++) {
+			boolean isEmpty = true;
+			
+			// Check if there is any aura in this tier
+			for(int j = 0; j < Tiers.getTotalAuras(i); j++, offset++) {
+				if(container.getStoredAura(auras[offset]) > 0) {
+					isEmpty = false;
+					break;
+				}
+			}
+			
+			// If there is no aura from this tier, skip adding the empty tier
+			if(isEmpty) {
+				list.add("Tier " + (i+1) + ": Empty");
+				continue;
+			}
+			
 			list.add("Tier " + (i+1) + ":");
 			
 			// Loop through every aura in the tier
 			for(int j = 0; j < Tiers.getTotalAuras(i); j++, offset++) {
-				// If we have more than 1 of an aura, show it
-				if(container.getStoredAura(auras[offset]) > 0)
-					list.add("  " + auras[offset].toString() + ": " + container.getStoredAura(auras[offset]));
+				list.add("  " + auras[offset].toString() + ": " + container.getStoredAura(auras[offset]));
 			}
 		}
 	}
