@@ -22,9 +22,6 @@ public class AuraItem extends Item implements IAuraUser {
 	
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer entityPlayer, List list, boolean advanced) {
-		// Current id of aura
-		int offset = 0;
-		
 		// List of all Auras
 		Auras[] auras = Auras.values();
 		
@@ -34,11 +31,13 @@ public class AuraItem extends Item implements IAuraUser {
 		// Loop through every tier we can store
 		for(int i = 0; i < container.getTier(); i++) {
 			boolean isEmpty = true;
+			int offset = 0;
 			
 			// Check if there is any aura in this tier
 			for(int j = 0; j < Tiers.getTotalAuras(i); j++, offset++) {
 				if(container.getStoredAura(auras[offset]) > 0) {
 					isEmpty = false;
+					offset = 0;
 					break;
 				}
 			}

@@ -38,7 +38,7 @@ public class InfusionSlotCrafting extends Slot {
 			ArrayList auras = new ArrayList(recipe.getRecipeAuras());
 			
 			// If the recipe matches
-			if(recipe.getRecipeOutput().getItem().equals(itemStack.getItem()) && container.containsAmount(auras)) { // TODO: Check if it found a recipe or not
+			if(recipe.getRecipeOutput().getItem().equals(itemStack.getItem()) && container.containsAmount(auras)) {
 				// Subtract aura cost from container
 				for(int j = 0; j < auras.size(); j += 2) {
 					Auras aura = (Auras) auras.get(j);

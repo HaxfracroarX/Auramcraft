@@ -91,6 +91,7 @@ public class AuramcraftEventHandler {
 			// Setup container and fill it up
 			AuraContainer container = new AuraContainer(maxAura, 1);
 			container.addAllowed(allowedAura);
+			container.store(allowedAura, maxAura);
 			
 			// Give the player the container
 			stats.setAuraContainer(container);
