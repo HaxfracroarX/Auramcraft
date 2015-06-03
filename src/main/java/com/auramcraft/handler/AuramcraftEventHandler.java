@@ -1,5 +1,6 @@
 package com.auramcraft.handler;
 
+import com.auramcraft.Auramcraft;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.block.AumwoodSapling;
@@ -17,10 +18,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
 import java.util.Random;
@@ -71,6 +74,17 @@ public class AuramcraftEventHandler {
 	}
 	
 	@SubscribeEvent
+	public void onLivingDeathEvent(LivingDeathEvent event) {
+		if(event.entity.worldObj.isRemote || !(event.entity instanceof EntityPlayer))
+			return;
+		
+		// Temporarily store playerData
+		NBTTagCompound playerData = new NBTTagCompound();
+		AuramcraftPlayerStats.get((EntityPlayer) event.entity).saveNBTData(playerData);
+		Auramcraft.proxy.storeEntityData((EntityPlayer) event.entity, playerData);
+	}
+	
+	@SubscribeEvent
 	public void PlayerLoggedInEvent(PlayerLoggedInEvent event) {
 		onPlayerLogin(event.player);
 	}
@@ -82,14 +96,19 @@ public class AuramcraftEventHandler {
 	
 	@SubscribeEvent
 	public void onEntityConstructing(EntityEvent.EntityConstructing event) {
-		if(event.entity instanceof EntityPlayer && AuramcraftPlayerStats.get((EntityPlayer) event.entity) == null) {
+		if(event.entity instanceof EntityPlayer && AuramcraftPlayerStats.get((EntityPlayer) event.entity) == null)
 			AuramcraftPlayerStats.register((EntityPlayer) event.entity);
-		}
 	}
 	
 	public void onPlayerLogin(EntityPlayer player) {
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 		
+		// Check for and resurrect playerData from the dead
+		NBTTagCompound playerData = Auramcraft.proxy.getEntityData(player);
+		if(playerData != null)
+			stats.loadNBTData(playerData);
+		
+		// Check if the player got a free book yet
 		if(!stats.gotBook()) {
 			stats.setBook(true);
 			ItemStack book = new ItemStack(AuramcraftItems.bookOfAura);
@@ -107,6 +126,7 @@ public class AuramcraftEventHandler {
 			LogHelper.info("Gave Book of Aura to " + player.getDisplayName());
 		}
 		
+		// Check if the player has been blessed yet
 		if(stats.getAuraContainer() == null) {
 			// Setup variables for new AuraContainer
 			Random random = new Random();
