@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,11 @@ public class AuraItem extends Item implements IAuraUser {
 	
 	public AuraItem(int maxAura, int tier) {
 		container = new AuraContainer(maxAura, tier);
+	}
+	
+	@Override
+	public void onCreated(ItemStack itemStack, World world, EntityPlayer player) {
+		initNBT(itemStack);
 	}
 	
 	@Override

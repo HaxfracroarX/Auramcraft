@@ -62,11 +62,6 @@ public class ContainerInfusionTable extends Container {
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
 		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe(matrix, worldObj));
-		
-		// Check for AuraItem and initilize
-		if(tileEntity.getStackInSlot(10) != null && tileEntity.getStackInSlot(10).getItem() instanceof AuraItem)
-			AuraItem.initNBT(tileEntity.getStackInSlot(10));
-		
 		super.onCraftMatrixChanged(inventory);
 	}
 	
@@ -84,12 +79,16 @@ public class ContainerInfusionTable extends Container {
         if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			
+			// Initilize NBT data
+			if(stackInSlot.getItem() instanceof AuraItem)
+				AuraItem.initNBT(stackInSlot);
+			
 			stack = stackInSlot.copy();
 			
 			// Checks if the slot is in the tileEntity
 			if(slot < 11) {
 				// Attempts to merge the item into the player inventory
-				if(!this.mergeItemStack(stackInSlot, 11, 46, true))
+				if(!this.mergeItemStack(stackInSlot, 11, 47, true))
 					return null;
 			}
 			// Attempts to merge the item into the tileEntity
