@@ -5,6 +5,7 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftAchievements;
 import com.auramcraft.init.AuramcraftItems;
+import com.auramcraft.item.CharmOfAllseeing;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -12,10 +13,12 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
@@ -24,6 +27,12 @@ import java.util.Random;
 
 @SuppressWarnings("WeakerAccess")
 public class AuramcraftEventHandler {
+	private final Minecraft mc;
+	
+	public AuramcraftEventHandler() {
+		mc = Minecraft.getMinecraft();
+	}
+	
 	@SubscribeEvent
 	public void onUseBonemeal(BonemealEvent event) {
 		if(event.block instanceof AumwoodSapling) {
@@ -43,6 +52,22 @@ public class AuramcraftEventHandler {
 		// Aura Crystal Achievement
 		if(event.crafting.getItem() == AuramcraftItems.auraCrystal)
 			event.player.addStat(AuramcraftAchievements.auraCrystal, 1);
+	}
+	
+	@SubscribeEvent
+	public void onRenderGameOverlay(RenderGameOverlayEvent.Pre event) {
+		if(event.type != RenderGameOverlayEvent.ElementType.TEXT)
+			return;
+		
+		AuraContainer container = AuramcraftPlayerStats.get(mc.thePlayer).getAuraContainer();
+		ItemStack held = mc.thePlayer.getHeldItem();
+		
+		if(container == null || held == null || !(held.getItem() instanceof CharmOfAllseeing))
+			return;
+		
+		Auras allowedAura = container.getAllowed()[0];
+		
+		mc.fontRenderer.drawStringWithShadow(allowedAura + ": " + container.getStoredAura(allowedAura), 10, 10, 0x33CCFF);
 	}
 	
 	@SubscribeEvent

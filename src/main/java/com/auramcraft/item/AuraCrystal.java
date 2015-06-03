@@ -22,17 +22,19 @@ public class AuraCrystal extends AuraItem {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
-		if(player.isSneaking() && !world.isRemote) {
+		if(player.isSneaking()) {
 			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 			AuraContainer itemContainer = AuraItem.getAuraContainer(itemStack);
 			AuraContainer container = stats.getAuraContainer();
 			Auras allowedAura = container.getAllowed()[0];
 			int storedAura = container.getStoredAura(allowedAura);
 			
-			if(itemContainer.canStoreAura(allowedAura, storedAura))
-				player.addChatMessage(new ChatComponentText("Drained " + storedAura + " " + allowedAura + " from " + player.getDisplayName() + " into the Aura Crystal"));
-			else
-				player.addChatMessage(new ChatComponentText("The Aura Container is full"));
+			if(!world.isRemote) {
+				if(itemContainer.canStoreAura(allowedAura, storedAura))
+					player.addChatMessage(new ChatComponentText("Drained " + storedAura + " " + allowedAura + " from " + player.getDisplayName() + " into the Aura Crystal"));
+				else
+					player.addChatMessage(new ChatComponentText("The Aura Container is full"));
+			}
 			
 			itemContainer.transfer(container, allowedAura, storedAura);
 			
