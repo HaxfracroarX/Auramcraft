@@ -33,9 +33,4 @@ public class Names {
 			ALLSEEING_STONE = "allseeingStone",
 			CHARM_OF_ALLSEEING = "charmOfAllseeing";
 	}
-	
-	public static class NBT {
-		public static final String 
-			DIRECTION = "teDirection";
-	}
 }

@@ -2,11 +2,11 @@ package com.auramcraft.tileentity;
 
 import com.auramcraft.network.PacketHandler;
 import com.auramcraft.network.message.MessageTileAuramcraft;
-import com.auramcraft.reference.Names;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
@@ -37,7 +37,7 @@ public class TileAuramcraft extends TileEntity implements IMessageHandler<Messag
 	}
 	
 	public void setOrientation(int orientation) {
-		this.orientation = ForgeDirection.getOrientation(orientation);
+		setOrientation(ForgeDirection.getOrientation(orientation));
 	}
 	
 	@Override
@@ -45,8 +45,8 @@ public class TileAuramcraft extends TileEntity implements IMessageHandler<Messag
 		super.readFromNBT(nbtTagCompound);
 		
 		// Read orientation
-		if(nbtTagCompound.hasKey(Names.NBT.DIRECTION))
-			setOrientation(ForgeDirection.getOrientation(nbtTagCompound.getByte(Names.NBT.DIRECTION)));
+		setOrientation(nbtTagCompound.getInteger("teDirection"));
+		PacketHandler.wrapper.sendToAll(new MessageTileAuramcraft(this));
 	}
 	
 	@Override
@@ -54,7 +54,7 @@ public class TileAuramcraft extends TileEntity implements IMessageHandler<Messag
 		super.writeToNBT(nbtTagCompound);
 		
 		// Write orientation
-		nbtTagCompound.setByte(Names.NBT.DIRECTION, (byte) orientation.ordinal());
+		nbtTagCompound.setInteger("teDirection", orientation.ordinal());
 	}
 	
 	@Override
@@ -64,7 +64,7 @@ public class TileAuramcraft extends TileEntity implements IMessageHandler<Messag
 	
 	@Override
 	public IMessage onMessage(MessageTileAuramcraft message, MessageContext ctx) {
-		setOrientation(message.orientation);
+		((TileAuramcraft) Minecraft.getMinecraft().theWorld.getTileEntity(message.x, message.y, message.z)).setOrientation(message.orientation);
 		return null;
 	}
 }

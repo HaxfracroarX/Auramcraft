@@ -56,8 +56,7 @@ public class InfusionTable extends TEBlock {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		if(!world.isRemote)
-			player.openGui(Auramcraft.instance, GUIIds.INFUSION_TABLE, world, x, y, z);
+		player.openGui(Auramcraft.instance, GUIIds.INFUSION_TABLE, world, x, y, z);
 		return true;
 	}
 }

@@ -1,9 +1,10 @@
 package com.auramcraft.tileentity;
 
 import com.auramcraft.init.AuramcraftBlocks;
+import com.auramcraft.reference.Names;
 
 public class TileInfusionTable extends TileAuramcraftInventory {
 	public TileInfusionTable() {
-		super("Infusion Table", AuramcraftBlocks.infusionTable, 11);
+		super(Names.Blocks.INFUSIONTABLE, AuramcraftBlocks.infusionTable, 11);
 	}
 }

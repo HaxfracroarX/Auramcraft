@@ -1,10 +1,12 @@
 package com.auramcraft.init;
 
-import java.util.ArrayList;
 import com.auramcraft.util.LogHelper;
+import net.minecraft.item.Item;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
+
+import java.util.ArrayList;
 
 @SuppressWarnings({"WeakerAccess", "CanBeFinal"})
 public class AuramcraftAchievements {
@@ -12,7 +14,7 @@ public class AuramcraftAchievements {
 	
 	public static Achievement 
 		auraCrystal = new Achievement("achievement.auraCrystal", "auraCrystal", 0, 0, AuramcraftItems.auraCrystal, AchievementList.diamonds),
-		elementalShards = new Achievement("achievement.elementalShards", "elementalShards", 2, 0, AuramcraftItems.earthShard, auraCrystal);
+		infusionTable = new Achievement("achievement.infusionTable", "infusionTable", 2, 0, Item.getItemFromBlock(AuramcraftBlocks.infusionTable), auraCrystal);
 	
 	public static void init() {
 		// List of achievements
@@ -20,7 +22,7 @@ public class AuramcraftAchievements {
 		
 		// Register and add achievements
 		achievements.add(auraCrystal.registerStat());
-		achievements.add(elementalShards.registerStat());
+		achievements.add(infusionTable.registerStat());
 		
 		// Make achievement page
 		page = new AchievementPage("Auramcraft", achievements.toArray(new Achievement[achievements.size()]));

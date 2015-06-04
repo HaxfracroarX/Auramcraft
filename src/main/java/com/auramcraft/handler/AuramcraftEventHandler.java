@@ -6,6 +6,7 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftAchievements;
 import com.auramcraft.init.AuramcraftItems;
+import com.auramcraft.item.AuraCrystal;
 import com.auramcraft.item.CharmOfAllseeing;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
@@ -53,7 +54,7 @@ public class AuramcraftEventHandler {
 	@SubscribeEvent
 	public void onItemCrafted(ItemCraftedEvent event) {
 		// Aura Crystal Achievement
-		if(event.crafting.getItem() == AuramcraftItems.auraCrystal)
+		if(event.crafting.getItem() instanceof AuraCrystal)
 			event.player.addStat(AuramcraftAchievements.auraCrystal, 1);
 	}
 	
