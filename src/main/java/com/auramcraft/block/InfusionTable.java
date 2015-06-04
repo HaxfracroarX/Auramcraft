@@ -2,10 +2,8 @@ package com.auramcraft.block;
 
 import com.auramcraft.Auramcraft;
 import com.auramcraft.creativetab.CreativeTab;
-import com.auramcraft.reference.GUIIds;
-import com.auramcraft.reference.Names;
-import com.auramcraft.reference.RenderIds;
-import com.auramcraft.reference.Textures;
+import com.auramcraft.reference.*;
+import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.tileentity.TileInfusionTable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -57,6 +55,13 @@ public class InfusionTable extends TEBlock {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 		player.openGui(Auramcraft.instance, GUIIds.INFUSION_TABLE, world, x, y, z);
+		
+		// Infusion Page
+		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
+		boolean[] pages = stats.getPages();
+		pages[PageIds.INFUSION] = true;
+		stats.setPages(pages);
+		
 		return true;
 	}
 }

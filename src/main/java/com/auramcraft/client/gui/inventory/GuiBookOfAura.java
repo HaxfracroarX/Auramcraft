@@ -51,7 +51,12 @@ public class GuiBookOfAura extends GuiContainer {
 	 */
 	@Override
 	public void drawGuiContainerForegroundLayer(int mx, int my) {
-		String researched = researchedPages(pages) + " Entries";
+		String researched;
+		if(researchedPages(pages) == 1)
+			researched = researchedPages(pages) + " Entry";
+		else
+			researched = researchedPages(pages) + " Entries";
+		
 		String page = "p. "+(currentPage+1);
 		
 		GL11.glScalef(0.75f, 0.75f, 1f);

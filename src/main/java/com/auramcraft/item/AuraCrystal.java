@@ -2,12 +2,14 @@ package com.auramcraft.item;
 
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
+import com.auramcraft.block.GemstoneOre;
 import com.auramcraft.creativetab.CreativeTab;
-import com.auramcraft.init.AuramcraftAchievements;
 import com.auramcraft.init.AuramcraftBlocks;
 import com.auramcraft.reference.Names;
+import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockWorkbench;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -49,12 +51,24 @@ public class AuraCrystal extends AuraItem {
 	
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		if(world.getBlock(x, y, z) instanceof BlockWorkbench) {
+		Block block = world.getBlock(x, y, z);
+		
+		// Transform crafting table into infusion table
+		if(block instanceof BlockWorkbench) {
 			world.setBlock(x, y, z, AuramcraftBlocks.infusionTable);
 			world.getBlock(x, y, z).onBlockPlacedBy(world, x, y, z, player, stack);
-			player.addStat(AuramcraftAchievements.infusionTable, 1);
 			
 			return true;
+		}
+		// Shards Page
+		else if(block instanceof GemstoneOre) {
+			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
+			boolean[] pages = stats.getPages();
+			boolean firstTime = !pages[PageIds.SHARDS];
+			pages[PageIds.SHARDS] = true;
+			stats.setPages(pages);
+			
+			return firstTime;
 		}
 		
 		return false;

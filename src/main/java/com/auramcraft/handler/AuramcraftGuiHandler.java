@@ -5,11 +5,11 @@ import com.auramcraft.client.gui.inventory.GuiInfusionTable;
 import com.auramcraft.inventory.ContainerEmpty;
 import com.auramcraft.inventory.ContainerInfusionTable;
 import com.auramcraft.reference.GUIIds;
+import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.network.IGuiHandler;
 
-public class GuiHandler implements IGuiHandler {
+public class AuramcraftGuiHandler implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {

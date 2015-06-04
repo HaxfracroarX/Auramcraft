@@ -2,7 +2,7 @@ package com.auramcraft.proxy;
 
 import com.auramcraft.Auramcraft;
 import com.auramcraft.handler.AuramcraftEventHandler;
-import com.auramcraft.handler.GuiHandler;
+import com.auramcraft.handler.AuramcraftGuiHandler;
 import com.auramcraft.reference.Names;
 import com.auramcraft.tileentity.TileAlchemicalRouter;
 import com.auramcraft.tileentity.TileInfusionTable;
@@ -36,7 +36,7 @@ public class CommonProxy implements IProxy {
 	
 	@Override
 	public void registerGUIHandlers() {
-		NetworkRegistry.INSTANCE.registerGuiHandler(Auramcraft.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Auramcraft.instance, new AuramcraftGuiHandler());
 	}
 
 	@Override

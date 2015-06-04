@@ -4,10 +4,9 @@ import com.auramcraft.Auramcraft;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.block.AumwoodSapling;
-import com.auramcraft.init.AuramcraftAchievements;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.item.AuraCrystal;
-import com.auramcraft.item.CharmOfAllseeing;
+import com.auramcraft.reference.PageIds;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -53,9 +52,13 @@ public class AuramcraftEventHandler {
 	
 	@SubscribeEvent
 	public void onItemCrafted(ItemCraftedEvent event) {
-		// Aura Crystal Achievement
-		if(event.crafting.getItem() instanceof AuraCrystal)
-			event.player.addStat(AuramcraftAchievements.auraCrystal, 1);
+		// Aura Crystal Page
+		if(event.crafting.getItem() instanceof AuraCrystal) {
+			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(event.player);
+			boolean[] pages = stats.getPages();
+			pages[PageIds.AURACRYSTAL] = true;
+			stats.setPages(pages);
+		}
 	}
 	
 	@SubscribeEvent
@@ -64,9 +67,8 @@ public class AuramcraftEventHandler {
 			return;
 		
 		AuraContainer container = AuramcraftPlayerStats.get(mc.thePlayer).getAuraContainer();
-		ItemStack held = mc.thePlayer.getHeldItem();
 		
-		if(container == null || held == null || !(held.getItem() instanceof CharmOfAllseeing))
+		if(container == null || !mc.thePlayer.inventory.hasItem(AuramcraftItems.charmOfAllseeing))
 			return;
 		
 		Auras allowedAura = container.getAllowed()[0];

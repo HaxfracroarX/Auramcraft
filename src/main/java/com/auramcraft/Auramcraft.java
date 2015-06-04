@@ -1,9 +1,12 @@
 package com.auramcraft;
 
-import com.auramcraft.init.*;
-import com.auramcraft.network.*;
-import com.auramcraft.proxy.*;
-import com.auramcraft.reference.*;
+import com.auramcraft.init.AuramcraftBlocks;
+import com.auramcraft.init.AuramcraftGen;
+import com.auramcraft.init.AuramcraftItems;
+import com.auramcraft.init.AuramcraftRecipes;
+import com.auramcraft.network.PacketHandler;
+import com.auramcraft.proxy.IProxy;
+import com.auramcraft.reference.Reference;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -37,9 +40,6 @@ public class Auramcraft {
 		
 		// Recipes
 		AuramcraftRecipes.init();
-		
-		// Achievements
-		AuramcraftAchievements.init();
 	}
 	
 	@EventHandler

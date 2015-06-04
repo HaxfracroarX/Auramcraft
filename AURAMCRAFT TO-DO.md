@@ -6,18 +6,18 @@ Crossed out means finished. ex. ~~Shards~~
 
 ####CODERS
 
-BOOK OF AURA P:1
-- Functionality
+~~BOOK OF AURA P:1~~
+- ~~Functionality~~
 
-AURA CRYSTAL P:2
-- Functionality
+~~AURA CRYSTAL P:2~~
+- ~~Functionality~~
 
 AURAS P:2
 - World Gen
 - Functionality
 
-INFUSION P:3
-- Recipes
+~~INFUSION P:3~~
+- ~~Recipes~~
 
 WANDS P:3
 - Functionality
@@ -73,9 +73,6 @@ MAGIKA P:4
 - Fireball Model
 
 ####TEXTURERS
-
-AURA CRYSTAL P:2
-- GUI
 
 WANDS P:2
 - Texture *Once Model is done

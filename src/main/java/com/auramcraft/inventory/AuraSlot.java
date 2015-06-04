@@ -15,7 +15,7 @@ public class AuraSlot extends Slot {
 		super(tileEntity, id, x, y);
 		this.eventHandler = eventHandler;
 	}
-
+	
 	@Override
 	public void onSlotChanged() {
 		eventHandler.onCraftMatrixChanged(null);
@@ -26,7 +26,7 @@ public class AuraSlot extends Slot {
 	public boolean isItemValid(ItemStack itemStack) {
         return itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1 && AuraItem.getAuraContainer(itemStack).isDrainable();
     }
-
+	
 	public AuraContainer getItemAuraContainer() {
 		return AuraItem.getAuraContainer(getStack());
 	}
