@@ -1,0 +1,4 @@
+Head:
+Elemental Shards
+Body:
+As you tap the Aura Crystal against the dim glow of the gemstone ore, an idea comes to mind. By infusing 8 of each basic aura into a gemstone, you will recieve an Elemental Shard of the type of Aura you used.

@@ -1,14 +1,18 @@
 package com.auramcraft.client.gui.inventory;
 
 import com.auramcraft.inventory.ContainerEmpty;
-import com.auramcraft.item.pages.*;
+import com.auramcraft.reference.PageData;
 import com.auramcraft.reference.PageIds;
+import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import org.lwjgl.opengl.GL11;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 @SuppressWarnings("unchecked")
 public class GuiBookOfAura extends GuiContainer {
@@ -51,18 +55,72 @@ public class GuiBookOfAura extends GuiContainer {
 	 */
 	@Override
 	public void drawGuiContainerForegroundLayer(int mx, int my) {
+		/*	Draw Header	 */
 		String researched;
+		
+		// We want to have good grammars
 		if(researchedPages(pages) == 1)
 			researched = researchedPages(pages) + " Entry";
 		else
 			researched = researchedPages(pages) + " Entries";
 		
-		String page = "p. "+(currentPage+1);
+		String pageNum = "p. "+(currentPage+1);
 		
 		GL11.glScalef(0.75f, 0.75f, 1f);
 		
-		fontRendererObj.drawString(page, 20, 15, 4210752);
+		fontRendererObj.drawString(pageNum, 20, 15, 4210752);
 		fontRendererObj.drawString(researched, xSize-20, 15, 4210752);
+		
+		/*	Draw Page Data	*/
+		String file;
+		InputStream fileStream;
+		
+		// Get an InputStream for the file, then convert to String
+		try {
+			 fileStream = mc.getResourceManager().getResource(page.getData()).getInputStream();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+			fileStream = null;
+		}
+		file = convertStreamToString(fileStream);
+		
+		// Get the Head and Body of the page
+		int startOfHead = file.indexOf("\r\n")+2;
+		int endOfHead = file.indexOf("\r\nBody:\r\n");
+		String head = file.substring(startOfHead, endOfHead);
+		
+		int startOfBody = file.indexOf("\r\n", endOfHead+4)+2;
+		int endOfBody = file.indexOf("\r\n", startOfBody);
+		String body = file.substring(startOfBody, endOfBody);
+		
+		// Draw Head
+		GL11.glScalef(4f/3f, 4f/3f, 1f);
+		fontRendererObj.drawString(head, (xSize - fontRendererObj.getStringWidth(head))/2, 25, 0x404040);
+		
+		// Draw Body
+		GL11.glScalef(0.75f, 0.75f, 1f);
+		
+		// Draws Body line by line
+		int LINE_LENGTH = 29;
+		int position = 0;
+		int endpos = LINE_LENGTH;
+		int i;
+		for(i = 0; body.length() - position >= LINE_LENGTH; i++, position = endpos, endpos += LINE_LENGTH) {
+			// We don't want to start a new line with whitespace
+			while(body.substring(position, position+1).equals(" "))
+				position++;
+			
+			// But we do want to end with it
+			while(!body.substring(endpos-1, endpos).equals(" "))
+				endpos--;
+			
+			// Draw the new line
+			fontRendererObj.drawString(body.substring(position, endpos), 25, 55 + (i)*(fontRendererObj.FONT_HEIGHT + 2), 0x404040);
+		}
+		
+		// Draw last line of body
+		fontRendererObj.drawString(body.substring(position), 25, 55 + i*(fontRendererObj.FONT_HEIGHT + 2), 0x404040);
 	}
 
 	/**
@@ -72,9 +130,10 @@ public class GuiBookOfAura extends GuiContainer {
 	 */
 	@Override
 	public void drawGuiContainerBackgroundLayer(float renderPartialTicks, int mx, int my) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(page.getTexture());
+		GL11.glColor4f(1f, 1f, 1f, 1f);
 		
+		// Draw Background
+		mc.getTextureManager().bindTexture(Textures.GUI.GUI_BOOK_OF_AURA);
 	    drawTexturedModalRect(guiLeft, guiTop, 20, 1, xSize, ySize);
 	}
 	
@@ -89,21 +148,21 @@ public class GuiBookOfAura extends GuiContainer {
 	private BookPage getPageFromSlot(int slot) {
 		switch(slot) {
 			case PageIds.SHARDS:
-				return new PageShards();
+				return new BookPage(PageData.SHARDS, PageIds.SHARDS);
 			case PageIds.AURACRYSTAL:
-				return new PageAuraCrystal();
+				return new BookPage(PageData.AURACRYSTAL, PageIds.AURACRYSTAL);
 			case PageIds.INFUSION:
-				return new PageInfusion();
+				return new BookPage(PageData.INFUSION, PageIds.INFUSION);
 			case PageIds.ALCHEMY:
-				return new PageAlchemy();
+				return new BookPage(PageData.ALCHEMY, PageIds.ALCHEMY);
 			case PageIds.MAGIKA:
-				return new PageMagika();
+				return new BookPage(PageData.MAGIKA, PageIds.MAGIKA);
 			case PageIds.INFUSION_TIER_1:
-				return new PageInfusionTier1();
+				return new BookPage(PageData.INFUSION_TIER_1, PageIds.INFUSION_TIER_1);
 			case PageIds.WAND_CAP_IRON:
-				return new PageWandCapIron();
+				return new BookPage(PageData.WAND_CAP_IRON, PageIds.WAND_CAP_IRON);
 		}
-		return new PageEmpty();
+		return new BookPage(PageData.EMPTY, PageIds.EMPTY);
 	}
 	
 	private void makeBook(ArrayList<BookPage> book, boolean[] pages) {
@@ -112,7 +171,7 @@ public class GuiBookOfAura extends GuiContainer {
 				book.add(getPageFromSlot(i));
 		}
 		if(book.isEmpty())
-			book.add(new PageEmpty());
+			book.add(new BookPage(PageData.EMPTY, PageIds.EMPTY));
 	}
 	
 	private void flipLeft() {
@@ -139,5 +198,13 @@ public class GuiBookOfAura extends GuiContainer {
 				flipRight();
 				break;
 		}
+	}
+
+	/**
+	 * Fancy little method I found
+	 */
+	static String convertStreamToString(InputStream is) {
+    	Scanner s = new Scanner(is).useDelimiter("\\A");
+    	return s.hasNext() ? s.next() : "";
 	}
 }

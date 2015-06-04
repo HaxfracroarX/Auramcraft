@@ -1,0 +1,4 @@
+Head:
+Iron Wand Caps
+Body:
+By infusing regular iron with Aura, you have learned how to create Iron Wand Caps. These caps will add +1 Potency to any Wand Core and allow 50 of each aura to be stored within the capabilities of the Wand Core.

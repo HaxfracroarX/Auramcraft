@@ -26,8 +26,3 @@ tile.shadowLantern.name=Shadow Lantern
 tile.holyLamp.name=Holy Lamp
 tile.storageJar.name=Storage Jar
 tile.alchemicalRouter.name=Alchemical Router
-
-achievement.auraCrystal=Aura Crystal
-achievement.auraCrystal.desc=Make an Aura Crystal
-achievement.infusionTable=Infusion Table
-achievement.infusionTable.desc=Right-Click a Crafting Table with an Aura Crystal

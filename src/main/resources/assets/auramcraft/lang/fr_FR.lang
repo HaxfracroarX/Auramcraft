@@ -24,8 +24,3 @@ tile.blueLightstone.name=Pierre lumineuse bleue
 tile.auroraBlock.name=Bloc d'aurore
 tile.shadowLantern.name=Lanterne fantôme
 tile.holyLamp.name=Lampe sacrée
-
-achievement.auraCrystal=Cristal d'aura
-achievement.auraCrystal.desc=Créer un cristal d'aura
-achievement.elementalShards=Eclats élémentaires
-achievement.elementalShards.desc=Right-Cliquez sur un minerai de pierre précieuse avec un cristal d'aura
