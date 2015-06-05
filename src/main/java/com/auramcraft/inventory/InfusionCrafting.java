@@ -18,13 +18,6 @@ public class InfusionCrafting extends InventoryCrafting {
 		this.auraSlot = auraSlot;
 	}
 	
-	public void init() {
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 3; j++)
-				super.setInventorySlotContents(j + i * 3, tileEntity.getStackInSlot(j + i * 3));
-		}
-	}
-	
 	@Override
 	public ItemStack getStackInSlot(int slot) {
 		return tileEntity.getStackInSlot(slot);

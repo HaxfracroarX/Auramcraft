@@ -26,7 +26,6 @@ public class ContainerInfusionTable extends Container {
 		AuraSlot auraSlot = new AuraSlot(tileEntity, 9, 156, 24, this);
 		
 		matrix = new InfusionCrafting(this, 3, 3, tileEntity, auraSlot);
-		matrix.init();
 		
 		// Add AuraItem
 		addSlotToContainer(auraSlot);
@@ -34,7 +33,7 @@ public class ContainerInfusionTable extends Container {
 		// Add Infusion Table crafting slots
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(matrix, j + i * 3, 6 + i * 19, 3 + j * 19));
+				addSlotToContainer(new Slot(matrix, i * 3 + j, 6 + j * 19, 3 + i * 19));
 		}
 		
 		// Add output slot

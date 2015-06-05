@@ -37,7 +37,7 @@ public class TileAuramcraftInventory extends TileAuramcraft implements IInventor
 		
 		// Write inventory
 		NBTTagList tagList = new NBTTagList();
-		for(int currentIndex = 0; currentIndex < inventory.length; ++currentIndex) {
+		for(int currentIndex = 0; currentIndex < inventory.length; currentIndex++) {
 			if(inventory[currentIndex] != null) {
 				NBTTagCompound tagCompound = new NBTTagCompound();
 				tagCompound.setByte("Slot", (byte) currentIndex);

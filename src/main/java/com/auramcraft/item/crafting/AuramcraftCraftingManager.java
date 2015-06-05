@@ -1,9 +1,5 @@
 package com.auramcraft.item.crafting;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import com.auramcraft.api.Auras;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.inventory.InfusionCrafting;
@@ -15,6 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 @SuppressWarnings({"unchecked", "WeakerAccess", "CanBeFinal", "UnusedReturnValue"})
 public class AuramcraftCraftingManager {
@@ -36,42 +37,57 @@ public class AuramcraftCraftingManager {
 			Auras.AURAM, 100
 		});
 		
-		/* SHAPELESS */
 		// Fire Shard
-		addShapelessRecipe(new ItemStack(AuramcraftItems.fireShard), new Object[] {
-			AuramcraftItems.gemstone
+		addRecipe(new ItemStack(AuramcraftItems.fireShard, 5), new Object[] {
+			"GG ",
+			" G ",
+			" GG",
+			'G', AuramcraftItems.gemstone
 		}, new Object[] {
-			Auras.FIRE, 8
+			Auras.FIRE, 40
 		});
 		
 		// Earth Shard
-		addShapelessRecipe(new ItemStack(AuramcraftItems.earthShard), new Object[] {
-			AuramcraftItems.gemstone
+		addRecipe(new ItemStack(AuramcraftItems.earthShard, 5), new Object[] {
+			"GGG",
+			"   ",
+			"G G",
+			'G', AuramcraftItems.gemstone
 		}, new Object[] {
-			Auras.EARTH, 8
+			Auras.EARTH, 40
 		});
 		
 		// Water Shard
-		addShapelessRecipe(new ItemStack(AuramcraftItems.waterShard), new Object[] {
-			AuramcraftItems.gemstone
+		addRecipe(new ItemStack(AuramcraftItems.waterShard, 5), new Object[] {
+			" G ",
+			"G G",
+			"G G",
+			'G', AuramcraftItems.gemstone
 		}, new Object[] {
-			Auras.WATER, 8
+			Auras.WATER, 40
 		});
 		
 		// Air Shard
-		addShapelessRecipe(new ItemStack(AuramcraftItems.airShard), new Object[] {
-			AuramcraftItems.gemstone
+		addRecipe(new ItemStack(AuramcraftItems.airShard, 5), new Object[] {
+			"G G",
+			" G ",
+			"G G",
+			'G', AuramcraftItems.gemstone
 		}, new Object[] {
-			Auras.AIR, 8
+			Auras.AIR, 40
 		});
 		
 		// Auram Shard
-		addShapelessRecipe(new ItemStack(AuramcraftItems.auramShard), new Object[] {
-			AuramcraftItems.gemstone
+		addRecipe(new ItemStack(AuramcraftItems.auramShard, 5), new Object[] {
+			" G ",
+			"GGG",
+			" G ",
+			'G', AuramcraftItems.gemstone
 		}, new Object[] {
-			Auras.AURAM, 8
+			Auras.AURAM, 40
 		});
 		
+		/* SHAPELESS */
 		// Allseeing Stone
 		addShapelessRecipe(new ItemStack(AuramcraftItems.allseeingStone), new Object[] {
 			Blocks.stone

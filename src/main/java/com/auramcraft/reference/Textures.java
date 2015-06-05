@@ -90,16 +90,8 @@ public class Textures {
 		public static final ResourceLocation 
 			// Book of Aura
 			GUI_BOOK_OF_AURA = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookGUI.png"),
-			GUI_BOOK_OF_AURA_CRYSTAL = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookAuraCrystal.png"),
-			GUI_BOOK_OF_AURA_SHARDS = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookElementalShards.png"),
-			GUI_BOOK_OF_AURA_WAND_CAP_IRON = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookIronWandCaps.png"),
-			GUI_BOOK_OF_AURA_ALCHEMY = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookAlchemy.png"),
-			GUI_BOOK_OF_AURA_MAGIKA = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookMagika.png"),
-			GUI_BOOK_OF_AURA_INFUSION = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookInfusion.png"),
-			GUI_BOOK_OF_AURA_INFUSION_TIER_1 = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookTier1Infusion.png"),
 			
 			// Infusion Table
-			GUI_INFUSION_TABLE = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "infusionTable.png"),
-			GUI_INFUSION_TABLE_AURAS = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "auras.png");
+			GUI_INFUSION_TABLE = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "infusionTable.png");
 	}
 }
