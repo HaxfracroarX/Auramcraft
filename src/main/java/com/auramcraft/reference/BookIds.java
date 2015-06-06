@@ -1,0 +1,73 @@
+package com.auramcraft.reference;
+
+import com.auramcraft.client.gui.inventory.BookPage;
+import com.auramcraft.client.gui.inventory.Tab;
+import com.auramcraft.util.LogHelper;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class BookIds {
+	public static int tabs = 6;
+	public static Tab 
+		artifacts,
+		alchemy,
+		infusion,
+		wands,
+		magika,
+		misc;
+	public static BookPage 
+		pageEmpty = new BookPage(PageData.EMPTY, -1),
+		pageAuraCrystal = new BookPage(PageData.AURACRYSTAL, 0),
+		pageAlchemy = new BookPage(PageData.ALCHEMY, 0),
+		pageInfusion = new BookPage(PageData.INFUSION, 0),
+		pageInfusionT1 = new BookPage(PageData.INFUSION_TIER_1, 1),
+		pageWandCapIron = new BookPage(PageData.WAND_CAP_IRON, 0),
+		pageMagika = new BookPage(PageData.MAGIKA, 0),
+		pageShards = new BookPage(PageData.SHARDS, 0);
+	private static Map<Integer, Tab> tabMap = new HashMap<Integer, Tab>();
+	
+	public static void init() {
+		artifacts = new Tab(
+			pageAuraCrystal
+		);
+		alchemy = new Tab(
+			pageAlchemy
+		);
+		infusion = new Tab(
+			pageInfusion,
+			pageInfusionT1
+		);
+		wands = new Tab(
+			pageWandCapIron
+		);
+		magika = new Tab(
+			pageMagika
+		);
+		misc = new Tab(
+			pageShards
+		);
+		
+		tabMap.put(0, artifacts);
+		tabMap.put(1, alchemy);
+		tabMap.put(2, infusion);
+		tabMap.put(3, wands);
+		tabMap.put(4, magika);
+		tabMap.put(5, misc);
+		
+		LogHelper.info("Initialized Book of Aura");
+	}
+	
+	public static Tab getTab(int id) {
+		return tabMap.get(id);
+	}
+	
+	public static int getID(Tab tab) {
+		for(int i = 0; i < tabMap.size(); i++) {
+			if(tabMap.get(i) == tab)
+				return i;
+		}
+		
+		return -1;
+	}
+}

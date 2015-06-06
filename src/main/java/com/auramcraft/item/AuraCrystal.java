@@ -5,8 +5,8 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.block.GemstoneOre;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.init.AuramcraftBlocks;
+import com.auramcraft.reference.BookIds;
 import com.auramcraft.reference.Names;
-import com.auramcraft.reference.PageIds;
 import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import net.minecraft.block.Block;
@@ -63,10 +63,14 @@ public class AuraCrystal extends AuraItem {
 		// Shards Page
 		else if(block instanceof GemstoneOre) {
 			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
-			boolean[] pages = stats.getPages();
-			boolean firstTime = !pages[PageIds.SHARDS];
-			pages[PageIds.SHARDS] = true;
-			stats.setPages(pages);
+			int tabID = BookIds.getID(BookIds.misc);
+			int pageID = BookIds.pageShards.getID();
+			
+			boolean[] pages = stats.getPages(tabID);
+			boolean firstTime = !pages[pageID];
+			
+			pages[pageID] = true;
+			stats.setPages(tabID, pages);
 			
 			return firstTime;
 		}

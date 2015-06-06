@@ -6,6 +6,7 @@ import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.init.AuramcraftRecipes;
 import com.auramcraft.network.PacketHandler;
 import com.auramcraft.proxy.IProxy;
+import com.auramcraft.reference.BookIds;
 import com.auramcraft.reference.Reference;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -26,6 +27,9 @@ public class Auramcraft {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		// Book of Aura
+		BookIds.init();
+		
 		// Packets
 		PacketHandler.init();
 		

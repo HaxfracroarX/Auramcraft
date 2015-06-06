@@ -1,6 +1,7 @@
 package com.auramcraft.init;
 
-import com.auramcraft.generation.*;
+import com.auramcraft.generation.AumwoodTreeGen;
+import com.auramcraft.generation.OreGeneration;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -13,6 +14,6 @@ public class AuramcraftGen {
 		GameRegistry.registerWorldGenerator(oreGeneration, 10);
 		GameRegistry.registerWorldGenerator(auramwoodWorldGenTree, 10);
 		
-		LogHelper.info("Initialized Generation");
+		LogHelper.info("Initialized World Generation");
 	}
 }

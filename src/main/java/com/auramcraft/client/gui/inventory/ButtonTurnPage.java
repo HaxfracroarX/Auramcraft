@@ -1,20 +1,17 @@
 package com.auramcraft.client.gui.inventory;
 
-import org.lwjgl.opengl.GL11;
 import com.auramcraft.reference.Textures;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 @SuppressWarnings("WeakerAccess")
 public class ButtonTurnPage extends GuiButton {
 	private final boolean isRight;
-	private final ResourceLocation texture;
 	
 	public ButtonTurnPage(int id, int x, int y, boolean isRight) {
 		super(id, x, y, 18, 10, "");
 		this.isRight = isRight;
-		this.texture = Textures.GUI.GUI_BOOK_OF_AURA;
 	}
 	
 	@Override
@@ -22,7 +19,7 @@ public class ButtonTurnPage extends GuiButton {
 		if(this.visible) {
 			boolean isHovering = x >= xPosition && y >= yPosition && x < xPosition + width && y < yPosition + height;
 			GL11.glColor4f(1f, 1f, 1f, 1f);
-			mc.getTextureManager().bindTexture(texture);
+			mc.getTextureManager().bindTexture(Textures.GUI.GUI_BOOK_OF_AURA);
 			int tx = 3;
 			int ty = 0;
 			
@@ -30,9 +27,9 @@ public class ButtonTurnPage extends GuiButton {
 				tx += 23;
 			
 			if(isRight)
-				ty += 207;
-			else
 				ty += 194;
+			else
+				ty += 207;
 			
 			drawTexturedModalRect(xPosition, yPosition, tx, ty, width, height);
 		}

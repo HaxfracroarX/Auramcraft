@@ -6,7 +6,7 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.item.AuraCrystal;
-import com.auramcraft.reference.PageIds;
+import com.auramcraft.reference.BookIds;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -56,9 +56,11 @@ public class AuramcraftEventHandler {
 		// Aura Crystal Page
 		if(event.crafting.getItem() instanceof AuraCrystal) {
 			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(event.player);
-			boolean[] pages = stats.getPages();
-			pages[PageIds.AURACRYSTAL] = true;
-			stats.setPages(pages);
+			int tabID = BookIds.getID(BookIds.artifacts);
+			
+			boolean[] pages = stats.getPages(tabID);
+			pages[BookIds.pageAuraCrystal.getID()] = true;
+			stats.setPages(tabID, pages);
 		}
 	}
 	

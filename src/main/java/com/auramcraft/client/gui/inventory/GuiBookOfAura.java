@@ -1,10 +1,10 @@
 package com.auramcraft.client.gui.inventory;
 
 import com.auramcraft.inventory.ContainerEmpty;
-import com.auramcraft.reference.PageData;
-import com.auramcraft.reference.PageIds;
+import com.auramcraft.reference.BookIds;
 import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import org.lwjgl.opengl.GL11;
@@ -17,8 +17,9 @@ import java.util.Scanner;
 @SuppressWarnings("unchecked")
 public class GuiBookOfAura extends GuiContainer {
 	private BookPage page;
-	private boolean[] pages;
-	private ArrayList<BookPage> book;
+	private ArrayList<boolean[]> pages;
+	private ArrayList<ArrayList<BookPage>> book;
+	private int currentTab = 0;
 	private int currentPage = 0;
 	
 	public GuiBookOfAura() {
@@ -31,17 +32,21 @@ public class GuiBookOfAura extends GuiContainer {
 	public void initGui() {
 		super.initGui();
 		
-		buttonList.add(new ButtonTurnPage(0, guiLeft+105, guiTop+158, false));
-		buttonList.add(new ButtonTurnPage(1, guiLeft+15, guiTop+158, true));
-		buttonList.add(new ButtonBookTab(3, guiLeft+7, guiTop-33));
-		buttonList.add(new ButtonBookTab(4, guiLeft+26, guiTop-33));
-		buttonList.add(new ButtonBookTab(5, guiLeft+45, guiTop-33));
+		buttonList.add(new ButtonTurnPage(0, guiLeft+15, guiTop+158, false));
+		buttonList.add(new ButtonTurnPage(1, guiLeft+105, guiTop+158, true));
+		
+		for(int i = 0; i < BookIds.tabs; i++)
+			buttonList.add(new ButtonBookTab(i+3, guiLeft+(i*19)+7, guiTop-33));
 		
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(mc.thePlayer);
-		pages = stats.getPages();
-		book = new ArrayList<BookPage>();
+		
+		pages = new ArrayList<boolean[]>();
+		for(int i = 0; i < BookIds.tabs; i++)
+			pages.add(stats.getPages(i));
+		
+		book = new ArrayList<ArrayList<BookPage>>();
 		makeBook(book, pages);
-		page = book.get(currentPage);
+		page = book.get(currentTab).get(0);
 	}
 	
 	/**
@@ -54,10 +59,11 @@ public class GuiBookOfAura extends GuiContainer {
 		String researched;
 		
 		// We want to have good grammars
-		if(researchedPages(pages) == 1)
-			researched = researchedPages(pages) + " Entry";
+		int entries = researchedPages(pages.get(currentTab));
+		if(entries == 1)
+			researched = entries + " Entry";
 		else
-			researched = researchedPages(pages) + " Entries";
+			researched = entries + " Entries";
 		
 		String pageNum = "p. "+(currentPage+1);
 		
@@ -134,64 +140,58 @@ public class GuiBookOfAura extends GuiContainer {
 	
 	private int researchedPages(boolean[] pages) {
 		int researched = 0;
-		for(boolean page1 : pages) {
-			researched += page1 ? 1 : 0;
-		}
+		for(boolean page : pages)
+			researched += page ? 1 : 0;
+		
 		return researched;
 	}
 	
-	private BookPage getPageFromSlot(int slot) {
-		switch(slot) {
-			case PageIds.SHARDS:
-				return new BookPage(PageData.SHARDS, PageIds.SHARDS);
-			case PageIds.AURACRYSTAL:
-				return new BookPage(PageData.AURACRYSTAL, PageIds.AURACRYSTAL);
-			case PageIds.INFUSION:
-				return new BookPage(PageData.INFUSION, PageIds.INFUSION);
-			case PageIds.ALCHEMY:
-				return new BookPage(PageData.ALCHEMY, PageIds.ALCHEMY);
-			case PageIds.MAGIKA:
-				return new BookPage(PageData.MAGIKA, PageIds.MAGIKA);
-			case PageIds.INFUSION_TIER_1:
-				return new BookPage(PageData.INFUSION_TIER_1, PageIds.INFUSION_TIER_1);
-			case PageIds.WAND_CAP_IRON:
-				return new BookPage(PageData.WAND_CAP_IRON, PageIds.WAND_CAP_IRON);
+	private void makeBook(ArrayList<ArrayList<BookPage>> book, ArrayList<boolean[]> pages) {
+		for(int i = 0; i < pages.size(); i++) {
+			book.add(new ArrayList<BookPage>());
+			
+			for(int j = 0; j < pages.get(i).length; j++) {
+				if(pages.get(i)[j])
+					book.get(i).add(BookIds.getTab(i).getPages().get(j));
+			}
+			
+			if(book.get(i).isEmpty())
+				book.get(i).add(BookIds.pageEmpty);
 		}
-		return new BookPage(PageData.EMPTY, PageIds.EMPTY);
-	}
-	
-	private void makeBook(ArrayList<BookPage> book, boolean[] pages) {
-		for(int i = 0; i < pages.length; i++) {
-			if(pages[i])
-				book.add(getPageFromSlot(i));
-		}
-		if(book.isEmpty())
-			book.add(new BookPage(PageData.EMPTY, PageIds.EMPTY));
 	}
 	
 	private void flipLeft() {
 		if(currentPage >= 1) {
 			currentPage--;
-			page = book.get(currentPage);
+			page = book.get(currentTab).get(currentPage);
 		}
 	}
 	
 	private void flipRight() {
-		if(currentPage < book.size()-1) {
+		if(currentPage < book.get(currentTab).size()-1) {
 			currentPage++;
-			page = book.get(currentPage);
+			page = book.get(currentTab).get(currentPage);
 		}
 	}
 	
 	@Override
 	protected void actionPerformed(GuiButton button) {
-		switch(button.id) {
-			case 1:
-				flipLeft();
-				break;
-			case 0:
-				flipRight();
-				break;
+		// Left Arrow
+		if(button.id == 0) {
+			LogHelper.info("Flipped left");
+			flipLeft();
+		}
+		// Right Arrow
+		else if(button.id == 1) {
+			LogHelper.info("Flipped right");
+			flipRight();
+		}
+		// Switch Tab
+		else {
+			currentTab = button.id-3;
+			currentPage = 0;
+			page = book.get(currentTab).get(currentPage);
+			LogHelper.info("Switched to tab " + (currentTab+1));
 		}
 	}
 
