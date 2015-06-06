@@ -30,21 +30,16 @@ public class GuiBookOfAura extends GuiContainer {
 	@Override
 	public void initGui() {
 		super.initGui();
-		int x = (width - xSize) / 2;
-	    int y = (height - ySize) / 2;
-	    int trueRightX, trueLeftX;
-	    y += 158;
-	    x += 15;
-	    trueRightX = x;
-	    x += 90;
-	    trueLeftX = x;
-	    
-	    buttonList.add(new ButtonTurnPage(0, trueLeftX, y, false));
-	    buttonList.add(new ButtonTurnPage(1, trueRightX, y, true));
-	    
-	    AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(mc.thePlayer);
-	    pages = stats.getPages();
-	    book = new ArrayList<BookPage>();
+		
+		buttonList.add(new ButtonTurnPage(0, guiLeft+105, guiTop+158, false));
+		buttonList.add(new ButtonTurnPage(1, guiLeft+15, guiTop+158, true));
+		buttonList.add(new ButtonBookTab(3, guiLeft+7, guiTop-33));
+		buttonList.add(new ButtonBookTab(4, guiLeft+26, guiTop-33));
+		buttonList.add(new ButtonBookTab(5, guiLeft+45, guiTop-33));
+		
+		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(mc.thePlayer);
+		pages = stats.getPages();
+		book = new ArrayList<BookPage>();
 		makeBook(book, pages);
 		page = book.get(currentPage);
 	}
