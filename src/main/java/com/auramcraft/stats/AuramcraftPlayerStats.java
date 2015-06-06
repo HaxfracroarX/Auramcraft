@@ -80,6 +80,19 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		PacketHandler.wrapper.sendTo(new MessagePlayerStats(this), (EntityPlayerMP) player);
 	}
 	
+	public static void update(EntityPlayer player) {
+		AuramcraftPlayerStats stats = get(player);
+		AuraContainer container = stats.getAuraContainer();
+		Auras allowed = container.getAllowed()[0];
+		
+		// Replenish auras once every 10 seconds
+		if(Math.random() <= 0.005) {
+			container.store(allowed, 1);
+			stats.setAuraContainer(container);
+			stats.sendPacket(player);
+		}
+	}
+	
 	@Override
 	public void init(Entity entity, World world) {
 		

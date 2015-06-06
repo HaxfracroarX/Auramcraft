@@ -24,6 +24,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
 import java.util.Random;
@@ -77,7 +78,15 @@ public class AuramcraftEventHandler {
 	}
 	
 	@SubscribeEvent
-	public void onLivingDeathEvent(LivingDeathEvent event) {
+	public void onLivingUpdate(LivingUpdateEvent event) {
+		if(!(event.entity instanceof EntityPlayer) || event.entity.worldObj.isRemote)
+			return;
+		
+		AuramcraftPlayerStats.update((EntityPlayer) event.entity);
+	}
+	
+	@SubscribeEvent
+	public void onLivingDeath(LivingDeathEvent event) {
 		if(event.entity.worldObj.isRemote || !(event.entity instanceof EntityPlayer))
 			return;
 		
@@ -88,7 +97,7 @@ public class AuramcraftEventHandler {
 	}
 	
 	@SubscribeEvent
-	public void PlayerLoggedInEvent(PlayerLoggedInEvent event) {
+	public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
 		onPlayerLogin(event.player);
 	}
 	
