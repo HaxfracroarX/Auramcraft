@@ -57,10 +57,15 @@ public class AuramcraftEventHandler {
 		if(event.crafting.getItem() instanceof AuraCrystal) {
 			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(event.player);
 			int tabID = BookIds.getID(BookIds.artifacts);
-			
+			int pageID = BookIds.pageAuraCrystal.getID();
 			boolean[] pages = stats.getPages(tabID);
-			pages[BookIds.pageAuraCrystal.getID()] = true;
+			boolean firstTime = !pages[pageID];
+			
+			pages[pageID] = true;
 			stats.setPages(tabID, pages);
+			
+			if(firstTime)
+				stats.initPageAnnouncment("Aura Crystal");
 		}
 	}
 	
@@ -69,7 +74,9 @@ public class AuramcraftEventHandler {
 		if(event.type != RenderGameOverlayEvent.ElementType.TEXT)
 			return;
 		
-		AuraContainer container = AuramcraftPlayerStats.get(mc.thePlayer).getAuraContainer();
+		// Draw Internal Aura
+		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(mc.thePlayer);
+		AuraContainer container = stats.getAuraContainer();
 		
 		if(container == null || !mc.thePlayer.inventory.hasItem(AuramcraftItems.charmOfAllseeing))
 			return;
@@ -77,11 +84,33 @@ public class AuramcraftEventHandler {
 		Auras allowedAura = container.getAllowed()[0];
 		
 		mc.fontRenderer.drawStringWithShadow(allowedAura + ": " + container.getStoredAura(allowedAura), 10, 10, 0x33CCFF);
+		
+		// Draw Page Announcment
+		if(!stats.isAnnouncing())
+			return;
+		
+		String announcment = stats.getAnnouncment();
+		mc.fontRenderer.drawStringWithShadow(announcment, event.resolution.getScaledWidth() - mc.fontRenderer.getStringWidth(announcment) - 5, 10, 0x33CCFF);
 	}
 	
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent event) {
-		if(!(event.entity instanceof EntityPlayer) || event.entity.worldObj.isRemote)
+		if(!(event.entity instanceof EntityPlayer))
+			return;
+		
+		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get((EntityPlayer) event.entity);
+		
+		// Decriment page announcement
+		float pageTime = stats.getPageTime();
+		
+		if(stats.isAnnouncing())
+			stats.setPageTime(pageTime - 0.05f);
+		if(pageTime <= 0 && pageTime > -2) {
+			stats.setAnnouncing(false);
+			stats.setPageTime(-2);
+		}
+		
+		if(event.entity.worldObj.isRemote)
 			return;
 		
 		AuramcraftPlayerStats.update((EntityPlayer) event.entity);
@@ -156,9 +185,7 @@ public class AuramcraftEventHandler {
 			stats.setAuraContainer(container);
 			
 			// Announce affinity
-			String announcement = player.getDisplayName() + " has been blessed with an affinity for " + allowedAura;
-			LogHelper.info(announcement);
-			player.addChatMessage(new ChatComponentText(announcement));
+			player.addChatMessage(new ChatComponentText(player.getDisplayName() + " has been blessed with an affinity for " + allowedAura));
 		}
 		
 		// Send Client a packet

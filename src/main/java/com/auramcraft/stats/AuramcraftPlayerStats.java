@@ -21,11 +21,17 @@ import java.util.ArrayList;
 
 public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessageHandler<MessagePlayerStats, IMessage> {
 	private boolean book;
+	private boolean isAnnouncing;
+	private float pageTime;
+	private String announcment;
 	private ArrayList<byte[]> pages;
 	private AuraContainer container;
 	
 	public AuramcraftPlayerStats() {
 		book = false;
+		isAnnouncing = false;
+		pageTime = 0;
+		announcment = "";
 		
 		pages = new ArrayList<byte[]>();
 		for(int i = 0; i < BookIds.tabs; i++)
@@ -118,6 +124,50 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		for(int i = 0; i < bools.length; i++)
 			bytes[i] = (byte) (bools[i] ? 1 : 0);
 		return bytes;
+	}
+	
+	/**
+	 * Set variables to count announcment lifetime
+	 */
+	public void initPageAnnouncment(String announcment) {
+		this.announcment = "New Page: " + announcment;
+		isAnnouncing = true;
+		pageTime = 3f;
+	}
+	
+	/**
+	 * @return The time left in seconds
+	 */
+	public float getPageTime() {
+		return pageTime;
+	}
+	
+	/**
+	 * @param pageTime The time left in seconds
+	 */
+	public void setPageTime(float pageTime) {
+		this.pageTime = pageTime;
+	}
+	
+	/**
+	 * @return if an announcment is showing
+	 */
+	public boolean isAnnouncing() {
+		return isAnnouncing;
+	}
+	
+	/**
+	 * @param isAnnouncing set if announcing
+	 */
+	public void setAnnouncing(boolean isAnnouncing) {
+		this.isAnnouncing = isAnnouncing;
+	}
+	
+	/**
+	 * @return the announcment
+	 */
+	public String getAnnouncment() {
+		return announcment;
 	}
 	
 	/**

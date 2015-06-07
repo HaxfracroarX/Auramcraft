@@ -65,12 +65,14 @@ public class AuraCrystal extends AuraItem {
 			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 			int tabID = BookIds.getID(BookIds.misc);
 			int pageID = BookIds.pageShards.getID();
-			
 			boolean[] pages = stats.getPages(tabID);
 			boolean firstTime = !pages[pageID];
 			
 			pages[pageID] = true;
 			stats.setPages(tabID, pages);
+			
+			if(firstTime)
+				stats.initPageAnnouncment("Shards");
 			
 			return firstTime;
 		}

@@ -16,15 +16,34 @@ public class BookIds {
 		wands,
 		magika,
 		misc;
+	
+	public static BookPage pageEmpty = new BookPage(PageData.EMPTY, -1);
+	
+	// Artifacts
 	public static BookPage 
-		pageEmpty = new BookPage(PageData.EMPTY, -1),
-		pageAuraCrystal = new BookPage(PageData.AURACRYSTAL, 0),
-		pageAlchemy = new BookPage(PageData.ALCHEMY, 0),
+		pageAuraCrystal = new BookPage(PageData.AURACRYSTAL, 0);
+	
+	// Alchemy
+	public static BookPage 
+		pageAlchemy = new BookPage(PageData.ALCHEMY, 0);
+	
+	// Infusion
+	public static BookPage 
 		pageInfusion = new BookPage(PageData.INFUSION, 0),
-		pageInfusionT1 = new BookPage(PageData.INFUSION_TIER_1, 1),
-		pageWandCapIron = new BookPage(PageData.WAND_CAP_IRON, 0),
-		pageMagika = new BookPage(PageData.MAGIKA, 0),
+		pageInfusionT1 = new BookPage(PageData.INFUSION_TIER_1, 1);
+	
+	// Wands
+	public static BookPage 
+		pageWandCapIron = new BookPage(PageData.WAND_CAP_IRON, 0);
+	
+	// Magika
+	public static BookPage 
+		pageMagika = new BookPage(PageData.MAGIKA, 0);
+	
+	// Misc
+	public static BookPage 
 		pageShards = new BookPage(PageData.SHARDS, 0);
+	
 	private static Map<Integer, Tab> tabMap = new HashMap<Integer, Tab>();
 	
 	public static void init() {

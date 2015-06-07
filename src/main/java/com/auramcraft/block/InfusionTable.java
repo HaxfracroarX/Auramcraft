@@ -59,10 +59,16 @@ public class InfusionTable extends TEBlock {
 		// Infusion Page
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 		int tabID = BookIds.getID(BookIds.infusion);
+		int pageID = BookIds.pageInfusion.getID();
 		boolean[] pages = stats.getPages(tabID);
+		boolean firstTime = !pages[pageID];
 		
-		pages[BookIds.pageInfusion.getID()] = true;
+		
+		pages[pageID] = true;
 		stats.setPages(tabID, pages);
+		
+		if(firstTime)
+			stats.initPageAnnouncment("Infusion");
 		
 		return true;
 	}
