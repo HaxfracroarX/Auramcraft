@@ -1,8 +1,8 @@
 package com.auramcraft.client.gui.inventory;
 
-import scala.actors.threadpool.Arrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Tab {
 	private ArrayList<BookPage> pages;
