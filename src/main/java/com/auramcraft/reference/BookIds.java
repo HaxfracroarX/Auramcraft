@@ -29,22 +29,28 @@ public class BookIds {
 	
 	public static void init() {
 		artifacts = new Tab(
+			"Artifacts",
 			pageAuraCrystal
 		);
 		alchemy = new Tab(
+			"Alchemy",
 			pageAlchemy
 		);
 		infusion = new Tab(
+			"Infusion",
 			pageInfusion,
 			pageInfusionT1
 		);
 		wands = new Tab(
+			"Wands",
 			pageWandCapIron
 		);
 		magika = new Tab(
+			"Magika",
 			pageMagika
 		);
 		misc = new Tab(
+			"Misc",
 			pageShards
 		);
 		

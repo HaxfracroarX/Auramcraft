@@ -4,7 +4,6 @@ import com.auramcraft.inventory.ContainerEmpty;
 import com.auramcraft.reference.BookIds;
 import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
-import com.auramcraft.util.LogHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import org.lwjgl.opengl.GL11;
@@ -36,7 +35,7 @@ public class GuiBookOfAura extends GuiContainer {
 		buttonList.add(new ButtonTurnPage(1, guiLeft+105, guiTop+158, true));
 		
 		for(int i = 0; i < BookIds.tabs; i++)
-			buttonList.add(new ButtonBookTab(i+3, guiLeft+(i*19)+7, guiTop-33));
+			buttonList.add(new ButtonBookTab(i+3, guiLeft+(i*19)+7, guiTop-15));
 		
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(mc.thePlayer);
 		
@@ -177,21 +176,16 @@ public class GuiBookOfAura extends GuiContainer {
 	@Override
 	protected void actionPerformed(GuiButton button) {
 		// Left Arrow
-		if(button.id == 0) {
-			LogHelper.info("Flipped left");
+		if(button.id == 0)
 			flipLeft();
-		}
 		// Right Arrow
-		else if(button.id == 1) {
-			LogHelper.info("Flipped right");
+		else if(button.id == 1)
 			flipRight();
-		}
 		// Switch Tab
 		else {
 			currentTab = button.id-3;
 			currentPage = 0;
 			page = book.get(currentTab).get(currentPage);
-			LogHelper.info("Switched to tab " + (currentTab+1));
 		}
 	}
 
