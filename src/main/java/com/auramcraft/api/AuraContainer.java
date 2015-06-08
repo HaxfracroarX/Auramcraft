@@ -38,13 +38,18 @@ public class AuraContainer implements IAuraContainer {
 	}
 	
 	@Override
-	public boolean store(Auras aura, int amount) {
+	public int store(Auras aura, int amount) {
 		if(!canStoreAura(aura, amount))
-			return false;
+			return -1;
 		
-		auras.get(aura.getTier()-1).set(aura.getId(), auras.get(aura.getTier()-1).get(aura.getId()) + amount);
+		for(int i = 0; i < amount; i++) {
+			if(!canStoreMore())
+				return amount - i;
+			
+			auras.get(aura.getTier() - 1).set(aura.getId(), auras.get(aura.getTier() - 1).get(aura.getId()) + 1);
+		}
 		
-		return true;
+		return 0;
 	}
 	
 	@Override
@@ -117,7 +122,7 @@ public class AuraContainer implements IAuraContainer {
 	
 	@Override
 	public boolean canStoreAura(Auras aura, int amount) {
-		return canStoreAura(aura) && canStoreMore() && getOpenSlots() >= amount;
+		return canStoreAura(aura) && canStoreMore();
 
 	}
 	

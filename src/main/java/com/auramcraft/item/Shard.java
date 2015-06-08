@@ -13,6 +13,6 @@ public class Shard extends AuraItem {
 		getAuraContainer().addAllowed(type);
 		getAuraContainer().setDrainable(false);
 		getAuraContainer().setFillable(false);
-		this.setCreativeTab(CreativeTab.AuramcraftTab);
+		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 }

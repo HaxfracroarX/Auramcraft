@@ -8,9 +8,9 @@ public interface IAuraContainer {
 	/**
 	 * Tries to store the specified amount of the specified aura
 	 * 
-	 * @return If storage was successful
+	 * @return Amount that wasn't stored. -1 if the container is full to start with.
 	 */
-	boolean store(Auras aura, int amount);
+	int store(Auras aura, int amount);
 	
 	/**
 	 * Tries to store the auras in the amounts specified
