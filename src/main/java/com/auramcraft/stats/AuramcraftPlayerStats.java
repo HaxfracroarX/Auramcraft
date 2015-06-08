@@ -23,6 +23,7 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	private boolean book;
 	private boolean isAnnouncing;
 	private float pageTime;
+	private int regenTicks;
 	private String announcment;
 	private ArrayList<byte[]> pages;
 	private AuraContainer container;
@@ -32,6 +33,7 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		isAnnouncing = false;
 		pageTime = 0;
 		announcment = "";
+		regenTicks = 0;
 		
 		pages = new ArrayList<byte[]>();
 		for(int i = 0; i < BookIds.tabs; i++)
@@ -99,12 +101,15 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		AuraContainer container = stats.getAuraContainer();
 		Auras allowed = container.getAllowed()[0];
 		
-		// Replenish auras once every 10 seconds
-		if(Math.random() <= 0.005) {
+		// Replenish auras once every 15 seconds (300 ticks)
+		if(stats.getRegenTicks() >= 300) {
 			container.store(allowed, 1);
 			stats.setAuraContainer(container);
+			stats.setRegenTicks(0);
 			stats.sendPacket(player);
 		}
+		else
+			stats.setRegenTicks(stats.getRegenTicks()+1);
 	}
 	
 	@Override
@@ -124,6 +129,14 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		for(int i = 0; i < bools.length; i++)
 			bytes[i] = (byte) (bools[i] ? 1 : 0);
 		return bytes;
+	}
+	
+	public int getRegenTicks() {
+		return regenTicks;
+	}
+
+	public void setRegenTicks(int regenTicks) {
+		this.regenTicks = regenTicks;
 	}
 	
 	/**
