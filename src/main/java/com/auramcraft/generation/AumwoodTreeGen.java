@@ -1,6 +1,5 @@
 package com.auramcraft.generation;
 
-import java.util.Random;
 import com.auramcraft.init.AuramcraftBlocks;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.block.Block;
@@ -11,6 +10,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.util.Random;
 
 @SuppressWarnings("EmptyMethod")
 public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenerator {
@@ -46,7 +47,7 @@ public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenera
 				world.getWorldInfo().getTerrainType().getWorldTypeID() == WorldType.FLAT.getWorldTypeID())
 			return;
 		
-		if(random.nextInt(100) == 0) {
+		if(random.nextInt(20) == 0) {
 			int x = i + random.nextInt(16);
 			int z = j + random.nextInt(16);
 			int y = world.getHeightValue(x, z);
