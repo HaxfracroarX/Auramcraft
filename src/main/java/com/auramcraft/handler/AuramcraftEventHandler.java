@@ -173,7 +173,7 @@ public class AuramcraftEventHandler {
 		if(stats.getAuraContainer() == null) {
 			// Setup variables for new AuraContainer
 			Random random = new Random();
-			int maxAura = random.nextInt(11) + 5;
+			int maxAura = 25;
 			Auras allowedAura = Auras.values()[random.nextInt(5)];
 			
 			// Setup container and fill it up

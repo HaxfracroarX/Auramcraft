@@ -113,9 +113,7 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	}
 	
 	@Override
-	public void init(Entity entity, World world) {
-		
-	}
+	public void init(Entity entity, World world) {}
 	
 	public boolean[] getBoolFromByte(byte[] bytes) {
 		boolean[] bools = new boolean[bytes.length];
