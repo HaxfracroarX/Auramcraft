@@ -24,10 +24,12 @@ public class AllseeingStone extends Item {
 		if(player.isSneaking() && !world.isRemote) {
 			AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 			AuraContainer container = stats.getAuraContainer();
-			Auras allowedAura = container.getAllowed()[0];
-			int storedAura = container.getStoredAura(allowedAura);
+			Auras[] allowedAuras = container.getAllowed();
 			
-			player.addChatMessage(new ChatComponentText("You currently have " + storedAura + " " + allowedAura));
+			player.addChatMessage(new ChatComponentText("You currently have:"));
+			
+			for(Auras allowed : allowedAuras)
+				player.addChatMessage(new ChatComponentText(container.getStoredAura(allowed) + " " + allowed));
 		}
 		
 		return itemStack;

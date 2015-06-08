@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class MessagePlayerStats implements IMessage {
 	public boolean book;
 	public ArrayList<byte[]> pages = new ArrayList<byte[]>();
-	public Auras allowedAura;
-	public int storedAura, maxAura;
+	public int maxAura;
+	public byte[] storedAura, allowedAuras;
 	
 	public MessagePlayerStats() {}
 	
@@ -22,8 +22,14 @@ public class MessagePlayerStats implements IMessage {
 		for(int i = 0; i < BookIds.tabs; i++)
 			this.pages.add(stats.getByteFromBool(stats.getPages(i)));
 		
-		this.allowedAura = stats.getAuraContainer().getAllowed()[0];
-		this.storedAura = stats.getAuraContainer().getStoredAura(allowedAura);
+		Auras[] allowedAuras = stats.getAuraContainer().getAllowed();
+		storedAura = new byte[allowedAuras.length];
+		this.allowedAuras = new byte[allowedAuras.length];
+		for(int i = 0; i < allowedAuras.length; i++) {
+			this.allowedAuras[i] = (byte) allowedAuras[i].getId();
+			this.storedAura[i] = (byte) stats.getAuraContainer().getStoredAura(allowedAuras[i]);
+		}
+		
 		this.maxAura = stats.getAuraContainer().getMaxAura();
 	}
 	
@@ -36,8 +42,12 @@ public class MessagePlayerStats implements IMessage {
 			buf.readBytes(pages.get(i));
 		}
 		
-		allowedAura = Auras.values()[buf.readByte()];
-		storedAura = buf.readByte();
+		allowedAuras = new byte[buf.readByte()];
+		buf.readBytes(allowedAuras);
+		
+		storedAura = new byte[buf.readByte()];
+		buf.readBytes(storedAura);
+		
 		maxAura = buf.readByte();
 	}
 	
@@ -48,8 +58,10 @@ public class MessagePlayerStats implements IMessage {
 		for(int i = 0; i < BookIds.tabs; i++)
 			buf.writeBytes(pages.get(i));
 		
-		buf.writeByte(allowedAura.getId());
-		buf.writeByte(storedAura);
+		buf.writeByte(allowedAuras.length);
+		buf.writeBytes(allowedAuras);
+		buf.writeByte(storedAura.length);
+		buf.writeBytes(storedAura);
 		buf.writeByte(maxAura);
 	}
 }

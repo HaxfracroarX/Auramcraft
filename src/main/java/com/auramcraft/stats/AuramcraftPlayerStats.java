@@ -51,14 +51,30 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	@Override
 	public void saveNBTData(NBTTagCompound compound) {
 		NBTTagCompound nbt = new NBTTagCompound();
+		
+		// Set Book
 		nbt.setBoolean("bookOfAura", gotBook());
 		
+		// Set Research
 		for(int i = 0; i < pages.size(); i++)
 			nbt.setByteArray("Tab" + i + "Research", pages.get(i));
 		
-		nbt.setInteger("playerAffinity", container.getAllowed()[0].getId());
+		// Set Allowed Auras
+		Auras[] allowedAuras = container.getAllowed();
+		int[] intAllowed = new int[allowedAuras.length];
+		for(int i = 0; i < allowedAuras.length; i++)
+			intAllowed[i] = allowedAuras[i].getId();
+		nbt.setIntArray("playerAffinity", intAllowed);
+		
+		// Set Max Aura
 		nbt.setInteger("playerMaxAura", container.getMaxAura());
-		nbt.setInteger("playerAuraAmount", container.getStoredAura(container.getAllowed()[0]));
+		
+		// Set Stored Aura
+		int[] stored = new int[5];
+		for(int i = 0; i < stored.length; i++)
+			stored[i] = container.getStoredAura(Auras.values()[i]);
+		nbt.setIntArray("playerAuraAmount", stored);
+		
 		compound.setTag(Reference.MODID, nbt);
 	}
 	
@@ -66,15 +82,26 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	public void loadNBTData(NBTTagCompound compound) {
 		NBTTagCompound nbt = (NBTTagCompound) compound.getTag(Reference.MODID);
 		
+		// Get Book
 		book = nbt.getBoolean("bookOfAura");
 		
+		// Get Research
 		for(int i = 0; i < pages.size(); i++)
 			pages.set(i, nbt.getByteArray("Tab" + i + "Research"));
 		
+		// Get Max Aura
 		container = new AuraContainer(nbt.getInteger("playerMaxAura"), 1);
-		Auras allowedAura = Auras.values()[nbt.getInteger("playerAffinity")];
-		container.addAllowed(allowedAura);
-		container.store(allowedAura, nbt.getInteger("playerAuraAmount"));
+		
+		// Get Allowed Auras
+		int[] intAllowed = nbt.getIntArray("playerAffinity");
+		for(int allowed : intAllowed)
+			container.addAllowed(Auras.values()[allowed]);
+		
+		// Get Stored Aura
+		int[] stored = nbt.getIntArray("playerAuraAmount");
+		
+		for(int i = 0; i < stored.length; i++)
+			container.store(Auras.values()[i], stored[i]);
 	}
 	
 	@Override
@@ -85,8 +112,11 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		stats.pages = message.pages;
 		
 		container = new AuraContainer(message.maxAura, 1);
-		container.addAllowed(message.allowedAura);
-		container.store(message.allowedAura, message.storedAura);
+		for(int i = 0; i < message.allowedAuras.length; i++) {
+			Auras allowed = Auras.values()[message.allowedAuras[i]];
+			container.addAllowed(allowed);
+			container.store(allowed, message.storedAura[i]);
+		}
 		stats.setAuraContainer(container);
 		
 		return null;
@@ -99,11 +129,13 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	public static void update(EntityPlayer player) {
 		AuramcraftPlayerStats stats = get(player);
 		AuraContainer container = stats.getAuraContainer();
-		Auras allowed = container.getAllowed()[0];
+		Auras[] allowedAuras = container.getAllowed();
 		
 		// Replenish auras once every 15 seconds (300 ticks)
 		if(stats.getRegenTicks() >= 300) {
-			container.store(allowed, 1);
+			for(Auras allowed : allowedAuras)
+				container.store(allowed, 1);
+			
 			stats.setAuraContainer(container);
 			stats.setRegenTicks(0);
 			stats.sendPacket(player);

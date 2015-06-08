@@ -81,9 +81,10 @@ public class AuramcraftEventHandler {
 		if(container == null || !mc.thePlayer.inventory.hasItem(AuramcraftItems.charmOfAllseeing))
 			return;
 		
-		Auras allowedAura = container.getAllowed()[0];
+		Auras[] allowedAuras = container.getAllowed();
 		
-		mc.fontRenderer.drawStringWithShadow(allowedAura + ": " + container.getStoredAura(allowedAura), 10, 10, 0x33CCFF);
+		for(int i = 0; i < allowedAuras.length; i++)
+			mc.fontRenderer.drawStringWithShadow(allowedAuras[i] + ": " + container.getStoredAura(allowedAuras[i]), 10, 10 * (i+1), 0x33CCFF);
 		
 		// Draw Page Announcment
 		if(!stats.isAnnouncing())
