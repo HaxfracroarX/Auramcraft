@@ -9,7 +9,7 @@ public class Textures {
 		MODEL_TEXTURE_LOCATION = "textures/models/",
 		GUI_SHEET_LOCATION = "textures/gui/",
 		GUI_INFUSION_LOCATION = GUI_SHEET_LOCATION + "infusion/",
-		GUI_AURABOOK_PAGES_LOCATION = GUI_SHEET_LOCATION + "aurabook/";
+		GUI_AURABOOK_LOCATION = GUI_SHEET_LOCATION + "aurabook/";
 	
 	/**
 	 *  Block textures
@@ -89,7 +89,8 @@ public class Textures {
 	public static class GUI {
 		public static final ResourceLocation 
 			// Book of Aura
-			GUI_BOOK_OF_AURA = new ResourceLocation(Reference.MODID, GUI_AURABOOK_PAGES_LOCATION + "AuraBookGUI.png"),
+			GUI_BOOK_OF_AURA = new ResourceLocation(Reference.MODID, GUI_AURABOOK_LOCATION + "AuraBookGUI.png"),
+			GUI_PAGE_GET = new ResourceLocation(Reference.MODID, GUI_AURABOOK_LOCATION + "PageGet.png"),
 			
 			// Infusion Table
 			GUI_INFUSION_TABLE = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "infusionTable.png");

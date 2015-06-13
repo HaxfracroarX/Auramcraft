@@ -68,8 +68,13 @@ public class GuiBookOfAura extends GuiContainer {
 		
 		GL11.glScalef(0.75f, 0.75f, 1f);
 		
-		fontRendererObj.drawString(pageNum, 20, 15, 4210752);
-		fontRendererObj.drawString(researched, xSize-20, 15, 4210752);
+		fontRendererObj.drawString(pageNum, 20, 15, 0x404040);
+		fontRendererObj.drawString(researched, xSize-20, 15, 0x404040);
+		
+		/*	Draw Footer	*/
+		String tabName = BookIds.getTab(currentTab).getName();
+		
+		fontRendererObj.drawString(tabName, (int) ((xSize - fontRendererObj.getStringWidth(tabName))/2*1.35), (int) (ySize*1.33 - 17*1.33), 0x404040);
 		
 		/*	Draw Page Data	*/
 		String file;

@@ -7,6 +7,7 @@ import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.item.AuraCrystal;
 import com.auramcraft.reference.BookIds;
+import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -15,6 +16,7 @@ import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,11 +28,12 @@ import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import org.lwjgl.opengl.GL11;
 
 import java.util.Random;
 
 @SuppressWarnings("WeakerAccess")
-public class AuramcraftEventHandler {
+public class AuramcraftEventHandler extends Gui {
 	private final Minecraft mc;
 	
 	public AuramcraftEventHandler() {
@@ -78,20 +81,39 @@ public class AuramcraftEventHandler {
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(mc.thePlayer);
 		AuraContainer container = stats.getAuraContainer();
 		
-		if(container == null || !mc.thePlayer.inventory.hasItem(AuramcraftItems.charmOfAllseeing))
-			return;
-		
-		Auras[] allowedAuras = container.getAllowed();
-		
-		for(int i = 0; i < allowedAuras.length; i++)
-			mc.fontRenderer.drawStringWithShadow(allowedAuras[i] + ": " + container.getStoredAura(allowedAuras[i]), 10, 10 * (i+1), 0x33CCFF);
-		
-		// Draw Page Announcment
-		if(!stats.isAnnouncing())
-			return;
-		
-		String announcment = stats.getAnnouncment();
-		mc.fontRenderer.drawStringWithShadow(announcment, event.resolution.getScaledWidth() - mc.fontRenderer.getStringWidth(announcment) - 5, 10, 0x33CCFF);
+		if(container != null && mc.thePlayer.inventory.hasItem(AuramcraftItems.charmOfAllseeing)) {
+			Auras[] allowedAuras = container.getAllowed();
+			
+			for(int i = 0; i < allowedAuras.length; i++)
+				mc.fontRenderer.drawStringWithShadow(allowedAuras[i] + ": " + container.getStoredAura(allowedAuras[i]), 10, 10 * (i + 1), 0x33CCFF);
+		}
+		// Draw Page Announcement
+		else if(stats.isAnnouncing()) {
+			String announcement = stats.getAnnouncment();
+			
+			mc.getTextureManager().bindTexture(Textures.GUI.GUI_PAGE_GET);
+			
+			// Stuff to render transparency
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glDisable(GL11.GL_DEPTH_TEST);
+			GL11.glDepthMask(false);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			GL11.glDisable(GL11.GL_ALPHA_TEST);
+			
+			GL11.glScalef(0.5f, 0.5f, 0.5f);
+			
+			drawTexturedModalRect(event.resolution.getScaledWidth()*2 - 37*2, 5*2, 0, 0, 64, 64);
+			
+			GL11.glScalef(2f, 2f, 2f);
+			
+			// More stuff to render transparency
+			GL11.glDisable(GL11.GL_BLEND);
+			GL11.glEnable(GL11.GL_DEPTH_TEST);
+			GL11.glDepthMask(true);
+			
+			mc.fontRenderer.drawStringWithShadow(announcement, event.resolution.getScaledWidth() - mc.fontRenderer.getStringWidth(announcement) - 40, 5, 0x47AA17);
+		}
 	}
 	
 	@SubscribeEvent
@@ -101,11 +123,13 @@ public class AuramcraftEventHandler {
 		
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get((EntityPlayer) event.entity);
 		
-		// Decriment page announcement
+		// Decrement page announcement
 		float pageTime = stats.getPageTime();
 		
+		// Take off 1 tick (0.05 sec) from the timer
 		if(stats.isAnnouncing())
 			stats.setPageTime(pageTime - 0.05f);
+		// If the timer is done, stop announcing
 		if(pageTime <= 0 && pageTime > -2) {
 			stats.setAnnouncing(false);
 			stats.setPageTime(-2);
