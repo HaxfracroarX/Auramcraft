@@ -7,6 +7,7 @@ public class Textures {
 	private static final String
 		RESOURCE_PREFIX = Reference.MODID + ":",
 		MODEL_TEXTURE_LOCATION = "textures/models/",
+		WAND_TEXTURE_LOCATION = "textures/wands/",
 		GUI_SHEET_LOCATION = "textures/gui/",
 		GUI_INFUSION_LOCATION = GUI_SHEET_LOCATION + "infusion/",
 		GUI_AURABOOK_LOCATION = GUI_SHEET_LOCATION + "aurabook/";
@@ -53,8 +54,8 @@ public class Textures {
 	 *  Item textures
 	 */
 	public static class Items {
-		// Shards
 		public static final String 
+			// Shards
 			ITEM_FIRE_SHARD = RESOURCE_PREFIX + "FireShard",
 			ITEM_EARTH_SHARD = RESOURCE_PREFIX + "EarthShard",
 			ITEM_WATER_SHARD = RESOURCE_PREFIX + "WaterShard",
@@ -64,6 +65,23 @@ public class Textures {
 			// Allseeing
 			ITEM_ALLSEEING_STONE = RESOURCE_PREFIX + "AllseeingStone",
 			ITEM_CHARM_OF_ALLSEEING = RESOURCE_PREFIX + "AllseeingCharm",
+			
+			// Wand Cores
+			WAND_CORE_AURAMWOOD = WAND_TEXTURE_LOCATION + "AuramwoodUnderlay.png",
+			WAND_CORE_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondUnderlay.png",
+			WAND_CORE_INFUSED = WAND_TEXTURE_LOCATION + "InfusedUnderlay.png",
+			
+			// Wand Caps
+			WAND_CAP_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondCapOverlay.png",
+			WAND_CAP_GEMSTONE = WAND_TEXTURE_LOCATION + "GemstoneCapOverlay.png",
+			WAND_CAP_GOLD = WAND_TEXTURE_LOCATION + "GoldCapOverlay.png",
+			WAND_CAP_INFUSED = WAND_TEXTURE_LOCATION + "InfusedMagicCapOverlay.png",
+			WAND_CAP_IRON = WAND_TEXTURE_LOCATION + "IronCapOverlay.png",
+			WAND_CAP_MAGIC = WAND_TEXTURE_LOCATION + "MagicCapOverlay.png",
+			
+			// Wand Cloth
+			WAND_CLOTH_INFUSED = WAND_TEXTURE_LOCATION + "InfusedClothOverlay",
+			WAND_CLOTH_MAGIC = WAND_TEXTURE_LOCATION + "MagicClothOverlay.png",
 			
 			// Misc
 			ITEM_GEMSTONE = RESOURCE_PREFIX + "Gemstone",

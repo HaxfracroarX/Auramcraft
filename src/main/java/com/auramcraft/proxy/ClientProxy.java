@@ -1,13 +1,11 @@
 package com.auramcraft.proxy;
 
-import com.auramcraft.client.renderer.item.ItemAlchemicalRouterRenderer;
-import com.auramcraft.client.renderer.item.ItemInfusionTableRenderer;
-import com.auramcraft.client.renderer.item.ItemStorageJarRenderer;
-import com.auramcraft.client.renderer.tileentity.TileAlchemicalRouterRenderer;
-import com.auramcraft.client.renderer.tileentity.TileInfusionTableRenderer;
-import com.auramcraft.client.renderer.tileentity.TileStorageJarRenderer;
+import com.auramcraft.client.renderer.item.ItemAuramcraftRenderer;
+import com.auramcraft.client.renderer.tileentity.TileAuramcraftRenderer;
 import com.auramcraft.init.AuramcraftBlocks;
+import com.auramcraft.reference.Models;
 import com.auramcraft.reference.RenderIds;
+import com.auramcraft.reference.Textures;
 import com.auramcraft.tileentity.TileAlchemicalRouter;
 import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.tileentity.TileStorageJar;
@@ -25,13 +23,13 @@ public class ClientProxy extends CommonProxy {
 		RenderIds.alcemicalRouter = RenderingRegistry.getNextAvailableRenderId();
 		
 		// Register Item renderer
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.infusionTable), new ItemInfusionTableRenderer());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.storageJar), new ItemStorageJarRenderer());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.alchemicalRouter), new ItemAlchemicalRouterRenderer());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.infusionTable), new ItemAuramcraftRenderer(Models.infusionTable, Textures.Models.MODEL_INFUSION_TABLE));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.storageJar), new ItemAuramcraftRenderer(Models.storageJar, Textures.Models.MODEL_STORAGE_JAR));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.alchemicalRouter), new ItemAuramcraftRenderer(Models.alchemicalRouter, Textures.Models.MODEL_ALCHEMICAL_ROUTER));
 		
 		// Register Block renderer
-		ClientRegistry.bindTileEntitySpecialRenderer(TileInfusionTable.class, new TileInfusionTableRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileStorageJar.class, new TileStorageJarRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAlchemicalRouter.class, new TileAlchemicalRouterRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileInfusionTable.class, new TileAuramcraftRenderer(Models.infusionTable, Textures.Models.MODEL_INFUSION_TABLE));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileStorageJar.class, new TileAuramcraftRenderer(Models.storageJar, Textures.Models.MODEL_STORAGE_JAR));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileAlchemicalRouter.class, new TileAuramcraftRenderer(Models.alchemicalRouter, Textures.Models.MODEL_ALCHEMICAL_ROUTER));
 	}
 }
