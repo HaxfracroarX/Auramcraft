@@ -12,6 +12,7 @@ item.bookOfAura.name=Book Of Aura
 item.auraCrystal.name=Aura Crystal
 item.allseeingStone.name=Allseeing Stone
 item.charmOfAllseeing.name=Charm of Allseeing
+item.wand.name=Wand
 
 tile.gemstoneOre.name=Gemstone Ore
 tile.infusionTable.name=Infusion Table

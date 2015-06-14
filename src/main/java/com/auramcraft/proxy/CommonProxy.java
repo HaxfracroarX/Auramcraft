@@ -23,9 +23,9 @@ public class CommonProxy implements IProxy {
 	
 	@Override
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileInfusionTable.class, "tile." + Names.Blocks.INFUSIONTABLE);
-		GameRegistry.registerTileEntity(TileStorageJar.class, "tile." + Names.Blocks.STORAGEJAR);
-		GameRegistry.registerTileEntity(TileAlchemicalRouter.class, "tile." + Names.Blocks.ALCHEMICALROUTER);
+		GameRegistry.registerTileEntity(TileInfusionTable.class, "tile." + Names.Blocks.INFUSION_TABLE);
+		GameRegistry.registerTileEntity(TileStorageJar.class, "tile." + Names.Blocks.STORAGE_JAR);
+		GameRegistry.registerTileEntity(TileAlchemicalRouter.class, "tile." + Names.Blocks.ALCHEMICAL_ROUTER);
 	}
 	
 	@Override

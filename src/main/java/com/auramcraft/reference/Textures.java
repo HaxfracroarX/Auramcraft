@@ -7,7 +7,7 @@ public class Textures {
 	private static final String
 		RESOURCE_PREFIX = Reference.MODID + ":",
 		MODEL_TEXTURE_LOCATION = "textures/models/",
-		WAND_TEXTURE_LOCATION = "textures/wands/",
+		WAND_TEXTURE_LOCATION = RESOURCE_PREFIX + "wands/",
 		GUI_SHEET_LOCATION = "textures/gui/",
 		GUI_INFUSION_LOCATION = GUI_SHEET_LOCATION + "infusion/",
 		GUI_AURABOOK_LOCATION = GUI_SHEET_LOCATION + "aurabook/";
@@ -66,22 +66,25 @@ public class Textures {
 			ITEM_ALLSEEING_STONE = RESOURCE_PREFIX + "AllseeingStone",
 			ITEM_CHARM_OF_ALLSEEING = RESOURCE_PREFIX + "AllseeingCharm",
 			
+			// Wands
+			WAND_EMPTY = WAND_TEXTURE_LOCATION + "empty",
+			
 			// Wand Cores
-			WAND_CORE_AURAMWOOD = WAND_TEXTURE_LOCATION + "AuramwoodUnderlay.png",
-			WAND_CORE_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondUnderlay.png",
-			WAND_CORE_INFUSED = WAND_TEXTURE_LOCATION + "InfusedUnderlay.png",
+			WAND_CORE_AURAMWOOD = WAND_TEXTURE_LOCATION + "AuramwoodUnderlay",
+			WAND_CORE_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondUnderlay",
+			WAND_CORE_INFUSED = WAND_TEXTURE_LOCATION + "InfusedUnderlay",
 			
 			// Wand Caps
-			WAND_CAP_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondCapOverlay.png",
-			WAND_CAP_GEMSTONE = WAND_TEXTURE_LOCATION + "GemstoneCapOverlay.png",
-			WAND_CAP_GOLD = WAND_TEXTURE_LOCATION + "GoldCapOverlay.png",
-			WAND_CAP_INFUSED = WAND_TEXTURE_LOCATION + "InfusedMagicCapOverlay.png",
-			WAND_CAP_IRON = WAND_TEXTURE_LOCATION + "IronCapOverlay.png",
-			WAND_CAP_MAGIC = WAND_TEXTURE_LOCATION + "MagicCapOverlay.png",
+			WAND_CAP_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondCapOverlay",
+			WAND_CAP_GEMSTONE = WAND_TEXTURE_LOCATION + "GemstoneCapOverlay",
+			WAND_CAP_GOLD = WAND_TEXTURE_LOCATION + "GoldCapOverlay",
+			WAND_CAP_INFUSED = WAND_TEXTURE_LOCATION + "InfusedMagicCapOverlay",
+			WAND_CAP_IRON = WAND_TEXTURE_LOCATION + "IronCapOverlay",
+			WAND_CAP_MAGIC = WAND_TEXTURE_LOCATION + "MagicCapOverlay",
 			
 			// Wand Cloth
 			WAND_CLOTH_INFUSED = WAND_TEXTURE_LOCATION + "InfusedClothOverlay",
-			WAND_CLOTH_MAGIC = WAND_TEXTURE_LOCATION + "MagicClothOverlay.png",
+			WAND_CLOTH_MAGIC = WAND_TEXTURE_LOCATION + "MagicClothOverlay",
 			
 			// Misc
 			ITEM_GEMSTONE = RESOURCE_PREFIX + "Gemstone",

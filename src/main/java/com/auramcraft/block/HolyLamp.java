@@ -3,7 +3,6 @@ package com.auramcraft.block;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -21,7 +20,7 @@ public class HolyLamp extends Block {
 		setHardness(1f);
 		setResistance(1f);
 		setStepSound(Block.soundTypeGlass);
-		setBlockName(Names.Blocks.HOLYLAMP);
+		setBlockName(Names.Blocks.HOLY_LAMP);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setLightLevel(1.0F);
 	}

@@ -7,6 +7,6 @@ import com.auramcraft.reference.Tiers;
 
 public class TileAlchemicalRouter extends TileAuramcraftAuraUser {
 	public TileAlchemicalRouter() {
-		super(Names.Blocks.ALCHEMICALROUTER, AuramcraftBlocks.alchemicalRouter, new AuraContainer(5, Tiers.getTotalTiers()));
+		super(Names.Blocks.ALCHEMICAL_ROUTER, AuramcraftBlocks.alchemicalRouter, new AuraContainer(5, Tiers.getTotalTiers()));
 	}
 }

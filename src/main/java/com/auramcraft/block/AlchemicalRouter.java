@@ -13,7 +13,7 @@ public class AlchemicalRouter extends TEBlock {
 	public AlchemicalRouter() {
 		super(Material.iron);
 		setHardness(3f);
-		setBlockName(Names.Blocks.ALCHEMICALROUTER);
+		setBlockName(Names.Blocks.ALCHEMICAL_ROUTER);
 		setBlockTextureName(Textures.Blocks.BLOCK_ALCHEMICAL_ROUTER);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}

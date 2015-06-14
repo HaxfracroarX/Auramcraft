@@ -5,6 +5,6 @@ import com.auramcraft.reference.Names;
 
 public class TileInfusionTable extends TileAuramcraftInventory {
 	public TileInfusionTable() {
-		super(Names.Blocks.INFUSIONTABLE, AuramcraftBlocks.infusionTable, 11);
+		super(Names.Blocks.INFUSION_TABLE, AuramcraftBlocks.infusionTable, 11);
 	}
 }

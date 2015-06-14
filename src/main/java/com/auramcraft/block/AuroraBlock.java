@@ -11,7 +11,7 @@ public class AuroraBlock extends Block {
 			super(Material.rock);
 			setHardness(0.1F);
 			setResistance(10F);
-			setBlockName(Names.Blocks.AURORABLOCK);
+			setBlockName(Names.Blocks.AURORA_BLOCK);
 			setCreativeTab(CreativeTab.AuramcraftTab);
 			setBlockTextureName(Textures.Blocks.BLOCK_AURORA_BLOCK);
 		}

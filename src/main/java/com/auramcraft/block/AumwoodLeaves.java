@@ -1,7 +1,5 @@
 package com.auramcraft.block;
 
-import java.util.ArrayList;
-import java.util.Random;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.init.AuramcraftBlocks;
 import com.auramcraft.reference.Names;
@@ -19,6 +17,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class AumwoodLeaves extends BlockLeavesBase implements IShearable {
 	@SideOnly(Side.CLIENT)
 	private IIcon texture;
@@ -30,7 +31,7 @@ public class AumwoodLeaves extends BlockLeavesBase implements IShearable {
 		setHardness(1f);
 		setResistance(1f);
 		setStepSound(Block.soundTypeGrass);
-		setBlockName(Names.Blocks.AUMWOODLEAVES);
+		setBlockName(Names.Blocks.AUMWOOD_LEAVES);
 		setBlockTextureName(Textures.Blocks.BLOCK_AUMWOOD_LEAVES);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setTickRandomly(true);

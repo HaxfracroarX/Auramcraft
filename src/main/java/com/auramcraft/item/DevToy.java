@@ -2,7 +2,6 @@ package com.auramcraft.item;
 
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
-
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -13,7 +12,7 @@ import net.minecraft.world.World;
 public class DevToy extends Item {
 	public DevToy() {
 		setTextureName(Textures.Items.ITEM_DEV_TOY);
-		setUnlocalizedName(Names.Items.DEVTOY);
+		setUnlocalizedName(Names.Items.DEV_TOY);
 	}
 	
 	@Override

@@ -22,7 +22,7 @@ public class AuramFlower extends BlockBush {
 		super(Material.plants);
 		setCreativeTab(CreativeTab.AuramcraftTab);
     	setHardness(1f);
-        setBlockName(Names.Blocks.AURAMFLOWER);
+        setBlockName(Names.Blocks.AURAM_FLOWER);
 	}
 	
 	@Override

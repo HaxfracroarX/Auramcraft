@@ -30,7 +30,7 @@ public class AumwoodSapling extends BlockSapling {
     {
     	setHardness(1f);
     	setStepSound(soundTypeGrass);
-        setBlockName(Names.Blocks.AUMWOODSAPLING);
+        setBlockName(Names.Blocks.AUMWOOD_SAPLING);
         setCreativeTab(CreativeTab.AuramcraftTab);
     }
     

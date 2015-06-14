@@ -27,7 +27,7 @@ public class ShadowLantern extends Block {
 		setResistance(1f);
 		setHarvestLevel("axe", 1);
 		setStepSound(Block.soundTypeWood);
-		setBlockName(Names.Blocks.SHADOWLANTERN);
+		setBlockName(Names.Blocks.SHADOW_LANTERN);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setLightLevel(0.6F);
 	}

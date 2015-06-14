@@ -1,7 +1,5 @@
 package com.auramcraft.block;
 
-import java.util.Random;
-
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.reference.Names;
@@ -10,6 +8,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
+import java.util.Random;
+
 public class GemstoneOre extends Block {
 	public GemstoneOre() {
 		super(Material.rock);
@@ -17,7 +17,7 @@ public class GemstoneOre extends Block {
 		setResistance(5f);
 		setHarvestLevel("pickaxe", 2);
 		setStepSound(Block.soundTypeStone);
-		setBlockName(Names.Blocks.GEMSTONEORE);
+		setBlockName(Names.Blocks.GEMSTONE_ORE);
 		setBlockTextureName(Textures.Blocks.BLOCK_GEMSTONE_ORE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}

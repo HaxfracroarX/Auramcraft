@@ -3,19 +3,19 @@ package com.auramcraft.reference;
 public class Names {
 	public static class Blocks {
 		public static final String 
-			GEMSTONEORE = "gemstoneOre",
-			INFUSIONTABLE = "infusionTable",
-			AUMWOODPLANKS = "aumwoodPlanks",
-			AUMWOODLEAVES = "aumwoodLeaves",
+			GEMSTONE_ORE = "gemstoneOre",
+			INFUSION_TABLE = "infusionTable",
+			AUMWOOD_PLANKS = "aumwoodPlanks",
+			AUMWOOD_LEAVES = "aumwoodLeaves",
 			AUMWOOD = "aumwood",
-			AUMWOODSAPLING = "aumwoodSapling",
-			AURAMFLOWER = "auramFlower",
-			BLUELIGHTSTONE = "blueLightstone",
-			AURORABLOCK = "auroraBlock",
-			SHADOWLANTERN = "shadowLantern",
-			HOLYLAMP = "holyLamp",
-			STORAGEJAR = "storageJar",
-			ALCHEMICALROUTER = "alchemicalRouter";
+			AUMWOOD_SAPLING = "aumwoodSapling",
+			AURAM_FLOWER = "auramFlower",
+			BLUE_LIGHTSTONE = "blueLightstone",
+			AURORA_BLOCK = "auroraBlock",
+			SHADOW_LANTERN = "shadowLantern",
+			HOLY_LAMP = "holyLamp",
+			STORAGE_JAR = "storageJar",
+			ALCHEMICAL_ROUTER = "alchemicalRouter";
 	}
 	
 	public static class Items {
@@ -26,11 +26,12 @@ public class Names {
 			AIRSHARD = "airShard",
 			AURAMSHARD = "auramShard",
 			GEMSTONE = "gemstone",
-			SACRIFICIALDAGGER = "sacrificialDagger",
-			DEVTOY = "devToy",
+			SACRIFICIAL_DAGGER = "sacrificialDagger",
+			DEV_TOY = "devToy",
 			BOOK_OF_AURA = "bookOfAura",
 			AURACRYSTAL = "auraCrystal",
 			ALLSEEING_STONE = "allseeingStone",
-			CHARM_OF_ALLSEEING = "charmOfAllseeing";
+			CHARM_OF_ALLSEEING = "charmOfAllseeing",
+			WAND = "wand";
 	}
 }

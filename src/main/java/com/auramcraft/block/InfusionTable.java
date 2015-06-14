@@ -18,7 +18,7 @@ public class InfusionTable extends TEBlock {
 	public InfusionTable() {
 		super(Material.iron);
 		setHardness(3f);
-		setBlockName(Names.Blocks.INFUSIONTABLE);
+		setBlockName(Names.Blocks.INFUSION_TABLE);
 		setBlockTextureName(Textures.Blocks.BLOCK_INFUSION_TABLE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
