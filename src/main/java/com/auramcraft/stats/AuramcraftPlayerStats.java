@@ -41,11 +41,11 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	}
 	
 	public static void register(EntityPlayer player) {
-		player.registerExtendedProperties(Reference.MODID, new AuramcraftPlayerStats());
+		player.registerExtendedProperties(Reference.MOD_ID, new AuramcraftPlayerStats());
 	}
 	
 	public static AuramcraftPlayerStats get(EntityPlayer player) {
-		return (AuramcraftPlayerStats) player.getExtendedProperties(Reference.MODID);
+		return (AuramcraftPlayerStats) player.getExtendedProperties(Reference.MOD_ID);
 	}
 	
 	@Override
@@ -75,12 +75,12 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 			stored[i] = container.getStoredAura(Auras.values()[i]);
 		nbt.setIntArray("playerAuraAmount", stored);
 		
-		compound.setTag(Reference.MODID, nbt);
+		compound.setTag(Reference.MOD_ID, nbt);
 	}
 	
 	@Override
 	public void loadNBTData(NBTTagCompound compound) {
-		NBTTagCompound nbt = (NBTTagCompound) compound.getTag(Reference.MODID);
+		NBTTagCompound nbt = (NBTTagCompound) compound.getTag(Reference.MOD_ID);
 		
 		// Get Book
 		book = nbt.getBoolean("bookOfAura");

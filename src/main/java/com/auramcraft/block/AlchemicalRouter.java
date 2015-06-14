@@ -20,7 +20,7 @@ public class AlchemicalRouter extends TEBlock {
 	
 	@Override
 	public int getRenderType() {
-		return RenderIds.alcemicalRouter;
+		return RenderIds.alchemicalRouter;
 	}
 	
 	@Override

@@ -16,9 +16,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Reference.MODID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 public class Auramcraft {
-	@Instance(Reference.MODID)
+	@Instance(Reference.MOD_ID)
 	public static Auramcraft instance;
 	
 	@SuppressWarnings("WeakerAccess")

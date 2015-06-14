@@ -2,7 +2,7 @@ package com.auramcraft.reference;
 
 public class Reference {
 	public static final String 
-		MODID = "auramcraft",
+		MOD_ID = "auramcraft",
 		MOD_NAME = "Auramcraft",
 		VERSION = "0.0.1",
 		CLIENT_PROXY_CLASS = "com.auramcraft.proxy.ClientProxy",

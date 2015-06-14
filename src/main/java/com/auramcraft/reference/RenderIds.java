@@ -4,5 +4,5 @@ public class RenderIds {
 	public static int 
 		infusionTable,
 		storageJar,
-		alcemicalRouter;
+		alchemicalRouter;
 }

@@ -5,7 +5,7 @@ import net.minecraft.util.ResourceLocation;
 public class Textures {
 	// Base file paths
 	private static final String
-		RESOURCE_PREFIX = Reference.MODID + ":",
+		RESOURCE_PREFIX = Reference.MOD_ID + ":",
 		MODEL_TEXTURE_LOCATION = "textures/models/",
 		WAND_TEXTURE_LOCATION = RESOURCE_PREFIX + "wands/",
 		GUI_SHEET_LOCATION = "textures/gui/",
@@ -99,9 +99,9 @@ public class Textures {
 	 */
 	public static class Models {
 		public static final ResourceLocation 
-			MODEL_INFUSION_TABLE = new ResourceLocation(Reference.MODID, MODEL_TEXTURE_LOCATION + "infusionTable.png"),
-			MODEL_STORAGE_JAR = new ResourceLocation(Reference.MODID, MODEL_TEXTURE_LOCATION + "StorageJar.png"),
-			MODEL_ALCHEMICAL_ROUTER = new ResourceLocation(Reference.MODID, MODEL_TEXTURE_LOCATION + "Router.png");
+			MODEL_INFUSION_TABLE = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "infusionTable.png"),
+			MODEL_STORAGE_JAR = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "StorageJar.png"),
+			MODEL_ALCHEMICAL_ROUTER = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "Router.png");
 	}
 	
 	/**
@@ -110,10 +110,10 @@ public class Textures {
 	public static class GUI {
 		public static final ResourceLocation 
 			// Book of Aura
-			GUI_BOOK_OF_AURA = new ResourceLocation(Reference.MODID, GUI_AURABOOK_LOCATION + "AuraBookGUI.png"),
-			GUI_PAGE_GET = new ResourceLocation(Reference.MODID, GUI_AURABOOK_LOCATION + "PageGet.png"),
+			GUI_BOOK_OF_AURA = new ResourceLocation(Reference.MOD_ID, GUI_AURABOOK_LOCATION + "AuraBookGUI.png"),
+			GUI_PAGE_GET = new ResourceLocation(Reference.MOD_ID, GUI_AURABOOK_LOCATION + "PageGet.png"),
 			
 			// Infusion Table
-			GUI_INFUSION_TABLE = new ResourceLocation(Reference.MODID, GUI_INFUSION_LOCATION + "infusionTable.png");
+			GUI_INFUSION_TABLE = new ResourceLocation(Reference.MOD_ID, GUI_INFUSION_LOCATION + "infusionTable.png");
 	}
 }

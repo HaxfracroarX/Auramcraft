@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy {
 		// Render ids
 		RenderIds.infusionTable = RenderingRegistry.getNextAvailableRenderId();
 		RenderIds.storageJar = RenderingRegistry.getNextAvailableRenderId();
-		RenderIds.alcemicalRouter = RenderingRegistry.getNextAvailableRenderId();
+		RenderIds.alchemicalRouter = RenderingRegistry.getNextAvailableRenderId();
 		
 		// Register Item renderer
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.infusionTable), new ItemAuramcraftRenderer(Models.infusionTable, Textures.Models.MODEL_INFUSION_TABLE));
