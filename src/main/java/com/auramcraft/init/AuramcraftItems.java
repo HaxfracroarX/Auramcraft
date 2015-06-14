@@ -1,10 +1,11 @@
 package com.auramcraft.init;
 
 import com.auramcraft.api.Auras;
+import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.item.*;
 import com.auramcraft.item.tools.SacrificialDagger;
 import com.auramcraft.reference.Names;
-import com.auramcraft.reference.Textures;
+import com.auramcraft.reference.WandParts;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
@@ -24,7 +25,7 @@ public class AuramcraftItems {
 		auraCrystal = new AuraCrystal(25),
 		allseeingStone = new AllseeingStone(),
 		charmOfAllseeing = new CharmOfAllseeing(),
-		wand = new Wand(25, 2, Textures.Items.WAND_CORE_AURAMWOOD, Textures.Items.WAND_CAP_GEMSTONE, Textures.Items.WAND_EMPTY);
+		wand = new Wand(25, 2, WandParts.coreAuramwood, WandParts.capGemstone, WandParts.clothEmpty).setCreativeTab(CreativeTab.AuramcraftTab);
 	
 	// Creative only
 	public static final Item auraCrystalCreative = new AuraCrystal(500);

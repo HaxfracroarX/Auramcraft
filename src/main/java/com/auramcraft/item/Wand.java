@@ -1,6 +1,5 @@
 package com.auramcraft.item;
 
-import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -11,17 +10,18 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class Wand extends AuraItem {
-	String core, cap, cloth;
+	WandCore core;
+	WandCap cap;
+	WandCloth cloth;
 	IIcon coreIcon, capIcon, clothIcon;
 	
-	public Wand(int maxAura, int tier, String core, String cap, String cloth) {
+	public Wand(int maxAura, int tier, WandCore core, WandCap cap, WandCloth cloth) {
 		super(maxAura, tier);
 		this.core = core;
 		this.cap = cap;
 		this.cloth = cloth;
 		
 		setUnlocalizedName(Names.Items.WAND);
-		setCreativeTab(CreativeTab.AuramcraftTab);
 		setMaxStackSize(1);
 	}
 	
@@ -35,9 +35,9 @@ public class Wand extends AuraItem {
 		
 		Wand wand = (Wand) itemStack.getItem();
 		
-		itemStack.stackTagCompound.setString("Core", wand.core);
-		itemStack.stackTagCompound.setString("Cap", wand.core);
-		itemStack.stackTagCompound.setString("Cloth", wand.core);
+		itemStack.stackTagCompound.setString("Core", wand.core.texture);
+		itemStack.stackTagCompound.setString("Cap", wand.core.texture);
+		itemStack.stackTagCompound.setString("Cloth", wand.core.texture);
 	}
 	
 	@Override
@@ -54,9 +54,9 @@ public class Wand extends AuraItem {
 	@Override 
 	@SideOnly(Side.CLIENT) 
 	public void registerIcons(IIconRegister iconRegister) {
-		coreIcon = iconRegister.registerIcon(core);
-		capIcon = iconRegister.registerIcon(cap);
-		clothIcon = iconRegister.registerIcon(cloth);
+		coreIcon = iconRegister.registerIcon(core.texture);
+		capIcon = iconRegister.registerIcon(cap.texture);
+		clothIcon = iconRegister.registerIcon(cloth.texture);
     }
 	
 	@Override
