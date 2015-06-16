@@ -66,32 +66,67 @@ public class Textures {
 			ITEM_ALLSEEING_STONE = RESOURCE_PREFIX + "AllseeingStone",
 			ITEM_CHARM_OF_ALLSEEING = RESOURCE_PREFIX + "AllseeingCharm",
 			
-			// Wands
-			WAND_EMPTY = WAND_TEXTURE_LOCATION + "empty",
-			
-			// Wand Cores
-			WAND_CORE_AURAMWOOD = WAND_TEXTURE_LOCATION + "AuramwoodUnderlay",
-			WAND_CORE_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondUnderlay",
-			WAND_CORE_INFUSED = WAND_TEXTURE_LOCATION + "InfusedUnderlay",
-			
-			// Wand Caps
-			WAND_CAP_DIAMOND = WAND_TEXTURE_LOCATION + "DiamondCapOverlay",
-			WAND_CAP_GEMSTONE = WAND_TEXTURE_LOCATION + "GemstoneCapOverlay",
-			WAND_CAP_GOLD = WAND_TEXTURE_LOCATION + "GoldCapOverlay",
-			WAND_CAP_INFUSED = WAND_TEXTURE_LOCATION + "InfusedMagicCapOverlay",
-			WAND_CAP_IRON = WAND_TEXTURE_LOCATION + "IronCapOverlay",
-			WAND_CAP_MAGIC = WAND_TEXTURE_LOCATION + "MagicCapOverlay",
-			
-			// Wand Cloth
-			WAND_CLOTH_INFUSED = WAND_TEXTURE_LOCATION + "InfusedClothOverlay",
-			WAND_CLOTH_MAGIC = WAND_TEXTURE_LOCATION + "MagicClothOverlay",
-			
 			// Misc
 			ITEM_GEMSTONE = RESOURCE_PREFIX + "Gemstone",
 			ITEM_SACRIFICIAL_DAGGER = RESOURCE_PREFIX + "SacrificialDagger",
 			ITEM_DEV_TOY = RESOURCE_PREFIX + "SacrificialDagger",
 			ITEM_BOOK_OF_AURA = RESOURCE_PREFIX + "BookOfAura",
 			ITEM_AURA_CRYSTAL = RESOURCE_PREFIX + "AuraCrystal";
+		
+		// Wands
+		public static final int 
+			WAND_EMPTY = 0,
+			WAND_CORE_AUMWOOD = 1,
+			WAND_CORE_DIAMOND = 2,
+			WAND_CORE_INFUSED = 3,
+			WAND_CAP_GEMSTONE = 1,
+			WAND_CAP_IRON = 2,
+			WAND_CAP_GOLD = 3,
+			WAND_CAP_DIAMOND = 4,
+			WAND_CAP_INFUSED = 5,
+			WAND_CAP_MAGIC = 6,
+			WAND_CLOTH_INFUSED = 1,
+			WAND_CLOTH_MAGIC = 2;
+		
+		// Wand Cores
+		public static final String[] wandCores = {
+			//WAND_EMPTY
+			WAND_TEXTURE_LOCATION + "empty",
+			//WAND_CORE_AUMWOOD
+			WAND_TEXTURE_LOCATION + "AuramwoodUnderlay",
+			//WAND_CORE_DIAMOND
+			WAND_TEXTURE_LOCATION + "DiamondUnderlay", 
+			//WAND_CORE_INFUSED
+			WAND_TEXTURE_LOCATION + "InfusedUnderlay"
+		};
+		
+		// Wand Caps
+		public static final String[] wandCaps = {
+			//WAND_EMPTY
+			WAND_TEXTURE_LOCATION + "empty",
+			//WAND_CAP_GEMSTONE
+			WAND_TEXTURE_LOCATION + "GemstoneCapOverlay",
+			//WAND_CAP_IRON
+			WAND_TEXTURE_LOCATION + "IronCapOverlay",
+			//WAND_CAP_GOLD
+			WAND_TEXTURE_LOCATION + "GoldCapOverlay",
+			//WAND_CAP_DIAMOND
+			WAND_TEXTURE_LOCATION + "DiamondCapOverlay",
+			//WAND_CAP_INFUSED
+			WAND_TEXTURE_LOCATION + "InfusedMagicCapOverlay",
+			//WAND_CAP_MAGIC
+			WAND_TEXTURE_LOCATION + "MagicCapOverlay"
+		};
+		
+		// Wand Cloth
+		public static final String[] wandCloths = {
+			//WAND_EMPTY
+			WAND_TEXTURE_LOCATION + "empty",
+			//WAND_CLOTH_INFUSED
+			WAND_TEXTURE_LOCATION + "InfusedClothOverlay",
+			//WAND_CLOTH_MAGIC
+			WAND_TEXTURE_LOCATION + "MagicClothOverlay"
+		};
 	}
 	
 	/**

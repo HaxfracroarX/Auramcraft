@@ -91,11 +91,6 @@ public class AuraContainer implements IAuraContainer {
 	}
 	
 	@Override
-	public boolean isEditable() {
-		return isDrainable() || isFillable();
-	}
-	
-	@Override
 	public void setDrainable(boolean isDrainable) {
 		this.isDrainable = isDrainable;
 	}
@@ -108,6 +103,16 @@ public class AuraContainer implements IAuraContainer {
 	@Override
 	public int getMaxAura() {
 		return maxAura;
+	}
+	
+	@Override
+	public void setMaxAura(int maxAura) {
+		this.maxAura = maxAura;
+	}
+	
+	@Override
+	public void setTier(int tier) {
+		this.tier = tier;
 	}
 	
 	@Override

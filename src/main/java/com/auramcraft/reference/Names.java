@@ -32,6 +32,9 @@ public class Names {
 			AURACRYSTAL = "auraCrystal",
 			ALLSEEING_STONE = "allseeingStone",
 			CHARM_OF_ALLSEEING = "charmOfAllseeing",
-			WAND = "wand";
+			WAND = "wand",
+			WAND_CORE = "wandCore",
+			WAND_CAP = "wandCap",
+			WAND_CLOTH = "wandCloth";
 	}
 }

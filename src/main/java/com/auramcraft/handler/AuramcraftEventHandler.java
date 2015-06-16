@@ -6,6 +6,7 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.block.AumwoodSapling;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.item.AuraCrystal;
+import com.auramcraft.item.Wand;
 import com.auramcraft.reference.BookIds;
 import com.auramcraft.reference.Textures;
 import com.auramcraft.stats.AuramcraftPlayerStats;
@@ -170,6 +171,11 @@ public class AuramcraftEventHandler extends Gui {
 	
 	public void onPlayerLogin(EntityPlayer player) {
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
+		
+		ItemStack wandStack = new ItemStack(AuramcraftItems.wand);
+		Wand.init(wandStack, 100, 1, AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapGold, AuramcraftItems.wandClothEmpty);
+		
+		player.inventory.addItemStackToInventory(wandStack);
 		
 		// Check for and resurrect playerData from the dead
 		NBTTagCompound playerData = Auramcraft.proxy.getEntityData(player);

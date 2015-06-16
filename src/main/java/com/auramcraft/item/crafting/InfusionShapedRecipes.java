@@ -64,20 +64,50 @@ public class InfusionShapedRecipes implements IInfusionRecipe {
 		}
 		
 		// Check 3x3 grid
-		for(int i = 0; i < this.recipeWidth; i++) {
-			for(int j = 0; j < this.recipeHeight; j++) {
-				int index = i * 3 + j;
-				boolean flag;
-				ItemStack correct = (ItemStack) items.get(index);
-				ItemStack checking = crafting.getStackInSlot(index);
+		for(int i = 0; i <= 3 - this.recipeWidth; ++i) {
+			for(int j = 0; j <= 3 - this.recipeHeight; ++j) {
+				if(this.checkMatch(crafting, i, j, true))
+					return true;
 				
-				if(checking != null && correct != null)
-					flag = correct.getItem() == checking.getItem();
-				else
-					flag = correct == null && checking == null;
+				if(this.checkMatch(crafting, i, j, false))
+					return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	private boolean checkMatch(InventoryCrafting inventoryCrafting, int x, int y, boolean par4) {
+		for(int k = 0; k < 3; ++k) {
+			for(int l = 0; l < 3; ++l) {
+				int i1 = k - x;
+				int j1 = l - y;
+				ItemStack itemstack = null;
 				
-				if(!flag)
-					return false;
+				if(i1 >= 0 && j1 >= 0 && i1 < this.recipeWidth && j1 < this.recipeHeight) {
+					if(par4) {
+						itemstack = (ItemStack) this.recipeItems.get(this.recipeWidth - i1 - 1 + j1 * this.recipeWidth);
+					}
+					else {
+						itemstack = (ItemStack) this.recipeItems.get(i1 + j1 * this.recipeWidth);
+					}
+				}
+				
+				ItemStack itemstack1 = inventoryCrafting.getStackInRowAndColumn(k, l);
+				
+				if(itemstack1 != null || itemstack != null) {
+					if(itemstack1 == null && itemstack != null || itemstack1 != null && itemstack == null) {
+						return false;
+					}
+					
+					if(itemstack.getItem() != itemstack1.getItem()) {
+						return false;
+					}
+					
+					if(itemstack.getItemDamage() != 32767 && itemstack.getItemDamage() != itemstack1.getItemDamage()) {
+						return false;
+					}
+				}
 			}
 		}
 		

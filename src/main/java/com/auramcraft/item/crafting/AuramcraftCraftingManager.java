@@ -1,6 +1,7 @@
 package com.auramcraft.item.crafting;
 
 import com.auramcraft.api.Auras;
+import com.auramcraft.init.AuramcraftBlocks;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.inventory.InfusionCrafting;
 import com.auramcraft.util.LogHelper;
@@ -87,14 +88,180 @@ public class AuramcraftCraftingManager {
 			Auras.AURAM, 40
 		});
 		
+		// Aumwood Wand Core
+		addRecipe(new ItemStack(AuramcraftItems.wandCoreAumwood), new Object[] {
+			" W",
+			"W ",
+			'W', AuramcraftBlocks.aumwood
+		}, new Object[] {
+			Auras.EARTH, 50
+		});
+		
+		// Diamond Wand Core
+		addRecipe(new ItemStack(AuramcraftItems.wandCoreDiamond), new Object[] {
+			" D",
+			"D ",
+			'D', Items.diamond
+		}, new Object[] {
+			Auras.EARTH, 100
+		});
+		
+		// Gemstone Wand Cap
+		addRecipe(new ItemStack(AuramcraftItems.wandCapGemstone), new Object[] {
+			"G G",
+			'G', AuramcraftItems.gemstone
+		}, new Object[] {
+			Auras.AURAM, 50
+		});
+		
+		// Iron Wand Cap
+		addRecipe(new ItemStack(AuramcraftItems.wandCapIron), new Object[] {
+			"I I",
+			'I', Items.iron_ingot
+		}, new Object[] {
+			Auras.AURAM, 65
+		});
+		
+		// Gold Wand Cap
+		addRecipe(new ItemStack(AuramcraftItems.wandCapGold), new Object[] {
+			"G G",
+			'G', Items.gold_ingot
+		}, new Object[] {
+			Auras.AURAM, 80
+		});
+		
+		// Diamond Wand Cap
+		addRecipe(new ItemStack(AuramcraftItems.wandCapDiamond), new Object[] {
+			"D D",
+			'D', Items.diamond
+		}, new Object[] {
+			Auras.AURAM, 100
+		});
+		
+		/*
+		// Gemstone capped Aumwood Wand
+		addRecipe(new ItemStack(new Wand(50, 1, WandParts.coreAumwood, WandParts.capGemstone, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capGemstone,
+			'A', WandParts.coreAumwood
+		}, new Object[] {
+			Auras.AIR, 50,
+			Auras.AURAM, 50,
+			Auras.EARTH, 50,
+			Auras.FIRE, 50,
+			Auras.WATER, 50
+		});
+		
+		// Gemstone capped Diamond Wand
+		addRecipe(new ItemStack(new Wand(50, 2, WandParts.coreDiamond, WandParts.capGemstone, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capGemstone,
+			'A', WandParts.coreDiamond
+		}, new Object[] {
+			Auras.AIR, 70,
+			Auras.AURAM, 70,
+			Auras.EARTH, 70,
+			Auras.FIRE, 70,
+			Auras.WATER, 70
+		});
+		
+		// Iron capped Aumwood Wand
+		addRecipe(new ItemStack(new Wand(75, 1, WandParts.coreAumwood, WandParts.capIron, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capIron,
+			'A', WandParts.coreAumwood
+		}, new Object[] {
+			Auras.AIR, 65,
+			Auras.AURAM, 65,
+			Auras.EARTH, 65,
+			Auras.FIRE, 65,
+			Auras.WATER, 65
+		});
+		
+		// Iron capped Diamond Wand
+		addRecipe(new ItemStack(new Wand(75, 2, WandParts.coreDiamond, WandParts.capIron, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capIron,
+			'A', WandParts.coreDiamond
+		}, new Object[] {
+			Auras.AIR, 80,
+			Auras.AURAM, 80,
+			Auras.EARTH, 80,
+			Auras.FIRE, 80,
+			Auras.WATER, 80
+		});
+		
+		// Gold capped Aumwood Wand
+		addRecipe(new ItemStack(new Wand(100, 1, WandParts.coreAumwood, WandParts.capGold, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capGold,
+			'A', WandParts.coreAumwood
+		}, new Object[] {
+			Auras.AIR, 75,
+			Auras.AURAM, 75,
+			Auras.EARTH, 75,
+			Auras.FIRE, 75,
+			Auras.WATER, 75
+		});
+		
+		// Gold capped Diamond Wand
+		addRecipe(new ItemStack(new Wand(100, 2, WandParts.coreDiamond, WandParts.capGold, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capGold,
+			'A', WandParts.coreDiamond
+		}, new Object[] {
+			Auras.AIR, 90,
+			Auras.AURAM, 90,
+			Auras.EARTH, 90,
+			Auras.FIRE, 90,
+			Auras.WATER, 90
+		});
+		
+		// Diamond capped Aumwood Wand
+		addRecipe(new ItemStack(new Wand(125, 1, WandParts.coreAumwood, WandParts.capDiamond, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capDiamond,
+			'A', WandParts.coreAumwood
+		}, new Object[] {
+			Auras.AIR, 90,
+			Auras.AURAM, 90,
+			Auras.EARTH, 90,
+			Auras.FIRE, 90,
+			Auras.WATER, 90
+		});
+		
+		// Diamond Wand
+		addRecipe(new ItemStack(new Wand(150, 3, WandParts.coreDiamond, WandParts.capDiamond, WandParts.clothEmpty)), new Object[] {
+			"  C",
+			" A ",
+			"C  ",
+			'C', WandParts.capDiamond,
+			'A', WandParts.coreDiamond
+		}, new Object[] {
+			Auras.AIR, 100,
+			Auras.AURAM, 100,
+			Auras.EARTH, 100,
+			Auras.FIRE, 100,
+			Auras.WATER, 100
+		});*/
+		
 		/* SHAPELESS */
 		// Allseeing Stone
-		addShapelessRecipe(new ItemStack(AuramcraftItems.allseeingStone), new Object[] {
-			Blocks.stone
-		}, new Object[] {
-			Auras.WATER, 50,
-			Auras.AURAM, 25
-		});
+		addShapelessRecipe(new ItemStack(AuramcraftItems.allseeingStone), new Object[] {Blocks.stone}, new Object[] {Auras.WATER, 50, Auras.AURAM, 25});
 		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
 		

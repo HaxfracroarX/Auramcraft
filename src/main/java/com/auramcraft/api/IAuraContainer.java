@@ -49,11 +49,6 @@ public interface IAuraContainer {
 	boolean isFillable();
 	
 	/**
-	 * @return If the container is editable (isDrainable || isFillable)
-	 */
-	boolean isEditable();
-	
-	/**
 	 * Sets if the container is drainable
 	 */
 	void setDrainable(boolean isDrainable);
@@ -67,6 +62,16 @@ public interface IAuraContainer {
 	 * @return How much aura can be contained
 	 */
 	int getMaxAura();
+	
+	/**
+	 * @param maxAura The maximum aura
+	 */
+	void setMaxAura(int maxAura);
+	
+	/**
+	 * @param tier The highest tier
+	 */
+	void setTier(int tier);
 	
 	/**
 	 * @return If the specified tier can be stored
