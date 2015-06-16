@@ -106,29 +106,18 @@ public class AuraContainer implements IAuraContainer {
 	}
 	
 	@Override
-	public void setMaxAura(int maxAura) {
-		this.maxAura = maxAura;
-	}
-	
-	@Override
-	public void setTier(int tier) {
-		this.tier = tier;
-	}
-	
-	@Override
 	public boolean canStoreTier(int tier) {
 		return tier <= this.tier;
 	}
 	
 	@Override
 	public boolean canStoreAura(Auras aura) {
-		return allowedAuras.isEmpty() || allowedAuras.contains(aura);
+		return canStoreTier(aura.getTier()) && allowedAuras.isEmpty() || allowedAuras.contains(aura);
 	}
 	
 	@Override
 	public boolean canStoreAura(Auras aura, int amount) {
 		return canStoreAura(aura) && canStoreMore();
-
 	}
 	
 	@Override

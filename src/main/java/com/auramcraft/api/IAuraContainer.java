@@ -64,16 +64,6 @@ public interface IAuraContainer {
 	int getMaxAura();
 	
 	/**
-	 * @param maxAura The maximum aura
-	 */
-	void setMaxAura(int maxAura);
-	
-	/**
-	 * @param tier The highest tier
-	 */
-	void setTier(int tier);
-	
-	/**
 	 * @return If the specified tier can be stored
 	 */
 	boolean canStoreTier(int tier);

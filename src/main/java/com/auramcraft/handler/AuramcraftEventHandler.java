@@ -152,7 +152,11 @@ public class AuramcraftEventHandler extends Gui {
 				
 				if(itemStack != null && itemStack.getItem() == AuramcraftItems.wand) {
 					AuraContainer container = Wand.getAuraContainer(itemStack);
-					container.store(Auras.AIR, 1, Auras.FIRE, 1, Auras.EARTH, 1, Auras.WATER, 1, Auras.AURAM, 1);
+					
+					// Store 1 of each type, if it can hold it
+					for(Auras aura : Auras.values())
+						container.store(aura, 1);
+					
 					Wand.updateNBT(itemStack, container);
 				}
 			}
@@ -190,11 +194,6 @@ public class AuramcraftEventHandler extends Gui {
 	
 	public void onPlayerLogin(EntityPlayer player) {
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
-		
-		ItemStack wandStack = new ItemStack(AuramcraftItems.wand);
-		Wand.init(wandStack, new AuraContainer(100, 1), AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapGold, AuramcraftItems.wandClothEmpty);
-		
-		player.inventory.addItemStackToInventory(wandStack);
 		
 		// Check for and resurrect playerData from the dead
 		NBTTagCompound playerData = Auramcraft.proxy.getEntityData(player);
