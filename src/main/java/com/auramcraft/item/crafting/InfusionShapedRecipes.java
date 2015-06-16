@@ -4,7 +4,6 @@ import com.auramcraft.api.Auras;
 import com.auramcraft.inventory.InfusionCrafting;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class InfusionShapedRecipes implements IInfusionRecipe {
 	
 	/** The ItemStack that you get when craft the recipe. */
 	private final ItemStack recipeOutput;
-	private final boolean field_92101_f = false;
 	
 	public InfusionShapedRecipes(int recipeWidth, int recipeHeight, List recipeItems, ItemStack recipeOutput, List recipeAuras) {
 		this.recipeWidth = recipeWidth;
@@ -116,22 +114,7 @@ public class InfusionShapedRecipes implements IInfusionRecipe {
 	
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inventoryCrafting) {
-		ItemStack itemstack = this.getRecipeOutput().copy();
-
-		 if (field_92101_f)
-		 {
-			 for (int i = 0; i < inventoryCrafting.getSizeInventory(); ++i)
-			 {
-				 ItemStack itemstack1 = inventoryCrafting.getStackInSlot(i);
-
-				 if (itemstack1 != null && itemstack1.hasTagCompound())
-				 {
-					 itemstack.setTagCompound((NBTTagCompound) itemstack1.stackTagCompound.copy());
-				 }
-			 }
-		 }
-
-		 return itemstack;
+		return getRecipeOutput().copy();
 	}
 	
 	@Override

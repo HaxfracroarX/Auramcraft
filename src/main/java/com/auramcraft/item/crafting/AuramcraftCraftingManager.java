@@ -12,7 +12,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -110,7 +109,7 @@ public class AuramcraftCraftingManager {
 		
 		// Gemstone Wand Cap
 		addRecipe(new ItemStack(AuramcraftItems.wandCapGemstone), new Object[] {
-			"G G",
+			"G",
 			'G', AuramcraftItems.gemstone
 		}, new Object[] {
 			Auras.AURAM, 50
@@ -118,7 +117,7 @@ public class AuramcraftCraftingManager {
 		
 		// Iron Wand Cap
 		addRecipe(new ItemStack(AuramcraftItems.wandCapIron), new Object[] {
-			"I I",
+			"I",
 			'I', Items.iron_ingot
 		}, new Object[] {
 			Auras.AURAM, 65
@@ -126,7 +125,7 @@ public class AuramcraftCraftingManager {
 		
 		// Gold Wand Cap
 		addRecipe(new ItemStack(AuramcraftItems.wandCapGold), new Object[] {
-			"G G",
+			"G",
 			'G', Items.gold_ingot
 		}, new Object[] {
 			Auras.AURAM, 80
@@ -134,12 +133,27 @@ public class AuramcraftCraftingManager {
 		
 		// Diamond Wand Cap
 		addRecipe(new ItemStack(AuramcraftItems.wandCapDiamond), new Object[] {
-			"D D",
+			"D",
 			'D', Items.diamond
 		}, new Object[] {
 			Auras.AURAM, 100
 		});
 		
+		// Infused Wand Cloth
+		addRecipe(new ItemStack(AuramcraftItems.wandClothInfused), new Object[] {
+			"W",
+			'W', Blocks.wool
+		}, new Object[] {
+			Auras.AURAM, 1
+		});
+		
+		// Magic Wand Cloth
+		addRecipe(new ItemStack(AuramcraftItems.wandClothMagic), new Object[] {
+			"C",
+			'C', AuramcraftItems.wandClothInfused
+		}, new Object[] {
+			Auras.AURAM, 1
+		});
 		
 		// Gemstone capped Aumwood Wand
 		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(100, 1), AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapGemstone, AuramcraftItems.wandClothEmpty), new Object[] {
@@ -266,8 +280,22 @@ public class AuramcraftCraftingManager {
 		addShapelessRecipe(new ItemStack(AuramcraftItems.allseeingStone), new Object[] {
 			Blocks.stone
 		}, new Object[] {
-			Auras.WATER, 50, 
+			Auras.WATER, 50,
 			Auras.AURAM, 25
+		});
+		
+		// Wand with Infused cloth
+		addShapelessRecipe(new ItemStack(AuramcraftItems.wand), new Object[] {
+			AuramcraftItems.wand, AuramcraftItems.wandClothInfused
+		}, new Object[] {
+			Auras.AURAM, 1
+		});
+		
+		// Wand with Magic cloth
+		addShapelessRecipe(new ItemStack(AuramcraftItems.wand), new Object[] {
+			AuramcraftItems.wand, AuramcraftItems.wandClothMagic
+		}, new Object[] {
+			Auras.AURAM, 1
 		});
 		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
@@ -361,58 +389,27 @@ public class AuramcraftCraftingManager {
 
 		Collections.addAll(auraList, auras);
 		
-		this.recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
+		recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
 	}
 	
-	public ItemStack findMatchingRecipe(InfusionCrafting crafting, World world) {
-		int i = 0;
-		ItemStack itemstack = null;
-		ItemStack itemstack1 = null;
-		int j;
-		
-		for(j = 0; j < crafting.getSizeInventory(); ++j) {
-			ItemStack itemstack2 = crafting.getStackInSlot(j);
-			
-			if(itemstack2 != null) {
-				if(i == 0)
-					itemstack = itemstack2;
-				
-				if(i == 1)
-					itemstack1 = itemstack2;
-				
-				++i;
-			}
+	public ItemStack findMatchingRecipeItem(InfusionCrafting crafting, World world) {
+		IInfusionRecipe recipe = findMatchingRecipe(crafting, world);
+		return recipe != null ? recipe.getCraftingResult(crafting) : null;
+	}
+	
+	public IInfusionRecipe findMatchingRecipe(InfusionCrafting crafting, World world) {
+		for(IInfusionRecipe recipe : (List<IInfusionRecipe>) recipes) {
+			if(recipe.matches(crafting, world))
+				return recipe;
 		}
 		
-		if(i == 2 && itemstack.getItem() == itemstack1.getItem() && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isRepairable()) {
-			Item item = itemstack.getItem();
-			int j1 = item.getMaxDamage() - itemstack.getItemDamageForDisplay();
-			int k = item.getMaxDamage() - itemstack1.getItemDamageForDisplay();
-			int l = j1 + k + item.getMaxDamage() * 5 / 100;
-			int i1 = item.getMaxDamage() - l;
-			
-			if(i1 < 0) {
-				i1 = 0;
-			}
-			
-			return new ItemStack(itemstack.getItem(), 1, i1);
-		}
-		else {
-			for(j = 0; j < this.recipes.size(); ++j) {
-				IRecipe irecipe = (IRecipe) this.recipes.get(j);
-				
-				if(irecipe.matches(crafting, world))
-					return irecipe.getCraftingResult(crafting);
-			}
-			
-			return null;
-		}
+		return null;
 	}
 	
 	/**
 	 * returns the List<> of all recipes
 	 */
 	public List getRecipeList() {
-		return this.recipes;
+		return recipes;
 	}
 }

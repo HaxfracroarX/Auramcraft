@@ -1,12 +1,16 @@
 package com.auramcraft.item.crafting;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.auramcraft.api.Auras;
+import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.inventory.InfusionCrafting;
+import com.auramcraft.item.Wand;
+import com.auramcraft.item.WandCloth;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("unchecked")
 public class InfusionShapelessRecipes implements IInfusionRecipe {
@@ -75,8 +79,29 @@ public class InfusionShapelessRecipes implements IInfusionRecipe {
 	}
 	
 	@Override
-	public ItemStack getCraftingResult(InventoryCrafting var1) {
-		return recipeOutput.copy();
+	public ItemStack getCraftingResult(InventoryCrafting inventoryCrafting) {
+		ItemStack itemStack = getRecipeOutput().copy();
+		
+		// Move over Wand data to output
+		WandCloth cloth = null;
+		for(ItemStack check : (List<ItemStack>) recipeItems) {
+			cloth = (WandCloth) (check.getItem() == AuramcraftItems.wandClothInfused ? AuramcraftItems.wandClothInfused :
+					check.getItem() == AuramcraftItems.wandClothMagic ? AuramcraftItems.wandClothMagic : null);
+			
+			if(cloth != null)
+				break;
+		}
+		
+		if(itemStack.getItem() == AuramcraftItems.wand && cloth != null) {
+			for(int i = 0; i < inventoryCrafting.getSizeInventory(); ++i) {
+				ItemStack itemStack1 = inventoryCrafting.getStackInSlot(i);
+				
+				if(itemStack1 != null && itemStack1.getItem() == AuramcraftItems.wand)
+					Wand.init(itemStack, Wand.getAuraContainer(itemStack1), Wand.getCore(itemStack1), Wand.getCap(itemStack1), cloth.textureID);
+			}
+		}
+		
+		return itemStack;
 	}
 	
 	@Override

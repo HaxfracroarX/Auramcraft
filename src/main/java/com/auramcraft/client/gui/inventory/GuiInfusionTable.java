@@ -12,11 +12,11 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 @SuppressWarnings("unchecked")
 public class GuiInfusionTable extends GuiContainer {
 	private final TileInfusionTable tileInfusionTable;
+	private World world;
 	private final int[] slotX = new int[] {
 			17, 50, 83, 116, 149
 	};
@@ -25,6 +25,7 @@ public class GuiInfusionTable extends GuiContainer {
 	public GuiInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
 		super(new ContainerInfusionTable(inventoryPlayer, world, x, y, z));
 		this.tileInfusionTable = (TileInfusionTable) world.getTileEntity(x, y, z);
+		this.world = world;
 		xSize = 190;
 		ySize = 179;
 	}
@@ -39,19 +40,14 @@ public class GuiInfusionTable extends GuiContainer {
 		if(tileInfusionTable.getStackInSlot(10) == null)
 			return;
 		
-		// Get infusion recipes
-		ArrayList<IInfusionRecipe> recipes = new ArrayList<IInfusionRecipe>((Collection<? extends IInfusionRecipe>) AuramcraftCraftingManager.getInstance().getRecipeList());
+		// Get infusion recipe
+		IInfusionRecipe recipe = AuramcraftCraftingManager.getInstance().findMatchingRecipe(((ContainerInfusionTable) inventorySlots).matrix, world);
+		
+		if(recipe == null)
+			return;
 		
 		// Get the aura needed by the recipe
-		ArrayList recipeAuras = new ArrayList();
-		
-		// Check for matching recipe
-		for(IInfusionRecipe recipe : recipes) {
-			if(recipe.getRecipeOutput().getItem().equals(tileInfusionTable.getStackInSlot(10).getItem())) {
-				recipeAuras = new ArrayList(recipe.getRecipeAuras());
-				break;
-			}
-		}
+		ArrayList recipeAuras = new ArrayList(recipe.getRecipeAuras());
 		
 		// Color of text
 		int textColor = 0x996633;

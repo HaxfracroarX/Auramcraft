@@ -114,7 +114,6 @@ public class AuraItem extends Item implements IAuraUser {
 			for(int j = 0; j < Tiers.getTotalAuras(i); j++, rep++) {
 				// Add aura values
 				auras.get(i).add(itemStack.stackTagCompound.getInteger(auraList[rep].toString()));
-				allowedAuras.add(auraList[rep]);
 				
 				// Add allowed
 				if(itemStack.stackTagCompound.getBoolean(auraList[rep].toString()+" isAllowed"))

@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 public class ContainerInfusionTable extends Container {
 	private final TileInfusionTable tileEntity;
 	private final World worldObj;
-	private final InfusionCrafting matrix;
+	public final InfusionCrafting matrix;
 	
 	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
 		this.tileEntity = (TileInfusionTable) world.getTileEntity(x, y, z);
@@ -60,7 +60,7 @@ public class ContainerInfusionTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipe(matrix, worldObj));
+		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipeItem(matrix, worldObj));
 		super.onCraftMatrixChanged(inventory);
 	}
 	
