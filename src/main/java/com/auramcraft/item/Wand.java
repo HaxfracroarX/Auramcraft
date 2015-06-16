@@ -22,17 +22,22 @@ public class Wand extends AuraItem {
 		setMaxStackSize(1);
 	}
 	
-	public static ItemStack init(ItemStack itemStack, int maxAura, int tier, Item core, Item cap, Item cloth) {
-		AuraContainer container = getAuraContainer(itemStack);
-		container.setMaxAura(maxAura);
-		container.setTier(tier);
-		updateNBT(itemStack, container);
+	public static ItemStack init(ItemStack itemStack, AuraContainer container, Item core, Item cap, Item cloth) {
+		return init(itemStack, container, ((WandCore) core).textureID, ((WandCap) cap).textureID, ((WandCloth) cloth).textureID);
+	}
+	
+	public static ItemStack init(ItemStack itemStack, AuraContainer container, int core, int cap, int cloth) {
+		AuraItem.updateNBT(itemStack, container);
 		
-		itemStack.stackTagCompound.setInteger("Core", ((WandCore) core).textureID);
-		itemStack.stackTagCompound.setInteger("Cap", ((WandCap) cap).textureID);
-		itemStack.stackTagCompound.setInteger("Cloth", ((WandCloth) cloth).textureID);
+		itemStack.stackTagCompound.setInteger("Core", core);
+		itemStack.stackTagCompound.setInteger("Cap", cap);
+		itemStack.stackTagCompound.setInteger("Cloth", cloth);
 		
 		return itemStack;
+	}
+	
+	public static void updateNBT(ItemStack itemStack, AuraContainer container) {
+		init(itemStack, container, getCore(itemStack), getCap(itemStack), getCloth(itemStack));
 	}
 	
 	public static int getCore(ItemStack itemStack) {

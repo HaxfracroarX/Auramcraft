@@ -31,19 +31,20 @@ public class AuraItem extends Item implements IAuraUser {
 		// List of all Auras
 		Auras[] auras = Auras.values();
 		
-		// Container of itemstack
+		// Container of itemStack
 		AuraContainer container = getAuraContainer(itemStack);
+		
+		// Current aura
+		int auraID = 0;
 		
 		// Loop through every tier we can store
 		for(int i = 0; i < container.getTier(); i++) {
 			boolean isEmpty = true;
-			int offset = 0;
 			
 			// Check if there is any aura in this tier
-			for(int j = 0; j < Tiers.getTotalAuras(i); j++, offset++) {
-				if(container.getStoredAura(auras[offset]) > 0) {
+			for(int j = 0; j < Tiers.getTotalAuras(i); j++) {
+				if(container.getStoredAura(auras[auraID + j]) > 0) {
 					isEmpty = false;
-					offset = 0;
 					break;
 				}
 			}
@@ -51,15 +52,17 @@ public class AuraItem extends Item implements IAuraUser {
 			// If there is no aura from this tier, skip adding the empty tier
 			if(isEmpty) {
 				list.add("Tier " + (i+1) + ": Empty");
+				auraID += Tiers.getTotalAuras(i);
 				continue;
 			}
 			
 			list.add("Tier " + (i+1) + ":");
 			
 			// Loop through every aura in the tier
-			for(int j = 0; j < Tiers.getTotalAuras(i); j++, offset++) {
-				list.add("  " + auras[offset].toString() + ": " + container.getStoredAura(auras[offset]));
-			}
+			for(int j = 0; j < Tiers.getTotalAuras(i); j++)
+				list.add("  " + auras[auraID + j].toString() + ": " + container.getStoredAura(auras[auraID + j]));
+			
+			auraID += Tiers.getTotalAuras(i);
 		}
 	}
 	

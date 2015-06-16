@@ -36,6 +36,7 @@ import java.util.Random;
 @SuppressWarnings("WeakerAccess")
 public class AuramcraftEventHandler extends Gui {
 	private final Minecraft mc;
+	private int wandTickCounter = 100;
 	
 	public AuramcraftEventHandler() {
 		mc = Minecraft.getMinecraft();
@@ -122,7 +123,9 @@ public class AuramcraftEventHandler extends Gui {
 		if(!(event.entity instanceof EntityPlayer))
 			return;
 		
-		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get((EntityPlayer) event.entity);
+		EntityPlayer player = (EntityPlayer) event.entity;
+		
+		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 		
 		// Decrement page announcement
 		float pageTime = stats.getPageTime();
@@ -139,7 +142,23 @@ public class AuramcraftEventHandler extends Gui {
 		if(event.entity.worldObj.isRemote)
 			return;
 		
-		AuramcraftPlayerStats.update((EntityPlayer) event.entity);
+		// Passive Internal Aura Regen
+		AuramcraftPlayerStats.update(player);
+		
+		// Passive Wand Aura Regen
+		if(wandTickCounter-- < 0) {
+			for(int i = 0; i < player.inventory.getSizeInventory(); i++) {
+				ItemStack itemStack = player.inventory.getStackInSlot(i);
+				
+				if(itemStack != null && itemStack.getItem() == AuramcraftItems.wand) {
+					AuraContainer container = Wand.getAuraContainer(itemStack);
+					container.store(Auras.AIR, 1, Auras.FIRE, 1, Auras.EARTH, 1, Auras.WATER, 1, Auras.AURAM, 1);
+					Wand.updateNBT(itemStack, container);
+				}
+			}
+			
+			wandTickCounter = 100;
+		}
 	}
 	
 	@SubscribeEvent
@@ -173,7 +192,7 @@ public class AuramcraftEventHandler extends Gui {
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(player);
 		
 		ItemStack wandStack = new ItemStack(AuramcraftItems.wand);
-		Wand.init(wandStack, 100, 1, AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapGold, AuramcraftItems.wandClothEmpty);
+		Wand.init(wandStack, new AuraContainer(100, 1), AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapGold, AuramcraftItems.wandClothEmpty);
 		
 		player.inventory.addItemStackToInventory(wandStack);
 		
