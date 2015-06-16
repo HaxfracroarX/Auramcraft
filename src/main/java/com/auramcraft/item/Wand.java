@@ -11,7 +11,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 public class Wand extends AuraItem {
-	private IIcon[] coreIcons, capIcons, clothIcons;
+	private IIcon[] 
+		coreIcons = new IIcon[Textures.Items.wandCores.length],
+		capIcons = new IIcon[Textures.Items.wandCaps.length],
+		clothIcons = new IIcon[Textures.Items.wandCloths.length];
 	
 	public Wand() {
 		super(1, 1);
@@ -19,7 +22,7 @@ public class Wand extends AuraItem {
 		setMaxStackSize(1);
 	}
 	
-	public static void init(ItemStack itemStack, int maxAura, int tier, Item core, Item cap, Item cloth) {
+	public static ItemStack init(ItemStack itemStack, int maxAura, int tier, Item core, Item cap, Item cloth) {
 		AuraContainer container = getAuraContainer(itemStack);
 		container.setMaxAura(maxAura);
 		container.setTier(tier);
@@ -28,6 +31,8 @@ public class Wand extends AuraItem {
 		itemStack.stackTagCompound.setInteger("Core", ((WandCore) core).textureID);
 		itemStack.stackTagCompound.setInteger("Cap", ((WandCap) cap).textureID);
 		itemStack.stackTagCompound.setInteger("Cloth", ((WandCloth) cloth).textureID);
+		
+		return itemStack;
 	}
 	
 	public static int getCore(ItemStack itemStack) {
@@ -56,10 +61,6 @@ public class Wand extends AuraItem {
 	@Override 
 	@SideOnly(Side.CLIENT) 
 	public void registerIcons(IIconRegister iconRegister) {
-		coreIcons = new IIcon[Textures.Items.wandCores.length];
-		capIcons = new IIcon[Textures.Items.wandCaps.length];
-		clothIcons = new IIcon[Textures.Items.wandCloths.length];
-		
 		for(int i = 0; i < Textures.Items.wandCores.length; i++)
 			coreIcons[i] = iconRegister.registerIcon(Textures.Items.wandCores[i]);
 		
