@@ -144,7 +144,7 @@ public class AuramcraftCraftingManager {
 			"W",
 			'W', Blocks.wool
 		}, new Object[] {
-			Auras.AURAM, 1
+			Auras.MAGIC, 100
 		});
 		
 		// Magic Wand Cloth
@@ -152,7 +152,7 @@ public class AuramcraftCraftingManager {
 			"C",
 			'C', AuramcraftItems.wandClothInfused
 		}, new Object[] {
-			Auras.AURAM, 1
+			Auras.MAGIC, 200
 		});
 		
 		// Gemstone capped Aumwood Wand
@@ -288,14 +288,14 @@ public class AuramcraftCraftingManager {
 		addShapelessRecipe(new ItemStack(AuramcraftItems.wand), new Object[] {
 			AuramcraftItems.wand, AuramcraftItems.wandClothInfused
 		}, new Object[] {
-			Auras.AURAM, 1
+			Auras.MAGIC, 50
 		});
 		
 		// Wand with Magic cloth
 		addShapelessRecipe(new ItemStack(AuramcraftItems.wand), new Object[] {
 			AuramcraftItems.wand, AuramcraftItems.wandClothMagic
 		}, new Object[] {
-			Auras.AURAM, 1
+			Auras.MAGIC, 50
 		});
 		
 		Collections.sort(recipes, new AuramcraftRecipeSorter(this));
