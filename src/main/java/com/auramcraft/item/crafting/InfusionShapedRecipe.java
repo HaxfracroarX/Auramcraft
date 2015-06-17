@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings({"FieldCanBeLocal", "unchecked"})
-public class InfusionShapedRecipes implements IInfusionRecipe {
+public class InfusionShapedRecipe implements IInfusionRecipe {
 	/** How many horizontal slots this recipe is wide. */
 	private final int recipeWidth;
 	
@@ -26,7 +26,7 @@ public class InfusionShapedRecipes implements IInfusionRecipe {
 	/** The ItemStack that you get when craft the recipe. */
 	private final ItemStack recipeOutput;
 	
-	public InfusionShapedRecipes(int recipeWidth, int recipeHeight, List recipeItems, ItemStack recipeOutput, List recipeAuras) {
+	public InfusionShapedRecipe(int recipeWidth, int recipeHeight, List recipeItems, ItemStack recipeOutput, List recipeAuras) {
 		this.recipeWidth = recipeWidth;
 		this.recipeHeight = recipeHeight;
 		this.recipeItems = recipeItems;

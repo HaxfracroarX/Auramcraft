@@ -3,7 +3,6 @@ package com.auramcraft.init;
 import com.auramcraft.api.Auras;
 import com.auramcraft.item.*;
 import com.auramcraft.item.tools.SacrificialDagger;
-import com.auramcraft.reference.Textures;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
@@ -23,18 +22,7 @@ public class AuramcraftItems {
 		auraCrystal = new AuraCrystal(25),
 		allseeingStone = new AllseeingStone(),
 		charmOfAllseeing = new CharmOfAllseeing(),
-		wandCoreAumwood = new WandCore(Textures.Items.WAND_CORE_AUMWOOD, "Aumwood"),
-		wandCoreDiamond = new WandCore(Textures.Items.WAND_CORE_DIAMOND, "Diamond"),
-		wandCoreInfused = new WandCore(Textures.Items.WAND_CORE_INFUSED, "Infused"),
-		wandCapGemstone = new WandCap(Textures.Items.WAND_CAP_GEMSTONE, "Gemstone"),
-		wandCapIron = new WandCap(Textures.Items.WAND_CAP_IRON, "Iron"),
-		wandCapGold = new WandCap(Textures.Items.WAND_CAP_GOLD, "Gold"),
-		wandCapDiamond = new WandCap(Textures.Items.WAND_CAP_DIAMOND, "Diamond"),
-		wandCapInfused = new WandCap(Textures.Items.WAND_CAP_INFUSED, "Infused"),
-		wandCapMagic = new WandCap(Textures.Items.WAND_CAP_MAGIC, "Magic"),
-		wandClothInfused = new WandCloth(Textures.Items.WAND_CLOTH_INFUSED, "Infused"),
-		wandClothMagic = new WandCloth(Textures.Items.WAND_CLOTH_MAGIC, "Magic"),
-		wandClothEmpty = new WandCloth(Textures.Items.WAND_EMPTY),
+		wandPart = new WandPart(),
 		wand = new Wand();
 	
 	// Creative only
@@ -62,17 +50,7 @@ public class AuramcraftItems {
 		GameRegistry.registerItem(auraCrystal, auraCrystal.getUnlocalizedName());
 		GameRegistry.registerItem(allseeingStone, allseeingStone.getUnlocalizedName());
 		GameRegistry.registerItem(charmOfAllseeing, charmOfAllseeing.getUnlocalizedName());
-		GameRegistry.registerItem(wandCoreAumwood, wandCoreAumwood.getUnlocalizedName());
-		GameRegistry.registerItem(wandCoreDiamond, wandCoreDiamond.getUnlocalizedName());
-		GameRegistry.registerItem(wandCoreInfused, wandCoreInfused.getUnlocalizedName());
-		GameRegistry.registerItem(wandCapGemstone, wandCapGemstone.getUnlocalizedName());
-		GameRegistry.registerItem(wandCapIron, wandCapIron.getUnlocalizedName());
-		GameRegistry.registerItem(wandCapGold, wandCapGold.getUnlocalizedName());
-		GameRegistry.registerItem(wandCapDiamond, wandCapDiamond.getUnlocalizedName());
-		GameRegistry.registerItem(wandCapInfused, wandCapInfused.getUnlocalizedName());
-		GameRegistry.registerItem(wandCapMagic, wandCapMagic.getUnlocalizedName());
-		GameRegistry.registerItem(wandClothInfused, wandClothInfused.getUnlocalizedName());
-		GameRegistry.registerItem(wandClothMagic, wandClothMagic.getUnlocalizedName());
+		GameRegistry.registerItem(wandPart, wandPart.getUnlocalizedName());
 		GameRegistry.registerItem(wand, wand.getUnlocalizedName());
 		
 		LogHelper.info("Initialized Items");

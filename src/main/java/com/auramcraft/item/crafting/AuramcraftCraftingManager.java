@@ -1,11 +1,12 @@
 package com.auramcraft.item.crafting;
 
-import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.init.AuramcraftBlocks;
 import com.auramcraft.init.AuramcraftItems;
 import com.auramcraft.inventory.InfusionCrafting;
-import com.auramcraft.item.Wand;
+import com.auramcraft.item.WandPart;
+import com.auramcraft.reference.Names;
+import com.auramcraft.reference.Textures;
 import com.auramcraft.util.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -90,7 +91,14 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Aumwood Wand Core
-		addRecipe(new ItemStack(AuramcraftItems.wandCoreAumwood), new Object[] {
+		addRecipe(WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart), 
+			Names.Wand.WAND_CORE, 
+			Textures.Items.WAND_CORE_AUMWOOD,
+			Names.Wand.AUMWOOD,
+			0,
+			1
+		), new Object[] {
 			" W",
 			"W ",
 			'W', AuramcraftBlocks.aumwood
@@ -99,7 +107,14 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Diamond Wand Core
-		addRecipe(new ItemStack(AuramcraftItems.wandCoreDiamond), new Object[] {
+		addRecipe(WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart),
+			Names.Wand.WAND_CORE,
+			Textures.Items.WAND_CORE_DIAMOND,
+			Names.Wand.DIAMOND,
+			0,
+			3
+		), new Object[] {
 			" D",
 			"D ",
 			'D', Items.diamond
@@ -108,7 +123,14 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Gemstone Wand Cap
-		addRecipe(new ItemStack(AuramcraftItems.wandCapGemstone), new Object[] {
+		addRecipe(WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart),
+			Names.Wand.WAND_CAP,
+			Textures.Items.WAND_CAP_GEMSTONE,
+			Names.Wand.GEMSTONE,
+			100,
+			0
+		), new Object[] {
 			"G",
 			'G', AuramcraftItems.gemstone
 		}, new Object[] {
@@ -116,7 +138,14 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Iron Wand Cap
-		addRecipe(new ItemStack(AuramcraftItems.wandCapIron), new Object[] {
+		addRecipe(WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart),
+			Names.Wand.WAND_CAP,
+			Textures.Items.WAND_CAP_IRON,
+			Names.Wand.IRON,
+			200,
+			0
+		), new Object[] {
 			"I",
 			'I', Items.iron_ingot
 		}, new Object[] {
@@ -124,7 +153,14 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Gold Wand Cap
-		addRecipe(new ItemStack(AuramcraftItems.wandCapGold), new Object[] {
+		addRecipe(WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart),
+			Names.Wand.WAND_CAP,
+			Textures.Items.WAND_CAP_GOLD,
+			Names.Wand.GOLD,
+			300,
+			0
+		), new Object[] {
 			"G",
 			'G', Items.gold_ingot
 		}, new Object[] {
@@ -132,7 +168,14 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Diamond Wand Cap
-		addRecipe(new ItemStack(AuramcraftItems.wandCapDiamond), new Object[] {
+		addRecipe(WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart),
+			Names.Wand.WAND_CAP,
+			Textures.Items.WAND_CAP_DIAMOND,
+			Names.Wand.DIAMOND,
+			400,
+			0
+		), new Object[] {
 			"D",
 			'D', Items.diamond
 		}, new Object[] {
@@ -140,7 +183,15 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Infused Wand Cloth
-		addRecipe(new ItemStack(AuramcraftItems.wandClothInfused), new Object[] {
+		ItemStack wandClothInfused = WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart),
+			Names.Wand.WAND_CLOTH,
+			Textures.Items.WAND_CLOTH_INFUSED,
+			Names.Wand.INFUSED,
+			0,
+			0
+		);
+		addRecipe(wandClothInfused, new Object[] {
 			"W",
 			'W', Blocks.wool
 		}, new Object[] {
@@ -148,132 +199,26 @@ public class AuramcraftCraftingManager {
 		});
 		
 		// Magic Wand Cloth
-		addRecipe(new ItemStack(AuramcraftItems.wandClothMagic), new Object[] {
+		addRecipe(WandPart.updateNBT(
+			new ItemStack(AuramcraftItems.wandPart),
+			Names.Wand.WAND_CLOTH,
+			Textures.Items.WAND_CLOTH_MAGIC,
+			Names.Wand.MAGIC,
+			0,
+			0
+		), new Object[] {
 			"C",
-			'C', AuramcraftItems.wandClothInfused
+			'C', wandClothInfused
 		}, new Object[] {
 			Auras.MAGIC, 200
 		});
 		
-		// Gemstone capped Aumwood Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(100, 1), AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapGemstone, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapGemstone,
-			'A', AuramcraftItems.wandCoreAumwood
-		}, new Object[] {
-			Auras.AIR, 50,
-			Auras.AURAM, 50,
-			Auras.EARTH, 50,
-			Auras.FIRE, 50,
-			Auras.WATER, 50
-		});
-		
-		// Gemstone capped Diamond Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(100, 3), AuramcraftItems.wandCoreDiamond, AuramcraftItems.wandCapGemstone, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapGemstone,
-			'A', AuramcraftItems.wandCoreDiamond
-		}, new Object[] {
-			Auras.AIR, 70,
-			Auras.AURAM, 70,
-			Auras.EARTH, 70,
-			Auras.FIRE, 70,
-			Auras.WATER, 70
-		});
-		
-		// Iron capped Aumwood Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(200, 1), AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapIron, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapIron,
-			'A', AuramcraftItems.wandCoreAumwood
-		}, new Object[] {
-			Auras.AIR, 65,
-			Auras.AURAM, 65,
-			Auras.EARTH, 65,
-			Auras.FIRE, 65,
-			Auras.WATER, 65
-		});
-		
-		// Iron capped Diamond Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(200, 3), AuramcraftItems.wandCoreDiamond, AuramcraftItems.wandCapIron, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapIron,
-			'A', AuramcraftItems.wandCoreDiamond
-		}, new Object[] {
-			Auras.AIR, 80,
-			Auras.AURAM, 80,
-			Auras.EARTH, 80,
-			Auras.FIRE, 80,
-			Auras.WATER, 80
-		});
-		
-		// Gold capped Aumwood Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(300, 1), AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapGold, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapGold,
-			'A', AuramcraftItems.wandCoreAumwood
-		}, new Object[] {
-			Auras.AIR, 75,
-			Auras.AURAM, 75,
-			Auras.EARTH, 75,
-			Auras.FIRE, 75,
-			Auras.WATER, 75
-		});
-		
-		// Gold capped Diamond Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(300, 3), AuramcraftItems.wandCoreDiamond, AuramcraftItems.wandCapGold, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapGold,
-			'A', AuramcraftItems.wandCoreDiamond
-		}, new Object[] {
-			Auras.AIR, 90,
-			Auras.AURAM, 90,
-			Auras.EARTH, 90,
-			Auras.FIRE, 90,
-			Auras.WATER, 90
-		});
-		
-		// Diamond capped Aumwood Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(400, 1), AuramcraftItems.wandCoreAumwood, AuramcraftItems.wandCapDiamond, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapDiamond,
-			'A', AuramcraftItems.wandCoreAumwood
-		}, new Object[] {
-			Auras.AIR, 90,
-			Auras.AURAM, 90,
-			Auras.EARTH, 90,
-			Auras.FIRE, 90,
-			Auras.WATER, 90
-		});
-		
-		// Diamond Wand
-		addRecipe(Wand.init(new ItemStack(AuramcraftItems.wand), new AuraContainer(400, 3), AuramcraftItems.wandCoreDiamond, AuramcraftItems.wandCapDiamond, AuramcraftItems.wandClothEmpty), new Object[] {
-			"  C",
-			" A ",
-			"C  ",
-			'C', AuramcraftItems.wandCapDiamond,
-			'A', AuramcraftItems.wandCoreDiamond
-		}, new Object[] {
-			Auras.AIR, 100,
-			Auras.AURAM, 100,
-			Auras.EARTH, 100,
-			Auras.FIRE, 100,
-			Auras.WATER, 100
-		});
+		// Wand
+		addWandRecipe(
+			new ItemStack(AuramcraftItems.wand),
+			new Object[] {"  C", " A ", "C  ", 'C', AuramcraftItems.wandPart, 'A', AuramcraftItems.wandPart},
+			new Object[] {Auras.AIR, 50, Auras.AURAM, 50, Auras.EARTH, 50, Auras.FIRE, 50, Auras.WATER, 50}
+		);
 		
 		/* SHAPELESS */
 		// Allseeing Stone
@@ -284,16 +229,9 @@ public class AuramcraftCraftingManager {
 			Auras.AURAM, 25
 		});
 		
-		// Wand with Infused cloth
-		addShapelessRecipe(new ItemStack(AuramcraftItems.wand), new Object[] {
-			AuramcraftItems.wand, AuramcraftItems.wandClothInfused
-		}, new Object[] {
-			Auras.MAGIC, 50
-		});
-		
-		// Wand with Magic cloth
-		addShapelessRecipe(new ItemStack(AuramcraftItems.wand), new Object[] {
-			AuramcraftItems.wand, AuramcraftItems.wandClothMagic
+		// Wand with cloth
+		addWandShapelessRecipe(new ItemStack(AuramcraftItems.wand), new Object[] {
+			AuramcraftItems.wand, AuramcraftItems.wandPart
 		}, new Object[] {
 			Auras.MAGIC, 50
 		});
@@ -307,7 +245,7 @@ public class AuramcraftCraftingManager {
 		return instance;
 	}
 	
-	public InfusionShapedRecipes addRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
+	public InfusionWandShapedRecipe addWandRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
 		ArrayList itemList = new ArrayList();
 		ArrayList auraList = new ArrayList();
 		
@@ -365,9 +303,94 @@ public class AuramcraftCraftingManager {
 
 		Collections.addAll(auraList, auras);
 		
-		InfusionShapedRecipes shapedrecipes = new InfusionShapedRecipes(j, k, itemList, itemStack, auraList);
+		InfusionWandShapedRecipe shapedrecipes = new InfusionWandShapedRecipe(j, k, itemList, itemStack, auraList);
 		this.recipes.add(shapedrecipes);
 		return shapedrecipes;
+	}
+	
+	public InfusionShapedRecipe addRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
+		ArrayList itemList = new ArrayList();
+		ArrayList auraList = new ArrayList();
+		
+		String s = "";
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		
+		if(items[i] instanceof String[]) {
+			String[] astring = (String[]) ((String[]) items[i++]);
+
+			for(String s1 : astring) {
+				++k;
+				j = s1.length();
+				s = s + s1;
+			}
+		}
+		else {
+			while(items[i] instanceof String) {
+				String s2 = (String) items[i++];
+				++k;
+				j = s2.length();
+				s = s + s2;
+			}
+		}
+		
+		HashMap hashmap;
+		
+		for(hashmap = new HashMap(); i < items.length; i += 2) {
+			Character character = (Character) items[i];
+			ItemStack itemstack1 = null;
+			
+			if(items[i + 1] instanceof Item)
+				itemstack1 = new ItemStack((Item) items[i + 1]);
+			else if(items[i + 1] instanceof Block)
+				itemstack1 = new ItemStack((Block) items[i + 1], 1, 32767);
+			else if(items[i + 1] instanceof ItemStack)
+				itemstack1 = (ItemStack) items[i + 1];
+			
+			hashmap.put(character, itemstack1);
+		}
+		
+		ItemStack[] aitemstack = new ItemStack[j * k];
+		
+		for(int i1 = 0; i1 < j * k; ++i1) {
+			char c0 = s.charAt(i1);
+			
+			if(hashmap.containsKey(Character.valueOf(c0)))
+				aitemstack[i1] = ((ItemStack) hashmap.get(Character.valueOf(c0))).copy();
+			else
+				aitemstack[i1] = null;
+		}
+
+		Collections.addAll(itemList, aitemstack);
+
+		Collections.addAll(auraList, auras);
+		
+		InfusionShapedRecipe shapedrecipes = new InfusionShapedRecipe(j, k, itemList, itemStack, auraList);
+		this.recipes.add(shapedrecipes);
+		return shapedrecipes;
+	}
+	
+	public void addWandShapelessRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
+		ArrayList itemList = new ArrayList();
+		ArrayList auraList = new ArrayList();
+
+		for(Object item : items) {
+			if(item instanceof ItemStack)
+				itemList.add(((ItemStack) item).copy());
+			else if(item instanceof Item)
+				itemList.add(new ItemStack((Item) item));
+			else {
+				if(!(item instanceof Block))
+					throw new RuntimeException("Invalid shapeless recipe!");
+
+				itemList.add(new ItemStack((Block) item));
+			}
+		}
+
+		Collections.addAll(auraList, auras);
+		
+		recipes.add(new InfusionWandShapelessRecipe(itemStack, itemList, auraList));
 	}
 	
 	public void addShapelessRecipe(ItemStack itemStack, Object[] items, Object[] auras) {
@@ -389,7 +412,7 @@ public class AuramcraftCraftingManager {
 
 		Collections.addAll(auraList, auras);
 		
-		recipes.add(new InfusionShapelessRecipes(itemStack, itemList, auraList));
+		recipes.add(new InfusionShapelessRecipe(itemStack, itemList, auraList));
 	}
 	
 	public ItemStack findMatchingRecipeItem(InfusionCrafting crafting, World world) {

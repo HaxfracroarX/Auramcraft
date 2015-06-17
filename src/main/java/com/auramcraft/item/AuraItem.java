@@ -92,7 +92,7 @@ public class AuraItem extends Item implements IAuraUser {
 	}
 	
 	public static AuraContainer getAuraContainer(ItemStack itemStack) {
-		// If NBT hasn't been initilized yet
+		// If NBT hasn't been initialized yet
 		initNBT(itemStack);
 		
 		// Get values

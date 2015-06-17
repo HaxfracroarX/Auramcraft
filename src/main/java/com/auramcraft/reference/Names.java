@@ -31,10 +31,22 @@ public class Names {
 			BOOK_OF_AURA = "bookOfAura",
 			AURACRYSTAL = "auraCrystal",
 			ALLSEEING_STONE = "allseeingStone",
-			CHARM_OF_ALLSEEING = "charmOfAllseeing",
+			CHARM_OF_ALLSEEING = "charmOfAllseeing";
+	}
+	
+	public static class Wand {
+		public static final String 
 			WAND = "wand",
-			WAND_CORE = "wandCore",
-			WAND_CAP = "wandCap",
-			WAND_CLOTH = "wandCloth";
+			WAND_CORE = "Core",
+			WAND_CAP = "Cap",
+			WAND_CLOTH = "Cloth",
+			WAND_PART = "wandPart",
+			AUMWOOD = "Aumwood",
+			GEMSTONE = "Gemstone",
+			IRON = "Iron",
+			GOLD = "Gold",
+			DIAMOND = "Diamond",
+			INFUSED = "Infused",
+			MAGIC = "Magic";
 	}
 }

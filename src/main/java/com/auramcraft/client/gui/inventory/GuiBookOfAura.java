@@ -90,13 +90,16 @@ public class GuiBookOfAura extends GuiContainer {
 		}
 		file = convertStreamToString(fileStream);
 		
+		// Converts to UNIX line endings temporarily
+		file = file.replaceAll("\r", "");
+		
 		// Get the Head and Body of the page
-		int startOfHead = file.indexOf("\r\n")+2;
-		int endOfHead = file.indexOf("\r\nBody:\r\n");
+		int startOfHead = file.indexOf("\n")+1;
+		int endOfHead = file.indexOf("\nBody:\n");
 		String head = file.substring(startOfHead, endOfHead);
 		
-		int startOfBody = file.indexOf("\r\n", endOfHead+4)+2;
-		int endOfBody = file.indexOf("\r\n", startOfBody);
+		int startOfBody = file.indexOf("\n", endOfHead+4)+1;
+		int endOfBody = file.indexOf("\n", startOfBody);
 		String body = file.substring(startOfBody, endOfBody);
 		
 		// Draw Head
@@ -109,19 +112,19 @@ public class GuiBookOfAura extends GuiContainer {
 		// Draws Body line by line
 		int LINE_LENGTH = 29;
 		int position = 0;
-		int endpos = LINE_LENGTH;
+		int endPos = LINE_LENGTH;
 		int i;
-		for(i = 0; body.length() - position >= LINE_LENGTH; i++, position = endpos, endpos += LINE_LENGTH) {
+		for(i = 0; body.length() - position >= LINE_LENGTH; i++, position = endPos, endPos += LINE_LENGTH) {
 			// We don't want to start a new line with whitespace
 			while(body.substring(position, position+1).equals(" "))
 				position++;
 			
 			// But we do want to end with it
-			while(!body.substring(endpos-1, endpos).equals(" "))
-				endpos--;
+			while(!body.substring(endPos-1, endPos).equals(" "))
+				endPos--;
 			
 			// Draw the new line
-			fontRendererObj.drawString(body.substring(position, endpos), 25, 55 + (i)*(fontRendererObj.FONT_HEIGHT + 2), 0x404040);
+			fontRendererObj.drawString(body.substring(position, endPos), 25, 55 + (i)*(fontRendererObj.FONT_HEIGHT + 2), 0x404040);
 		}
 		
 		// Draw last line of body

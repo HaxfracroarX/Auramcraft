@@ -12,19 +12,20 @@ item.bookOfAura.name=Book Of Aura
 item.auraCrystal.name=Aura Crystal
 item.allseeingStone.name=Allseeing Stone
 item.charmOfAllseeing.name=Charm of Allseeing
-
 item.wand.name=Wand
-item.wandCoreAumwood.name=Aumwood Wand Core
-item.wandCoreDiamond.name=Diamond Wand Core
-item.wandCoreInfused.name=Infused Wand Core
-item.wandCapGemstone.name=Gemstone Wand Cap
-item.wandCapIron.name=Iron Wand Cap
-item.wandCapGold.name=Gold Wand Cap
-item.wandCapDiamond.name=Diamond Wand Cap
-item.wandCapInfused.name=Infused Wand Cap
-item.wandCapMagic.name=Magic Wand Cap
-item.wandClothInfused.name=Infused Wand Cloth
-item.wandClothMagic.name=Magic Wand Cloth
+item.wandPart.name=Wand Part
+
+wand=Wand
+Core=Core
+Cap=Cap
+Cloth=Cloth
+Aumwood=Aumwood
+Gemstone=Gemstone
+Iron=Iron
+Gold=Gold
+Diamond=Diamond
+Infused=Infused
+Magic=Magic
 
 tile.gemstoneOre.name=Gemstone Ore
 tile.infusionTable.name=Infusion Table

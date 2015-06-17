@@ -1,5 +1,6 @@
 package com.auramcraft.reference;
 
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
 public class Textures {
@@ -73,7 +74,8 @@ public class Textures {
 			ITEM_BOOK_OF_AURA = RESOURCE_PREFIX + "BookOfAura",
 			ITEM_AURA_CRYSTAL = RESOURCE_PREFIX + "AuraCrystal";
 		
-		// Wands
+		/*  Wands   */
+		// Wand IDs
 		public static final int 
 			WAND_EMPTY = 0,
 			WAND_CORE_AUMWOOD = 1,
@@ -127,6 +129,11 @@ public class Textures {
 			//WAND_CLOTH_MAGIC
 			WAND_TEXTURE_LOCATION + "MagicClothOverlay"
 		};
+		
+		// Wand Icons
+		public static IIcon[] wandCoreIcons = new IIcon[wandCores.length];
+		public static IIcon[] wandCapIcons = new IIcon[wandCaps.length];
+		public static IIcon[] wandClothIcons = new IIcon[wandCloths.length];
 	}
 	
 	/**
