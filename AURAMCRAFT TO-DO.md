@@ -12,15 +12,11 @@ Crossed out means finished. ex. ~~Shards~~
 ~~AURA CRYSTAL P:2~~
 - ~~Functionality~~
 
-AURAS P:2
-- World Gen
-- Functionality
-
 ~~INFUSION P:3~~
 - ~~Recipes~~
 
-WANDS P:3
-- Functionality
+~~WANDS P:3~~
+- ~~Functionality~~
 
 ALCHEMY P:3
 - Alchemical Cauldron
@@ -31,6 +27,11 @@ ALCHEMY P:3
 - Recipes
 - Aura Count
 
+MAGIKA P:4
+- Implement Spells
+- Cooldown
+- Functionality
+
 ARCANE SEALS P:4
 - Functionality
 
@@ -39,26 +40,14 @@ GOLEMS P:4
 - Cores
 - Functionality
 
-MAGIKA P:5
-- Implement Spells
-- Cooldown
-- Functionality
-
 BOSSES P:5
 - Drops
 - Movement (AI)
 
 ####MODELERS
 
-AURAS P:2
-- Model
-
-WANDS P:2
-- Core
-- Cap
-- Cloth
-- YSNP Staff
-- WOUE Wand
+MAGIKA P:3
+- Fireball Model
 
 GOLEMS P:3
 - Models
@@ -69,14 +58,14 @@ ARCANE SEALS P:3
 BOSSES P:4
 - Models
 
-MAGIKA P:4
-- Fireball Model
-
 ####TEXTURERS
 
 WANDS P:2
-- Texture *Once Model is done
-- GUI
+- Textures
+
+MAGIKA P:3
+- Lightning 'Particles'
+- Flight 'Particles'
 
 GOLEMS P:3
 - Texture *Once Model is done
@@ -84,10 +73,6 @@ GOLEMS P:3
 
 ARCANE SEALS P:3
 - Texture *Once Model is done
-
-MAGIKA P:4
-- Lightning 'Particles'
-- Flight 'Particles'
 
 BOSSES P:5
 - Texture *Once Model is done
