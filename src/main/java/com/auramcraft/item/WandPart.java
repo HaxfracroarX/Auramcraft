@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 
@@ -30,7 +31,7 @@ public class WandPart extends Item {
 		String transPart = StatCollector.translateToLocal(part);
 		String transMat = StatCollector.translateToLocal(material);
 		
-		itemStack.setStackDisplayName(transMat + " " + transWand + " " + transPart);
+		itemStack.setStackDisplayName(EnumChatFormatting.RESET + transMat + " " + transWand + " " + transPart);
 		
 		return itemStack;
 	}
