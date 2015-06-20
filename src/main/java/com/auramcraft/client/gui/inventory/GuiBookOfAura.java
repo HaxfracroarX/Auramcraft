@@ -141,7 +141,7 @@ public class GuiBookOfAura extends GuiContainer {
 		GL11.glColor4f(1f, 1f, 1f, 1f);
 		
 		// Draw Background
-		mc.getTextureManager().bindTexture(Textures.GUI.GUI_BOOK_OF_AURA);
+		mc.getTextureManager().bindTexture(Textures.GUI.BOOK_OF_AURA);
 	    drawTexturedModalRect(guiLeft, guiTop, 20, 1, xSize, ySize);
 	}
 	

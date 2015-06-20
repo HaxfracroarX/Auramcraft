@@ -14,7 +14,7 @@ public class StorageJar extends TEBlock {
 		super(Material.iron);
 		setHardness(3f);
 		setBlockName(Names.Blocks.STORAGE_JAR);
-		setBlockTextureName(Textures.Blocks.BLOCK_STORAGE_JAR);
+		setBlockTextureName(Textures.Blocks.STORAGE_JAR);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 	

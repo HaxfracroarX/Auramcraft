@@ -15,7 +15,8 @@ public class Names {
 			SHADOW_LANTERN = "shadowLantern",
 			HOLY_LAMP = "holyLamp",
 			STORAGE_JAR = "storageJar",
-			ALCHEMICAL_ROUTER = "alchemicalRouter";
+			ALCHEMICAL_ROUTER = "alchemicalRouter",
+			AURA_CONVERTER = "auraConverter";
 	}
 	
 	public static class Items {

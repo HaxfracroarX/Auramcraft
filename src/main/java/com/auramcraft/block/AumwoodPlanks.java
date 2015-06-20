@@ -14,7 +14,7 @@ public class AumwoodPlanks extends Block {
 		setHarvestLevel("axe", 2);
 		setStepSound(Block.soundTypeWood);
 		setBlockName(Names.Blocks.AUMWOOD_PLANKS);
-		setBlockTextureName(Textures.Blocks.BLOCK_AUMWOOD_PLANKS);
+		setBlockTextureName(Textures.Blocks.AUMWOOD_PLANKS);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 }

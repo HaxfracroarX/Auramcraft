@@ -32,7 +32,7 @@ public class AumwoodLeaves extends BlockLeavesBase implements IShearable {
 		setResistance(1f);
 		setStepSound(Block.soundTypeGrass);
 		setBlockName(Names.Blocks.AUMWOOD_LEAVES);
-		setBlockTextureName(Textures.Blocks.BLOCK_AUMWOOD_LEAVES);
+		setBlockTextureName(Textures.Blocks.AUMWOOD_LEAVES);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setTickRandomly(true);
 		setLightOpacity(1);
@@ -41,7 +41,7 @@ public class AumwoodLeaves extends BlockLeavesBase implements IShearable {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister register) {
-		texture = register.registerIcon(Textures.Blocks.BLOCK_AUMWOOD_LEAVES);
+		texture = register.registerIcon(Textures.Blocks.AUMWOOD_LEAVES);
 	}
 	
 	@Override

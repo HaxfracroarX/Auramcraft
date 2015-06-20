@@ -1,7 +1,6 @@
 package com.auramcraft.init;
 
 import com.auramcraft.block.*;
-import com.auramcraft.reference.Names;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -21,22 +20,24 @@ public class AuramcraftBlocks {
 		shadowLantern = new ShadowLantern(),
 		holyLamp = new HolyLamp(),
 		storageJar = new StorageJar(),
-		alchemicalRouter = new AlchemicalRouter();
+		alchemicalRouter = new AlchemicalRouter(),
+		auraConverter = new AuraConverter();
 	
 	public static void init() {
-		GameRegistry.registerBlock(gemstoneOre, Names.Blocks.GEMSTONE_ORE);
-		GameRegistry.registerBlock(infusionTable, Names.Blocks.INFUSION_TABLE);
-		GameRegistry.registerBlock(aumwoodPlanks, Names.Blocks.AUMWOOD_PLANKS);
-		GameRegistry.registerBlock(aumwoodLeaves, Names.Blocks.AUMWOOD_LEAVES);
-		GameRegistry.registerBlock(aumwood, Names.Blocks.AUMWOOD);
-		GameRegistry.registerBlock(aumwoodSapling, Names.Blocks.AUMWOOD_SAPLING);
-		GameRegistry.registerBlock(auramFlower, Names.Blocks.AURAM_FLOWER);
-		GameRegistry.registerBlock(blueLightstone, Names.Blocks.BLUE_LIGHTSTONE);
-		GameRegistry.registerBlock(auroraBlock, Names.Blocks.AURORA_BLOCK);
-		GameRegistry.registerBlock(shadowLantern, Names.Blocks.SHADOW_LANTERN);
-		GameRegistry.registerBlock(holyLamp, Names.Blocks.HOLY_LAMP);
-		GameRegistry.registerBlock(storageJar, Names.Blocks.STORAGE_JAR);
-		GameRegistry.registerBlock(alchemicalRouter, Names.Blocks.ALCHEMICAL_ROUTER);
+		GameRegistry.registerBlock(gemstoneOre, gemstoneOre.getUnlocalizedName());
+		GameRegistry.registerBlock(infusionTable, infusionTable.getUnlocalizedName());
+		GameRegistry.registerBlock(aumwoodPlanks, aumwoodPlanks.getUnlocalizedName());
+		GameRegistry.registerBlock(aumwoodLeaves, aumwoodLeaves.getUnlocalizedName());
+		GameRegistry.registerBlock(aumwood, aumwood.getUnlocalizedName());
+		GameRegistry.registerBlock(aumwoodSapling, aumwoodSapling.getUnlocalizedName());
+		GameRegistry.registerBlock(auramFlower, auramFlower.getUnlocalizedName());
+		GameRegistry.registerBlock(blueLightstone, blueLightstone.getUnlocalizedName());
+		GameRegistry.registerBlock(auroraBlock, auroraBlock.getUnlocalizedName());
+		GameRegistry.registerBlock(shadowLantern, shadowLantern.getUnlocalizedName());
+		GameRegistry.registerBlock(holyLamp, holyLamp.getUnlocalizedName());
+		GameRegistry.registerBlock(storageJar, storageJar.getUnlocalizedName());
+		GameRegistry.registerBlock(alchemicalRouter, alchemicalRouter.getUnlocalizedName());
+		GameRegistry.registerBlock(auraConverter, auraConverter.getUnlocalizedName());
 		
 		LogHelper.info("Initialized Blocks");
 	}

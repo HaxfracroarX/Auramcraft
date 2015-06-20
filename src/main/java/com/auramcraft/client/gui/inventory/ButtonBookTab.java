@@ -27,7 +27,7 @@ public class ButtonBookTab extends GuiButton {
 		
 		// Draw
 		GL11.glColor4f(1f, 1f, 1f, 1f);
-		mc.getTextureManager().bindTexture(Textures.GUI.GUI_BOOK_OF_AURA);
+		mc.getTextureManager().bindTexture(Textures.GUI.BOOK_OF_AURA);
 		
 		drawTexturedModalRect(xPosition, hoverYPos, 51 + ((id - 3) * 17), hoverY, width, hoverHeight);
 	}

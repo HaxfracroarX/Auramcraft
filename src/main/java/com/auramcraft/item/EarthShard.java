@@ -8,6 +8,6 @@ public class EarthShard extends Shard {
 	public EarthShard() {
 		super(Auras.EARTH);
 		setUnlocalizedName(Names.Items.EARTHSHARD);
-		setTextureName(Textures.Items.ITEM_EARTH_SHARD);
+		setTextureName(Textures.Items.EARTH_SHARD);
 	}
 }

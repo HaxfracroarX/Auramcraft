@@ -17,38 +17,38 @@ public class Textures {
 	 *  Block textures
 	 */
 	public static class Blocks {
-		
 		public static final String 
 			// Machines
-			BLOCK_INFUSION_TABLE = RESOURCE_PREFIX + "infusionTable",
+			INFUSION_TABLE = RESOURCE_PREFIX + "infusionTable",
+			AURA_CONVERTER = RESOURCE_PREFIX + "AuraConverter",
 			
 			// Storage
-			BLOCK_STORAGE_JAR = RESOURCE_PREFIX + "StorageJar",
+			STORAGE_JAR = RESOURCE_PREFIX + "StorageJar",
 			
 			// Aura Transportation
-			BLOCK_ALCHEMICAL_ROUTER = RESOURCE_PREFIX + "Router",
+			ALCHEMICAL_ROUTER = RESOURCE_PREFIX + "Router",
 			
 			// Ores
-			BLOCK_GEMSTONE_ORE = RESOURCE_PREFIX + "GemstoneOre",
+			GEMSTONE_ORE = RESOURCE_PREFIX + "GemstoneOre",
 			
 			//Decoration
-			BLOCK_SHADOW_LANTERN_TOP = RESOURCE_PREFIX + "ShadowLanternTop",
-			BLOCK_SHADOW_LANTERN_SIDE = RESOURCE_PREFIX + "ShadowLanternSide",
-			BLOCK_SHADOW_LANTERN_FRONT = RESOURCE_PREFIX + "ShadowLanternFront",
-			BLOCK_HOLY_LAMP_SIDE = RESOURCE_PREFIX + "HolyLampSide",
-			BLOCK_HOLY_LAMP_BOTTOM = RESOURCE_PREFIX + "HolyLampTopBottom",
-			BLOCK_BLUE_LIGHTSTONE = RESOURCE_PREFIX + "BlueLightstone",
-			BLOCK_AURORA_BLOCK = RESOURCE_PREFIX + "AuroraBlock",
+			SHADOW_LANTERN_TOP = RESOURCE_PREFIX + "ShadowLanternTop",
+			SHADOW_LANTERN_SIDE = RESOURCE_PREFIX + "ShadowLanternSide",
+			SHADOW_LANTERN_FRONT = RESOURCE_PREFIX + "ShadowLanternFront",
+			HOLY_LAMP_SIDE = RESOURCE_PREFIX + "HolyLampSide",
+			HOLY_LAMP_BOTTOM = RESOURCE_PREFIX + "HolyLampTopBottom",
+			BLUE_LIGHTSTONE = RESOURCE_PREFIX + "BlueLightstone",
+			AURORA_BLOCK = RESOURCE_PREFIX + "AuroraBlock",
 			
 			// Flora
-			BLOCK_AURAM_FLOWER = RESOURCE_PREFIX + "AuramFlower",
+			AURAM_FLOWER = RESOURCE_PREFIX + "AuramFlower",
 			
 			// Aumwood
-			BLOCK_AUMWOOD_SAPLING = RESOURCE_PREFIX + "AumwoodSapling",
-			BLOCK_AUMWOOD_TOP = RESOURCE_PREFIX + "AumwoodTop",
-			BLOCK_AUMWOOD_SIDE = RESOURCE_PREFIX + "AumwoodSide",
-			BLOCK_AUMWOOD_PLANKS = RESOURCE_PREFIX + "AumwoodPlanks",
-			BLOCK_AUMWOOD_LEAVES = RESOURCE_PREFIX + "AumwoodLeaves";
+			AUMWOOD_SAPLING = RESOURCE_PREFIX + "AumwoodSapling",
+			AUMWOOD_TOP = RESOURCE_PREFIX + "AumwoodTop",
+			AUMWOOD_SIDE = RESOURCE_PREFIX + "AumwoodSide",
+			AUMWOOD_PLANKS = RESOURCE_PREFIX + "AumwoodPlanks",
+			AUMWOOD_LEAVES = RESOURCE_PREFIX + "AumwoodLeaves";
 	}
 	
 	/**
@@ -57,22 +57,22 @@ public class Textures {
 	public static class Items {
 		public static final String 
 			// Shards
-			ITEM_FIRE_SHARD = RESOURCE_PREFIX + "FireShard",
-			ITEM_EARTH_SHARD = RESOURCE_PREFIX + "EarthShard",
-			ITEM_WATER_SHARD = RESOURCE_PREFIX + "WaterShard",
-			ITEM_AIR_SHARD = RESOURCE_PREFIX + "AirShard",
-			ITEM_AURAM_SHARD = RESOURCE_PREFIX + "AuramShard",
+			FIRE_SHARD = RESOURCE_PREFIX + "FireShard",
+			EARTH_SHARD = RESOURCE_PREFIX + "EarthShard",
+			WATER_SHARD = RESOURCE_PREFIX + "WaterShard",
+			AIR_SHARD = RESOURCE_PREFIX + "AirShard",
+			AURAM_SHARD = RESOURCE_PREFIX + "AuramShard",
 			
 			// Allseeing
-			ITEM_ALLSEEING_STONE = RESOURCE_PREFIX + "AllseeingStone",
-			ITEM_CHARM_OF_ALLSEEING = RESOURCE_PREFIX + "AllseeingCharm",
+			ALLSEEING_STONE = RESOURCE_PREFIX + "AllseeingStone",
+			CHARM_OF_ALLSEEING = RESOURCE_PREFIX + "AllseeingCharm",
 			
 			// Misc
-			ITEM_GEMSTONE = RESOURCE_PREFIX + "Gemstone",
-			ITEM_SACRIFICIAL_DAGGER = RESOURCE_PREFIX + "SacrificialDagger",
-			ITEM_DEV_TOY = RESOURCE_PREFIX + "SacrificialDagger",
-			ITEM_BOOK_OF_AURA = RESOURCE_PREFIX + "BookOfAura",
-			ITEM_AURA_CRYSTAL = RESOURCE_PREFIX + "AuraCrystal";
+			GEMSTONE = RESOURCE_PREFIX + "Gemstone",
+			SACRIFICIAL_DAGGER = RESOURCE_PREFIX + "SacrificialDagger",
+			DEV_TOY = RESOURCE_PREFIX + "SacrificialDagger",
+			BOOK_OF_AURA = RESOURCE_PREFIX + "BookOfAura",
+			AURA_CRYSTAL = RESOURCE_PREFIX + "AuraCrystal";
 		
 		/*  Wands   */
 		// Wand IDs
@@ -141,9 +141,9 @@ public class Textures {
 	 */
 	public static class Models {
 		public static final ResourceLocation 
-			MODEL_INFUSION_TABLE = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "infusionTable.png"),
-			MODEL_STORAGE_JAR = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "StorageJar.png"),
-			MODEL_ALCHEMICAL_ROUTER = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "Router.png");
+			INFUSION_TABLE = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "infusionTable.png"),
+			STORAGE_JAR = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "StorageJar.png"),
+			ALCHEMICAL_ROUTER = new ResourceLocation(Reference.MOD_ID, MODEL_TEXTURE_LOCATION + "Router.png");
 	}
 	
 	/**
@@ -152,10 +152,10 @@ public class Textures {
 	public static class GUI {
 		public static final ResourceLocation 
 			// Book of Aura
-			GUI_BOOK_OF_AURA = new ResourceLocation(Reference.MOD_ID, GUI_AURABOOK_LOCATION + "AuraBookGUI.png"),
-			GUI_PAGE_GET = new ResourceLocation(Reference.MOD_ID, GUI_AURABOOK_LOCATION + "PageGet.png"),
+			BOOK_OF_AURA = new ResourceLocation(Reference.MOD_ID, GUI_AURABOOK_LOCATION + "AuraBookGUI.png"),
+			PAGE_GET = new ResourceLocation(Reference.MOD_ID, GUI_AURABOOK_LOCATION + "PageGet.png"),
 			
-			// Infusion Table
-			GUI_INFUSION_TABLE = new ResourceLocation(Reference.MOD_ID, GUI_INFUSION_LOCATION + "infusionTable.png");
+			INFUSION_TABLE = new ResourceLocation(Reference.MOD_ID, GUI_INFUSION_LOCATION + "infusionTable.png"),
+			AURA_CONVERTER = new ResourceLocation(Reference.MOD_ID, GUI_SHEET_LOCATION + "AuraConverter.png");
 	}
 }

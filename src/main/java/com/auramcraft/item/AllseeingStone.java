@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class AllseeingStone extends Item {
 	public AllseeingStone() {
-		setTextureName(Textures.Items.ITEM_ALLSEEING_STONE);
+		setTextureName(Textures.Items.ALLSEEING_STONE);
 		setUnlocalizedName(Names.Items.ALLSEEING_STONE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}

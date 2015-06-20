@@ -72,7 +72,7 @@ public class GuiInfusionTable extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float renderPartialTicks, int mx, int my) {
 		// Draw Background
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(Textures.GUI.GUI_INFUSION_TABLE);
+		mc.getTextureManager().bindTexture(Textures.GUI.INFUSION_TABLE);
 	    drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	}
 }

@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 public class Gemstone extends Item {
 	public Gemstone() {
 		setUnlocalizedName(Names.Items.GEMSTONE);
-		setTextureName(Textures.Items.ITEM_GEMSTONE);
+		setTextureName(Textures.Items.GEMSTONE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}
 }

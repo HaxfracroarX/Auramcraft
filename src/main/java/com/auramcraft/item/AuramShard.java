@@ -8,6 +8,6 @@ public class AuramShard extends Shard {
 	public AuramShard() {
 		super(Auras.AURAM);
 		setUnlocalizedName(Names.Items.AURAMSHARD);
-		setTextureName(Textures.Items.ITEM_AURAM_SHARD);
+		setTextureName(Textures.Items.AURAM_SHARD);
 	}
 }

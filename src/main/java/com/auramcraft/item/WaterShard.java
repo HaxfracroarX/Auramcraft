@@ -8,6 +8,6 @@ public class WaterShard extends Shard {
 	public WaterShard() {
 		super(Auras.WATER);
 		setUnlocalizedName(Names.Items.WATERSHARD);
-		setTextureName(Textures.Items.ITEM_WATER_SHARD);
+		setTextureName(Textures.Items.WATER_SHARD);
 	}
 }

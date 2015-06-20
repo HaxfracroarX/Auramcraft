@@ -1,49 +1,35 @@
 package com.auramcraft.inventory;
 
-import com.auramcraft.item.AuraItem;
-import com.auramcraft.item.crafting.AuramcraftCraftingManager;
-import com.auramcraft.tileentity.TileInfusionTable;
+import com.auramcraft.tileentity.TileAuraConverter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ContainerInfusionTable extends Container {
-	private final TileInfusionTable tileEntity;
-	private final World worldObj;
-	public final InfusionCrafting matrix;
+public class ContainerAuraConverter extends Container {
+	TileAuraConverter tileEntity;
 	
-	public ContainerInfusionTable(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
-		this.tileEntity = (TileInfusionTable) world.getTileEntity(x, y, z);
-		this.worldObj = world;
+	public ContainerAuraConverter(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
+		tileEntity = (TileAuraConverter) world.getTileEntity(x, y, z);
 		
 		tileEntity.openInventory();
 		
-		// Setup matrix
-		AuraSlot auraSlot = new AuraSlot(tileEntity, 9, 156, 24, this, true);
+		// Create Slots
+		AuraSlot input = new AuraSlot(tileEntity, 0, 49, 34, this, true);
+		AuraSlot output = new AuraSlot(tileEntity, 1, 125, 34, this, false); /*{
+			public void putStack(ItemStack itemStack) {
+				// TODO: Add code to move aura from input to output
+			}
+		};*/
 		
-		matrix = new InfusionCrafting(this, 3, 3, tileEntity, auraSlot);
-		
-		// Add AuraItem
-		addSlotToContainer(auraSlot);
-		
-		// Add Infusion Table crafting slots
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(matrix, i * 3 + j, 6 + j * 19, 3 + i * 19));
-		}
-		
-		// Add output slot
-		addSlotToContainer(new InfusionSlotCrafting(tileEntity, 10, 102, 24, matrix, this));
+		// Add Slots
+		addSlotToContainer(input);
+		addSlotToContainer(output);
 		
 		// Add Player inventory
 		bindPlayerInventory(inventoryPlayer);
-		
-		// Check for matching recipes
-		onCraftMatrixChanged(null);
 	}
 	
 	private void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -57,17 +43,6 @@ public class ContainerInfusionTable extends Container {
 		for(int i = 0; i < 9; i++)
 			addSlotToContainer(new Slot(inventoryPlayer, i, 11 + i * 19, 158));
 	}
-
-	@Override
-	public void onCraftMatrixChanged(IInventory inventory) {
-		tileEntity.setInventorySlotContents(10, AuramcraftCraftingManager.getInstance().findMatchingRecipeItem(matrix, worldObj));
-		super.onCraftMatrixChanged(inventory);
-	}
-	
-	@Override
-	public boolean canInteractWith(EntityPlayer entityPlayer) {
-		return tileEntity.isUseableByPlayer(entityPlayer);
-	}
 	
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
@@ -78,20 +53,16 @@ public class ContainerInfusionTable extends Container {
         if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			
-			// Initilize NBT data
-			if(stackInSlot.getItem() instanceof AuraItem)
-				AuraItem.initNBT(stackInSlot);
-			
 			stack = stackInSlot.copy();
 			
 			// Checks if the slot is in the tileEntity
-			if(slot < 11) {
+			if(slot < 2) {
 				// Attempts to merge the item into the player inventory
-				if(!this.mergeItemStack(stackInSlot, 11, 47, true))
+				if(!this.mergeItemStack(stackInSlot, 2, 38, true))
 					return null;
 			}
 			// Attempts to merge the item into the tileEntity
-			else if(!this.mergeItemStack(stackInSlot, 0, 10, false))
+			else if(!this.mergeItemStack(stackInSlot, 0, 2, false))
 					return null;
 			
 			// If empty, replaces stack with null
@@ -194,5 +165,10 @@ public class ContainerInfusionTable extends Container {
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
 		tileEntity.closeInventory();
+	}
+	
+	@Override
+	public boolean canInteractWith(EntityPlayer player) {
+		return tileEntity.isUseableByPlayer(player);
 	}
 }

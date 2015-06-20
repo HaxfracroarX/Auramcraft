@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 public class DevToy extends Item {
 	public DevToy() {
-		setTextureName(Textures.Items.ITEM_DEV_TOY);
+		setTextureName(Textures.Items.DEV_TOY);
 		setUnlocalizedName(Names.Items.DEV_TOY);
 	}
 	

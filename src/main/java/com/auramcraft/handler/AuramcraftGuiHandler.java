@@ -1,7 +1,9 @@
 package com.auramcraft.handler;
 
+import com.auramcraft.client.gui.inventory.GuiAuraConverter;
 import com.auramcraft.client.gui.inventory.GuiBookOfAura;
 import com.auramcraft.client.gui.inventory.GuiInfusionTable;
+import com.auramcraft.inventory.ContainerAuraConverter;
 import com.auramcraft.inventory.ContainerEmpty;
 import com.auramcraft.inventory.ContainerInfusionTable;
 import com.auramcraft.reference.GUIIds;
@@ -17,6 +19,8 @@ public class AuramcraftGuiHandler implements IGuiHandler {
 				return new ContainerInfusionTable(player.inventory, world, x, y, z);
 			case GUIIds.BOOK_OF_AURA:
 				return new ContainerEmpty();
+			case GUIIds.AURA_CONVERTER:
+				return new ContainerAuraConverter(player.inventory, world, x, y, z);
 		}
 		return null;
 	}
@@ -28,6 +32,8 @@ public class AuramcraftGuiHandler implements IGuiHandler {
 				return new GuiInfusionTable(player.inventory, world, x, y, z);
 			case GUIIds.BOOK_OF_AURA:
 				return new GuiBookOfAura();
+			case GUIIds.AURA_CONVERTER:
+				return new GuiAuraConverter(player.inventory, world, x, y, z);
 		}
 		return null;
 	}

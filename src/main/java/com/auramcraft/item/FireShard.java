@@ -8,6 +8,6 @@ public class FireShard extends Shard {
 	public FireShard() {
 		super(Auras.FIRE);
 		setUnlocalizedName(Names.Items.FIRESHARD);
-		setTextureName(Textures.Items.ITEM_FIRE_SHARD);
+		setTextureName(Textures.Items.FIRE_SHARD);
 	}
 }

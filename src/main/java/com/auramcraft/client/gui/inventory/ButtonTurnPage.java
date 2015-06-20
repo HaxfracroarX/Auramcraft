@@ -19,7 +19,7 @@ public class ButtonTurnPage extends GuiButton {
 		if(this.visible) {
 			boolean isHovering = x >= xPosition && y >= yPosition && x < xPosition + width && y < yPosition + height;
 			GL11.glColor4f(1f, 1f, 1f, 1f);
-			mc.getTextureManager().bindTexture(Textures.GUI.GUI_BOOK_OF_AURA);
+			mc.getTextureManager().bindTexture(Textures.GUI.BOOK_OF_AURA);
 			int tx = 3;
 			int ty = 0;
 			

@@ -13,7 +13,7 @@ public class AuroraBlock extends Block {
 			setResistance(10F);
 			setBlockName(Names.Blocks.AURORA_BLOCK);
 			setCreativeTab(CreativeTab.AuramcraftTab);
-			setBlockTextureName(Textures.Blocks.BLOCK_AURORA_BLOCK);
+			setBlockTextureName(Textures.Blocks.AURORA_BLOCK);
 		}
 
 }

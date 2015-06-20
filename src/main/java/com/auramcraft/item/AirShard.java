@@ -8,6 +8,6 @@ public class AirShard extends Shard {
 	public AirShard() {
 		super(Auras.AIR);
 		setUnlocalizedName(Names.Items.AIRSHARD);
-		setTextureName(Textures.Items.ITEM_AIR_SHARD);
+		setTextureName(Textures.Items.AIR_SHARD);
 	}
 }

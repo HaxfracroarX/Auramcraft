@@ -37,7 +37,7 @@ public class AumwoodSapling extends BlockSapling {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
-    	texture = register.registerIcon(Textures.Blocks.BLOCK_AUMWOOD_SAPLING);
+    	texture = register.registerIcon(Textures.Blocks.AUMWOOD_SAPLING);
     }
     
     @Override

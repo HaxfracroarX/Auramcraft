@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 public class AuraCrystal extends AuraItem {
 	public AuraCrystal(int maxAura) {
 		super(maxAura, 1);
-		setTextureName(Textures.Items.ITEM_AURA_CRYSTAL);
+		setTextureName(Textures.Items.AURA_CRYSTAL);
 		setUnlocalizedName(Names.Items.AURACRYSTAL);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setMaxStackSize(1);

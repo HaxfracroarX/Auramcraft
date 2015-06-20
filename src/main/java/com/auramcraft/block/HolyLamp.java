@@ -28,8 +28,8 @@ public class HolyLamp extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		bottomIcon = iconRegister.registerIcon(Textures.Blocks.BLOCK_HOLY_LAMP_BOTTOM);
-		sideIcon = iconRegister.registerIcon(Textures.Blocks.BLOCK_HOLY_LAMP_SIDE);
+		bottomIcon = iconRegister.registerIcon(Textures.Blocks.HOLY_LAMP_BOTTOM);
+		sideIcon = iconRegister.registerIcon(Textures.Blocks.HOLY_LAMP_SIDE);
 	}
 	
 	@SideOnly(Side.CLIENT)

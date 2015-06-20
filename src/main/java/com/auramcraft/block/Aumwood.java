@@ -1,15 +1,15 @@
 package com.auramcraft.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import com.auramcraft.creativetab.CreativeTab;
 import com.auramcraft.reference.Names;
 import com.auramcraft.reference.Textures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 
 public class Aumwood extends Block {
 	@SideOnly(Side.CLIENT)
@@ -34,8 +34,8 @@ public class Aumwood extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		topIcon = iconRegister.registerIcon(Textures.Blocks.BLOCK_AUMWOOD_TOP);
-		sideIcon = iconRegister.registerIcon(Textures.Blocks.BLOCK_AUMWOOD_SIDE);
+		topIcon = iconRegister.registerIcon(Textures.Blocks.AUMWOOD_TOP);
+		sideIcon = iconRegister.registerIcon(Textures.Blocks.AUMWOOD_SIDE);
 	}
 	
 	@Override

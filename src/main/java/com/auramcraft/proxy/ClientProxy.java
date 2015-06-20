@@ -23,13 +23,13 @@ public class ClientProxy extends CommonProxy {
 		RenderIds.alchemicalRouter = RenderingRegistry.getNextAvailableRenderId();
 		
 		// Register Item renderer
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.infusionTable), new ItemAuramcraftRenderer(Models.infusionTable, Textures.Models.MODEL_INFUSION_TABLE));
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.storageJar), new ItemAuramcraftRenderer(Models.storageJar, Textures.Models.MODEL_STORAGE_JAR));
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.alchemicalRouter), new ItemAuramcraftRenderer(Models.alchemicalRouter, Textures.Models.MODEL_ALCHEMICAL_ROUTER));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.infusionTable), new ItemAuramcraftRenderer(Models.infusionTable, Textures.Models.INFUSION_TABLE));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.storageJar), new ItemAuramcraftRenderer(Models.storageJar, Textures.Models.STORAGE_JAR));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(AuramcraftBlocks.alchemicalRouter), new ItemAuramcraftRenderer(Models.alchemicalRouter, Textures.Models.ALCHEMICAL_ROUTER));
 		
 		// Register Block renderer
-		ClientRegistry.bindTileEntitySpecialRenderer(TileInfusionTable.class, new TileAuramcraftRenderer(Models.infusionTable, Textures.Models.MODEL_INFUSION_TABLE));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileStorageJar.class, new TileAuramcraftRenderer(Models.storageJar, Textures.Models.MODEL_STORAGE_JAR));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileAlchemicalRouter.class, new TileAuramcraftRenderer(Models.alchemicalRouter, Textures.Models.MODEL_ALCHEMICAL_ROUTER));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileInfusionTable.class, new TileAuramcraftRenderer(Models.infusionTable, Textures.Models.INFUSION_TABLE));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileStorageJar.class, new TileAuramcraftRenderer(Models.storageJar, Textures.Models.STORAGE_JAR));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileAlchemicalRouter.class, new TileAuramcraftRenderer(Models.alchemicalRouter, Textures.Models.ALCHEMICAL_ROUTER));
 	}
 }

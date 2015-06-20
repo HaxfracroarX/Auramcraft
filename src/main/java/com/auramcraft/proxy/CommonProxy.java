@@ -5,6 +5,7 @@ import com.auramcraft.handler.AuramcraftEventHandler;
 import com.auramcraft.handler.AuramcraftGuiHandler;
 import com.auramcraft.reference.Names;
 import com.auramcraft.tileentity.TileAlchemicalRouter;
+import com.auramcraft.tileentity.TileAuraConverter;
 import com.auramcraft.tileentity.TileInfusionTable;
 import com.auramcraft.tileentity.TileStorageJar;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -26,6 +27,7 @@ public class CommonProxy implements IProxy {
 		GameRegistry.registerTileEntity(TileInfusionTable.class, "tile." + Names.Blocks.INFUSION_TABLE);
 		GameRegistry.registerTileEntity(TileStorageJar.class, "tile." + Names.Blocks.STORAGE_JAR);
 		GameRegistry.registerTileEntity(TileAlchemicalRouter.class, "tile." + Names.Blocks.ALCHEMICAL_ROUTER);
+		GameRegistry.registerTileEntity(TileAuraConverter.class, "tile." + Names.Blocks.AURA_CONVERTER);
 	}
 	
 	@Override
@@ -38,7 +40,7 @@ public class CommonProxy implements IProxy {
 	public void registerGUIHandlers() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Auramcraft.instance, new AuramcraftGuiHandler());
 	}
-
+	
 	@Override
 	public void registerRenderers() {
 		// Servers don't need renderers!

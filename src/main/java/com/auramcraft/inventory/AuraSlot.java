@@ -10,10 +10,12 @@ import net.minecraft.item.ItemStack;
 @SuppressWarnings("SameParameterValue")
 public class AuraSlot extends Slot {
 	private final Container eventHandler;
+	private final boolean isInput;
 	
-	public AuraSlot(TileAuramcraftInventory tileEntity, int id, int x, int y, Container eventHandler) {
+	public AuraSlot(TileAuramcraftInventory tileEntity, int id, int x, int y, Container eventHandler, boolean isInput) {
 		super(tileEntity, id, x, y);
 		this.eventHandler = eventHandler;
+		this.isInput = isInput;
 	}
 	
 	@Override
@@ -24,7 +26,13 @@ public class AuraSlot extends Slot {
 	
 	@Override
 	public boolean isItemValid(ItemStack itemStack) {
-        return itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1 && AuraItem.getAuraContainer(itemStack).isDrainable();
+		if(!(itemStack.getItem() instanceof AuraItem && itemStack.stackSize == 1))
+			return false;
+		if(isInput && AuraItem.getAuraContainer(itemStack).isDrainable())
+			return true;
+		else if(!isInput && AuraItem.getAuraContainer(itemStack).isFillable())
+			return true;
+		return false;
     }
 	
 	public AuraContainer getItemAuraContainer() {

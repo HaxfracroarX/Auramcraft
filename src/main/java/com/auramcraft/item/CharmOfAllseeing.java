@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 
 public class CharmOfAllseeing extends Item {
 	public CharmOfAllseeing() {
-		setTextureName(Textures.Items.ITEM_CHARM_OF_ALLSEEING);
+		setTextureName(Textures.Items.CHARM_OF_ALLSEEING);
 		setUnlocalizedName(Names.Items.CHARM_OF_ALLSEEING);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 	}

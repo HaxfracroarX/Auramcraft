@@ -14,7 +14,7 @@ public class BlueLightstone extends Block {
 		setHarvestLevel("pickaxe", 1);
 		setStepSound(Block.soundTypeGlass);
 		setBlockName(Names.Blocks.BLUE_LIGHTSTONE);
-		setBlockTextureName(Textures.Blocks.BLOCK_BLUE_LIGHTSTONE);
+		setBlockTextureName(Textures.Blocks.BLUE_LIGHTSTONE);
 		setCreativeTab(CreativeTab.AuramcraftTab);
 		setLightOpacity(0);
 		setLightLevel(0.9F);

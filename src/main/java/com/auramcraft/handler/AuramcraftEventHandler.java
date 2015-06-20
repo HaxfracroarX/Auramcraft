@@ -93,7 +93,7 @@ public class AuramcraftEventHandler extends Gui {
 		else if(stats.isAnnouncing()) {
 			String announcement = stats.getAnnouncment();
 			
-			mc.getTextureManager().bindTexture(Textures.GUI.GUI_PAGE_GET);
+			mc.getTextureManager().bindTexture(Textures.GUI.PAGE_GET);
 			
 			// Stuff to render transparency
 			GL11.glEnable(GL11.GL_BLEND);

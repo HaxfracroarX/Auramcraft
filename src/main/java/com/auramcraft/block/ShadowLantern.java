@@ -55,9 +55,9 @@ public class ShadowLantern extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		topIcon = iconRegister.registerIcon(Textures.Blocks.BLOCK_SHADOW_LANTERN_TOP);
-		sideIcon = iconRegister.registerIcon(Textures.Blocks.BLOCK_SHADOW_LANTERN_SIDE);
-		frontIcon = iconRegister.registerIcon(Textures.Blocks.BLOCK_SHADOW_LANTERN_FRONT);
+		topIcon = iconRegister.registerIcon(Textures.Blocks.SHADOW_LANTERN_TOP);
+		sideIcon = iconRegister.registerIcon(Textures.Blocks.SHADOW_LANTERN_SIDE);
+		frontIcon = iconRegister.registerIcon(Textures.Blocks.SHADOW_LANTERN_FRONT);
 	}
 	
 	@SideOnly(Side.CLIENT)
