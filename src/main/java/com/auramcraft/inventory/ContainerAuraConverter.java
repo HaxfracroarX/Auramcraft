@@ -1,5 +1,8 @@
 package com.auramcraft.inventory;
 
+import com.auramcraft.api.AuraContainer;
+import com.auramcraft.api.Auras;
+import com.auramcraft.item.AuraItem;
 import com.auramcraft.tileentity.TileAuraConverter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -7,6 +10,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class ContainerAuraConverter extends Container {
 	TileAuraConverter tileEntity;
@@ -17,12 +22,47 @@ public class ContainerAuraConverter extends Container {
 		tileEntity.openInventory();
 		
 		// Create Slots
-		AuraSlot input = new AuraSlot(tileEntity, 0, 49, 34, this, true);
-		AuraSlot output = new AuraSlot(tileEntity, 1, 125, 34, this, false); /*{
+		AuraSlot input = new AuraSlot(tileEntity, 0, 49, 34, this, true) {
 			public void putStack(ItemStack itemStack) {
-				// TODO: Add code to move aura from input to output
+				super.putStack(itemStack);
+				
+				if(itemStack == null)
+					return;
+				
+				// Set input and output
+				Random random = new Random();
+				int inputAura = random.nextInt(5);
+				Auras[] auras = Auras.values();
+				
+				tileEntity.setInput(auras[inputAura]);
+				
+				// Make sure we don't have the same input and output
+				int outputAura = random.nextInt(5);
+				while(outputAura == inputAura)
+					outputAura = random.nextInt(5);
+				
+				tileEntity.setOutput(auras[outputAura]);
+				
+				// Move auras to tileEntity
+				AuraContainer itemContainer = AuraItem.getAuraContainer(itemStack);
+				AuraContainer container = tileEntity.getAuraContainer();
+				
+				container.transfer(itemContainer, auras[inputAura], itemContainer.getStoredAura(auras[inputAura]));
+				
+				AuraItem.updateNBT(itemStack, itemContainer);
+				tileEntity.setAuraContainer(container);
 			}
-		};*/
+		};
+		AuraSlot output = new AuraSlot(tileEntity, 1, 125, 34, this, false) {
+			public void putStack(ItemStack itemStack) {
+				super.putStack(itemStack);
+				
+				if(itemStack == null)
+					return;
+				
+				tileEntity.transfer(itemStack);
+			}
+		};
 		
 		// Add Slots
 		addSlotToContainer(input);
