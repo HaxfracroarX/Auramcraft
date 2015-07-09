@@ -57,24 +57,26 @@ public class Wand extends AuraItem {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister) {
 		for(int i = 0; i < Textures.Items.wandCores.length; i++)
-			Textures.Items.wandCoreIcons[i] = iconRegister.registerIcon(Textures.Items.wandCores[i]);
+			Textures.Items.wandCoreOverlayIcons[i] = iconRegister.registerIcon(Textures.Items.wandCores[i] + "Overlay");
 		
-		for(int i = 0; i < Textures.Items.wandCaps.length; i++)
-			Textures.Items.wandCapIcons[i] = iconRegister.registerIcon(Textures.Items.wandCaps[i]);
+		for(int i = 0; i < Textures.Items.wandCaps.length; i++) {
+			Textures.Items.wandCapOverlayIcons[i] = iconRegister.registerIcon(Textures.Items.wandCaps[i] + "Overlay");
+			Textures.Items.wandCapItemIcons[i] = iconRegister.registerIcon(Textures.Items.wandCaps[i]);
+		}
 		
 		for(int i = 0; i < Textures.Items.wandCloths.length; i++)
-			Textures.Items.wandClothIcons[i] = iconRegister.registerIcon(Textures.Items.wandCloths[i]);
+			Textures.Items.wandClothOverlayIcons[i] = iconRegister.registerIcon(Textures.Items.wandCloths[i] + "Overlay");
     }
 	
 	@Override
 	public IIcon getIcon(ItemStack itemStack, int pass) {
 		switch(pass) {
 			case 0:
-				return Textures.Items.wandCoreIcons[getCore(itemStack)];
+				return Textures.Items.wandCoreOverlayIcons[getCore(itemStack)];
 			case 1:
-				return Textures.Items.wandCapIcons[getCap(itemStack)];
+				return Textures.Items.wandCapOverlayIcons[getCap(itemStack)];
 			case 2:
-				return Textures.Items.wandClothIcons[getCloth(itemStack)];
+				return Textures.Items.wandClothOverlayIcons[getCloth(itemStack)];
 		}
 		
 		return null;

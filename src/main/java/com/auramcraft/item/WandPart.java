@@ -66,11 +66,11 @@ public class WandPart extends Item {
 		String part = getPart(itemStack);
 		
 		if(part.equals("Core"))
-			return Textures.Items.wandCoreIcons[getTextureID(itemStack)];
+			return Textures.Items.wandCoreOverlayIcons[getTextureID(itemStack)];
 		if(part.equals("Cap"))
-			return Textures.Items.wandCapIcons[getTextureID(itemStack)];
+			return Textures.Items.wandCapItemIcons[getTextureID(itemStack)];
 		if(part.equals("Cloth"))
-			return Textures.Items.wandClothIcons[getTextureID(itemStack)];
+			return Textures.Items.wandClothOverlayIcons[getTextureID(itemStack)];
 		return null;
 	}
 	
