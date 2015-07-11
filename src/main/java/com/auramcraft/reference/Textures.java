@@ -95,11 +95,11 @@ public class Textures {
 			//WAND_EMPTY
 			WAND_TEXTURE_LOCATION + "empty",
 			//WAND_CORE_AUMWOOD
-			WAND_TEXTURE_LOCATION + "AuramwoodUnderlay",
+			WAND_TEXTURE_LOCATION + "Auramwood",
 			//WAND_CORE_DIAMOND
-			WAND_TEXTURE_LOCATION + "DiamondUnderlay", 
+			WAND_TEXTURE_LOCATION + "Diamond", 
 			//WAND_CORE_INFUSED
-			WAND_TEXTURE_LOCATION + "InfusedUnderlay"
+			WAND_TEXTURE_LOCATION + "Infused"
 		};
 		
 		// Wand Caps
@@ -107,17 +107,17 @@ public class Textures {
 			//WAND_EMPTY
 			WAND_TEXTURE_LOCATION + "empty",
 			//WAND_CAP_GEMSTONE
-			WAND_TEXTURE_LOCATION + "GemstoneCapOverlay",
+			WAND_TEXTURE_LOCATION + "GemstoneCap",
 			//WAND_CAP_IRON
-			WAND_TEXTURE_LOCATION + "IronCapOverlay",
+			WAND_TEXTURE_LOCATION + "IronCap",
 			//WAND_CAP_GOLD
-			WAND_TEXTURE_LOCATION + "GoldCapOverlay",
+			WAND_TEXTURE_LOCATION + "GoldCap",
 			//WAND_CAP_DIAMOND
-			WAND_TEXTURE_LOCATION + "DiamondCapOverlay",
+			WAND_TEXTURE_LOCATION + "DiamondCap",
 			//WAND_CAP_INFUSED
-			WAND_TEXTURE_LOCATION + "InfusedMagicCapOverlay",
+			WAND_TEXTURE_LOCATION + "InfusedCap",
 			//WAND_CAP_MAGIC
-			WAND_TEXTURE_LOCATION + "MagicCapOverlay"
+			WAND_TEXTURE_LOCATION + "MagicCap"
 		};
 		
 		// Wand Cloth
@@ -125,15 +125,17 @@ public class Textures {
 			//WAND_EMPTY
 			WAND_TEXTURE_LOCATION + "empty",
 			//WAND_CLOTH_INFUSED
-			WAND_TEXTURE_LOCATION + "InfusedClothOverlay",
+			WAND_TEXTURE_LOCATION + "InfusedCloth",
 			//WAND_CLOTH_MAGIC
-			WAND_TEXTURE_LOCATION + "MagicClothOverlay"
+			WAND_TEXTURE_LOCATION + "MagicCloth"
 		};
 		
 		// Wand Icons
-		public static IIcon[] wandCoreIcons = new IIcon[wandCores.length];
-		public static IIcon[] wandCapIcons = new IIcon[wandCaps.length];
-		public static IIcon[] wandClothIcons = new IIcon[wandCloths.length];
+		public static IIcon[] 
+			wandCoreOverlayIcons = new IIcon[wandCores.length],
+			wandCapOverlayIcons = new IIcon[wandCaps.length],
+			wandClothOverlayIcons = new IIcon[wandCloths.length],
+			wandCapItemIcons = new IIcon[wandCaps.length];
 	}
 	
 	/**
