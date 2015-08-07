@@ -76,7 +76,8 @@ public class AuraItem extends Item implements IAuraUser {
 		// Add Aura info
 		for(Auras aura : auras) {
 			// How much aura there is
-			itemStack.stackTagCompound.setInteger(aura.toString(), container.getStoredAura(aura));
+			if(container.containsAura(aura))
+				itemStack.stackTagCompound.setInteger(aura.toString(), container.getStoredAura(aura));
 			// If we are allowed to store the aura
 			itemStack.stackTagCompound.setBoolean(aura.toString() + " isAllowed", container.isAllowed(aura));
 		}
@@ -113,7 +114,10 @@ public class AuraItem extends Item implements IAuraUser {
 			
 			for(int j = 0; j < Tiers.getTotalAuras(i); j++, rep++) {
 				// Add aura values
-				auras.get(i).add(itemStack.stackTagCompound.getInteger(auraList[rep].toString()));
+				if(itemStack.stackTagCompound.hasKey(auraList[rep].toString()))
+					auras.get(i).add(itemStack.stackTagCompound.getInteger(auraList[rep].toString()));
+				else
+					auras.get(i).add(0);
 				
 				// Add allowed
 				if(itemStack.stackTagCompound.getBoolean(auraList[rep].toString()+" isAllowed"))
