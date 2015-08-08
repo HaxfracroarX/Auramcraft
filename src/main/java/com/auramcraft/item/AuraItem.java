@@ -73,13 +73,21 @@ public class AuraItem extends Item implements IAuraUser {
 		// List of all Auras
 		Auras[] auras = Auras.values();
 		
+		// Add list mode
+		if(container.getAllowed().length == 0)
+			itemStack.stackTagCompound.setString("Mode", "All");
+		else
+			itemStack.stackTagCompound.setString("Mode", "Whitelist");
+		
 		// Add Aura info
 		for(Auras aura : auras) {
 			// How much aura there is
 			if(container.containsAura(aura))
 				itemStack.stackTagCompound.setInteger(aura.toString(), container.getStoredAura(aura));
+			
 			// If we are allowed to store the aura
-			itemStack.stackTagCompound.setBoolean(aura.toString() + " isAllowed", container.isAllowed(aura));
+			if(container.getAllowed().length != 0 && container.isAllowed(aura))
+				itemStack.stackTagCompound.setBoolean(aura.toString() + " isAllowed", true);
 		}
 		
 		// Max Aura
@@ -119,13 +127,15 @@ public class AuraItem extends Item implements IAuraUser {
 				else
 					auras.get(i).add(0);
 				
+				String key = auraList[rep].toString()+" isAllowed";
+				
 				// Add allowed
-				if(itemStack.stackTagCompound.getBoolean(auraList[rep].toString()+" isAllowed"))
+				if(itemStack.stackTagCompound.hasKey(key) && itemStack.stackTagCompound.getBoolean(key))
 					allowedAuras.add(auraList[rep]);
 			}
 		}
 		
-		if(allowedAuras.size() == auraList.length)
+		if(itemStack.stackTagCompound.getString("Mode").equals("All"))
 			allowedAuras.clear();
 		
 		return new AuraContainer(maxAura, tier, auras, allowedAuras, isDrainable, isFillable);
