@@ -78,7 +78,7 @@ public class ContainerInfusionTable extends Container {
         if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			
-			// Initilize NBT data
+			// Initialize NBT data
 			if(stackInSlot.getItem() instanceof AuraItem)
 				AuraItem.initNBT(stackInSlot);
 			

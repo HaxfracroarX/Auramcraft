@@ -1,8 +1,6 @@
 package com.auramcraft.inventory;
 
-import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
-import com.auramcraft.item.AuraItem;
 import com.auramcraft.tileentity.TileAuraConverter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -16,17 +14,18 @@ import java.util.Random;
 public class ContainerAuraConverter extends Container {
 	TileAuraConverter tileEntity;
 	
-	public ContainerAuraConverter(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
+	public ContainerAuraConverter(InventoryPlayer inventoryPlayer, final World world, int x, int y, int z) {
 		tileEntity = (TileAuraConverter) world.getTileEntity(x, y, z);
 		
 		tileEntity.openInventory();
 		
 		// Create Slots
 		AuraSlot input = new AuraSlot(tileEntity, 0, 49, 34, this, true) {
+			@Override
 			public void putStack(ItemStack itemStack) {
 				super.putStack(itemStack);
 				
-				if(itemStack == null)
+				if(world.isRemote || itemStack == null || !tileEntity.isReady())
 					return;
 				
 				// Set input and output
@@ -42,27 +41,13 @@ public class ContainerAuraConverter extends Container {
 					outputAura = random.nextInt(5);
 				
 				tileEntity.setOutput(auras[outputAura]);
+				tileEntity.setReady(false);
 				
-				// Move auras to tileEntity
-				AuraContainer itemContainer = AuraItem.getAuraContainer(itemStack);
-				AuraContainer container = tileEntity.getAuraContainer();
-				
-				container.transfer(itemContainer, auras[inputAura], itemContainer.getStoredAura(auras[inputAura]));
-				
-				AuraItem.updateNBT(itemStack, itemContainer);
-				tileEntity.setAuraContainer(container);
+				tileEntity.sendPacket();
 			}
 		};
-		AuraSlot output = new AuraSlot(tileEntity, 1, 125, 34, this, false) {
-			public void putStack(ItemStack itemStack) {
-				super.putStack(itemStack);
-				
-				if(itemStack == null)
-					return;
-				
-				tileEntity.transfer(itemStack);
-			}
-		};
+		
+		AuraSlot output = new AuraSlot(tileEntity, 1, 125, 34, this, false);
 		
 		// Add Slots
 		addSlotToContainer(input);

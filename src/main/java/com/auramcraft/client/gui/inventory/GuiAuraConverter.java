@@ -6,10 +6,16 @@ import com.auramcraft.tileentity.TileAuraConverter;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
-import org.lwjgl.opengl.GL11;
 
 public class GuiAuraConverter extends GuiContainer {
 	private TileAuraConverter tileEntity;
+	private final int 
+		arrowTemplateX = 244,
+		arrowTemplateY = 0,
+		arrow1X = 70,
+		arrow1Y = 38,
+		arrow2X = 108,
+		arrow2Y = 38;
 	
 	public GuiAuraConverter(InventoryPlayer inventoryPlayer, World world, int x, int y, int z) {
 		super(new ContainerAuraConverter(inventoryPlayer, world, x, y, z));
@@ -24,7 +30,13 @@ public class GuiAuraConverter extends GuiContainer {
 	 */
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mx, int my) {
-		// TODO: Draw Aura info
+		mc.getTextureManager().bindTexture(Textures.GUI.AURA_CONVERTER);
+		
+		if(tileEntity.isConverting()) {
+			drawTexturedModalRect(arrow1X, arrow1Y, arrowTemplateX, arrowTemplateY, (int) (12f * (((float) tileEntity.getTickCounter()) / 40f)), 10);
+			drawTexturedModalRect(arrow2X, arrow2Y, arrowTemplateX, arrowTemplateY, (int) (12f * (((float) tileEntity.getTickCounter()) / 40f)), 10);
+			drawTexturedModalRect(87, 34, 240, 11 + (16 * tileEntity.getOutput().getId()), 16, 16);
+		}
 	}
 	
 	/**
@@ -35,7 +47,6 @@ public class GuiAuraConverter extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float renderPartialTicks, int mx, int my) {
 		// Draw Background
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(Textures.GUI.AURA_CONVERTER);
 	    drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	}

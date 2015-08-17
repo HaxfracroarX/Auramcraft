@@ -9,7 +9,6 @@ import com.auramcraft.tileentity.TileInfusionTable;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
-import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 
@@ -71,7 +70,6 @@ public class GuiInfusionTable extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float renderPartialTicks, int mx, int my) {
 		// Draw Background
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(Textures.GUI.INFUSION_TABLE);
 	    drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	}

@@ -70,7 +70,7 @@ public class AuramcraftEventHandler extends Gui {
 			stats.setPages(tabID, pages);
 			
 			if(firstTime)
-				stats.initPageAnnouncment("Aura Crystal");
+				stats.initPageAnnouncement("Aura Crystal");
 		}
 	}
 	
@@ -91,7 +91,7 @@ public class AuramcraftEventHandler extends Gui {
 		}
 		// Draw Page Announcement
 		else if(stats.isAnnouncing()) {
-			String announcement = stats.getAnnouncment();
+			String announcement = stats.getAnnouncement();
 			
 			mc.getTextureManager().bindTexture(Textures.GUI.PAGE_GET);
 			

@@ -68,7 +68,7 @@ public class InfusionTable extends TEBlock {
 		stats.setPages(tabID, pages);
 		
 		if(firstTime)
-			stats.initPageAnnouncment("Infusion");
+			stats.initPageAnnouncement("Infusion");
 		
 		return true;
 	}

@@ -3,7 +3,7 @@ package com.auramcraft.stats;
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
 import com.auramcraft.network.PacketHandler;
-import com.auramcraft.network.message.MessagePlayerStats;
+import com.auramcraft.network.message.MsgPlayerStats;
 import com.auramcraft.reference.BookIds;
 import com.auramcraft.reference.Reference;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -19,12 +19,12 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 
 import java.util.ArrayList;
 
-public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessageHandler<MessagePlayerStats, IMessage> {
+public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessageHandler<MsgPlayerStats, IMessage> {
 	private boolean book;
 	private boolean isAnnouncing;
 	private float pageTime;
 	private int regenTicks;
-	private String announcment;
+	private String announcement;
 	private ArrayList<byte[]> pages;
 	private AuraContainer container;
 	
@@ -32,7 +32,7 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		book = false;
 		isAnnouncing = false;
 		pageTime = 0;
-		announcment = "";
+		announcement = "";
 		regenTicks = 0;
 		
 		pages = new ArrayList<byte[]>();
@@ -105,7 +105,7 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	}
 	
 	@Override
-	public IMessage onMessage(MessagePlayerStats message, MessageContext ctx) {
+	public IMessage onMessage(MsgPlayerStats message, MessageContext ctx) {
 		AuramcraftPlayerStats stats = AuramcraftPlayerStats.get(Minecraft.getMinecraft().thePlayer);
 		
 		stats.book = message.book;
@@ -117,13 +117,12 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 			container.addAllowed(allowed);
 			container.store(allowed, message.storedAura[i]);
 		}
-		stats.setAuraContainer(container);
 		
 		return null;
 	}
 	
 	public void sendPacket(EntityPlayer player) {
-		PacketHandler.wrapper.sendTo(new MessagePlayerStats(this), (EntityPlayerMP) player);
+		PacketHandler.wrapper.sendTo(new MsgPlayerStats(this), (EntityPlayerMP) player);
 	}
 	
 	public static void update(EntityPlayer player) {
@@ -170,10 +169,10 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	}
 	
 	/**
-	 * Set variables to count announcment lifetime
+	 * Set variables to count announcement lifetime
 	 */
-	public void initPageAnnouncment(String announcment) {
-		this.announcment = "New Page: " + announcment;
+	public void initPageAnnouncement(String announcement) {
+		this.announcement = "New Page: " + announcement;
 		isAnnouncing = true;
 		pageTime = 3f;
 	}
@@ -193,7 +192,7 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	}
 	
 	/**
-	 * @return if an announcment is showing
+	 * @return if an announcement is showing
 	 */
 	public boolean isAnnouncing() {
 		return isAnnouncing;
@@ -207,10 +206,10 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 	}
 	
 	/**
-	 * @return the announcment
+	 * @return the announcement
 	 */
-	public String getAnnouncment() {
-		return announcment;
+	public String getAnnouncement() {
+		return announcement;
 	}
 	
 	/**

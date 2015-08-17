@@ -77,7 +77,7 @@ public class AuraCrystal extends AuraItem {
 			stats.setPages(tabID, pages);
 			
 			if(firstTime)
-				stats.initPageAnnouncment("Shards");
+				stats.initPageAnnouncement("Shards");
 			
 			return firstTime;
 		}

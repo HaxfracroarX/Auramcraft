@@ -8,10 +8,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
 @SuppressWarnings({"SameParameterValue", "WeakerAccess"})
-public class TileAuramcraftInventory extends TileAuramcraft implements IInventory {
+public class TileInventory extends TileAuramcraft implements IInventory {
 	private ItemStack[] inventory;
 	
-	public TileAuramcraftInventory(String name, Block block, int slots) {
+	public TileInventory(String name, Block block, int slots) {
 		super(name, block);
 		inventory = new ItemStack[slots];
 	}

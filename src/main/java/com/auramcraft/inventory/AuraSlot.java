@@ -2,7 +2,7 @@ package com.auramcraft.inventory;
 
 import com.auramcraft.api.AuraContainer;
 import com.auramcraft.item.AuraItem;
-import com.auramcraft.tileentity.TileAuramcraftInventory;
+import com.auramcraft.tileentity.TileInventory;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -12,7 +12,7 @@ public class AuraSlot extends Slot {
 	private final Container eventHandler;
 	private final boolean isInput;
 	
-	public AuraSlot(TileAuramcraftInventory tileEntity, int id, int x, int y, Container eventHandler, boolean isInput) {
+	public AuraSlot(TileInventory tileEntity, int id, int x, int y, Container eventHandler, boolean isInput) {
 		super(tileEntity, id, x, y);
 		this.eventHandler = eventHandler;
 		this.isInput = isInput;

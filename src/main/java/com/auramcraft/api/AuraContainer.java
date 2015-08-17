@@ -5,8 +5,7 @@ import com.auramcraft.reference.Tiers;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("CanBeFinal")
-public class AuraContainer implements IAuraContainer {
+public final class AuraContainer {
 	private int maxAura, tier;
 	private ArrayList<ArrayList<Integer>> auras;
 	private ArrayList<Auras> allowedAuras;
@@ -37,9 +36,13 @@ public class AuraContainer implements IAuraContainer {
 		this.isFillable = isFillable;
 	}
 	
-	@Override
+	/**
+	 * Tries to store the specified amount of the specified aura
+	 *
+	 * @return Amount that wasn't stored. -1 if the container is full to start with.
+	 */
 	public int store(Auras aura, int amount) {
-		if(!canStoreAura(aura, amount))
+		if(getOpenSlots() == 0)
 			return -1;
 		
 		for(int i = 0; i < amount; i++) {
@@ -52,13 +55,19 @@ public class AuraContainer implements IAuraContainer {
 		return 0;
 	}
 	
-	@Override
+	/**
+	 * Tries to store the auras in the amounts specified
+	 */
 	public void store(Object... auraList) {
 		for(int i = 0; i < auraList.length; i = i + 2)
 			store((Auras) auraList[i], (Integer) auraList[i+1]);
 	}
 	
-	@Override
+	/**
+	 * Tries to take out the specified amount of the specified aura
+	 *
+	 * @return If removal was successful
+	 */
 	public boolean remove(Auras aura, int amount) {
 		if(getStoredAura(aura) < amount)
 			return false;
@@ -68,64 +77,92 @@ public class AuraContainer implements IAuraContainer {
 		return true;
 	}
 	
-	@Override
+	/**
+	 * Tries to remove the auras in the amounts specified
+	 */
 	public void remove(Object... auraList) {
 		for(int i = 0; i < auraList.length; i = i + 2)
 			remove((Auras) auraList[i], (Integer) auraList[i +1]);
 	}
 	
-	@Override
+	/**
+	 * Transfer specified aura and amount from specified container into this container
+	 *
+	 * @param container Container to transfer from
+	 * @param aura Aura to transfer
+	 * @param amount Amount to transfer
+	 */
 	public void transfer(AuraContainer container, Auras aura, int amount) {
 		store(aura, amount);
 		container.remove(aura, amount);
 	}
 	
-	@Override
+	/**
+	 * @return If the container is drainable
+	 */
 	public boolean isDrainable() {
 		return isDrainable;
 	}
 	
-	@Override
+	/**
+	 * @return If the container is fillable
+	 */
 	public boolean isFillable() {
 		return isFillable;
 	}
 	
-	@Override
+	/**
+	 * Sets if the container is drainable
+	 */
 	public void setDrainable(boolean isDrainable) {
 		this.isDrainable = isDrainable;
 	}
 	
-	@Override
+	/**
+	 * Sets if the container is fillable
+	 */
 	public void setFillable(boolean isFillable) {
 		this.isFillable = isFillable;
 	}
 	
-	@Override
+	/**
+	 * @return How much aura can be contained
+	 */
 	public int getMaxAura() {
 		return maxAura;
 	}
 	
-	@Override
+	/**
+	 * @return If the specified tier can be stored
+	 */
 	public boolean canStoreTier(int tier) {
 		return tier <= this.tier;
 	}
 	
-	@Override
+	/**
+	 * @return If the specified aura can be stored
+	 */
 	public boolean canStoreAura(Auras aura) {
 		return canStoreTier(aura.getTier()) && allowedAuras.isEmpty() || allowedAuras.contains(aura);
 	}
 	
-	@Override
+	/**
+	 * @return If the specified aura and amount can be stored
+	 */
 	public boolean canStoreAura(Auras aura, int amount) {
 		return canStoreAura(aura) && canStoreMore();
 	}
 	
-	@Override
+	/**
+	 * @return If there is space for more aura
+	 */
 	public boolean canStoreMore() {
 		return maxAura > getTotalStoredAura();
 	}
 	
-	@Override
+	/**
+	 * Adds the specified aura to the whitelist
+	 */
 	public void addAllowed(Auras aura) {
 		if(allowedAuras.contains(aura))
 			return;
@@ -133,32 +170,44 @@ public class AuraContainer implements IAuraContainer {
 		allowedAuras.add(aura);
 	}
 	
-	@Override
+	/**
+	 * Removes the specified aura from the whitelist
+	 */
 	public void removeAllowed(Auras aura) {
 		allowedAuras.remove(aura);
 	}
 	
-	@Override
+	/**
+	 * Clears the whitelist
+	 */
 	public void clearAllowed() {
 		allowedAuras.clear();
 	}
 	
-	@Override
+	/**
+	 * @return Allowed Auras
+	 */
 	public Auras[] getAllowed() {
 		return allowedAuras.toArray(new Auras[allowedAuras.size()]);
 	}
 	
-	@Override
+	/**
+	 * @return If the specified Aura is allowed
+	 */
 	public boolean isAllowed(Auras aura) {
 		return allowedAuras.contains(aura) || allowedAuras.isEmpty();
 	}
 	
-	@Override
+	/**
+	 * @return If the specified aura is contained
+	 */
 	public boolean containsAura(Auras aura) {
 		return getStoredAura(aura) > 0;
 	}
 	
-	@Override
+	/**
+	 * @return If the specified auras are contained
+	 */
 	public boolean containsAura(List auras) {
 		int numContained = 0;
 
@@ -168,12 +217,16 @@ public class AuraContainer implements IAuraContainer {
 		return numContained == auras.size();
 	}
 	
-	@Override
+	/**
+	 * @return If the specified aura is contained in the specified amount or greater
+	 */
 	public boolean containsAmount(Auras aura, int amount) {
 		return containsAura(aura) && getStoredAura(aura) >= amount;
 	}
 	
-	@Override
+	/**
+	 * @return If the specified auras are contained in the specified amounts or greater
+	 */
 	public boolean containsAmount(List auras, List amount) {
 		int numContained = 0;
 		
@@ -183,7 +236,10 @@ public class AuraContainer implements IAuraContainer {
 		return numContained == auras.size();
 	}
 	
-	@Override
+	/**
+	 * @param combined - List of alternating Auras and Integer objects starting with Auras
+	 * @return If the specified auras are contained in the specified amounts or greater
+	 */
 	public boolean containsAmount(List combined) {
 		int numContained = 0;
 		
@@ -193,12 +249,16 @@ public class AuraContainer implements IAuraContainer {
 		return numContained == combined.size()/2;
 	}
 	
-	@Override
+	/**
+	 * @return The amount stored of the specified aura
+	 */
 	public int getStoredAura(Auras aura) {
 		return auras.get(aura.getTier()-1).get(aura.getId());
 	}
 	
-	@Override
+	/**
+	 * @return The total stored aura
+	 */
 	public int getTotalStoredAura() {
 		int total = 0;
 		for(ArrayList<Integer> aura : auras) {
@@ -209,12 +269,16 @@ public class AuraContainer implements IAuraContainer {
 		return total;
 	}
 	
-	@Override
+	/**
+	 * @return Open space for new aura
+	 */
 	public int getOpenSlots() {
 		return maxAura - getTotalStoredAura();
 	}
 	
-	@Override
+	/**
+	 * @return Top tier that can be stored
+	 */
 	public int getTier() {
 		return tier;
 	}
