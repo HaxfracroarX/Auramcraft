@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-@SuppressWarnings({"SameParameterValue", "WeakerAccess"})
 public class TileInventory extends TileAuramcraft implements IInventory {
 	private ItemStack[] inventory;
 	

@@ -21,7 +21,6 @@ public class Auramcraft {
 	@Instance(Reference.MOD_ID)
 	public static Auramcraft instance;
 	
-	@SuppressWarnings("WeakerAccess")
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static IProxy proxy;
 	

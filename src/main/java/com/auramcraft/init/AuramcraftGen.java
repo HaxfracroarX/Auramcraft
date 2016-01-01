@@ -5,7 +5,6 @@ import com.auramcraft.generation.OreGeneration;
 import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@SuppressWarnings("WeakerAccess")
 public class AuramcraftGen {
 	public static final OreGeneration oreGeneration = new OreGeneration();
 	public static final AumwoodTreeGen auramwoodWorldGenTree = new AumwoodTreeGen();

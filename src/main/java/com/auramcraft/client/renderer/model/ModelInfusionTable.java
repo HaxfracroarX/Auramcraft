@@ -4,8 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-@SuppressWarnings("SameParameterValue") public class ModelInfusionTable extends ModelBase {
-	// fields
+public class ModelInfusionTable extends ModelBase {
 	private final ModelRenderer Top;
 	private final ModelRenderer Leg1;
 	private final ModelRenderer Leg2;

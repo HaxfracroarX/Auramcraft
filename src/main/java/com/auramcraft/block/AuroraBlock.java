@@ -7,13 +7,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 public class AuroraBlock extends Block {
-		public AuroraBlock() {
-			super(Material.rock);
-			setHardness(0.1F);
-			setResistance(10F);
-			setBlockName(Names.Blocks.AURORA_BLOCK);
-			setCreativeTab(CreativeTab.AuramcraftTab);
-			setBlockTextureName(Textures.Blocks.AURORA_BLOCK);
-		}
-
+	public AuroraBlock() {
+		super(Material.rock);
+		setHardness(0.1F);
+		setResistance(10F);
+		setBlockName(Names.Blocks.AURORA_BLOCK);
+		setCreativeTab(CreativeTab.AuramcraftTab);
+		setBlockTextureName(Textures.Blocks.AURORA_BLOCK);
+	}
 }

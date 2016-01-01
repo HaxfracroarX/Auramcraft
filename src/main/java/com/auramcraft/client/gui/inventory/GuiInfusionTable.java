@@ -12,7 +12,6 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("unchecked")
 public class GuiInfusionTable extends GuiContainer {
 	private final TileInfusionTable tileInfusionTable;
 	private World world;

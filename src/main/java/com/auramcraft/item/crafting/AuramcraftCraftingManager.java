@@ -20,7 +20,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-@SuppressWarnings({"unchecked", "WeakerAccess", "CanBeFinal", "UnusedReturnValue"})
 public class AuramcraftCraftingManager {
 	private static final AuramcraftCraftingManager instance = new AuramcraftCraftingManager();
 	private List recipes = new ArrayList();

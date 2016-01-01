@@ -1,7 +1,5 @@
 package com.auramcraft.block;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -12,9 +10,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-@SuppressWarnings({"SameParameterValue", "WeakerAccess"})
+import java.util.Random;
+
 public abstract class TEBlock extends BlockContainer {
-	
 	public TEBlock(Material material) {
 		super(material);
 	}

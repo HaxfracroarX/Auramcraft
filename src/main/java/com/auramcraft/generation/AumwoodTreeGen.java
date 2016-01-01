@@ -13,7 +13,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.Random;
 
-@SuppressWarnings("EmptyMethod")
 public class AumwoodTreeGen extends WorldGenAbstractTree implements IWorldGenerator {
 	private final boolean isFruitTree;
 	

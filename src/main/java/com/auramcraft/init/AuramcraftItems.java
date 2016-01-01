@@ -7,7 +7,6 @@ import com.auramcraft.util.LogHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 
-@SuppressWarnings("WeakerAccess")
 public class AuramcraftItems {
 	public static final Item 
 		fireShard = new FireShard(),

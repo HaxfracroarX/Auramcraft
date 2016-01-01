@@ -7,7 +7,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-@SuppressWarnings("SameParameterValue")
 public class AuraSlot extends Slot {
 	private final Container eventHandler;
 	private final boolean isInput;

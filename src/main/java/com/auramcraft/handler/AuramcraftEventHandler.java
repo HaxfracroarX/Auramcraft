@@ -33,7 +33,6 @@ import org.lwjgl.opengl.GL11;
 
 import java.util.Random;
 
-@SuppressWarnings("WeakerAccess")
 public class AuramcraftEventHandler extends Gui {
 	private final Minecraft mc;
 	private int wandTickCounter = 100;

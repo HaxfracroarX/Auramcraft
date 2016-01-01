@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 import java.util.ArrayList;
 
-@SuppressWarnings({"unchecked", "SameParameterValue", "WeakerAccess"})
 public class InfusionSlotCrafting extends Slot {
 	private final InfusionCrafting matrix;
 	private final Container eventHandler;

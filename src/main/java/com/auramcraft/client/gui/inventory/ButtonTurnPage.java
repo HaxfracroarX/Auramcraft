@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import org.lwjgl.opengl.GL11;
 
-@SuppressWarnings("WeakerAccess")
 public class ButtonTurnPage extends GuiButton {
 	private final boolean isRight;
 	

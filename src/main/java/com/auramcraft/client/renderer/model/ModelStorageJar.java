@@ -4,8 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-@SuppressWarnings("SameParameterValue") public class ModelStorageJar extends ModelBase {
-	// fields
+public class ModelStorageJar extends ModelBase {
 	private final ModelRenderer Lid;
 	private final ModelRenderer Base;
 	private final ModelRenderer Wall1;

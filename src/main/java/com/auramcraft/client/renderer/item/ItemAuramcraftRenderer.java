@@ -1,15 +1,12 @@
 package com.auramcraft.client.renderer.item;
 
-import org.lwjgl.opengl.GL11;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
-import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
+import org.lwjgl.opengl.GL11;
 
-@SuppressWarnings("WeakerAccess")
 public class ItemAuramcraftRenderer implements IItemRenderer {
 	private final ModelBase model;
 	private final ResourceLocation texture;

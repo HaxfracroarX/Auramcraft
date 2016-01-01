@@ -3,7 +3,6 @@ package com.auramcraft.item;
 import com.auramcraft.api.Auras;
 import com.auramcraft.creativetab.CreativeTab;
 
-@SuppressWarnings({"FieldCanBeLocal", "WeakerAccess"})
 public class Shard extends AuraItem {
 	private static final int maxAura = 8;
 	

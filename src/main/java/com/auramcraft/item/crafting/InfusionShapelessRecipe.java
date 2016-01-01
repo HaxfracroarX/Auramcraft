@@ -9,7 +9,6 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
 public class InfusionShapelessRecipe implements IInfusionRecipe {
 	/** The ItemStack that you get when craft the recipe. */
 	private final ItemStack recipeOutput;

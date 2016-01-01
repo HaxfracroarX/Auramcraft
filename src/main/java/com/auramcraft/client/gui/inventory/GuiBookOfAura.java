@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-@SuppressWarnings("unchecked")
 public class GuiBookOfAura extends GuiContainer {
 	private BookPage page;
 	private ArrayList<boolean[]> pages;

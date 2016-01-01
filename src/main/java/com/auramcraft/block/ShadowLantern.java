@@ -60,8 +60,8 @@ public class ShadowLantern extends Block {
 		frontIcon = iconRegister.registerIcon(Textures.Blocks.SHADOW_LANTERN_FRONT);
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		if (side == 1 || side == 0)
 			return topIcon;

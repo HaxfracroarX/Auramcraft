@@ -5,7 +5,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 
-@SuppressWarnings("SameParameterValue")
 public class InfusionCrafting extends InventoryCrafting {
 	private final Container eventHandler;
 	private final TileInfusionTable tileEntity;

@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"unchecked", "SameParameterValue", "WeakerAccess"})
 public class AuraItem extends Item implements IAuraUser {
 	private AuraContainer container;
 	

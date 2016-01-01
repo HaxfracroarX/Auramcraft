@@ -4,7 +4,6 @@ import net.minecraft.item.crafting.IRecipe;
 
 import java.util.Comparator;
 
-@SuppressWarnings({"WeakerAccess", "FieldCanBeLocal", "ComparatorMethodParameterNotUsed"})
 public class AuramcraftRecipeSorter implements Comparator {
 	private final AuramcraftCraftingManager craftingManager;
 	

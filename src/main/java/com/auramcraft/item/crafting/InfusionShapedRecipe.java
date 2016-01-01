@@ -9,7 +9,6 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"FieldCanBeLocal", "unchecked"})
 public class InfusionShapedRecipe implements IInfusionRecipe {
 	/** How many horizontal slots this recipe is wide. */
 	private final int recipeWidth;

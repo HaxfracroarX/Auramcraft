@@ -21,7 +21,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.List;
 import java.util.Random;
 
-@SuppressWarnings("unchecked")
 public class AumwoodSapling extends BlockSapling {
 	@SideOnly(Side.CLIENT)
 	private IIcon texture;

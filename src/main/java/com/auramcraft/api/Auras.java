@@ -2,7 +2,6 @@ package com.auramcraft.api;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("CanBeFinal")
 public enum Auras {
 	// Tier 1
 	FIRE(1, 0),

@@ -1,14 +1,13 @@
 package com.auramcraft.generation;
 
-import java.util.Random;
-
 import com.auramcraft.init.AuramcraftBlocks;
+import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import cpw.mods.fml.common.IWorldGenerator;
 
-@SuppressWarnings("EmptyMethod")
+import java.util.Random;
+
 public class OreGeneration implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {

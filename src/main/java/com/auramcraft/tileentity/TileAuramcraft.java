@@ -8,7 +8,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-@SuppressWarnings("WeakerAccess")
 public class TileAuramcraft extends TileEntity {
 	protected ForgeDirection orientation;
 	protected int numPlayersOpen;

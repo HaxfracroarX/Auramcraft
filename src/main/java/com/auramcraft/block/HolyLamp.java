@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 
 public class HolyLamp extends Block {
-	
-	@SideOnly(Side.CLIENT) private static IIcon sideIcon;
+	@SideOnly(Side.CLIENT)
+	private static IIcon sideIcon;
 	private static IIcon bottomIcon;
 	
 	public HolyLamp() {
@@ -32,8 +32,8 @@ public class HolyLamp extends Block {
 		sideIcon = iconRegister.registerIcon(Textures.Blocks.HOLY_LAMP_SIDE);
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
+	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		if (side == 1 || side == 0)
 			return bottomIcon;

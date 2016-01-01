@@ -7,7 +7,6 @@ import com.auramcraft.reference.Tiers;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 
-@SuppressWarnings("WeakerAccess")
 public class TileAuraUser extends TileAuramcraft implements IAuraUser {
 	private AuraContainer container;
 	
