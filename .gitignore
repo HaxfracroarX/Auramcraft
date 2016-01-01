@@ -1,9 +1,6 @@
 ## Gradle
 /.gradle
 /build
-/gradle
-/gradlew
-/gradlew.bat
 /build.bat
 
 ## ForgeGradle
@@ -34,7 +31,7 @@
 /saves
 /options.txt
 
-# OS generated files
+## OS generated files
 .DS_Store?
 ehthumbs.db
 Icon?
