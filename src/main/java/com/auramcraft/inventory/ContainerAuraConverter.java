@@ -1,7 +1,10 @@
 package com.auramcraft.inventory;
 
+import com.auramcraft.api.AuraContainer;
 import com.auramcraft.api.Auras;
+import com.auramcraft.item.AuraItem;
 import com.auramcraft.tileentity.TileAuraConverter;
+import com.auramcraft.util.LogHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,7 +12,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ContainerAuraConverter extends Container {
 	TileAuraConverter tileEntity;
@@ -25,29 +29,98 @@ public class ContainerAuraConverter extends Container {
 			public void putStack(ItemStack itemStack) {
 				super.putStack(itemStack);
 				
-				if(world.isRemote || itemStack == null || !tileEntity.isReady())
+				if(world.isRemote || itemStack == null)
 					return;
 				
 				// Set input and output
-				Random random = new Random();
-				int inputAura = random.nextInt(5);
+				
+				// Make list of random auras
 				Auras[] auras = Auras.values();
+				ArrayList<Integer> randList = new ArrayList<Integer>();
+				randList.add(0);
+				randList.add(1);
+				randList.add(2);
+				randList.add(3);
+				randList.add(4);
+				Collections.shuffle(randList);
+				Auras[] randomAuras = new Auras[5];
+				for(int i = 0; i < randomAuras.length; i++)
+					randomAuras[i] = auras[randList.get(i)];
 				
-				tileEntity.setInput(auras[inputAura]);
+				// Check if there's an available input
+				int inputID = -1;
+				AuraContainer inputContainer = AuraItem.getAuraContainer(itemStack);
+				for(int i = 0; i < randomAuras.length; i++) {
+					boolean suitable = inputContainer.containsAura(randomAuras[i]);
+					
+					// If there's already an output, we have to take that into account
+					if(tileEntity.getOutput() != null)
+						suitable = suitable && randomAuras[i] != tileEntity.getOutput();
+					
+					if(suitable) {
+						inputID = i;
+						break;
+					}
+				}
 				
-				// Make sure we don't have the same input and output
-				int outputAura = random.nextInt(5);
-				while(outputAura == inputAura)
-					outputAura = random.nextInt(5);
+				if(inputID == -1)
+					return;
 				
-				tileEntity.setOutput(auras[outputAura]);
-				tileEntity.setReady(false);
+				LogHelper.info("Input: " + auras[inputID]);
 				
+				tileEntity.setInput(auras[inputID]);
 				tileEntity.sendPacket();
 			}
 		};
 		
-		AuraSlot output = new AuraSlot(tileEntity, 1, 125, 34, this, false);
+		final AuraSlot output = new AuraSlot(tileEntity, 1, 125, 34, this, false) {
+			@Override
+			public void putStack(ItemStack itemStack) {
+				super.putStack(itemStack);
+				
+				if(world.isRemote || itemStack == null)
+					return;
+				
+				// Set input and output
+				
+				// Make list of random auras
+				Auras[] auras = Auras.values();
+				ArrayList<Integer> randList = new ArrayList<Integer>();
+				randList.add(0);
+				randList.add(1);
+				randList.add(2);
+				randList.add(3);
+				randList.add(4);
+				Collections.shuffle(randList);
+				Auras[] randomAuras = new Auras[5];
+				for(int i = 0; i < randomAuras.length; i++)
+					randomAuras[i] = auras[randList.get(i)];
+				
+				// Get output aura
+				int outputID = -1;
+				AuraContainer outputContainer = AuraItem.getAuraContainer(itemStack);
+				for(int i = 0; i < randomAuras.length; i++) {
+					boolean suitable = outputContainer.canStoreAura(randomAuras[i]);
+					
+					// If there's already an input, we have to take that into account
+					if(tileEntity.getInput() != null)
+						suitable = suitable && randomAuras[i] != tileEntity.getInput();
+					
+					if(suitable) {
+						outputID = i;
+						break;
+					}
+				}
+				
+				if(outputID == -1)
+					return;
+				
+				LogHelper.info("Output: " + auras[outputID]);
+				
+				tileEntity.setOutput(auras[outputID]);
+				tileEntity.sendPacket();
+			}
+		};
 		
 		// Add Slots
 		addSlotToContainer(input);

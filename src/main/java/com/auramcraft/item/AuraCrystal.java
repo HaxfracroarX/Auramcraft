@@ -36,13 +36,14 @@ public class AuraCrystal extends AuraItem {
 			for(Auras allowed : allowedAuras) {
 				int storedAura = container.getStoredAura(allowed);
 				
-				if(!world.isRemote) {
-					if(itemContainer.canStoreAura(allowed, storedAura))
+				if(itemContainer.canStoreAura(allowed, storedAura)) {
+					if(!world.isRemote)
 						player.addChatMessage(new ChatComponentText("Drained " + storedAura + " " + allowed + " from " + player.getDisplayName() + " into the Aura Crystal"));
-					else {
+				}
+				else {
+					if(!world.isRemote)
 						player.addChatMessage(new ChatComponentText("The Aura Container is full"));
-						break;
-					}
+					break;
 				}
 				
 				itemContainer.transfer(container, allowed, storedAura);
@@ -62,6 +63,8 @@ public class AuraCrystal extends AuraItem {
 		if(block instanceof BlockWorkbench) {
 			world.setBlock(x, y, z, AuramcraftBlocks.infusionTable);
 			world.getBlock(x, y, z).onBlockPlacedBy(world, x, y, z, player, stack);
+			
+			// TODO: Add achievement
 			
 			return true;
 		}

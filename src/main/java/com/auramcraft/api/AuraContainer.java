@@ -5,7 +5,7 @@ import com.auramcraft.reference.Tiers;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class AuraContainer {
+public class AuraContainer {
 	private int maxAura, tier;
 	private ArrayList<ArrayList<Integer>> auras;
 	private ArrayList<Auras> allowedAuras;
@@ -42,7 +42,7 @@ public final class AuraContainer {
 	 * @return Amount that wasn't stored. -1 if the container is full to start with.
 	 */
 	public int store(Auras aura, int amount) {
-		if(getOpenSlots() == 0)
+		if(!canStoreMore())
 			return -1;
 		
 		for(int i = 0; i < amount; i++) {
@@ -143,14 +143,14 @@ public final class AuraContainer {
 	 * @return If the specified aura can be stored
 	 */
 	public boolean canStoreAura(Auras aura) {
-		return canStoreTier(aura.getTier()) && allowedAuras.isEmpty() || allowedAuras.contains(aura);
+		return canStoreTier(aura.getTier()) && canStoreMore() && allowedAuras.isEmpty() || allowedAuras.contains(aura);
 	}
 	
 	/**
 	 * @return If the specified aura and amount can be stored
 	 */
 	public boolean canStoreAura(Auras aura, int amount) {
-		return canStoreAura(aura) && canStoreMore();
+		return canStoreAura(aura) && getOpenSlots() >= amount;
 	}
 	
 	/**

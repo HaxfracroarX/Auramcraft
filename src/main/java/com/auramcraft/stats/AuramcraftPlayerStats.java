@@ -111,11 +111,21 @@ public class AuramcraftPlayerStats implements IExtendedEntityProperties, IMessag
 		stats.book = message.book;
 		stats.pages = message.pages;
 		
-		container = new AuraContainer(message.maxAura, 1);
-		for(int i = 0; i < message.allowedAuras.length; i++) {
-			Auras allowed = Auras.values()[message.allowedAuras[i]];
-			container.addAllowed(allowed);
-			container.store(allowed, message.storedAura[i]);
+		stats.container = new AuraContainer(message.maxAura, 1);
+		Auras[] auras = Auras.values();
+		
+		if(message.allowedAuras.length == 0) {
+			// All auras are allowed
+			for(int i = 0; i < auras.length; i++)
+				stats.container.store(auras[i], message.storedAura[i]);
+		}
+		else {
+			// Limited auras are allowed
+			for(int i = 0; i < message.allowedAuras.length; i++) {
+				Auras allowed = Auras.values()[message.allowedAuras[i]];
+				stats.container.addAllowed(allowed);
+				stats.container.store(allowed, message.storedAura[i]);
+			}
 		}
 		
 		return null;

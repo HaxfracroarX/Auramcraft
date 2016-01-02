@@ -6,7 +6,6 @@ import io.netty.buffer.ByteBuf;
 
 public class MsgAuraConverter extends MsgTileAuramcraft {
 	public Auras input, output;
-	public boolean isReady;
 	
 	public MsgAuraConverter() {}
 	
@@ -14,7 +13,6 @@ public class MsgAuraConverter extends MsgTileAuramcraft {
 		super(tileEntity);
 		input = tileEntity.getInput();
 		output = tileEntity.getOutput();
-		isReady = tileEntity.isReady();
 	}
 	
 	@Override
@@ -22,7 +20,6 @@ public class MsgAuraConverter extends MsgTileAuramcraft {
 		super.fromBytes(buf);
 		input = Auras.values()[buf.readInt()];
 		output = Auras.values()[buf.readInt()];
-		isReady = buf.readBoolean();
 	}
 	
 	@Override
@@ -30,6 +27,5 @@ public class MsgAuraConverter extends MsgTileAuramcraft {
 		super.toBytes(buf);
 		buf.writeInt(input.ordinal());
 		buf.writeInt(output.ordinal());
-		buf.writeBoolean(isReady);
 	}
 }

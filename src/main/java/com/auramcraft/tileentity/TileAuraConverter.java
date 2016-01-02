@@ -18,9 +18,8 @@ import net.minecraft.network.Packet;
 public class TileAuraConverter extends TileInventory implements IMessageHandler<MsgAuraConverter, IMessage> {
 	private int tickCounter = 0;
 	private boolean isConverting = false;
-	private boolean isReady = true;
-	private Auras input = Auras.AIR;
-	private Auras output = Auras.AIR;
+	private Auras input;
+	private Auras output;
 	
 	public TileAuraConverter() {
 		super(Names.Blocks.AURA_CONVERTER, AuramcraftBlocks.auraConverter, 2);
@@ -28,24 +27,19 @@ public class TileAuraConverter extends TileInventory implements IMessageHandler<
 	
 	@Override
 	public void updateEntity() {
-		ItemStack itemStack = getStackInSlot(0);
+		ItemStack inputStack = getStackInSlot(0);
 		ItemStack outputStack = getStackInSlot(1);
 		
-		if(itemStack == null) {
+		// Can't convert without I/O
+		if(inputStack == null || outputStack == null) {
 			isConverting = false;
-			isReady = true;
 			return;
 		}
 		
-		if(outputStack == null) {
-			isConverting = false;
-			isReady = false;
-			return;
-		}
-		
-		AuraContainer container = AuraItem.getAuraContainer(itemStack);
+		AuraContainer inputContainer = AuraItem.getAuraContainer(inputStack);
+		AuraContainer outputContainer = AuraItem.getAuraContainer(outputStack);
 		boolean last = isConverting;
-		isConverting = container.getStoredAura(input) > 0;
+		isConverting = inputContainer.getStoredAura(input) > 0 && outputContainer.canStoreAura(output);
 		
 		if(last != isConverting)
 			tickCounter = 0;
@@ -53,13 +47,11 @@ public class TileAuraConverter extends TileInventory implements IMessageHandler<
 		if(isConverting && ++tickCounter >= 40) {
 			tickCounter = 0;
 			
-			AuraContainer outputContainer = AuraItem.getAuraContainer(outputStack);
-			
 			// Convert aura
-			container.remove(input, 1);
+			inputContainer.remove(input, 1);
 			outputContainer.store(output, 1);
 			
-			AuraItem.updateNBT(itemStack, container);
+			AuraItem.updateNBT(inputStack, inputContainer);
 			AuraItem.updateNBT(outputStack, outputContainer);
 		}
 	}
@@ -72,7 +64,6 @@ public class TileAuraConverter extends TileInventory implements IMessageHandler<
 		input = Auras.values()[nbtTagCompound.getInteger("Input")];
 		output = Auras.values()[nbtTagCompound.getInteger("Output")];
 		tickCounter = nbtTagCompound.getInteger("TickCounter");
-		isReady = nbtTagCompound.getBoolean("isReady");
 	}
 	
 	@Override
@@ -83,7 +74,6 @@ public class TileAuraConverter extends TileInventory implements IMessageHandler<
 		nbtTagCompound.setInteger("Input", input.ordinal());
 		nbtTagCompound.setInteger("Output", output.ordinal());
 		nbtTagCompound.setInteger("TickCounter", tickCounter);
-		nbtTagCompound.setBoolean("isReady", isReady);
 		
 	}
 	
@@ -94,7 +84,6 @@ public class TileAuraConverter extends TileInventory implements IMessageHandler<
 		tileEntity.setOrientation(message.orientation);
 		tileEntity.setInput(message.input);
 		tileEntity.setOutput(message.output);
-		tileEntity.setReady(message.isReady);
 		
 		return null;
 	}
@@ -130,13 +119,5 @@ public class TileAuraConverter extends TileInventory implements IMessageHandler<
 	
 	public boolean isConverting() {
 		return isConverting;
-	}
-	
-	public boolean isReady() {
-		return isReady;
-	}
-	
-	public void setReady(boolean isReady) {
-		this.isReady = isReady;
 	}
 }

@@ -12,12 +12,25 @@ public class MsgAuraContainer implements IMessage {
 	public MsgAuraContainer() {}
 	
 	public MsgAuraContainer(AuraContainer container) {
-		Auras[] allowedAuras = container.getAllowed();
-		storedAura = new byte[allowedAuras.length];
-		this.allowedAuras = new byte[allowedAuras.length];
-		for(int i = 0; i < allowedAuras.length; i++) {
-			this.allowedAuras[i] = (byte) allowedAuras[i].getId();
-			this.storedAura[i] = (byte) container.getStoredAura(allowedAuras[i]);
+		Auras[] allowed = container.getAllowed();
+		Auras[] auras = Auras.values();
+		
+		if(allowed.length == 0) {
+			// All Auras are allowed
+			storedAura = new byte[0];
+			allowedAuras = new byte[auras.length];
+			for(int i = 0; i < storedAura.length; i++) {
+				storedAura[i] = (byte) container.getStoredAura(auras[i]);
+			}
+		}
+		else {
+			// Only some Auras are allowed
+			storedAura = new byte[allowed.length];
+			allowedAuras = new byte[allowed.length];
+			for(int i = 0; i < storedAura.length; i++) {
+				allowedAuras[i] = (byte) allowed[i].getId();
+				storedAura[i] = (byte) container.getStoredAura(allowed[i]);
+			}
 		}
 		
 		this.maxAura = container.getMaxAura();
